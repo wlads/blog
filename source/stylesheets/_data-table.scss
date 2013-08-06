@@ -1,0 +1,61 @@
+* + table {
+  border-style:solid;
+  border-width:1px;
+  border-color:#e7e3e7;
+}
+
+* + table th, * + table td {
+  border-style:dashed;
+  border-width:1px;
+  border-color:#e7e3e7;
+  padding: 10px;
+}
+
+* + table th {
+  border-style:solid;
+  font-weight:bold;
+  background: url("/images/noise.png?1330434582") repeat scroll left top #F7F3F7;
+}
+
+* + table th[align="left"], * + table td[align="left"] {
+  text-align:left;
+}
+
+* + table th[align="right"], * + table td[align="right"] {
+  text-align:right;
+}
+
+* + table th[align="center"], * + table td[align="center"] {
+  text-align:center;
+}
+
+/* ###############*/
+header.default h1 a {
+  display: block;
+  width: 231px;
+  height: 91px;
+  background-image: url(/blog/images/logo-he-labs.jpg);
+  float: left;
+}
+header.default h1 a span {
+  display: none;
+}
+
+#follow {
+  float: right;
+  padding-top: 48px;
+  width: 286px;
+}
+#follow ul li {
+  display: inline;
+  margin-left: 10px
+}
+#follow ul li a {
+  padding-bottom: 18px;
+  padding-right: 3px;
+}
+#follow ul li a:hover {
+  color: #b80606;
+  text-decoration: underline;
+  opacity: 0.7;
+}

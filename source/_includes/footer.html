@@ -1,1 +1,14 @@
-{% include custom/footer.html %}
+<footer id="bottom">
+	<div class="grid">
+		<p>
+		  Copyright &copy; {{ site.time | date: "%Y" }} - {{ site.author }} -
+		  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+		</p>
+	</div>
+</footer>
+
+{% include footer_scripts/disqus.html %}
+{% include footer_scripts/facebook_like.html %}
+{% include footer_scripts/google_plus_one.html %}
+{% include footer_scripts/twitter_sharing.html %}
+{% include footer_scripts/others.html %}
