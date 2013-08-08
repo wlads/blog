@@ -12,7 +12,7 @@ categories:
   
 ---
 
-Depois de anos utilizando o [SendGrid](http://sendgrid.com/) pra envio de emails transacionais em diversos projetos, surgiu a necessidade de **descobrir se emails de um mailer específico haviam sido enviados** recentemente ou não. E aí, #comofas?
+Depois de anos utilizando o [SendGrid](http://sendgrid.com/) para envio de emails transacionais em diversos projetos, surgiu a necessidade de **descobrir se emails de um mailer específico haviam sido enviados** recentemente ou não. E aí, #comofas?
 
 <!--more-->
 
