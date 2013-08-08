@@ -264,9 +264,22 @@ p {
     
     ul li{
       list-style: image-url('arrow.jpg') disc inside;
-      line-height:2;
+      line-height:2.1;
       font-size: 0.8em;
+      span {
+        border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+        color: white;
+        float: left;
+        margin-bottom: 0.1em;
+        margin-top: 0;
+        padding-bottom: 0.1em;
+        padding-left: 26px;
+        width: 89%;
+      }
+      span:last-child {
+        border-bottom:none;      
     }
+  }
 }
 
 #bottom { 
