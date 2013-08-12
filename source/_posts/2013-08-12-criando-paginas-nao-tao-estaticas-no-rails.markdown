@@ -1,0 +1,209 @@
+---
+published: false
+author: Mauro George
+layout: post
+title: "Criando páginas não tão estáticas no rails"
+date: 2013-08-12
+comments: true
+categories:
+  - mauro george
+  - rails
+  - High Voltage
+  - Static Content
+  - Active Admin
+---
+
+Em algum momento em nosso desenvolvimento de apps em rails teremos que criar páginas estáticas. Sim aquelas páginas de "sobre", "a equipe" etc. Temos N formas de fazer isso como falado pelo [Akita aqui](www.akitaonrails.com/2011/11/11/paginas-estaticas-no-rails) e no [RailsCasts aqui](http://railscasts.com/episodes/117-semi-static-pages) vamos ver mais uma forma de fazer isso, só que mais poderosa, deixando o cliente cadastrar o conteúdo da página.
+
+<!--more-->
+
+## A missão
+
+Criar uma página de "sobre" que resida em "/sobre" e que o cliente possa facilmente alterar o seu conteúdo.
+
+## O arsenal
+
+Para esta brincadeira iremos usar as seguintes ferramentas:
+
+- [High Voltage](https://github.com/thoughtbot/high_voltage) um gerador de páginas estáticas.
+- [Static Content](https://github.com/Helabs/static_content) utiliza de chave e valor para gerar conteúdo estático de forma facil.
+- [Active Admin](https://github.com/gregbell/active_admin) interface administrativa para apps rails.
+
+## Criando a página
+
+Para criarmos a nossa página estática iremos usar o [High Voltage](https://github.com/thoughtbot/high_voltage) da [thoughtbot](http://www.thoughtbot.com/). Para isso adicione no seu Gemfile:
+
+```ruby
+gem 'high_voltage', '1.2.4'
+```
+
+em seguida rode `bundle`.
+
+Como vemos no próprio readme do High Voltage, temos que criar uma pasta pages e adicionar nosso arquivo lá:
+
+```bash
+$ mkdir app/views/pages
+$ touch app/views/pages/sobre.html.haml
+```
+
+Por padrão as páginas são acessiveis após o `/pages` ou seja a nossa é acessivel em `/pages/sobre`. Como vamos usar o endereço `/sobre` temos que definir o seguinte no `config/initializers/high_voltage.rb`:
+
+```ruby
+HighVoltage.route_drawer = HighVoltage::RouteDrawers::Root
+```
+
+Não se esqueça de definir no seu menu um link para a página de sobre, para isso utilize o helper `page_path` exemplo:
+
+```ruby
+page_path('sobre')
+```
+
+### Testes
+
+Não se esqueça de definir os testes para a sua nova página para isso iniciaremos com o teste de rota, que reside em `spec/routing/pages_routing_spec.rb`:
+
+```ruby
+require "spec_helper"
+
+describe HighVoltage::PagesController do
+
+  describe "routing" do
+
+    it "routes to #sobre" do
+      expect(get("/sobre")).to route_to("high_voltage/pages#show", id: "sobre")
+    end
+  end
+
+  describe "route helpers" do
+
+    it "page_path" do
+      expect(page_path(:sobre)).to eq("/sobre")
+    end
+  end
+end
+```
+
+como pode ver testamos a nossa rota e o helper da rota.
+
+Agora vamos testar o nosso controller pages, que reside em `spec/controllers/pages_controller_spec.rb`, veja como fica nossa spec:
+
+```ruby
+require 'spec_helper'
+
+describe HighVoltage::PagesController do
+
+  describe "GET 'sobre'" do
+
+    before do
+      get :show, id: :sobre
+    end
+
+    it { should respond_with(:success) }
+    it { should render_template('sobre') }
+    it { should render_with_layout(:application) }
+  end
+end
+```
+
+como pode ver poucos testes e bem simples. Não se esqueça de instalar o [shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers) se ainda não usa. E caso queira começar um novo projeto e usar as ferramentas que usamos aqui na HE:labs, de uma olhada na nossa gem [Pah](https://github.com/Helabs/pah) que utilizamos para começar todos nossos projetos em rails.
+
+## Criando o conteúdo da página
+
+Para criarmos o conteúdo de nossa página utilizaremos o [Static Content](https://github.com/Helabs/static_content). Para isso adicione no seu Gemfile:
+
+```ruby
+gem 'static_content', '2.0.0'
+```
+
+em seguida rode `bundle`.
+
+após instalar a gem temos que rodar um generator, que gerará o model `Content` para nós, para isso execute:
+
+```bash
+$ rails g static_content:install
+```
+
+Depois de termos instalado o Static Content, iremos usa-ló em nossa view. Para isso altere a sua view `app/views/pages/sobre.html.haml` deixando ela assim:
+
+```haml
+%h1
+  = rc :about_title, default: "Título da página de sobre"
+
+= c :about_content, default: "Conteúdo da página de sobre"
+```
+
+Como pode ver utilizamos 2 helpers diferentes no título o `rc`, pois aqui queremos o conteúdo raw, sem conversão para HTML, e no conteúdo utilizamos o `c` que neste caso queremos que o conteúdo seja convertido de markdown para HTML. E perceba que em ambos os casos definimos um valor default.
+
+## Criando a área administrativa
+
+Instale o Active Admin adicionando no seu Gemfile:
+
+```ruby
+gem 'activeadmin', '0.6.0'
+```
+
+em seguida rode `bundle`.
+
+após instalar a gem rode o seguinte generator:
+
+```bash
+$ rails generate active_admin:install
+```
+
+rode as migrações com:
+
+```bash
+$ rake db:migrate
+```
+
+Neste momento já é possivel acessar o admin, acesse "/admin" com os seguintes dados:
+
+- User: admin@example.com
+- Password: password
+
+Como pode ver ainda não temos o nosso model Content.
+
+Ps: Caso tenha algum problema na instalação do Active Admin veja a sua [documentação com mais detalhes aqui](http://activeadmin.info/documentation.html).
+
+### Adicionando o content ao Active Admin
+
+Para criarmos nosso model `Content` no Active Admin utilizamos o seguinte gerador:
+
+```bash
+$ rails generate active_admin:resource Content
+```
+
+com isso ele cria um arquivo em `app/admin/contents.rb`.
+
+Como o Static Content utiliza de chave e valor, não é legal mostrar para nosso cliente o nome da chave em inglês, para isso podemos traduzir as chaves do Static Content que são exibidas no nosso index no active admin. Para isso altere `app/admin/contents.rb` deixando o assim:
+
+```ruby
+ActiveAdmin.register Content do
+
+  index do
+    column :slug do |c|
+      t(c.slug, scope: 'static_content.slugs')
+    end
+    column :text
+    column :updated_at
+
+    default_actions
+  end
+end
+```
+
+e por ultimo criamos as nossas traduções das chaves do Static Content em `config/locales/static_content.pt-BR.yml`, ficando assim:
+
+```yml
+pt-BR:
+  static_content:
+    slugs:
+      about_title: Título de sobre
+      about_content: Conteúdo de sobre
+```
+
+## Conclusão
+
+Agora nosso cliente pode alterar o texto de sua página estática usando todo o poder do Markdown e nossas páginas estáticas são facilmente estendidas.
+
+E você como resolve este problema de página estáticas? Fala aí ;)
