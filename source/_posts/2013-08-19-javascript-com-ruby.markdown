@@ -18,13 +18,13 @@ categories:
 Javascript é uma ótima linguagem. Ela passou a ser usada e respeitada cada vez mais. Durante muito tempo ficou destinada a ficar somente no Front-end, enquanto outras linguagens, como Ruby, ficariam no Back-end. E muita gente estava satisfeita com isso.
 
 
-Mas alguém teve uma ideia: E se colocarmos essa linguagem que somente fica no Front-end no sever-side? Surgiu o **Node.js**.
+Mas alguém teve uma ideia: E se colocarmos essa linguagem, que somente fica no Front-end, no sever-side? Surgiu o **Node.js**.
 
 <!-- more -->
 **Node.js** surgiu numa época chamada de revolução do Javascript. Ficou extremamente popular e agora o temos em todos os lugares.
 
 Mas o Javascript, apesar de tudo, não é uma linguagem divertida. E isso é quase um consenso.
-Passei as últimas 4 semanas usando coffeescript e é muito bom. É simples, tem uma boa sintaxe que "lembra" Ruby e é suportado e encorajado no Rails. Quando voltei a escrever em "plain javascript", tive uma sensação estranha de que o js é mais complicado do que deveria. Mas o coffeescript tem um problema. Ele é um Javascript. *É necessário pensar em Javascript para escrever em CoffeeScript.*
+Passei as últimas 4 semanas usando coffeescript e é muito bom. É simples, tem uma boa sintaxe que "lembra" Ruby e é suportado e encorajado no Rails. Quando voltei a escrever em "plain Javascript", tive uma sensação estranha de que o js é mais complicado do que deveria. Mas o coffeescript tem um problema. Ele é um Javascript. *É necessário pensar em Javascript para escrever em CoffeeScript.*
 
 Enfim, já estava conformado com o fato de que, como alguém que se diverte programando em Ruby, js seria uma constante.
 
@@ -63,7 +63,7 @@ does_it.answer_me?
 Esse é um exemplo mostrando um pouco da capacidade do Opal em gerar código Javascript.
 Você pode testar esse código [bem aqui][code_example].
 
-É possivel chamar, facilmente, um código javascript nativo e continuar programando como ruby:
+É possivel chamar, facilmente, um código Javascript nativo e continuar programando como ruby:
 
 ```ruby
 class Light
