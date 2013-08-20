@@ -53,7 +53,7 @@ Por padrão, as páginas são acessíveis após o `/pages`. Ou seja, a nossa é 
 HighVoltage.route_drawer = HighVoltage::RouteDrawers::Root
 ```
 
-Não se esqueça de definir no seu menu um link para a página de "sobre". Para isso, utilize o helper `page_path`. Exemplo:
+Não se esqueça de definir no seu menu um link para a página "sobre". Para isso, utilize o helper `page_path`. Exemplo:
 
 ```ruby
 page_path('sobre')
