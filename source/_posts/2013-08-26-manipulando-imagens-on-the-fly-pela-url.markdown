@@ -54,7 +54,7 @@ end
 
 No nossa view o formulário fica desta forma:
 
-```ruby
+```erb
 <% form_for @photo, :html => {:multipart => true} do |f| %>
     ...
     <%= f.file_field :image %>
@@ -70,9 +70,7 @@ match '/images/:uid/w/:width/h/:height' => Dragonfly[:images].endpoint { |params
 }
 ```
 
-E agora quando acessamos */images/12345/w/400/h/400 *geraremos uma versão 400x400 da imagem que nós salvamos anteriormente. Você pode facilmente adicionar mais parâmetros e manipular a imagem como você precisar: adicionar márcas d'água, cropar e qualquer outro processamento possível através do [imagemagick][3].
-
-
+E agora quando acessamos */images/12345/w/400/h/400 *geraremos uma versão 400x400 da imagem que nós salvamos anteriormente. Você pode facilmente adicionar mais parâmetros e manipular a imagem como você precisar: adicionar marcas d'água, cropar e qualquer outro processamento possível através do [imagemagick][3].
 
 [1]: https://github.com/markevans/dragonfly
 [2]: https://github.com/markevans/dragonfly#for-the-lazy-rails-user
