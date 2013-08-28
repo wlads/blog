@@ -3,19 +3,20 @@ published: true
 author: Matheus Bras
 layout: post
 title: "Manipulando imagens on-the-fly pela URL"
-date: 2013-08-26 22:37
+date: 2013-08-28 17:00
 comments: true
 categories:
   - Matheus Bras
   - Dragonfly
   - Upload de imagens
+  
 ---
 
-Digamos que você possui uma API e precisa que algumas imagens sejam cropadas, ou redimencionadas, de vários tamanhos *on-the-fly* pela URL. Por exemplo: **/image/1/w/300/h/400** retornaria uma imagem que você já salvou redimencionada para 300x400. É possível fazer mais do que redimencionar a imagem, mas vamos nos focar somente nisso por enquanto.
+Digamos que você possui uma API e precisa que algumas imagens sejam cropadas, ou redimencionadas, de vários tamanhos *on-the-fly* pela URL. Por exemplo: **/image/1/w/300/h/400** Retornaria uma imagem que você já salvou redimencionada para 300x400. É possível fazer mais do que redimencionar a imagem, mas vamos nos focar somente nisso por enquanto.
 
 <!--more-->
 
-Para essa funcionalidade usaremos a gem [Dragonfly][1] para lidar com o upload e processamento das imagens. A instalação é bem fácil e rápida. Com [poucos passos][2] já estaremos preparados.
+Para essa funcionalidade, usaremos a gem [Dragonfly][1] para lidar com o upload e processamento das imagens. A instalação é bem fácil e rápida. Com [poucos passos][2] já estaremos preparados.
 
 ## Fazendo o Setup do Dragonfly:
 
@@ -37,7 +38,7 @@ Você vai precisar do *rack-cache* para manter um cache da imagem gerada pela no
   app.configure_with(:rails)
 ```
 
-Digamos que exista um model *Photo *e vamos salvar nossas imagens no campo para *image*.
+Digamos que exista um model *Photo* e vamos salvar nossas imagens no campo para *image*.
 
 ```ruby
   add_column :photos, :image_uid,  :string
@@ -52,7 +53,7 @@ class Photo < ActiveRecord::Base
 end
 ```
 
-No nossa view o formulário fica desta forma:
+No nossa view o formulário ficará desta forma:
 
 ```erb
 <% form_for @photo, :html => {:multipart => true} do |f| %>
@@ -70,7 +71,7 @@ match '/images/:uid/w/:width/h/:height' => Dragonfly[:images].endpoint { |params
 }
 ```
 
-E agora quando acessamos */images/12345/w/400/h/400 *geraremos uma versão 400x400 da imagem que nós salvamos anteriormente. Você pode facilmente adicionar mais parâmetros e manipular a imagem como você precisar: adicionar marcas d'água, cropar e qualquer outro processamento possível através do [imagemagick][3].
+E agora, quando acessarmos */images/12345/w/400/h/400*, geraremos uma versão 400x400 da imagem que nós salvamos anteriormente. Você pode facilmente adicionar mais parâmetros e manipular a imagem como precisar (adicionar marcas d'água, cropar e qualquer outro processamento possível através do [imagemagick][3]).
 
 [1]: https://github.com/markevans/dragonfly
 [2]: https://github.com/markevans/dragonfly#for-the-lazy-rails-user
