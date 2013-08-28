@@ -21,6 +21,20 @@ article {
         text-transform: uppercase;
         position: absolute; top: 0;
         font-size: .7em;
+
+        .author {
+          border-right: 1px solid #999;
+          margin-right: 10px;
+          padding-right: 10px;
+
+          .fn { color: #333 }
+        }
+      }
+
+      time {
+        border-right: 1px solid #999;
+        margin-right: 10px;
+        padding-right: 10px;
       }
     }
     @media only screen and (min-width: 768px) {
