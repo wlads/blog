@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ferramentas | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/ferramentas/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ferramentas para Designers]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/01/ferramentas-para-designers-aluisio/"/>
+    <updated>2013-07-01T10:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/01/ferramentas-para-designers-aluisio</id>
+    <content type="html"><![CDATA[<p>Quando se projeta interfaces para aplicações web diariamente, uma das coisas mais importantes é ter uma gama de ferramentas para deixar o processo de trabalho mais produtivo.</p>
+
+<p>Nesse post, irei listar algumas ferramentas que eu uso no meu dia a dia. E que agilizam o design e desenvolvimento Front-end.</p>
+
+<!-- more -->
+
+
+<h3>Alguns Plugins</h3>
+
+<p><img src="/images/plugins.png" alt="image" /></p>
+
+<p><a href="http://littleipsum.com/"><strong>Little Ipsum</strong></a>
+Apesar de existirem diversos geradores de <em>Lorem Ipsum</em> pela web , o <strong>Little Ipsum</strong> funciona de maneira mais prática como um plugin para OS X.</p>
+
+<p><a href="http://www.jumpzero.com/frank/"><strong>Frank DeLoupe</strong></a>
+Este color-picker também funciona como um plugin para OS X. Você pode utilizá-lo para copiar o <em>rgb</em> ou <em>hexadecimal</em> de uma cor. Ele também guarda o histórico das últimas cores que você utilizou.</p>
+
+<p><a href="http://photoshopscripts.wordpress.com/2013/02/03/corner-editor-photoshop-script/"><strong>Corner Editor</strong></a>
+Para quem sofre com criação e edição de bordas arredondas em elementos no photoshop, este script é uma mão na roda.</p>
+
+<p><a href="http://guideguide.me/"><strong>Guide Guide</strong></a>
+Criação de <em>grids</em> no Photoshop não é uma tarefa muito agradável. Este script permite criar linhas guias para o seu documento com apenas alguns cliques .</p>
+
+<h3>Controle de Arquivos</h3>
+
+<p><img src="/images/layervault.png" alt="image" /></p>
+
+<p>Além do já consagrado Dropbox, algumas ferramentas estão sendo criadas com o foco no controle de arquivos para designers .
+O <a href="https://www.pixelapse.com/"><strong>Pixel Lapse</strong></a> e o <a href="https://layervault.com/"><strong>Layer Vault</strong></a> são aplicações para o controle, armazenamento e versionamento de arquivos. Eles podem melhorar muito o seu workflow e agilizar o processo entre o time.</p>
+
+<h3>Grids</h3>
+
+<p><img src="/images/grid.png" alt="image" /></p>
+
+<p>O site <a href="https://gridsetapp.com/"><strong>Gridset</strong></a> , além da criação de grids, permite também o gerenciamento dos seus grids. Conta também com um grande número de templates já definidos de grids.</p>
+
+<h3>Cores</h3>
+
+<p><img src="/images/colors.png" alt="image" /></p>
+
+<p>O <a href="https://kuler.adobe.com/"><strong>Kuler</strong></a> é um aplicativo bastante avançado e possui uma série de recursos para a criação e gerenciamento de paleta de cores. Além de ter integração com os softwares da Adobe.</p>
+
+<p>Já o <a href="http://www.colourlovers.com/"><strong>Color Lovers</strong></a>, funciona como uma  comunidade onde você consegue criar, gerenciar e ver ótimas referências de paletas criadas por outros designers.</p>
+
+<h3>Tipografia</h3>
+
+<p><img src="/images/type.png" alt="image" /></p>
+
+<p>Web fonts já estão difundidas e sendo amplamente utilizadas, mas são muitas opções, tornando difícil para encontrar e gerenciar todas elas. O <a href="http://typecast.com/"><strong>Typecast</strong></a> é uma aplicação excelente para poder gerenciar, organizar por projetos, comparar fontes, dentre outros recursos.</p>
+
+<h3>HTML e CSS</h3>
+
+<p><img src="/images/sublime.png" alt="image" /></p>
+
+<p><strong>Live Reload</strong></p>
+
+<p>Para fazer o design direto no browser, esta ferramenta é essencial. O <a href="http://livereload.com/"><strong>Live Reload</strong></a> faz com que ao alterar um arquivo HTML, CSS ou uma imagem, o navegador seja atualizado sem a necessidade de um reload na página manualmente.</p>
+
+<p><strong>Browser Stack</strong></p>
+
+<p>O <a href="http://www.browserstack.com/"><strong>Browser Stack</strong></a> é uma aplicação web para testes cross-browser. Com ele, você consegue visualizar o seu projeto em diferentes browsers e versões rapidamente.</p>
+
+<h3>E você?</h3>
+
+<p>Já usa algum destes recursos? Tem outras sugestões para acrescentar?
+Compartilhe suas ferramentas nos comentários também!</p>
+]]></content>
+  </entry>
+  
+</feed>

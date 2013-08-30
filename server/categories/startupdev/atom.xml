@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: startupdev | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/startupdev/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[A cópia é o melhor elogio]]></title>
+    <link href="http://helabs.com.br/blog/2013/05/22/a-copia-e-o-melhor-elogio/"/>
+    <updated>2013-05-22T11:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/05/22/a-copia-e-o-melhor-elogio</id>
+    <content type="html"><![CDATA[<p><img src="/images/posts/2013-05-21/macaco-imitacao.jpg" alt="image" /></p>
+
+<p>Por volta do final de maio de 2011, exatamente 2 anos atrás, eu estava em casa pensando sobre o que iria fazer da minha vida. Eu havia saído da empresa onde trabalhei anteriormente e estava livre pra fazer o que quisesse do meu tempo. Eu tinha uma grana para me manter vivo e isso me proporcionou uma certa tranquilidade para fazer experiências e pensar com calma em meus próximos passos, mas também, precisava ganhar dinheiro logo. Eu mesmo me colocava num senso de urgência, porque é assim que funciono. Era o início do <a href="http://startupdev.com.br">Startup DEV</a>.</p>
+
+<!-- more -->
+
+
+<p>A opção mais sensata pra mim seria vender serviço de desenvolvimento de software sob demanda, pois era o que sabia fazer e que me daria dinheiro de imediato. Naquele momento, já tinha tomado uma decisão fundamental na minha vida:</p>
+
+<p><strong>Eu nunca mais trabalharia em projetos de software vendidos com escopo fechado.</strong></p>
+
+<p>Essa decisão trazia uma restrição enorme para a minha possibilidade de sucesso, dado que o mercado não entendia bem as vantagens de contratar software dessa maneira (e não entende até hoje :/).</p>
+
+<p>E também, eu não estava disposto a vender software com o escopo fechado. A venda negociável desse produto era um grande desafio, quase que uma barreira. Então, comecei a pensar em como solucionar este problema.</p>
+
+<p>Minha linha de raciocínio foi simples. Pensei nos seguintes pontos:</p>
+
+<ul>
+<li>Preciso ganhar a confiança dos clientes e ao mesmo tempo, reduzir o risco dele na contratação;</li>
+<li>O que eu posso fazer para reduzir o risco?;</li>
+<li>Bem, o que vem a ser o risco na contratação do software?;</li>
+<li>Eu sei que o tamanho do risco é sempre o tamanho do investimento;</li>
+<li>Ok. Então, reduzir o risco significa reduzir o investimento;</li>
+<li>Para reduzir o investimento, tenho que reduzir o tamanho do projeto;</li>
+<li><em>Bingo!</em> Qual o menor projeto que eu posso vender?</li>
+</ul>
+
+
+<p>Cheguei a conclusão de que precisava criar um modelo em que o cliente pudesse contratar o menor projeto possível. Dessa forma, ele gastaria pouco e conheceria o nosso trabalho.</p>
+
+<p>Com isso em mente, continuei pensando:</p>
+
+<ul>
+<li>Qual seria o menor projeto?;</li>
+<li>Eu sabia que tentar especificar por meio de características do projeto era impossível;</li>
+<li>A chave era resolver em tempo curto. Ok, então qual o menor tempo possível para um projeto de sistemas web?;</li>
+<li>Tem que resultar em algo útil;</li>
+<li>Hum... Tem o Rails Rumble, competição no qual uma galera se úne e entrega um sistema em 2 dias;</li>
+<li><em>Bingo!</em> Vamos vender o desenvolvimento em 48h!</li>
+</ul>
+
+
+<p>Neste momento, eu pensei que apenas 2 dias eram tempo suficiente para gerar algo útil e pouco tempo para qualquer parâmetro existente no mercado até o momento.</p>
+
+<p>Isso tudo foi na mesma hora, na mesma linha de pensamento, eu estava tendo uma série de <a href="http://en.wikipedia.org/wiki/Eureka_effect">Aha moments</a>.
+Durante o mesmo momento, pensei: "preciso fazer isso com alguém, tem que ter um time." Eu sozinho não conseguiria fazer um projeto em 2 dias. E logo depois, visualizei o que seria nossa maior arma no marketing; a fórmula do serviço:</p>
+
+<p><strong>Sua ideia + 1 Reunião + 48h + R$ 4.800,00 = Aplicativo Pronto e Online</strong></p>
+
+<p><em>(começou custando R$ 4.800, hoje o preço é diferente)</em></p>
+
+<p>No mesmo dia, liguei pro <a href="twitter.com/smergulhao">Mergulhão</a>, fundador da HE:labs e meu grande sócio hoje, explicando tudo que eu estava pensando naquela hora. Chamei-o para, junto comigo, tornarmos aquelas ideias reais.. E não é que todas as loucuras fizeram sentido pra ele?!</p>
+
+<p>Nossa conversa foi longa e o formato começou a ser detalhado e aprimorado com as ideias do Mergulhão. E como ideia não vale nada, e o que vale é a execução, naquela mesma conversa, nós já agendamos para a semana seguinte o que seria nosso <a href="http://rafael.adm.br/p/iniciando-o-startupdev/">primeiro projeto piloto</a>. Naquela hora, como vocês podem constatar no post, era tudo um experimento que nós não sabíamos se funcionaria.</p>
+
+<p>E funcionou! Hoje, o <a href="http://startupdev.com.br">Startup DEV</a> já é amplamente conhecido e considerado como uma <strong>excelente opção para quem deseja iniciar um projeto de sistema na web</strong>. O mais legal é que a ideia de apresentar o serviço como uma fórmula foi tão forte, que recebemos diversos elogios!</p>
+
+<p><img src="/images/posts/2013-05-21/copias/1.png" alt="image" />
+<img src="/images/posts/2013-05-21/copias/2.png" alt="image" />
+<img src="/images/posts/2013-05-21/copias/3.png" alt="image" />
+<img src="/images/posts/2013-05-21/copias/4.png" alt="image" />
+<img src="/images/posts/2013-05-21/copias/5.png" alt="image" />
+<img src="/images/posts/2013-05-21/copias/6.png" alt="image" />
+<img src="/images/posts/2013-05-21/copias/7.png" alt="image" />
+<img src="/images/posts/2013-05-21/copias/8.png" alt="image" /></p>
+
+<p>Como algumas pessoas dizem, "a cópia é a forma mais sincera de elogio" e foi prazeroso ver sites com a nossa fórmula e alguns times copiando nosso modelo de negócio completo. No fundo, ficamos felizes com tudo isso, porque encaramos essas cópias como elogios que recebemos por termos criado algo de valor.</p>
+
+<p>Hoje, enquanto escrevo, acompanho a conversa de um time fazendo um Startup DEV. Já vamos chegar no nosso quinquagésimo (50º) projeto entregue, o que é uma vitória se compararmos com empresas que passam um ano inteiro e não conseguem entregar nem um sistema.</p>
+
+<p>E ainda, posso dizer que esses dois anos foram apenas o início. Estamos criando uma estrutura bacana que em breve virá à tona na qual conseguiremos atender muitos novos clientes, principalmente no exterior!</p>
+
+<p>Se prepara que estamos passando...</p>
+
+<p>Abraços e até a próxima!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Café da manhã com uma pitada de Startup DEV]]></title>
+    <link href="http://helabs.com.br/blog/2013/01/14/cafe-da-manha-com-uma-pitada-de-startupdev/"/>
+    <updated>2013-01-14T12:43:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2013/01/14/cafe-da-manha-com-uma-pitada-de-startupdev</id>
+    <content type="html"><![CDATA[<p>Em uma viagem que eu e Mergulhão fizemos com uns amigos em setembro de 2012,
+tivemos uma conversa sobre o <a href="http://startupdev.com.br">Startup DEV</a> no café da manhã.
+Entenda o que pensamos a respeito de projetos de startups e qual é a nossa filosofia de trabalho.</p>
+
+<!-- more -->
+
+
+<p>Esse vídeo foi gravado por <a href="http://www.rodrigodetoledo.com">Rodrigo Toledo</a>, conta com a participação do <a href="http://klauswuestefeld.blogspot.com.br/">Klaus Wuestefeld</a> e mostra a cara do <a href="http://alissonvale.com/">Alisson Vale</a> de vez em quando :-P</p>
+
+<p>Espero que gostem!</p>
+
+<iframe src="http://player.vimeo.com/video/57240441?title=0&amp;byline=0&amp;portrait=0" width="500" height="375" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+]]></content>
+  </entry>
+  
+</feed>

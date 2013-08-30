@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: cafe com dev | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/cafe-com-dev/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Retrospectiva Café com DEV HE:Rio 12/07]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/29/retrospectiva-cafe-com-dev-he-rio-12-de-julho/"/>
+    <updated>2013-07-29T14:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/29/retrospectiva-cafe-com-dev-he-rio-12-de-julho</id>
+    <content type="html"><![CDATA[<p>Na sexta-feira, dia 12/07, a HE:Rio organizou mais um Café com DEV no espaço Curto Circuito (Av. 13 de maio, nº13 - sala 616, Cinelândia) e recebeu <a href="https://twitter.com/turicas">Álvaro Justen</a> com o tema "Arduino: robótica com software e hardware livres".</p>
+
+<!--more-->
+
+
+<p><img src="/images/DSCN3736.JPG" alt="image" /></p>
+
+<p>Durante a palestra, Álvaro, também conhecido como Turicas, nos mostrou diversos exemplos de como rodar um comando e fazer com que lâmpadas de led (ou qualquer outro dispositivo) obedecessem a este comando.</p>
+
+<p><img src="/images/DSCN3738.JPG" alt="image" /></p>
+
+<p>A palestra foi bem interessante! Até para leigos, como eu, descobrir como a "mágica" funciona foi super interessante!</p>
+
+<p>Para quem não conseguiu acompanhar ao vivo, a transmissão pode ser conferida <a href="https://www.eventials.com/pt-br/helabs/arduino-robotica-com-software-e-hardware-livres/">neste link</a>.</p>
+
+<p>O próximo encontro da HE:Rio acontecerá no dia <strong>09/08</strong>. João Felipe (jotafê) falará sobre o tema "Desenvolvendo com HTML/CSS/JS para BlackBerry, conhecendo a plataforma e o apoio ao desenvolvedor."</p>
+
+<p>Confira todos os cafezinhos acessando a <a href="http://helabs.com.br/eventos/cafe-com-dev/">Página do Café com DEV</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Retrospectiva Café com DEV HE:Rio 28/06]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/12/retrospectiva-cafe-com-dev-28-de-junho/"/>
+    <updated>2013-07-12T14:30:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/12/retrospectiva-cafe-com-dev-28-de-junho</id>
+    <content type="html"><![CDATA[<p>Na sexta-feira, dia 28/06, a HE:Rio organizou mais um Café com DEV no espaço Curto Circuito (Av. 13 de maio, nº13 - sala 616, Cinelândia) e recebeu Diego Dukão com o tema "Porque você não deve fazer seu app nativo (ou introdução ao PhoneGap)"</p>
+
+<!--more-->
+
+
+<p><img src="/images/presentes.JPG" alt="image" /></p>
+
+<p>O pessoal presente e os que acompanharam online pelo eventials interagiram durante toda a apresentação. Ao final, rolou um papo descontraído entre todos.</p>
+
+<p>Confira a transmissão pelo Eventials <a href="https://t.co/nWp9JS9zxP">aqui</a>!!!</p>
+
+<p>E no próximo encontro, dia 12/07, a HE:Rio recebe, também no Espaço Curto Circuito, Álvaro Justen com a palestra "Arduino: robótica com software e hardware livres". Não perca tempo e <a href="https://docs.google.com/a/helabs.com.br/forms/d/1gFeRHBktciPMjnvjtRYfVqN9DQqTQnMukM_FNARtHis/viewform">se inscreva!</a></p>
+
+<p>Confira todos os cafezinhos acessando a <a href="http://helabs.com.br/eventos/cafe-com-dev/">Página do Café com DEV</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Retrospectiva Café com DEV - HE:Rio 14/06]]></title>
+    <link href="http://helabs.com.br/blog/2013/06/27/retrospectiva-cafe-com-dev-herio/"/>
+    <updated>2013-06-27T10:30:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/06/27/retrospectiva-cafe-com-dev-herio</id>
+    <content type="html"><![CDATA[<p>No último encontro do Café com DEV da HE:Rio, no dia 14/06, contamos com <a href="https://plus.google.com/110170840223146627892/posts">Rafael Martins</a> falando sobre o tema "Construindo uma API de dados esportivos que responde a 6000 req/s".</p>
+
+<!--more-->
+
+
+<p>A palestra bombou! Muita gente acompanhou presencial e ao vivo pelo Eventials! Não viu a palestra ainda? Então <a href="https://www.eventials.com/pt-br/helabs/cafe-com-dev-he-rio/">clique aqui</a> e confira!</p>
+
+<p>A galera interagiu bastante com o palestrante e foi muito proveitoso para todos! O evento aconteceu no Espaço Curto Circuito (Av 13 de maio, nº13 - sala 616, Cinelândia) e foi regado a snacks, café e RedBull.</p>
+
+<p><img src="/images/cafecomdev14.JPG" alt="image" /></p>
+
+<p>Lembrando que esta semana a HE:Rio receberá, também no Espaço Curto Circuito, <a href="https://twitter.com/diegodukao">Diego Dukão</a> falando sobre "Porque você não deve fazer seu app nativo (ou introdução ao PhoneGap)". Para se inscrever, <a href="https://docs.google.com/a/helabs.com.br/forms/d/1Nk_RWEfTLwPghczIAZnbCUaSDPhZd7Kna20wk0IQblk/viewform">clique aqui</a>.</p>
+
+<p>E também, HE:Londrina contará com Flávio Granero falando sobre "Trabalho remoto" no Espaço Junt.us. Para se inscrever acesse <a href="https://www.facebook.com/events/530311203673193/">o evento no Facebook</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Retrospectiva Café com DEV - HE:Londrina 24/05]]></title>
+    <link href="http://helabs.com.br/blog/2013/05/31/retrospectiva-cafe-com-dev-londrina/"/>
+    <updated>2013-05-31T16:30:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/05/31/retrospectiva-cafe-com-dev-londrina</id>
+    <content type="html"><![CDATA[<p>No dia 24/05, também rolou Café com DEV para o pessoal de Londrina! O encontro aconteceu no <em>Junt.us Espaço Colaborativo</em> e teve como palestrante <a href="https://twitter.com/eduardofiorezi">Eduardo Fiorezi</a> apresentando como tema "Conheça um time de desenvolvimento ágil em seu DNA".</p>
+
+<!--more-->
+
+
+<p><img src="/images/cafelondrina.jpg" alt="image" /></p>
+
+<p>O evento bombou, tendo mais de 20 participantes! Dentre eles, pessoas de outras cidades próximas a Londrina compareceram! "O pessoal ficou atento do primeiro ao último minuto e fizeram muitas perguntas sobre como são os processos da HE; como aplicar metodologias ágeis nos seus ambientes e etc." - Eduardo sobre o <em>feedback</em> da palestra.</p>
+
+<p><img src="/images/cafeeduardo.jpg" alt="image" /></p>
+
+<p>A palestra não foi transmitida ao vivo, mas os slides apresentados podem ser conferidos <a href="http://www.slideshare.net/eduardofiorezi/conheca-um-time-de-desenvolvimento-agil-em-seu-dna">neste link</a>.</p>
+
+<p>Gostou do Café com DEV em mais uma sede da HE:labs? Quer palestrar? Mande um email para crystal@helabs.com.br e marque a sua!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Retrospectiva - HE:Rio DOJO 24/05]]></title>
+    <link href="http://helabs.com.br/blog/2013/05/29/retrospectiva-dojo-he-rio/"/>
+    <updated>2013-05-29T11:30:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/05/29/retrospectiva-dojo-he-rio</id>
+    <content type="html"><![CDATA[<p>Na sexta-feira, dia 24/05, a HE:Rio organizou um DOJO para o nosso Café com DEV. Nele, várias pessoas participaram, entre elas, os desenvolvedores <a href="https://twitter.com/maurogeorge">Mauro George</a> e <a href="https://twitter.com/TiuTalk">Thiago Belem</a>.</p>
+
+<!--more-->
+
+
+<p><img src="/images/dojo24.JPG" alt="image" /></p>
+
+<p>Durante o <em>Dojo</em>, os presentes desenvolveram um programa para retornar a seqüência de números que precisa ser digitada numa mensagem de texto limitada a 255 caracteres. Este problema aplica-se ao aparelho que não possui um teclado QWERTY embutido e é necessário fazer algumas combinações das 10 teclas numéricas do aparelho para conseguir digitar. (Ex: celulares antigos) O problema pode ser pego como exemplo <a href="http://dojopuzzles.com/problemas/exibe/escrevendo-no-celular/">nesse link</a>.</p>
+
+<p><img src="/images/maurog.JPG" alt="image" /></p>
+
+<p>O <em>Dojo</em> é um evento bastante interativo e permite que os convidados programem entre si. Duas pessoas ficam no controle do desenvolvimento por 5 minutos e depois deste tempo, escolhem uma pessoa aleatória da platéia para substituir um dos dois programadores iniciais. E ainda, é possível visualizar no github os progressos de cada dupla e a conclusão do processo. Para saber os nossos, acesse o <a href="https://github.com/dojorio/dojo-centro/tree/master/2013/20130524%20-%20sms%20-%20ruby">nosso github</a>.</p>
+
+<p>O evento ocorreu no espaço Curto Circuito, Av. 13 de maio, Cinelândia. E claro, regado a Heineken, RedBull e café!</p>
+]]></content>
+  </entry>
+  
+</feed>

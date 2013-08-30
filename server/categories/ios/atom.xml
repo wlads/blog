@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ios | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/ios/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Retrospectiva - 2° Café com DEV]]></title>
+    <link href="http://helabs.com.br/blog/2013/02/25/retrospectiva-2-cafe-com-dev/"/>
+    <updated>2013-02-25T12:03:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/02/25/retrospectiva-2-cafe-com-dev</id>
+    <content type="html"><![CDATA[<p>Na última sexta-feira, dia 22 de fevereiro, aconteceu a segunda edição do Café com DEV. O evento reuniu interessados em debater o tema "design, usabilidade e acabamento de software".</p>
+
+<!-- more -->
+
+
+<p><img src="/images/posts/2-cafe-com-dev.jpg" alt="image" /></p>
+
+<p>Novamente estávamos com a casa cheia e o papo foi extremamente rico e dinâmico, regado a café, Red Bull e Heineken. Tivemos inclusive convidados de São Paulo presentes no evento.</p>
+
+<p>Os tópicos discutidos foram baseados no artigo <a href="http://agilewarrior.wordpress.com/2012/10/06/its-not-about-the-unit-tests/">"It's not about unit tests"</a> de <a href="http://agilewarrior.wordpress.com/">Jonathan Rasmusson</a>. O artigo diz que programadores iOS não desenvolvem de forma orientada por testes, mas nem por isso o código escrito por eles é pior ou o aplicativo não funciona. Pelo contrário, muitos aplicativos para iOS são adorados por seus usuários.</p>
+
+<p>A realidade é que o desenvolvimento para iOS tem que seguir uma guideline extremamente rígida. A atualização de um aplicativo em caso de bug também é muito lenta, as vezes ineficiente. Com isso os programadores tendem a se importar mais com que estão entregando, já que qualquer alteração depois de um deploy, pode demorar semanas e custar muito caro para o aplicativo, em termos de reviews negativas.</p>
+
+<p>Num projeto web tradicional, o deploy é muito simples e rápido de se realizar. Com isso, os programadores tendem e ficar um pouco menos preocupados com a qualidade e o refino do produto final, dado que um erro pode rapidamente ser ajustado.</p>
+
+<p>Por fim, a conclusão é que programadores web tem muito a aprender com a comunidade iOS, principalmente no quesito do cuidado e carinho com o trabalho de um verdadeiro artesão de software.</p>
+
+<p>Quem levou esse Café com Dev foi <a href="http://mergulhao.info/">Sylvestre Mergulhão</a>, que além de outros tópicos levantou questões como:</p>
+
+<ul>
+<li>O que define qualidade?</li>
+<li>O que é se importar?</li>
+<li>Conceito de pronto</li>
+<li>Subestimação de esforço</li>
+<li>Pensar um software no visual é bom (desenho de telas)</li>
+<li>Menos é mais</li>
+<li>Se importe também com o que não tem interface</li>
+<li>Que tipo de artista você prefere ser?</li>
+</ul>
+
+
+<p>Abaixo temos um link para vídeo do bate-papo para quem não pode estar presente. O video começa aos 3:48s.</p>
+
+<p><a href="http://twitcam.livestream.com/dwwho">Video do Café com DEV</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tech Talks - André Cytryn: dojo iOS @ HE:labs]]></title>
+    <link href="http://helabs.com.br/blog/2012/12/10/tech-talks-andre-cytryn-dojo-ios-at-he-labs/"/>
+    <updated>2012-12-10T11:47:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2012/12/10/tech-talks-andre-cytryn-dojo-ios-at-he-labs</id>
+    <content type="html"><![CDATA[<p>Mais uma sexta feira, mais um evento na HE:labs.</p>
+
+<p>Hoje foi dia de um Dojo em iOS comandado pelo <a href="http://twitter.com/kinhow">André Cytryn</a>.</p>
+
+<!-- more -->
+
+
+<p>O problema que tinhamos que resolver era:</p>
+
+<blockquote><p>Colocar produtos em sacolas sendo que, produtos diferentes não se misturam na mesma sacola e que as sacolas tem uma quantidade máxima de produtos exemplo: [acucar, arroz, arroz, feijao], quando a sacola tem capacidade 1, deve precisar de 4 sacolas, mas se a sacola tiver capacidade 2, deve retornar 3 sacolas, porque os dois arroz ficam na mesma sacola.</p></blockquote>
+
+<p>Além do André e <a href="https://twitter.com/maurogeorge">eu</a> tivemos a presença de 5 convidados. Para quem não participou fique agora com a retrospectiva.</p>
+
+<h2>Carinha feliz</h2>
+
+<ul>
+<li>IOS 101</li>
+<li>Todos participaram</li>
+<li>Inicio de refactory</li>
+<li>Brincamos com a interface</li>
+<li>Iniciativa legal</li>
+<li>conhecer nova linguagem</li>
+<li>didática</li>
+<li>conceitos</li>
+<li>TDD</li>
+<li>deploy no device</li>
+<li>dinamismo dos exemplos</li>
+<li>todos os niveis de conhecimento</li>
+<li>problema foi resolvido</li>
+</ul>
+
+
+<h2>Carinha triste</h2>
+
+<ul>
+<li>Sintaxe feia</li>
+<li>complexidade baixa</li>
+<li>faltou refatorar mais</li>
+<li>espaço pequeno</li>
+</ul>
+
+
+<h2>Compareceram</h2>
+
+<ul>
+<li><a href="http://twitter.com/kinhow">André</a></li>
+<li><a href="https://twitter.com/maurogeorge">Mauro</a></li>
+<li>Valdir Torres Borges</li>
+<li>vinicius Teles bezerra</li>
+<li>Fabio Sbano</li>
+<li><a href="https://twitter.com/FabioMartins88">Fabio Martins</a></li>
+<li>Gabriel Mazzini</li>
+</ul>
+
+
+<p>Ps: Galera que compareceu mande o nome e twitter para colocarmos aqui.</p>
+
+<p>O <a href="https://github.com/cytryn/DojoSupermercado">código fonte do Dojo pode ser encontrado aqui</a>, e temos algumas fotos dos momentos aqui.</p>
+
+<p><img src="/images/posts/dojo-ios-1.jpg" alt="image" />
+<img src="/images/posts/dojo-ios-2.jpg" alt="image" />
+<img src="/images/posts/dojo-ios-3.jpg" alt="image" /></p>
+
+<p>É isso aí pessoal não se esqueçam de acompanhar a <a href="http://helabs.com.br/mailing/">nossa mailing</a> e o <a href="http://www.twitter.com/helabs">twitter</a> para ficarem informados de próximos dojos, talks e qualquer coisa que possamos inventar um dia desses!</p>
+
+<p>Abraços e Keep Hacking.</p>
+]]></content>
+  </entry>
+  
+</feed>

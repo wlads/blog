@@ -1,0 +1,404 @@
+	
+	<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <title>Design Responsivo Parte II: Listagens e Galerias - Blog da HE:labs</title>
+  <meta name="author" content="Time HE:labs">
+
+  
+  <meta name="description" content="Design Responsivo Parte II: Listagens e Galerias Na maioria dos contextos, uma parte considerável de uma interface Web é feita de listas. Pense num &hellip;">
+  
+
+  <!-- Facebook stuff taken from main page, not sure it should go here -->
+  <meta property="og:title" content="Design Responsivo Parte II: Listagens e Galerias - Blog da HE:labs"/>
+  <meta property="og:site_name" content="HE:labs blog"/>
+  <meta property="og:image" content="http://helabs.com.br/images/logo-icon.png"/>
+  <meta property="og:description" content="Design Responsivo Parte II: Listagens e Galerias Na maioria dos contextos, uma parte considerável de uma interface Web é feita de listas. Pense num &hellip;" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://helabs.com.br/blog/2013/05/24/design-responsivo-parte-ii-listagens-e-galerias/">
+  <link href="http://helabs.com.br/favicon.png" rel="icon">
+
+  <!-- CSS --> 
+  <link href="/blog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  
+
+  <!-- JS -->
+  <script type="text/javascript" src="/blog/javascripts/jquery.js"></script>
+  <script type="text/javascript" src="/blog/javascripts/jquery.parallax.min.js"></script>
+  <script type="text/javascript" src="/blog/javascripts/main.js"></script>
+
+  <!--
+  <script src="/blog/javascripts/modernizr-2.0.js"></script>
+  <script src="/blog/javascripts/ender.js"></script>
+  <script src="/blog/javascripts/octopress.js" type="text/javascript"></script>
+  -->
+  
+  <link href="/blog/atom.xml" rel="alternate" title="Blog da HE:labs" type="application/atom+xml">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16326763-1']);
+  _gaq.push(['_setDomainName', 'helabs.com.br']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+	<body   >
+		
+		<!-- #top -->
+<header id="top">
+	<div class="grid">
+		<h1 class="title">
+			<a href="/">
+				<img src="/blog/images/logotipo.png" />
+			</a>
+		</h1>	
+	</div>
+</header>
+<!-- /#top -->
+
+	    <div id="content">
+	    	    <!-- #posts -->
+    <section id="posts" class="single">    
+      <article>
+  <div class="grid">
+
+    
+      <h1 class="post-title">Design Responsivo Parte II: Listagens e Galerias</h1>
+    
+
+
+    
+      <div class="text"><p>Na maioria dos contextos, uma parte considerável de uma interface Web é feita de listas. Pense num <em>e-commerce</em>, blog ou até mesmo numa <em>Job Board</em>. Seja lá o que for, as listas resolvem bem os nossos problemas e são parte fundamental do Web Design.</p>
+
+<!--more-->
+
+
+<p>Irei agora demonstrar um pouco como podemos &#8220;brincar&#8221; com listas usando <em>Media Queries (CSS3)</em>. No exemplo, criarei uma galeria de imagens simples que se comportará de acordo com a resolução de cada dispositivo, seja ele <em>Desktop</em> ou móvel, como <em>Tablets</em> e <em>Smartphones</em>.</p>
+
+<p>Vamos criar uma listagem com a foto de oito pessoas:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;team-list&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;li&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;#&quot;</span> <span class="na">alt=</span><span class="s">&quot;Pessoa 01&quot;</span> <span class="nt">/&gt;&lt;/li&gt;</span>
+</span><span class='line'>    ...
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Então, no CSS eu preciso setar a quantidade de ítens que eu quero por linha. Como são oito ítens no total, utilizaremos quatro por linha:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.team-list</span> <span class="nt">li</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">width</span><span class="o">:</span><span class="m">23</span><span class="o">%</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">margin</span><span class="o">:</span><span class="m">1</span><span class="o">%</span> <span class="m">1</span><span class="o">%</span> <span class="m">0</span> <span class="m">1</span><span class="o">%</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>100% / 4 = 25%; menos 2% das margens left e right e 23% de largura pra cada ítem da lista. E agora em cada ítem, seto para que a imagem de dentro tenha sempre 100% de largura:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.team-list</span> <span class="nt">img</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">width</span><span class="o">:</span><span class="m">100</span><span class="o">%</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Agora, utilizarei um pouco as <em>Media Queries</em> para fazer a mágica acontecer:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="k">@media</span> <span class="o">(</span><span class="nt">max-width</span><span class="nd">:481px</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nc">.team-list</span> <span class="nt">li</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">width</span><span class="o">:</span><span class="m">48</span><span class="o">%</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Quando a lista é acessada de um dispositivo com largura máxima de <strong>481px</strong>, será exibido apenas dois ítens por linha. Use essa lógica para otimizar ao máximo sua lista em cada tipo de resolução.</p>
+
+<p>Utilizando quase o mesmo código, essa galeria de imagens poderia facilmente transformar-se numa listagem responsiva de produtos para <em>e-commerce</em>. Um comparador de preços ou qualquer outro tipo de interface que liste algo horizontalmente também se encaixaria. Um conceito importante em <strong>Design Modular</strong> é <strong>Refatoração</strong>.</p>
+
+<p>Ao se trabalhar com listagens responsivas, é muito importante entender o velho e bom <strong>layout fluído</strong>. Dentro dos <em>breakpoints</em>, seus componentes (no caso a listagem) devem comportar-se de forma fluída e não engessada. Ou seja, não podemos apenas definir os <em>breakpoints</em> e esperar que as “coisas” fiquem certas dentro deles. Estas “coisas” precisam esticar, diminuir, aumentar, se comportar de acordo com cada contexto.</p>
+
+<p><strong>Conclusão:</strong> Juntando o poder das <em>Media Queries</em> e o domínio por completo dos conceitos básicos de <em>box-model</em>, você pode criar interfaces bastante trabalhadas e relativamente acessíveis com pouco esforço. Antes de sair enxendo seu design de &#8220;firúlas&#8221;, concentre-se no básico que é criar uma estrutura modular e não fixa; algo que se expanda.</p>
+
+<p>Sua interface não deve ser feita apenas para atender a necessidade de hoje. Ela precisa ser projetada também para o futuro, fácil de ser continuada e integrada a novas features. Web Design é uma diciplina que trabalha com conteúdos e estratégias mutáveis, nada é definido, nada é para sempre. Faça sua interface responder a estas mudanças com facilidade, desenvolvendo-a de forma modular e flexível.</p>
+
+<p>Não pense no Web Design apenas como um layout “codado” em HTML/CSS. Pense num Design projetado para Web que tenha vida própria, como algo subjetivo e não apenas visual.</p>
+
+<h2>Outros posts da série</h2>
+
+<p><a href="http://helabs.com.br/blog/2013/02/27/design-responsivo-parte-i-arquivos-css-e-breakpoints">Design Responsivo Parte I: Arquivos CSS e Breakpoints</a></p>
+
+<h2>Links</h2>
+
+<ul>
+<li><a href="http://www.mikaelcarrara.com">Site Pessoal</a></li>
+<li><a href="br.linkedin.com/in/mikaelcarrara/">Linkedin</a></li>
+<li><a href="http://dribbble.com/mikaelcarrara">Portfólio no Dribbble</a></li>
+</ul>
+
+</div>
+    
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-24T10:30:00-03:00" pubdate data-updated="true">May 24<span>th</span>, 2013</time>
+    
+  </div>
+</article>  
+
+      <aside id="more-information" class="grid">
+        <p class="meta">
+          
+  
+
+<span class="byline author vcard">Postado por <span class="fn">Mikael Carrara</span></span>
+
+          
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/css/'>css</a>, <a class='category' href='/blog/categories/design/'>design</a>, <a class='category' href='/blog/categories/design-responsivo/'>design responsivo</a>, <a class='category' href='/blog/categories/media-queries/'>media queries</a>, <a class='category' href='/blog/categories/mikael-carrara/'>mikael carrara</a>
+  
+</span>
+
+
+        </p>
+
+        
+          <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://helabs.com.br/blog/2013/05/24/design-responsivo-parte-ii-listagens-e-galerias/" data-via="helabs" data-counturl="http://helabs.com.br/blog/2013/05/24/design-responsivo-parte-ii-listagens-e-galerias/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+        
+    
+        <p class="meta">
+          
+            <a class="basic-alignment left" href="/blog/2013/05/22/a-copia-e-o-melhor-elogio/" title="Previous Post: A cópia é o melhor elogio">&laquo;A cópia é o melhor elogio</a>
+          
+      
+          
+            <a class="basic-alignment right" href="/blog/2013/05/29/retrospectiva-dojo-he-rio/" title="Next Post: Retrospectiva - HE:Rio DOJO 24/05">Retrospectiva - HE:Rio DOJO 24/05 &raquo;</a>
+          
+        </p>
+    
+        <div id="cover" class="cover-mailing-page">
+          <div class="containner">
+            <div class="mailing-form">
+              <h2>Gostou desse post? Receba nossa newsletter e fique por dentro dos novos posts e outras novidades da HE:labs.</h2>
+              <form style="width:100%" action="http://clientela.us2.list-manage.com/subscribe/post?u=78c4c9df5db794cd68f358456&amp;id=020e7504d2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+                <input type="email" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Insira seu email e faça parte da comunidade" required />
+
+                <input type="submit" value="Fazer Parte" name="subscribe" id="mc-embedded-subscribe" class="button"/>
+
+              </form>
+              <a href="http://antispam.br" target="_blank"><img src="http://helabs.com.br/images/antispam.jpg" title="Selo AntiSpam"></a>
+              <p>
+                <a href="http://helabs.com.br/privacidade" target="_blank" title="Política de Privacidade">Política de Privacidade</a> /
+                <a href="http://helabs.us2.list-manage.com/unsubscribe?u=78c4c9df5db794cd68f358456&id=020e7504d2" target="_blank" title="Retirar o e-mail da lista">Retirar o e-mail da lista</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        
+          <div id="disqus_thread" aria-live="polite">
+            <h6>Comentários</h6>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+          </div>
+        
+
+      </aside>
+    </section>
+	    </div>
+
+	  	<footer id="bottom">
+  
+  <div id="social-footer">
+    <div class="grid">
+    <a ref="#" class="github">Github</a>
+    <a ref="#" class="twitter">Twitter</a>
+    <a ref="#" class="facebook">Facebook</a>
+    <a ref="#" class="rss">RSS</a>
+    </div>
+ </div>
+ 
+	<div class="grid">
+    <div class="collumn">
+      <h3>Últimos Posts</h3>
+      <ul>
+        <li>Melhorando o Email Activity do SendGrid</li>
+        <li>Um pouco sobre Lean UX</li>
+        <li>Como colaborar com projetos open-source</li>
+        <li>Retrospectiva Café com DEV HE:Rio 12/07 </li>
+      </ul>
+      
+    </div>
+    
+  	<div class="grid">
+      <div class="collumn">
+        <h3>GitHub Repos</h3>
+        <ul>
+          <li>startupdev.github.com <span>Startup DEV Website</span></li>
+          <li>pah<span>Command line interface to generate rails apps used at HE:labs.</span> </li>
+          <li>acts_as_hashed<span>acts_as_hashed makes it easier to create unique non-discoverable URIs and all other sorts of uuid you may need in your app.</span> </li>
+        </ul>
+      
+      </div>
+      
+    	<div class="grid">
+        <div class="collumn">
+          <h3>Últimos Tweets</h3>
+          <ul>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget.  adipiscing elit. </li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget. </li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget.  </li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget. Lorem ipsum dolor sit amet </li>
+          </ul>
+      
+        </div>
+    
+		<p>
+		  Copyright &copy; 2013 - Time HE:labs -
+		  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+		</p>
+	</div>
+</footer>
+
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'helabsblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://helabs.com.br/blog/2013/05/24/design-responsivo-parte-ii-listagens-e-galerias/';
+        var disqus_url = 'http://helabs.com.br/blog/2013/05/24/design-responsivo-parte-ii-listagens-e-galerias/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#appId=294124694041877&xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  window.fbAsyncInit = function(){
+    FB.Event.subscribe('edge.create', function(targetUrl) {
+      _gaq.push(['_trackSocial', 'facebook', 'like', targetUrl]);
+    });
+    FB.Event.subscribe('edge.remove', function(targetUrl) {
+      _gaq.push(['_trackSocial', 'facebook', 'unlike', targetUrl]);
+    });
+    FB.Event.subscribe('message.send', function(targetUrl) {
+      _gaq.push(['_trackSocial', 'facebook', 'send', targetUrl]);
+    });
+  }
+</script>
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+  window.twttr = (function (d,s,id) {
+    var t, js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+    js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+    return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+  }(document, "script", "twitter-wjs"));
+  function extractParamFromUri(uri, paramName) {
+    if (!uri) {
+      return;
+    }
+    var regex = new RegExp('[\\?&#]' + paramName + '=([^&#]*)');
+    var params = regex.exec(uri);
+    if (params != null) {
+      return unescape(params[1]);
+    }
+    return;
+  }
+  function trackTwitter(intent_event) {
+    if (intent_event) {
+      var opt_pagePath;
+      if (intent_event.target && intent_event.target.nodeName == 'IFRAME') {
+        opt_target = extractParamFromUri(intent_event.target.src, 'url');
+      }
+      _gaq.push(['_trackSocial', 'twitter', 'tweet', opt_pagePath]);
+    }
+  }
+
+  //Wrap event bindings - Wait for async js to load
+  twttr.ready(function (twttr) {
+    //event bindings
+    twttr.events.bind('tweet', trackTwitter);
+  });
+</script>
+
+
+
+	</body>
+</html>

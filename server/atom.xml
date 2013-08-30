@@ -1,0 +1,1626 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Como colaborar com projetos open-source]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/31/como-colaborar-com-projetos-open-source/"/>
+    <updated>2013-07-31T15:20:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/31/como-colaborar-com-projetos-open-source</id>
+    <content type="html"><![CDATA[<p>Atualmente, quase todas as empresas de desenvolvimento de software usam algum projeto open-source no seu dia a dia. Nós da HE:labs acreditamos que faz parte do nosso trabalho contribuir de volta. Isto é, colaborar com projetos open-source e melhorar o conteúdo disponível para a comunidade. Mas muitas vezes, desenvolvedores e designers ficam perdidos em como contribuir. Vou tentar listar algumas formas produtivas de fazê-lo, seja em projetos grandes, como o <a href="https://github.com/rails/rails">Rails</a>, ou mesmo em projetos menores, que, porventura, você tenha utilizado e/ou tenha interesse em contribuir.</p>
+
+<!--more-->
+
+
+<h3>Tradução</h3>
+
+<p>Traduzir projetos como o <a href="http://betterspecs.org/">Better Specs</a> é uma excelente forma de começar se você ainda se sente inseguro em contribuir com código. Traduzir permite que você, obrigatoriamente, leia e entenda como funciona. E ainda, facilita que desenvolvedores iniciantes, considerando que não dominam o Inglês, leiam determinado guia ou tutorial e possam aprender determinada tecnologia ou técnica sem ter a linguagem como barreira. A quantidade de materiais em Português é ainda bastante precária e apesar de eu mesmo não dar muita bola para os mesmos, já vi muitos desenvolvedores mais inexperientes procurando incessantemente como resolver determinado problema buscando por uma solução em português.</p>
+
+<h3>Ressucitar issues antigas</h3>
+
+<p><a href="https://github.com/rails/rails/issues">Projetos</a> <a href="https://github.com/joyent/node/issues">maiores</a> <a href="https://github.com/gregbell/active_admin/issues">muitas</a> <a href="https://github.com/robbyrussell/oh-my-zsh/issues">vezes</a> <a href="https://github.com/FortAwesome/Font-Awesome/issues">tem</a> <a href="https://github.com/angular/angular.js/issues">centenas</a> <a href="https://github.com/zurb/foundation/issues">de</a> <a href="https://github.com/mxcl/homebrew/issues">issues</a> <a href="https://github.com/EllisLab/CodeIgniter/issues">abertas</a>, e simplesmente tentar reproduzir o problema para ver se já foi resolvido ou não, e depois reportar é totalmente válido.</p>
+
+<p>Outra forma útil e eficiente de ressucitar issues é tentar isolar o problema com um exemplo em um <a href="https://github.com/plentz/jruby_report">repositório com testes</a>. Isto ajuda outras pessoas a entenderem mais facilmente o problema. Às vezes, o simples fato de isolá-lo já melhora a visibilidade do mesmo e permite desenvolvedores mais experientes e com menos tempo a resolvê-los.</p>
+
+<p>Um simples &#8220;isso pode ser fechado?&#8221; também ajuda.</p>
+
+<h3>Faça backports e publique-os</h3>
+
+<p>Às vezes você se encontra em um projeto com dependências mais antigas, onde precisa resolver certos problemas que já foram anteriormente resolvidos para versões mais recentes. E ainda, necessita fazer o backport das soluções. Após consertar para seu projeto interno, contribua de volta. Existem inúmeros exemplos:</p>
+
+<ul>
+<li><a href="https://github.com/lunks/kiqstand">lunks/kiqstand</a></li>
+<li><a href="https://github.com/grosser/rails2_asset_pipeline">grosser/rails2_asset_pipeline</a></li>
+<li><a href="https://github.com/grosser/strong_parameters/tree/rails2">grosser/strong_parameters</a></li>
+<li><a href="https://github.com/marcandre/backports">marcandre/backports</a></li>
+</ul>
+
+
+<h3>Melhore a biblioteca para você, extraia para um plugin e faça um pull request</h3>
+
+<p>Uma das coisas mais recorrentes no Rails são desenvolvedores experientes aparecerem no <a href="https://groups.google.com/forum/#!forum/rubyonrails-core">Ruby on Rails Core</a> fazendo sugestões de melhorias, com a intenção de fazê-lo, mas somente se a comunidade aceitar. 90% das vezes a resposta é <em>você pode fazer um pull request?</em>.</p>
+
+<p>A argumentação é simples: Se você quer uma feature, vá lá e faça! Não espere algum commiter ou core member falar que seria legal. Muitas vezes somente vislumbrar uma feature não é nem de perto vislumbrar o esforço para que ela se concretize e que <em>side effects</em> ela pode trazer. Não é à toa que <a href="https://github.com/rails/rails-observers">observers</a> e <a href="https://github.com/rails/activeresource">Active Resource</a> não fazem mais parte do Rails. Mesmo features boas requerem manutenção uma vez incorporadas à algum projeto open-source e isso é custoso.</p>
+
+<p>Com o código pronto, é muito mais fácil convencer alguém a aceitar a sua sugestão. É claro, não garante. Não fique chateado se rejeitarem. Lançar em um plugin (uma <em>gem</em> no vocabulário Ruby) permite que outras pessoas que concordam com você usufruam do seu trabalho e possam fazer parte do lobby para incorporar a sua sugestão à biblioteca que você tanto quer contribuir.</p>
+
+<p>Contribuir com projetos open-source é extremamente gratificante. De quebra, ainda é um excelente portfólio se você pretende se candidatar a alguma vaga <a href="http://helabs.com.br/jobs">em uma empresa legal</a>. E fica bonito no seu <a href="http://osrc.dfm.io/lunks">Open Source Report Card</a>.</p>
+
+<p>E você, tem alguma outra forma interessante de contribuir para projetos open-source?</p>
+
+<p><em>Se quiser ajuda, inclusive para parear em um projeto opensource, <a href="https://twitter.com/lunks">me siga no Twitter</a> e entre em contato.</em></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Retrospectiva Café com DEV HE:Rio 12/07]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/29/retrospectiva-cafe-com-dev-he-rio-12-de-julho/"/>
+    <updated>2013-07-29T14:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/29/retrospectiva-cafe-com-dev-he-rio-12-de-julho</id>
+    <content type="html"><![CDATA[<p>Na sexta-feira, dia 12/07, a HE:Rio organizou mais um Café com DEV no espaço Curto Circuito (Av. 13 de maio, nº13 - sala 616, Cinelândia) e recebeu <a href="https://twitter.com/turicas">Álvaro Justen</a> com o tema &#8220;Arduino: robótica com software e hardware livres&#8221;.</p>
+
+<!--more-->
+
+
+<p><img src="http://helabs.com.br/blog/images/DSCN3736.JPG" alt="image" /></p>
+
+<p>Durante a palestra, Álvaro, também conhecido como Turicas, nos mostrou diversos exemplos de como rodar um comando e fazer com que lâmpadas de led (ou qualquer outro dispositivo) obedecessem a este comando.</p>
+
+<p><img src="http://helabs.com.br/blog/images/DSCN3738.JPG" alt="image" /></p>
+
+<p>A palestra foi bem interessante! Até para leigos, como eu, descobrir como a &#8220;mágica&#8221; funciona foi super interessante!</p>
+
+<p>Para quem não conseguiu acompanhar ao vivo, a transmissão pode ser conferida <a href="https://www.eventials.com/pt-br/helabs/arduino-robotica-com-software-e-hardware-livres/">neste link</a>.</p>
+
+<p>O próximo encontro da HE:Rio acontecerá no dia <strong>09/08</strong>. João Felipe (jotafê) falará sobre o tema &#8220;Desenvolvendo com HTML/CSS/JS para BlackBerry, conhecendo a plataforma e o apoio ao desenvolvedor.&#8221;</p>
+
+<p>Confira todos os cafezinhos acessando a <a href="http://helabs.com.br/eventos/cafe-com-dev/">Página do Café com DEV</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Custos invisíveis]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/23/custos-invisiveis/"/>
+    <updated>2013-07-23T11:34:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/23/custos-invisiveis</id>
+    <content type="html"><![CDATA[<p>Em qualquer tipo de projeto ou operação existem os custos diretos e os indiretos. Os diretos são aqueles fáceis de se perceber, pois implicam na saída direta de dinheiro. No caso dos projetos que trabalhamos na HE:labs, nos custos diretos estão incluídos o pagamento de uma equipe, a compra de equipamentos, a conta de luz, gasto com servidores, dentre outros.</p>
+
+<!--more-->
+
+
+<p>Reduzir os custos diretos é o que almejam os gerentes de projetos, <em>termo que não gostamos na HE:labs</em>, mas que é utilizado universalmente no ambiente de TI corporativo.</p>
+
+<p>Contudo nem sempre reduzir os custos diretos é bom. Deve ser avaliado um contexto <em>macro</em> para que se chegue a uma boa conclusão. Para avaliar o contexto de forma macro, é preciso entrar no problema e entender os <em>inners</em> de cada questão.</p>
+
+<p>É comum em projetos de software que o custo com pessoal seja o mais alto do projeto. Levando isso em consideração, economizar dinheiro significa reduzir o tempo da equipe gasto com coisas que não geram valor e manter essa equipe sempre o mais motivada possível.</p>
+
+<h3>Analisando o caso da hospedagem dos aplicativos que desenvolvemos na HE:labs</h3>
+
+<p>Na HE:labs, nós recomendamos enfaticamente a utilização do <a href="http://heroku.com/">Heroku</a> como plataforma de hospedagem para todos os nossos clientes, incluindo grandes clientes corporativos. Todos utilizam, sem exceção.</p>
+
+<p>O motivo é bem simples: apesar do custo direto ser relativamente alto se comparado com outros serviços de hospedagem, os custos indiretos são de longe os mais baixos existentes hoje e com vantagens técnicas diretas bem maiores.</p>
+
+<p>Usando o Heroku como plataforma de hospedagem, a equipe está sempre livre para criar a maior quantidade de funcionalidades. E também, de se aproveitar de recursos avançados como ElasticSearch, memcached, websocket, entre muitos outros <a href="https://addons.heroku.com/">addons</a>, sem ter que se preocupar em como o Heroku vai fazer para disponibilizar aquele serviço.</p>
+
+<p>Outras vantagens de se utilizar o Heroku incluem: elasticidade imediata, alta disponibilidade e imunidade a erosão. Todos estes tópicos são muito relevantes nos dias atuais.</p>
+
+<p>Temos também uma série de ferramentas. Algumas <a href="https://github.com/Helabs">opensource</a>, que nos ajudam não somente a dar o kickoff de um projeto em poucos minutos, mas também a manter um projeto com extrema facilidade, incluindo os processos de <a href="http://en.wikipedia.org/wiki/Continuous_delivery">continuous deployment</a> e <a href="https://en.wikipedia.org/wiki/Continuous_integration">continuous integration</a>.</p>
+
+<h3>Nosso cenário atual</h3>
+
+<p>Todas as equipes estão sempre motivadas e entregando o máximo de valor, pois estão livres das amarras de qualquer burocracia tecnológica que as impeçam de realizar o seu trabalho.</p>
+
+<p>Ninguém precisa fazer ssh, múltiplas vpns ou outras coisas exóticas para fazer um simples deploy de uma aplicação. Qualquer desses fatores ou semelhantes teriam implicações diretas, como gasto de tempo extra para realizar uma tarefa trivial. E também, indiretas como a motivação daquela pessoa em trabalhar naquele projeto &#8220;chato&#8221; e que atrapalha o seu trabalho por conta de empecilhos desnecessários.</p>
+
+<p>Extrapolando a questão e seguindo pela teoria das <a href="http://en.wikipedia.org/wiki/Broken_windows_theory">janelas quebradas</a>, para a HE:labs, ter um projeto tecnologicamente burocrático é um risco. Pois abre um enorme precedente para outros projetos e poderia contaminar negativamente toda a equipe, influenciando no <a href="http://www.urbandictionary.com/define.php?term=coolness">coolness</a> da empresa e em tudo que nos fez chegar onde chegamos.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Começando uma Startup com um MVP Concierge]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/18/comecando-com-um-mvp-concierge/"/>
+    <updated>2013-07-18T13:34:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/18/comecando-com-um-mvp-concierge</id>
+    <content type="html"><![CDATA[<p>Eu estou montando um novo negócio digital e vou explicar nesse post quais foram os meus primeiros passos e resultados. Eu vejo um problema muito grande recorrente. Pessoas que começam já querendo desenvolver um sistema completo sem antes validar se o negócio tem demanda e vale a pena ser investido.</p>
+
+<!--more-->
+
+
+<h3>Disclaimer</h3>
+
+<p>Estou cansado, muito cansado de ver pessoas investindo muito tempo (meses) em negócio que não dão em nada. Sério, eu já vi isso acontecer <strong>muitas</strong> vezes na minha vida. E o pior é que continuam a acontecer hoje, em 2013. Pior ainda, acontece com alguns de nossos clientes, mesmo eu tentando advertir inúmeras vezes. Da minha parte, venho buscando incessantemente maneiras de poder ajudar as pessoas que estão começando um novo negócio. Este post é uma delas.</p>
+
+<p>É impressionante a cegueira que dá no empreendedor. Quando a gente começa, tudo parece tão óbvio que não vale a pena nem pensar no pior. Dá vontade de sair construindo tudo e parece garantido: Quando ficar pronto vamos ganhar muito dinheiro!</p>
+
+<p>&#8230; mas é aí que mora o maior perigo.</p>
+
+<h3>Tudo é novo</h3>
+
+<p>Existe uma postura que ajuda muito na hora de começar uma novo negócio digital aka. Startup. E eu defino assim:</p>
+
+<p><strong>Assumir que você não sabe absolutamente nada sobre o negócio que está querendo montar</strong></p>
+
+<p>Em outras palavras, aceitar que várias premissas que parecem verdade sobre o negócio serão invalidadas e que você precisa descobrir quais delas são válidas e quais são inválidas para não quebrar.</p>
+
+<h3>Pensar ao contrário</h3>
+
+<p>O mais natural é começarmos o empreendimento tentando provar que ele vai dar certo. Ou seja, tentar mostrar por números que as premissas que acreditamos ser verdades, são realmente válidas. Cuidado, essa é a maneira errada de se fazer.</p>
+
+<p><strong>O correto é você fazer ao máximo para tentar provar que a sua nova startup não vai funcionar. Se você não conseguir, quer dizer que no final das contas terá um negócio de sucesso.</strong></p>
+
+<p>Isso é muito anti-intuitivo e vai contra a nossa emoção inicial, mas é extremamente relevante para definir como vai ser nosso comportamento em relação aos feedbacks que iremos receber dos passos que iremos dar.</p>
+
+<p>É um mindset diferente e você vai querer não acreditar nisso, mas se você não consegue entender isso, pare agora! Não vale a pena continuar a desenvolver a sua Startup sem entender essa parte.</p>
+
+<h3>Definir problema e cliente</h3>
+
+<p>A primeira coisa que tem que ser feita é definir explicitamente qual o problema que se quer resolver e de quem é esse problema.</p>
+
+<p>Veja bem, é importante não cair no erro de pensar na solução nesta hora. De que importa pensar numa solução para um problema não existente?</p>
+
+<p>Nesse momento, ainda não está se pensando na solução em si, mas em que problema se quer resolver e de quem é esse problema. Lembrando que são hipóteses, por que quando a gente começa, não sabemos nada :)</p>
+
+<p>O mais natural é pensarmos logo na solução, mas temos que nos esforçar pra conseguir abstrair da solução. De todas as mentorias que já fiz, acho que essa é uma das partes mais difíceis! É muito difícil, mas é necessário!</p>
+
+<p>Dado que você já tem bem claro na sua cabeça qual o problema e a quem ele pertence, é hora de partir para a validação.</p>
+
+<p>Existem várias ferramentas que ajudam a pensar no negócio e orientar os primeiros passos. A que faz mais sentido pra mim hoje é <a href="http://www.leanstartupmachine.com/validationboard/">Lean Validation Board</a>. Ela ajuda a  praticar o <a href="http://desenvolvimentoagil.com.br/xp/principios/passos_bebe">baby steps</a> nesse início.</p>
+
+<h3>O meu caso pessoal</h3>
+
+<p>Já tem um tempo que eu ouço falar em <em>Bitcoins</em>. Se você ainda não ouviu falar, sugiro que busque saber. Bitcoins são moedas virtuais que têm o potencial de colocar a economia de cabeça pra baixo. Alguns entendidos dizem que o Bitcoin está para os meios de pagamento assim como o email está para a comunicação. Basicamente a crença é de que a moeda, que hoje é lastreada em papel, se torne completamente virtual, o que faz muito sentido pra mim. Os Bitcoins são controlados por softwares no modelo peer-to-peer o que faz com que nenhum governo consiga controlar. Muito interessante.</p>
+
+<p>Se você quiser entender melhor o que são os Bitcoins, sugiro que veja esse vídeo: <a href="https://www.youtube.com/watch?feature=player_embedded&amp;v=nFBVIYkPTAc">https://www.youtube.com/watch?feature=player_embedded&amp;v=nFBVIYkPTAc</a></p>
+
+<p>Eu resolvi comprar uns Bitcoins para entender mais o processo e por que julguei que era interessante tê-los guardado como uma forma de investimento de risco.</p>
+
+<p>Foi aí que descobri que era muito difícil conseguir comprar Bitcoins no Brasil. Isso se tornou um problema pra mim. No final das contas, eu consegui. Mas não foi fácil entender as vias, encontrar uma forma segura e efetivar a compra. E ainda mais: tive que usar meios internacionais, pois com minha conta no Brasil eu não obtive sucesso.</p>
+
+<p>Opa! Em todo problema mora uma oportunidade e isso já me despertou uma fagulha. Logo pensei, vou começar a vender Bitcoins no Brasil!</p>
+
+<p>E os pensamentos vêm rápido:</p>
+
+<ul>
+<li>Muito difícil comprar Bitcoins no Brasil&#8230;</li>
+<li>Não tem ninguém vendendo de forma fácil&#8230;</li>
+<li>Vou ser o primeiro serviço de venda de Bitcoins&#8230;</li>
+<li>Vou conseguir comprar mais barato e vender bem caro, devido à escassez&#8230;.</li>
+<li>Vai dar pra ganhar muito dinheiro em cada operação&#8230;</li>
+<li>Certamente tem muita gente querendo comprar Bitcoins no Brasil&#8230;</li>
+<li>Essas pessoas estão buscando no Google como comprar Bitcoins&#8230;</li>
+<li>Vou fazer anúncios e as pessoas vão encontrar o meu site&#8230;</li>
+<li>Ao entrar no meu site, elas vão se sentir seguras e vão fazer a compra&#8230;</li>
+<li>Vou ficar rico!!!!!!</li>
+</ul>
+
+
+<p>Hahahaha, brincadeiras a parte, é assim que funciona a cabeça de um empreendedor quando está começando, não é!? Sempre acaba com ele ficando rico. Vai falar que você nunca pensou assim antes? Eu já! Mas não dessa vez. Felizmente já tenho alguma experiência que não me permite chegar a uma conclusão dessa forma.</p>
+
+<p>Eu coloquei essa linha de raciocínio para ilustrar as premissas deste caso. Cada linha dessas é uma premissa que eu levantei deste negócio e qualquer uma delas pode ser invalidada. Ou seja, cada linha é uma hipótese. Uma hipótese que não pode ser dada como verdadeira, simplesmente por que faz sentido no âmbito dos pensamentos e vontade. Se nenhuma delas for invalidada, ou seja, for realmente verdade, eu realmente vou ficar rico.</p>
+
+<p>Mas lembre-se: temos que pensar o contrário, e foi o que eu fiz. Eu assumi que o negócio não é bom e me fiz a pergunta &#8220;por que esse negócio não vai funcionar? (ou, por que eu não vou ficar rico?)&#8221;.</p>
+
+<p>Em outras palavras é como perguntar pra si mesmo:
+- De todas as premissas levantadas, qual é a de maior risco? Ou seja, qual delas é mais provável que não vá ser verdade e que vai quebrar tudo?</p>
+
+<p>Pensando nisso defini que seria a premissa de que um brasileiro compraria Bitcoins no meu website.</p>
+
+<p>Como eu queria me forçar a rodar o processo, eu montei um <a href="https://docs.google.com/drawings/d/1ZxuFecBZgKOXP0RWq7HhCGyE51AzWu6hPAA0rl6vkWU/edit">Validation Board do BitBoleto</a>.</p>
+
+<p><img src="http://helabs.com.br/blog/images/posts/2013-07-16/bitboleto-validation-board.png" alt="image" />
+<a href="https://docs.google.com/drawings/d/1ZxuFecBZgKOXP0RWq7HhCGyE51AzWu6hPAA0rl6vkWU/edit">https://docs.google.com/drawings/d/1ZxuFecBZgKOXP0RWq7HhCGyE51AzWu6hPAA0rl6vkWU/edit</a></p>
+
+<p>Agora eu precisava validar essa hipótese. Dentro da metodologia do Validation Board, após escolher a premissa a ser validada, você deve escolher a maneira pela qual deseja realizar a validação. As opções são: Exploração, Pitch e Concierge. No meu caso, implementei de uma forma que fiz a exploração, o pitch e o concierge ao mesmo tempo.</p>
+
+<h3>O modelo de negócios</h3>
+
+<p>Eu pensei rapidamente como funcionaria o serviço e mentalmente construí o modelo de negócios. Eu fiz isso só no pensamento, mas para quem ainda não trabalhou com modelos de negócios, sugiro usar uma ferramenta muito útil chamada <a href="http://www.businessmodelgeneration.com/canvas">Business Model Canvas</a>.</p>
+
+<p>Eu montei meu canvas mental da seguinte forma:</p>
+
+<p><strong>Proposta de valor:</strong> Venda de Bitcoins no Brasil;</p>
+
+<p><strong>Relacionamento com o Cliente:</strong> Suporte por tickets e chat no website;</p>
+
+<p><strong>Canal:</strong> Website do serviço;</p>
+
+<p><strong>Segmento de Clientes:</strong> Pessoas que buscam por Bitcoins no Google;</p>
+
+<p><strong>Fluxo de Receita:</strong> Pagamento dos Bitcoins comprados;</p>
+
+<p><strong>Estrutura de Custo:</strong> Bitcoins comprados, anúncios do Google e hospedagem do site;</p>
+
+<p><strong>Recursos chaves:</strong> Eu (empreendedor/programador) e dinheiro para as compras dos bitcoins;</p>
+
+<p><strong>Atividades chaves:</strong> Desenvolvimento do site/sistema, compra dos Bitcoins e controle dos anúncios;</p>
+
+<p><strong>Parceiros chaves:</strong> nenhum.</p>
+
+<p>A venda do Bitcoin, a parte chave, seria feita através de boletos bancários. Isso foi óbvio pra mim desde que tive a ideia de vender Bitcoins, por que um dos motivos de ser difícil comprar Bitcoins é o fato deles não serem vendidos por Cartão de Crédito, nem Paypal nem nada do gênero. Isso ocorre por que uma transação de transferência de Bitcoins é por natureza irreversível, ou seja, não pode ser desfeita. Então, quem vende só faz a transferência dos Bitcoins após ter o dinheiro em mãos. No caso de cartão de crédito existe o chargeback. No caso de Paypal e similares existe a disputa, mecanismos pelos quais o comprador poderia reaver o dinheiro pago de volta, causando ao vendedor a perda dos Bitcoins vendidos.</p>
+
+<p>Boleto bancário é um mecanismo de pagamento perfeito para esse caso, pois uma vez confirmado o pagamento do boleto, o dinheiro já está na conta corrente bancária e não tem como voltar mais.</p>
+
+<p>Foi por isso que dei o nome desse serviço de BitBoleto.</p>
+
+<p><a href="http://www.bitboleto.com.br">Compra de Bitcoins por boleto bancário. A forma mais segura de comprar Bitcoins no Brasil</a> ;-)</p>
+
+<h3>O MVP Concierge</h3>
+
+<p>Por definição MVP Concierge é o produto mínimo que permite que você faça manualmente a entrega da proposta de valor enquanto interagir com o cliente. Em outras palavras, é uma forma em que o cliente recebe o serviço, porém, tudo é realizado de forma manual. É uma situação temporária, insustentável no longo prazo, e que não está focada na otimização, mas sim, na efetiva entrega da proposta de valor com o objetivo de validar a hipótese.</p>
+
+<p>O que eu fiz foi construir uma <a href="http://pt.wikipedia.org/wiki/Landing_page">Landing Page</a> que realiza a venda dos Bitcoins para tentar vender pelo menos 1 Bitcoin.</p>
+
+<p>Para mim foi mais fácil, pois eu sou programador e consegui eu mesmo fazer a Landing Page. Mas qualquer empreendedor consegue pagar para que isso seja feito sem gastar muito. Tendo o mesmo mindset que eu tive, e priorizando bem as tarefas, é possível fazer uma Landing Page como a que fiz em apenas 1 dia. Sim, qualquer desenvolvedor da HE:labs, por exemplo, consegue fazer tudo que eu fiz em apenas 1 dia de trabalho.</p>
+
+<p>Esse &#8220;mesmo mindset&#8221; que me refiro, é pensar em <strong>redução drástica de features e características</strong>. Em seguida, vou explicar o que isso significou no meu caso.</p>
+
+<p>Veja bem, embora eu seja programador e eu mesmo pudesse fazer uma landing page completa e cheia de coisas, fiz o mínimo possível. Isso é muito relevante. E aqui mora o outro grande problema de quem começa a desenvolver uma startup cujo core business é software.</p>
+
+<p><strong>Ninguém entende o que é o mínimo e pior que isso, quando entende e não aceita fazer!</strong></p>
+
+<p>O apego é muito grande. Acho relevante enfatizar o conceito de mínimo que é muito mal compreendido, principalmente quando se trata de software. Quando falamos de MVP, estamos nos referindo ao Produto <strong>Mínimo</strong> Viável.</p>
+
+<p>A definição do dicionário da palavra <em>mínimo</em> é: <strong>menor quantidade de algo</strong>.</p>
+
+<p>No nosso caso, o <em>algo</em> é características ou features, como chamamos. Onde se concluí que o MVP é o produto com a menor quantidade de características possível.</p>
+
+<p>Veja uma captura de tela de como ficou o MVP do Bitboleto.</p>
+
+<p><img src="http://helabs.com.br/blog/images/posts/2013-07-16/bitboleto-screenshot-visible.png" alt="image" /></p>
+
+<p>Perceba que a página é extremamente simples e não possui nada além da comunicação do que se trata o site. Vou listar aqui algumas características dessa landing page:</p>
+
+<ul>
+<li>Não teve nenhum trabalho relevante de programação;</li>
+<li>Não teve nenhum trabalho relevante de design;</li>
+<li>Não tinha nenhuma imagem ilustrativa ou explicativa;</li>
+<li>Não tinha nenhuma logomarca;</li>
+<li>Usava ícones gratuitos do <a href="http://dryicons.com/">DryIcons</a>;</li>
+<li>Usava o <a href="http://twitter.github.io/bootstrap/">Twitter Bootstrap</a>;</li>
+<li>O formulário não tinha nenhuma validação (nem front-end e nem back-end);</li>
+<li>Não tinha nada de e-commerce;</li>
+<li>Não gerava o boleto bancário;</li>
+<li>Na real, não fazia nada que prometia, apenas enviava um e-mail pra mim com os dados do formulário.</li>
+</ul>
+
+
+<p>Enfim, estava de uma forma que ninguém se orgulharia de contar. Se você entrasse no site e submetesse o formulário todo em branco, veria uma mensagem de sucesso dizendo que receberia por e-mail um boleto bancário. Mesmo se deixasse todos os campos do formulário em branco!</p>
+
+<p>Isso é muito disruptivo! Eu diria que é praticamente inaceitável para todas as pessoas que já desenvolveram software comigo. A primeira coisa que todo mundo quer nos formulários do seu site é uma validação para evitar &#8220;sujar&#8221; o banco de dados. Embora seja de fácil implementação, eu não fiz porque estava buscando fazer estritamente o mínimo e isso não faz parte do mínimo. Uma landing page com validação não representa <em>a menor quantidade de features</em> para mim. Eu coloquei no ar e comecei a divulgar assim, sem validação.</p>
+
+<p>Outro ponto relevante é o design. Eu usei o Twitter Bootstrap, pois foi a forma mais rápida de colocar elementos na tela. Eu recomendo com força usá-lo na primeira versão da Landing Page. Tudo o que eu precisava era comunicar bem. Isso diz respeito ao texto/copywriting e ponto. Usar um tema ali era completamente irrelevante e criar um design, nem se fala. Não era uma opção pra mim.</p>
+
+<p>Nem precisa falar que o site não emitia boleto algum. Isso já era (e ainda é) uma automatização muito avançada para uma validação e está completamente fora da ideia de um MVP Concierge.</p>
+
+<p>Pensar dessa forma que me permitiu colocar tudo no ar e começar a validar em menos de um dia de trabalho. Perceba, o mindset do empreendedor é muito mais relevante do que a velocidade e capacidade de desenvolvimento. O que eu fiz ali qualquer desenvolvedor consegue fazer em muito pouco tempo.</p>
+
+<p>Este é um MVP Concierge justamente por que ele não faz o trabalho total. Eu precisava validar se uma pessoa iria realmente comprar um Bitcoin, eu não precisava de um sistema completo, automatizado que fizesse todo o processo.</p>
+
+<p>Ao submeter o formulário, um e-mail era enviado para mim com as informações colocadas pelo usuário. Isso era tudo o que eu precisava para fazer todo o resto do processo de forma manual. Ao receber esse e-mail, eu (manualmente) calculava o número de Bitcoins comprados dividindo o valor escolhido pelo preço atual de 1 Bitcoin. Gerava (manualmente) um boleto bancário no valor escolhido e por fim, enviava (manualmente) por e-mail o boleto para o endereço de e-mail do usuário.</p>
+
+<p>Depois disso, ficava monitorando se o boleto foi pago, através da conta bancária. Se o boleto tivesse sido pago, eu (manualmente) realizava a transferência dos Bitcoins para o usuário.</p>
+
+<p>Do ponto de vista do usuário, era como se tudo estivesse automatizado e funcionando perfeitamente. Mas na prática, eu fazia tudo manualmente. Repito, é uma situação insustentável no longo prazo, principalmente, se eu tivesse uma demanda muito alta. Mas tudo bem, a demanda alta ainda não era o problema, afinal, antes de colocar o site no ar eu não tinha demanda nenhuma. E nem sequer sabia se uma pessoa compraria um Bitcoin pelo meu site!</p>
+
+<p><strong>Todo problema tem seu momento. Não crie ou antecipe problemas inexistentes!</strong></p>
+
+<p>Agora vou listar o que era relevante para esse momento:</p>
+
+<ul>
+<li>Ter a landing page no ar;</li>
+<li>Direcionar visitas para a landing page;</li>
+<li>Comunicar a proposta de valor e fazer a venda;</li>
+<li>Medir o número de visitas, engajamento e número de compras;</li>
+<li>Vender um Bitcoin efetivamente;</li>
+</ul>
+
+
+<p>Esse era o mínimo. Era tudo que eu precisava no momento e foi só o que eu fiz.</p>
+
+<p>Para medir o número de visitas, engajamento e compras usei um serviço chamado <a href="http://mixpanel.com">Mixpanel</a>, que recomendo bastante. Ele é focado em <em>trackear</em> ações ao invés de pageview. Quando a landing page foi pro ar, nem <a href="http://www.google.com/analytics/">Google Analytics</a> eu tinha instalado :)</p>
+
+<p>Eu coloquei tracking no número de visitantes, números de pessoas que preencheram o formulário e número de pessoas que submeteram o formulário.</p>
+
+<p>É bom lembrar que o site foi pro ar sem absolutamente nenhum trabalho em SEO (<a href="http://pt.wikipedia.org/wiki/Otimiza%C3%A7%C3%A3o_para_motores_de_busca">Search Engine Optimization</a>). Não faz sentido algum pensar em SEO numa landing page feita para validar hipóteses. Tudo que você precisa é de respostas rápidas e é garantido que SEO não vai te trazer isso. SEO é uma estratégia de longo prazo e não cabe neste momento.</p>
+
+<p>Trazer tráfego para a landing page é importante, mas não vai ser SEO que vai resolver o seu problema.</p>
+
+<h3>A aquisição de clientes</h3>
+
+<p>Depois de ter a landing page no ar, eu precisava direcionar tráfego de pessoas interessadas em comprar Bitcoins. Como explicado anteriormente, o SEO não era uma opção. A solução foi a criação de uma campanha no <a href="https://adwords.google.com">Google Adwords</a>. Isso sim me traria respostas rápidas.</p>
+
+<p>Eu criei uma campanha, escolhi algumas palavras chaves tais como <em>comprar bitcoin</em>, <em>comprar bitcoins</em>, <em>bitcoins brasil</em>, <em>como adquirir bitcoins</em>, etc&#8230;, defini um orçamento diário de U$15, deixei que o Google definisse o preço do clique e coloquei pra rodar.</p>
+
+<p>Coloquei um orçamento alto por que queria saber exatamente o número de pessoas que buscam por essas palavras-chaves por dia. Se eu definisse um orçamento baixo, era provável que o anúncio saísse de circulação e eu não tivesse a informação do número exato de buscas.</p>
+
+<p>Com esta campanha eu já estava validando se pessoas buscam por Bitcoins no Brasil. Dentro do meu modelo de negócios, o meu segmento de clientes era basicamente pessoas que buscavam no Google, por isso também que a campanha era bem relevante.</p>
+
+<p>As campanhas no Google Adwords, ou as campanhas no Facebook, são a forma mais rápidas de direcionar clientes para o seu website. Na minha opinião é a melhor forma de fazer uma validação de interesse pelo seu produto ou serviço.</p>
+
+<p>Quando a campanha foi aprovada e ativada, tudo começou!</p>
+
+<h3>Os resultados apurados</h3>
+
+<p>Como eu comentei antes, a decisão de fazer esse negócio até esse ponto, equivaleu a menos de um dia de trabalho. A partir de agora, eu precisava acompanhar o comportamento do mercado, digo, o volume de buscas, as conversões dos anúncios, volume de acesso ao site e conversão do site em si.</p>
+
+<p>Logo de início, percebi que os $15 não foram o suficiente para medir o volume de pesquisas. Por conta dos cliques nos banners, o orçamento estava estourando, e a campanha saindo do ar antes do final do dia. Eu aumentei o orçamento de $15 para $30 e a partir daí o anúncio passou a ser apresentado durante todo o dia. Dessa forma consegui ter a informação do número de buscas que foram feitas a cada dia, que é basicamente o número de impressões dos banners da campanha. Fica a dica, essa é uma boa forma de medir o número de buscas por determinadas palavras-chaves.</p>
+
+<p>Logo no primeiro dia completo de campanha rolando, o banner foi visualizado 288 vezes, recebemos 33 cliques, e 8 submissões do formulário, 3 com os campos totalmente em branco, 1 com um dos campos em branco, e outros 4 com os campos preenchidos. Foram 3 pessoas distintas. Uma delas preencheu duas vezes, provavelmente por não ter recebido o boleto bancário no email automaticamente. Enviamos os boletos por e-mail para as 4 compras válidas, mas nenhuma delas efetivou o pagamento.</p>
+
+<p>Até então tínhamos pessoas interessadas em Bitcoins, mas nenhuma venda efetiva. Minha hipótese ainda não estava validada.</p>
+
+<p>A primeira venda foi na 24ª (vigésima quarta) submissão do formulário. O cliente comprou exatamente 1 Bitcoin pelo valor de R$ 286,40. Isso aconteceu no terceiro dia completo da campanha rolando. Essa venda validou a primeira hipótese. Muito legal, fechei a primeira validação e isso já é um sucesso para o processo.</p>
+
+<p><strong>Em 3 dias eu já tinha um cliente pagante e a primeira hipótese validada. Muito relevante!</strong></p>
+
+<p>Hora de ir para os próximos passos. Eu deveria definir a próxima hipótese a ser validada e a minha próxima dúvida era: Existem pessoas o suficiente buscando por comprar Bitcoins no Brasil?</p>
+
+<p>Deixei a campanha rolar mais alguns dias e avaliei os relatórios do Google Adwords para chegar a uma conclusão. Aí vai um resumo:</p>
+
+<p><strong>Período de Campanha:</strong> 23 dias;</p>
+
+<p><strong>Número de Buscas:</strong> 6.194;</p>
+
+<p><strong>Número de cliques nos banners:</strong> 599;</p>
+
+<p><strong>Percentual de conversão:</strong> 9,67%</p>
+
+<p>Se você não tem ideia sobre o que esses números representam, posso dizer que o negócio é bom. Temos em média, cerca de 270 pessoas por dia buscando pelas palavras-chaves escolhidas. Dessas pessoas, quase 10% estão clicando em um anúncio de um site que vende Bitcoins (o anúncio do BitBoleto). Isso é um percentual muito alto. Em geral as campanhas comerciais conseguem uma conversão de clique em banners de até 2%.</p>
+
+<p>Algumas palavras-chaves conseguiram uma conversão superior a 17%, veja no gráfico abaixo!</p>
+
+<p><img src="http://helabs.com.br/blog/images/posts/2013-07-16/bitboleto-adwords.png" alt="image" /></p>
+
+<p>Enfim, com esses números eu considerei que existem pessoas o suficiente buscando comprar Bitcoins no Brasil, de forma que justifique o prosseguimento para as próximas validações. Segunda hipótese validada!</p>
+
+<p>Durante esse tempo também medi o nível de interação dos usuários no site, os números absolutos já mudaram, mas os percentuais não mudaram muito. Vejam algumas estatísticas atualizadas:</p>
+
+<p><img src="http://helabs.com.br/blog/images/posts/2013-07-16/bitboleto-planilha-conversoes.png" alt="image" /></p>
+
+<p>Esses números mostram que o maior gargalo está nos boletos que são gerados, porém, não são pagos. Isso pode estar acontecendo por basicamente dois motivos:</p>
+
+<p>1) A pessoa não entendeu ao certo o que aconteceria ao submeter o formulário e o boleto foi gerado por engano;</p>
+
+<p>2) Existe algum atrito para a pessoa efetuar o pagamento que faz com que ela desista, seja o preço ou o trabalho de pagar ou esquecimento.</p>
+
+<p>Também conseguimos perceber que tem muita gente que faz a busca, entra no site, mas que não submete o formulário. Os principais motivos podem ser:</p>
+
+<p>1) O valor do Bitcoin está alto demais;</p>
+
+<p>2) A usabilidade do site não está boa o suficiente.</p>
+
+<p>Outro aspecto relevante de ser analisado são os números de faturamento e vendas. Veja o que auferimos no mesmo período:</p>
+
+<p><strong>Vendas realizadas:</strong> 10;</p>
+
+<p><strong>Número de clientes:</strong> 6;</p>
+
+<p><strong>Faturamento:</strong> R$ 1.234,90;</p>
+
+<p><strong>Bitcoins vendidos:</strong> 5.40369498</p>
+
+<p>Foram 10 vendas realizadas em 23 dias, para 6 clientes diferentes que renderam mais de mil reais. Muito bacana. Comparando o número de vendas com o número de clientes, podemos deduzir que além de aquisição de clientes, já conseguimos algum nível de retenção. Examinando em mais detalhes, percebi que um dos clientes já fez 4 compras e um outro fez duas compras.</p>
+
+<p><strong>Os números são interessantes, e parece que é um bom negócio, mas olhar apenas para o faturamento e vendas é uma armadilha grande!</strong></p>
+
+<p>O próximo passo era levantar se a operação é lucrativa e se vale a pena escalar. Veja bem, só depois de se certificar que a operação é lucrativa que vale a pena investir no desenvolvimento de um sistema com uma boa interface e completamente automatizado.</p>
+
+<p>Até agora, a landing page está basicamente como foi para o ar pela primeira vez. Já implementei a validação no formulário, por que entendi que valia a pena, principalmente para a apuração das medições de conversão. Inclui uma seção de perguntas frequentes. Adicionei um chat online. Mas até agora os boletos são enviados de forma manual e os Bitcoins transferidos de forma manual também.</p>
+
+<p>A última parte da planilha tem a informação mais relevante para a hipótese que estou validando no momento:
+<strong>É possível comprar bitcoins mais barato, vender mais caro e lucrar com a operação?</strong></p>
+
+<p>Quero deixar meu agradecimento ao <a href="http://rafaeldahis.com/">Rafael Dahis</a> por ter me ajudado a montar essa parte da planilha. Veja as informações que tenho no momento:</p>
+
+<p><img src="http://helabs.com.br/blog/images/posts/2013-07-16/bitboleto-planilha-financeira.png" alt="image" /></p>
+
+<p>A conclusão que podemos tirar desses números é que a operação não está sendo lucrativa!</p>
+
+<p>Vamos interpretar: no momento em que os dados foram atualizados, os gastos com a campanha no Adwords estavam em R$ 503 (valor aproximado considerando a cotação do dólar de R$ 2,27). Se dividirmos o custo com a campanha pelo número de Bitcoins vendidos, chegaremos no custo de aquisição por Bitcoin vendido de R$ 93,18.</p>
+
+<p>Basicamente isso quer dizer que para cada Bitcoin que é vendido, está sendo gasto R$ 93,18 em marketing.</p>
+
+<p>O custo médio de 1 Bitcoin foi de R$ 233,49 e o preço de venda médio de 1 Bitcoin foi de R$ 284,35.
+Sem considerar o custo de aquisição, o saldo por Bitcoin vendido é de R$ 50,86.</p>
+
+<p>Como para vender cada Bitcoin estou gastando R$ 93,18 em marketing, se subtrairmos este valor do saldo calculado anteriormente teremos um resultado final de R$ 42,32 negativos. É isso mesmo, para cada Bitcoin vendido estou perdendo aproximadamente R$ 43 reais.</p>
+
+<p>Concluímos que a premissa de que é possível lucrar vendendo Bitcoins está inválida. Embora exista muita gente buscando comprar bitcoins e que façam compras através do site, ainda não foi possível lucrar com a operação de venda de Bitcoins devido ao alto custo de aquisição de clientes.</p>
+
+<p><strong>Isso quer dizer que a saída é desistir?</strong></p>
+
+<p>Depende. O que vai determinar isso são as últimas linhas da última parte da planilha. Para cada R$ 1 investido em marketing, estou tendo R$ 0,55 de lucro. Esse número deveria ser superior a R$ 1 para o negócio seja lucrativo. Está inferior, mas está superior à metade e isso é aceitável. Se por ventura para cada real investido, o lucro fosse de R$ 0,10 por exemplo, parece que seria bem difícil conseguir fazer as otimizações para conseguir algo superior a R$ 1.</p>
+
+<p>Vale lembrar que essa situação foi conquistada com o mínimo de esforço e nas primeiras semanas de validação, sem absolutamente nenhum trabalho de otimização. O que nos faz acreditar que é possível tornar a operação lucrativa com algum nível de otimização. Então esse não é o caso de desistir. É preciso continuar trabalhando para tentar tornar essa premissa verdadeira.</p>
+
+<p>Existem diversas ações que podem ser tomadas. As principais são:</p>
+
+<ul>
+<li>Aumentar a diferença entre o preço de compra e o preço de venda;</li>
+<li>Reduzir os custos de aquisição;</li>
+<li>Otimizar a campanha para trazer visitantes mais propensos a finalizar a compra;</li>
+<li>Melhorar o site para aumentar a conversão na criação de ordens de compra;</li>
+<li>Implementar mecanismos de ativação para melhorar a conversão dos pagamentos dos boletos gerados.</li>
+</ul>
+
+
+<p>Cada uma dessas ações é válida para melhorar os resultados obtidos até o momento. O próximo passo é priorizá-las, escolher a primeira, implementar, auferir o resultado. Implementar a próxima e colher o resultado. E assim, sucessivamente, até conseguir uma configuração que a operação seja lucrativa.</p>
+
+<p>É importante colocar um deadline e um número máximo de iterações para não ficar eternamente tentando e perdendo dinheiro. Se conseguir, maravilha, podemos sair do âmbito das validações, começar a aprimorar o negócio e pensar em crescer. Se não conseguir, é hora de trabalhar o desapego e partir para a próxima oportunidade! :)</p>
+
+<h3>Conclusão</h3>
+
+<p>Iniciar um negócio não é fácil e requer uma disciplina mental muito grande para praticar o que muitas vezes é anti-intuitivo. Ao invés de pensar em desenvolver a solução, é importante ter claro qual o problema se quer resolver e de quem é esse problema para em seguida, validar todas as hipóteses que podem levar tudo por água abaixo.</p>
+
+<p>Eu espero que esse relato de experiência possa ser útil como referência para você. Espero que lendo este post você aprenda o que fazer e principalmente o que não fazer ao começar um novo negócio digital. E também espero que numa cadeia de troca de experiências, nós consigamos aumentar a taxa de sucesso dos novos empreendimentos.</p>
+
+<p>E por fim, agradeço a você que teve a paciência de ler esse post que acabou ficando bem grande e também aos que se dispuserem a deixar um comentário logo abaixo.</p>
+
+<p>Se quiser trocar mais ideia sobre isso e aprender mais sobre métricas, siga-me no Twitter <a href="http://twitter.com/rafaelp">@rafaelp</a>. Eu compartilho diversos links sobre esse assunto.</p>
+
+<p>Abraço e até a próxima.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Agile Development, Simplicidade e UX]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/15/agile-development-simplicidade-e-ux/"/>
+    <updated>2013-07-15T15:03:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/15/agile-development-simplicidade-e-ux</id>
+    <content type="html"><![CDATA[<p>Uma abordagem de projeto ágil ou <strong>Agile Development</strong> permite definirmos iterações/sprints semanais e fazermos <em>deploy</em> para testarmos uma nova funcionalidade com mais rapidez e eficiência. Do ponto de vista da UX: Se nossos usuários aceitarem e usarem essa nova funcionalidade, manteremos-na.</p>
+
+<!--more-->
+
+
+<p>Em cada início de iteração (XP) ou <em>sprint</em> (SCRUM), definimos o que será desenvolvido com a certeza que em 1 semana (ou 1 mês) determinada funcionalidade estará em produção para testes A/B, por exemplo. Ou simplesmente ser mantida para ver como os usuários reagem ou se interessam por ela.</p>
+
+<p>Já uma abordagem em cascata (em inglês <em>waterfall approach</em>) é a mais tradicional e utilizada. Ela trata as etapas do projeto separadamente, como fases distintas e tudo isso num processo só de escopo fechado. O maior problema dessa abordagem é que uma etapa precisa que a anterior esteja 100% completa para que possa ser iniciada.</p>
+
+<p>Isso muita vezes tem um impacto significativo nos usuários. Como o escopo é muito grande, a quantidade de complexidade que o usuário terá que aprender de uma só vez quando o software for atualizado, pode ser destrutivamente frustrante.</p>
+
+<p>Se definirmos um escopo de projeto fechado para desenvolver um produto e lançarmos todas as funcionalidades planejadas de um só vez, as chances dos usuários tirarem o devido proveito disso tudo é bastante remoto. E o pior de tudo: custa muito dinheiro. Então, é melhor sermos cautelosos quanto a funcionalidades pré-definidas em escopos robustos. Talvez seja mais interessante lançar uma versão mais enxuta do seu produto e fazer seus usuários aprenderem a tirar proveito de cada nova <em>feature</em> aos poucos, progressivamente. Isso custa menos, melhora a experiência do usuário e otimiza a imagem da marca do seu produto no mercado como algo bem estruturado e testado (sem <em>bugs</em>).</p>
+
+<p>Um produto enxuto desde o início atende um dos doze princícipios do Agile Manifesto, que é a simplicidade. Ela agiliza a criação de um produto com a funcionalidade mínima que seja fácil de usar. Não confunda simplicidade com a criação de um produto simples. Seu produto não precisa ser o mais robusto já no lançamento, pois com seu amadurecimento, talvez você decida mudar algumas estratégias, ou até mesmo, reformular por completo o modelo de negócio e a proposição de valor como um todo. Seja flexível e amadureça-o de forma progressiva e de um &#8220;respiro mental&#8221; para seus usuários aprenderem aos poucos.</p>
+
+<p><em>&#8220;O senso comum parece sugerir que, para vencer a concorrência, é preciso ter um produto superior e com mais funcionalidade. Costumamos pensar que ter maior quantidade de recursos é ser melhor e mais desejável. Não é bem assim&#8221;</em> - 37 Signals (2006).</p>
+
+<p>Sempre que sua equipe ou você mesmo tiver uma idéia para um novo recurso, questione-se de forma mais crítica se a nova funcionalidade é realmente necessária para o sucesso do produto. Se você achar que não, descarte-a. Isso resulta em um produto simples e arrumado, que oferece apenas os recursos que o usuário precisa. A partir desse ponto, você pode pensar em novas funcionalidades e lança-las aos poucos, com isso você economiza e os usuários do seu produto/sofware não ficam confusos.</p>
+
+<h2>Outros posts de Mikael</h2>
+
+<p><a href="http://helabs.com.br/blog/2013/02/27/design-responsivo-parte-i-arquivos-css-e-breakpoints">Design Responsivo Parte I: Arquivos CSS e Breakpoints</a></p>
+
+<p><a href="http://helabs.com.br/blog/2013/05/24/design-responsivo-parte-ii-listagens-e-galerias/">Design Responsivo Parte II: Listagens e Galerias</a></p>
+
+<h2>Links</h2>
+
+<ul>
+<li><a href="http://www.mikaelcarrara.com">Site Pessoal</a></li>
+<li><a href="br.linkedin.com/in/mikaelcarrara/">Linkedin</a></li>
+<li><a href="http://dribbble.com/mikaelcarrara">Portfólio no Dribbble</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Retrospectiva Café com DEV HE:Rio 28/06]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/12/retrospectiva-cafe-com-dev-28-de-junho/"/>
+    <updated>2013-07-12T14:30:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/12/retrospectiva-cafe-com-dev-28-de-junho</id>
+    <content type="html"><![CDATA[<p>Na sexta-feira, dia 28/06, a HE:Rio organizou mais um Café com DEV no espaço Curto Circuito (Av. 13 de maio, nº13 - sala 616, Cinelândia) e recebeu Diego Dukão com o tema &#8220;Porque você não deve fazer seu app nativo (ou introdução ao PhoneGap)&#8221;</p>
+
+<!--more-->
+
+
+<p><img src="http://helabs.com.br/blog/images/presentes.JPG" alt="image" /></p>
+
+<p>O pessoal presente e os que acompanharam online pelo eventials interagiram durante toda a apresentação. Ao final, rolou um papo descontraído entre todos.</p>
+
+<p>Confira a transmissão pelo Eventials <a href="https://t.co/nWp9JS9zxP">aqui</a>!!!</p>
+
+<p>E no próximo encontro, dia 12/07, a HE:Rio recebe, também no Espaço Curto Circuito, Álvaro Justen com a palestra &#8220;Arduino: robótica com software e hardware livres&#8221;. Não perca tempo e <a href="https://docs.google.com/a/helabs.com.br/forms/d/1gFeRHBktciPMjnvjtRYfVqN9DQqTQnMukM_FNARtHis/viewform">se inscreva!</a></p>
+
+<p>Confira todos os cafezinhos acessando a <a href="http://helabs.com.br/eventos/cafe-com-dev/">Página do Café com DEV</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HE:atividades Londrina]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/11/he-atividades-londrina-kart/"/>
+    <updated>2013-07-11T14:30:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/11/he-atividades-londrina-kart</id>
+    <content type="html"><![CDATA[<p>No último final de semana, o pessoal da HE:Londrina se reuniu para mais uma atividade! Desta vez, todos se aventuraram no Kart!</p>
+
+<!--more-->
+
+
+<p><img src="http://helabs.com.br/blog/images/kart1.jpg" alt="image" /></p>
+
+<p>Anézio, Dirceu, Borges, Reginato, Eduardo, Mikael e alguns amigos participaram da corrida no <a href="https://www.facebook.com/drifting.londrina">Drifting Kart Londrina</a>.</p>
+
+<p><img src="http://helabs.com.br/blog/images/kart2.jpg" alt="image" /></p>
+
+<p>Os meninos se divertiram muito! Dirceu preparou um vídeo de sua corrida. Você pode conferir <a href="http://www.youtube.com/watch?v=pDORF7v1830">aqui</a>.</p>
+
+<p>Isso ai, meninos! Representando a HE:labs em mais uma atividade! Avassalaram!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The 12 Factor app]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/10/the-12-factor-app/"/>
+    <updated>2013-07-10T14:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/10/the-12-factor-app</id>
+    <content type="html"><![CDATA[<p>Aplicações web estão muito populares e se tornando preferência pelas vantagens que os SaaS (Software as a Service) oferecem.</p>
+
+<ul>
+<li>Não precisam ser instalados na máquina de quem usa;</li>
+<li>É muito mais fácil de atualizar;</li>
+<li>O cliente não precisa se preocupar com a infraestrutura;</li>
+<li>Geralmente, só precisa de um navegador e conexão com internet.</li>
+</ul>
+
+
+<!-- more -->
+
+
+<p>Com tanta popularidade, esse tipo de sistema recebe diversas sugestões de boas práticas. E o <a href="http://12factor.net/">12 factor</a> é um destes guide lines. Este guia é independente de linguagem de programação e foi criado por Adam Wiggins, Co-fundador do <a href="http://heroku.com/">heroku</a>, um dos mais conhecidos PaaS (Platform as a Service).</p>
+
+<p>Nesse post, falarei um pouco sobre alguns dos <em>factors</em> que merecem atenção especial.</p>
+
+<h3>Codebase</h3>
+
+<p>Use algum sistema de versionamento distribuído. O Git é o mais recomendado hoje e evita soluções toscas como copiar o projeto inteiro em outro diretório para em seguida, adicionar features e fazer alguns experimentos.</p>
+
+<p>Em um sistema ideal, existem, no mínimo, versões de <em>staging</em> e <em>production</em> no ar. Todas executando o mesmo codebase, mas possivelmente versões (commits) diferentes. Os servidores do <em>staging</em> e <em>production</em> devem ter a mesma configuração. Lembrando  que o <em>staging</em> deve ser constantemente atualizado para evitar o famoso &#8220;mas funcionou na minha máquina&#8221; na hora de enviar para a produção.</p>
+
+<p>Ter o mesmo <strong>codebase</strong> em todos os ambientes acaba forçando o desenvolvedor a utilizar algumas boas práticas, como: não usar o path absoluto para NADA ou impedir que ele altere o código diretamente no servidor.</p>
+
+<h3>Dependências</h3>
+
+<p>A maioria das linguagens possui sistemas de pacotes para distribuição de bibliotecas. Por exemplo: no Ruby é o <em>RubyGems</em>. Uma aplicação que segue os <em>12 factors</em> nunca confia em um pacote que supostamente deveria estar no sistema. As dependências devem ser declaradas explicitamente e o ambiente deve ser isolado para se certificar que nenhuma biblioteca do sistema está sendo usada. No Ruby, as dependências são declaradas no Gemfile (arquivo de manifesto). O isolamento pode ser feito utilizando <code>bundle exec</code> ou ferramentas mais avançadas como <a href="https://rvm.io/">rvm</a> ou <a href="https://github.com/sstephenson/rbenv">rbenv</a>, as quais também isolam as versões do ruby com mais facilidade.</p>
+
+<p>Um exemplo de Gemfile pode ser visto a seguir:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s1">&#39;rake&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 0.9&#39;</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;jekyll&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 0.12&#39;</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;rdiscount&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 2.0.7&#39;</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;pygments.rb&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 0.3.4&#39;</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;RedCloth&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 4.2.9&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>É de extrema importância que as versões estejam declaradas neste manifesto. Isto reforça que os diferentes ambientes estejam em funcionamento com as mesmas bibliotecas. No <a href="http://helabs.com.br/blog/2013/07/08/gerenciando-assets-com-o-bower/">post</a> do meu xará, Thiago Belem, ele apresentou o Bower, que é um gerenciador de bibliotecas web.</p>
+
+<h3>Config</h3>
+
+<p>As configurações variam entre os ambientes. Dentre elas, estão as credenciais para o banco de dados, S3, Twitter, Facebook, security tokens, etc. Mas a configuração não deve ficar no código, pois além de não ser seguro, dificulta o setup em outro ambiente.</p>
+
+<p>O problema das configurações pode ser resolvido usando arquivos de configuração para cada ambiente, como yml ou xml, que devem estar no <code>.gitignore</code>. Caso contrário, as credenciais continuam compartilhadas. Porém, a solução mais recomendada é utilizar variáveis de ambiente, pois estão presentes em todos os sistemas operacionais e acessíveis de qualquer linguagem de programação. Além disso, podem ser facilmente alteradas.</p>
+
+<h4>Conclusão</h4>
+
+<p>Esses pontos impactam diretamente na qualidade e manutenção de um SaaS. Também é muito importante um README (atualizado) para facilitar o setup do projeto por qualquer novo desenvolvedor. Deve haver uma padronização do ambiente e o vagrant pode ajudar bastante. O <a href="http://www.twitter.com/smergulhao">Sylvestre Mergulhão</a> propõe <a href="http://helabs.com.br/blog/2013/03/05/seu-ambiente-de-trabalho-mais-limpo-usando-vagrant/">isolar os serviços usando o vagrant</a>. Mas há também quem prefira o seu uso como ambiente completo de desenvolvimento.</p>
+
+<p>O guia completo para o 12 Factor App pode ser acessado <a href="http://12factor.net/">aqui</a>.</p>
+
+<p>Você faz alguma coisa diferente? Pode melhorar algo? Deixe seu comentário.</p>
+
+<h4>Links</h4>
+
+<ul>
+<li><a href="http://www.thiagogabriel.com">Site Pessoal</a></li>
+<li><a href="http://twitter.com/tgabrielborges">Twitter</a></li>
+<li><a href="https://github.com/thiagogabriel">Github</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Era HTML5: A nova Era da web]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/09/nova-era-html5/"/>
+    <updated>2013-07-09T13:35:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/09/nova-era-html5</id>
+    <content type="html"><![CDATA[<p>Nesse meu novo post falarei sobre a linguagem de marcação HTML5.</p>
+
+<p>O <strong>Hyper Text Markup Language</strong> (Linguagem de marcação de hipertexto), conhecido como código HTML, está presente em todas as páginas da WEB.
+Há, aproximadamente, dez anos, o HTML está presente na vida dos internautas. Possui uma grande aceitação pelas pessoas que o usam. O código HTML já está se adequando para sua quinta versão(HTML5), deste modo, poderá beneficiar os desenvolvedores e todos os usuários da internet.</p>
+
+<!--more-->
+
+
+<p>Novos elementos foram introduzidos no HTML5: todos têm a finalidade de facilitar a compreensão e a manutenção do código. Alguns deles são uma evolução natural do elemento &lt; div > focado na semântica; outros, no entanto, surgiram da necessidade de padronizar a maneira de se publicar conteúdo.</p>
+
+<ul>
+<li><p>Os principais elementos de estrutura básica do HTML5 são:</p></li>
+<li><p>&lt;header&gt; - cabeçalho da página ou de uma seção;</p></li>
+<li>&lt;section&gt; - cada seção do conteúdo;</li>
+<li>&lt;article&gt; - um item do conteúdo dentro da página ou da seção;</li>
+<li>&lt;footer&gt; - o rodapé da página ou de uma seção;</li>
+<li>&lt;nav&gt; - o conjunto de links que formam a navegação, seja o menu principal do site ou links relacionados ao conteúdo da página;</li>
+<li>&lt;aside&gt; - conteúdo relacionado ao artigo (como arquivos e posts relacionados em um blog, por exemplo).</li>
+</ul>
+
+
+<p>Abaixo mostrarei 2 exemplos da marcação no HTML e no HTML5:</p>
+
+<p><em>Estrutura no HTML</em></p>
+
+<p>&lt;!DOCTYPE HTML PUBLIC” -// W3C//DTD HTML 4.01 Transitional //EN” http://www.w3.org/TR/html4/loose.dtd”>
+<html lang=”pt-br”>
+<head></p>
+
+<pre><code>&lt;meta http-equiv=”Content-Type” content =”text/html; charset=utf-8”&gt;
+</code></pre>
+
+<p><title>Titulo da página</title>
+<link rel=”stylesheet” type=”text/css” href=”/estilos/main.css”>
+</head>
+<body></p>
+
+<h1>Minha Página HTML4 </h1>
+
+
+<p></body></p>
+
+<p></html></p>
+
+<p><em>Estrutura no HTML5 compativel com a estrutura do HTML</em></p>
+
+<p>&lt;!DOCTYPE html>
+<html lang=”pt-br”></p>
+
+<pre><code>&lt;head&gt;
+    &lt;meta charset=”utf-8”&gt;
+    &lt;title&gt; Titulo da Página&lt;/title&gt;
+    &lt;link rel=”stylesheet” href=”/estilos/main.css”&gt;
+&lt;/head&gt;
+</code></pre>
+
+<p><body></p>
+
+<pre><code>&lt;h1&gt; Minha Página em HTML5&lt;/h1&gt;
+</code></pre>
+
+<p></body></p>
+
+<p></html></p>
+
+<p>Como percebemos, muitos elementos foram introduzidos no HTML5. Porém, é indiscutível a grande semelhança com seus antecessores. Os usuários que conheciam bem os anteriores não sentirão nenhuma dificuldade em lidar com o novo HTML. No entanto, para os iniciantes, estima-se que os novos elementos deixarão o acesso mais fácil.</p>
+
+<p>Para tanto, é indiscutível a aceitação do HTML5. Ele está contribuindo para uma nova Era no que diz respeito ao desenvolvimento de páginas para a internet. Sendo que o principal foco é o alto poder de mobilidade do usuário. As mudanças que ocorreram foram postas ou ajustadas a partir das necessidades dos desenvolvedores e dos erros e acertos. Com essa inovação, os usuários terão aplicações na web mais ricas e com maior integração entre conteúdo on-line e off-line.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Gerenciando assets com o Bower]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/08/gerenciando-assets-com-o-bower/"/>
+    <updated>2013-07-08T13:35:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/08/gerenciando-assets-com-o-bower</id>
+    <content type="html"><![CDATA[<p><img src="http://bower.io/img/bower-logo.png" title="Bower" alt="Bower" /></p>
+
+<p>O Bower (<a href="http://bower.io">bower.io</a>), criado pelo galerê do <strong>Twitter</strong>, é um &#8220;gerenciador de pacotes para web&#8221;, mas especificamente para pacotes de Front-end.</p>
+
+<!--more-->
+
+
+<p>A ideia por trás dele é bem simples: você lista as dependências de JS (jQuery, jQuery Highlight, Backbone e etc.) em um arquivo <code>bower.json</code> que fica dentro do seu projeto, e controla a instalação/atualização desses pacotes por linha de comando.</p>
+
+<h3>Intalando o Bower</h3>
+
+<p>Antes de tudo, você vai precisar do <a href="http://nodejs.org/">Node.js</a> e do <a href="http://npmjs.org/">NPM</a> instalados na sua máquina.</p>
+
+<p>Agora é só usar o NPM para instalar o Bower globalmente no seu sistema:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>npm install -g bower
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Instalando pacotes com o Bower</h3>
+
+<p>Agora você pode instalar pacotes de três formas diferentes:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># Instala os pacotes definidos no bower.json do seu projeto</span>
+</span><span class='line'>bower install
+</span><span class='line'><span class="c"># Instala um pacote específico</span>
+</span><span class='line'>bower install &lt;package&gt;
+</span><span class='line'><span class="c"># Instala uma versão (git tag) de um pacote</span>
+</span><span class='line'>bower install &lt;package&gt;#&lt;version&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Onde <code>&lt;package&gt;</code> pode ser um dos seguintes itens:</p>
+
+<ul>
+<li>O nome de um pacote registrado no Bower, por exemplo <code>jquery</code></li>
+<li>Um repositório Git remoto, por exemplo <code>git://github.com/someone/some-package.git</code> (público ou privado)</li>
+<li>Um repositório Git local, por exemplo <code>/var/www/jquery.git/</code></li>
+<li>Um atalho para um repositório no GitHub, por exemplo <code>someone/some-package</code></li>
+<li>A URL de um arquivo <code>zip</code> ou <code>tar.gz</code></li>
+</ul>
+
+
+<p>Todos os pacotes serão instalados numa pasta <code>bower_components</code> dentro do seu projeto. E a ideia é que você nunca altere o conteúdo dessa pasta, nem dos pacotes dentro dela. Por isso, uma boa é colocá-la no seu <code>.gitignore</code>.</p>
+
+<h3>Definindo as dependências do seu projeto no bower.json</h3>
+
+<p>O conteúdo do arquivo do seu bower.json descreve o seu projeto e suas dependências num projeto onde usamos o <strong>jQuery</strong> e o <strong>Angular.js</strong>. Ele seria mais ou menos assim:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;meu-projeto&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nt">&quot;jquery&quot;</span><span class="p">:</span> <span class="s2">&quot;master&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;angular&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.7&quot;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Após rodar o comando de instalação:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>bower install
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Veríamos o seguinte output:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>bower cloning git://github.com/angular/bower-angular.git
+</span><span class='line'>bower cached git://github.com/angular/bower-angular.git
+</span><span class='line'>bower fetching angular
+</span><span class='line'>bower cloning git://github.com/components/jquery.git
+</span><span class='line'>bower cached git://github.com/components/jquery.git
+</span><span class='line'>bower fetching jquery
+</span><span class='line'>bower checking out angular#v1.0.7
+</span><span class='line'>bower copying /Users/digdin/.bower/cache/angular/ef2188def21eb1bbd1f1792311942a53
+</span><span class='line'>bower checking out jquery#2.0.2
+</span><span class='line'>bower copying /Users/digdin/.bower/cache/jquery/29cb4373d29144ca260ac7c3997f4381
+</span><span class='line'>bower installing angular#1.0.7
+</span><span class='line'>bower installing jquery#2.0.2
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>E com isso acabamos de instalar o Angular.js (1.0.7) e o jQuery (2.0.2) no nosso projeto!</p>
+
+<p>Se amanhã sair outra versão do jQuery, podemos atualizá-lo com:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>bower update
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>E o jQuery será atualizado, mas o Angular permancerá na versão 1.0.7, pois foi assim que definimos no nosso <code>bower.json</code>.</p>
+
+<h3>Incluindo assets instalados com o Bower</h3>
+
+<p>Claro que esse passo é opcional se você estiver incluindo assets de outra forma (Sprockets?). Mas vou deixar aqui um pequeno exemplo para não ficarem dúvidas.</p>
+
+<p>Para incluir os arquivos de um projeto, não existe magia negra, é só usar o caminho completo:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/bower_components/jquery/jquery.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/bower_components/angular/angular.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Conclusão</h3>
+
+<p>Acredito que o Bower tenha bastante futuro, pois estamos cada vez mais tirando as dependências de dentro dos nossos projetos e repositórios, deixando apenas o que é realmente único e importante para a aplicação.</p>
+
+<p>Até a próxima!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Testes de aceitação com capybara e cucumber]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/03/testes-de-aceitacao-com-capybara-e-cucumber/"/>
+    <updated>2013-07-03T12:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/03/testes-de-aceitacao-com-capybara-e-cucumber</id>
+    <content type="html"><![CDATA[<p>A ideia desse post é mostrar um pouco como funciona o <strong>capybara</strong> com o <strong>cucumber</strong>.</p>
+
+<!--more-->
+
+
+<p>Vou criar um projeto com apenas um formulário para usar de exemplo para os testes de aceitação. Usarei o <em>ruby 2.0.0-p0</em> e <em>rails 3.2.13</em>.</p>
+
+<p><strong>Cucumber</strong> é uma <em>gem</em> que cria um novo ambiente no projeto e permite a escrita de testes de aceitação em uma linguagem muito próxima da natural.</p>
+
+<p><strong>Capybara</strong> também é uma <em>gem</em> que ajuda a testar aplicações web, simulando como um usuário real iria interagir com o aplicativo.</p>
+
+<p>Primeira etapa é adicionar a <em>gem</em> <strong>cucumber</strong> em seu gemfile. Adicione também a <em>gem</em> <strong>database_cleaner</strong>. Ela não é obrigatória, mas altamente recomendável. E por último, o <strong>&#8216;bundle install&#8217;</strong>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">group</span> <span class="ss">:test</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;cucumber-rails&#39;</span><span class="p">,</span> <span class="ss">:require</span> <span class="o">=&gt;</span> <span class="kp">false</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;database_cleaner&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Após a instalação das gems, rode o comando para gerar os aquivos de configuração do cucumber.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rails generate cucumber:install
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Agora execute o comando:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rake cucumber
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Você deve obter o resultado a seguir:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>0 scenarios
+</span><span class='line'>0 steps
+</span><span class='line'>0m0.000s
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Crie um arquivo “/features/valida_form.feature” onde será escrito os <strong>Cenários</strong>. Descreva a ação de como o sistema deve se comportar.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='cucumber'><span class='line'><span class="c"># encoding: utf-8</span><span class="nf"></span>
+</span><span class='line'><span class="c"># language: pt</span><span class="nf"></span>
+</span><span class='line'><span class="k">Funcionalidade:</span><span class="nf"> Preencher o formulário</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">  </span><span class="k">Cenário:</span><span class="nf"> Deve preencher todos os campos do forumlário e salvar com sucesso</span>
+</span><span class='line'><span class="k">    Dado </span><span class="nf">que eu estou na página do formulario</span>
+</span><span class='line'><span class="nf">    </span><span class="k">Quando </span><span class="nf">eu preencher todos os campos</span>
+</span><span class='line'><span class="nf">    </span><span class="k">E </span><span class="nf">clicar em &quot;</span><span class="s">Salvar</span><span class="nf">&quot;</span>
+</span><span class='line'><span class="nf">    </span><span class="k">Então </span><span class="nf">deve ver receber a mensagem &quot;</span><span class="s">Usuarios cadastrado com sucesso</span><span class="nf">&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Após salvar este arquivo, execute novamente o comando:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rake cucumber
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>O resultado obtido será:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>1 scenario <span class="o">(</span>1 undefined<span class="o">)</span>
+</span><span class='line'>4 steps <span class="o">(</span>4 undefined<span class="o">)</span>
+</span><span class='line'>0m0.812s
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Próximo passo para agilizar o processo será a criação de um <strong>scaffold</strong> de Usuário e validar a presença de todos os campos.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rails g scaffold usuario nome:string endereco:string telefone:string estado:string tipo:string
+</span><span class='line'><span class="nv">$ </span>rake db:migrate
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Vários <strong>Cenários</strong> podem ser criados. Um exemplo é não preencher todos os campos do formulário para um novo usuário e clicar em salvar. E sim, criar um passo onde deve-se garantir que não foi redirecionado para o “show” do usuário, mantendo-o na mesma página “new”.
+O <strong>capybara</strong> vai nos ajudar a preencher os fields do formulário.</p>
+
+<p>Agora crie um arquivo “/features/step_definitions/valida_form_steps.rb” com o conteúdo abaixo:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='cucumber'><span class='line'><span class="c"># encoding: utf-8</span><span class="nf"></span>
+</span><span class='line'><span class="k">Dado </span><span class="nf">/^que eu estou na página do formulario$/ do</span>
+</span><span class='line'><span class="nf">  visit new_usuario_path</span>
+</span><span class='line'><span class="nf">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">Quando </span><span class="nf">/^eu preencher todos os campos$/ do</span>
+</span><span class='line'><span class="nf">  fill_in &quot;</span><span class="s">usuario_nome</span><span class="nf">&quot;, :with=&gt; &quot;</span><span class="s">Rodrigo Reginato</span><span class="nf">&quot;</span>
+</span><span class='line'><span class="nf">  fill_in &quot;</span><span class="s">usuario_endereco</span><span class="nf">&quot;, :with=&gt; &quot;</span><span class="s">Rua alagoas 3872</span><span class="nf">&quot;</span>
+</span><span class='line'><span class="nf">  fill_in &quot;</span><span class="s">usuario_telefone</span><span class="nf">&quot;, :with=&gt; &#39;</span><span class="s">4398765425</span><span class="nf">&#39;</span>
+</span><span class='line'><span class="nf">  page.select &quot;</span><span class="s">SC</span><span class="nf">&quot;, :from =&gt; &#39;usuario_estado&#39;</span>
+</span><span class='line'><span class="nf">  page.choose(&quot;</span><span class="s">usuario_tipo_fisico</span><span class="nf">&quot;)</span>
+</span><span class='line'><span class="nf">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">E </span><span class="nf">/^clicar em &quot;</span><span class="s">(.*?)</span><span class="nf">&quot;$/ do |nome_do_botao|</span>
+</span><span class='line'><span class="nf">  find_button(nome_do_botao).click</span>
+</span><span class='line'><span class="nf">  save_and_open_page</span>
+</span><span class='line'><span class="nf">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">Então </span><span class="nf">/^deve ver receber a mensagem &quot;</span><span class="s">(.*?)</span><span class="nf">&quot;$/ do |mensagem|</span>
+</span><span class='line'><span class="nf">  page.has_content?(mensagem)</span>
+</span><span class='line'><span class="nf">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Após adicionar este código rode novamente o comando:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rake cucumber
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>O resultado obtido será:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>1 scenario <span class="o">(</span>1 passed<span class="o">)</span>
+</span><span class='line'>4 steps <span class="o">(</span>4 passed<span class="o">)</span>
+</span><span class='line'>0m0.425s
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Dicas</h2>
+
+<p>Para facilitar a nossa vida, existem algumas funções que são fundamentais, como:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">save_and_open_page</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Para utilizarmos este recurso, é necessário instalar a <em>gem</em>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s1">&#39;launchy&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Um browser é aberto no momento que este comando é adicionado entre os steps, facilitando para encontrar possíveis erros.</p>
+
+<p>No caso da página ter algum javascript ou se quiser ver todo o processo passo a passo como se o usuário estivesse digitando os dados, é necessário instalar a <em>gem</em> <a href="https://github.com/vertis/selenium-webdriver">selenium-webdriver</a>.</p>
+
+<p>Existem outras opções como o <a href="https://github.com/thoughtbot/capybara-webkit">capybara-webkit</a>, mas apresentou um erro na hora do bundle. Já o <a href="https://github.com/vertis/selenium-webdriver">selenium-webdriver</a>, funcionou perfeitamente.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s1">&#39;selenium-webdriver&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Adicione @javascript na primeira linha antes do <strong>Cenário</strong> iniciar.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='cucumber'><span class='line'><span class="nt">@javascript</span><span class="nf"></span>
+</span><span class='line'><span class="k">Cenário:</span><span class="nf"> Deve preencher todos os campos do formulário e salvar com sucesso</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Um browser será aberto logo no início do processo  e todos os passos que descrevi acima ficarão visíveis como se um usuário estivesse preenchendo os campos.</p>
+
+<p>É isso pessoal, até a próxima.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Novo membro: Bruno Fernando]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/02/novo-membro-bruno/"/>
+    <updated>2013-07-02T11:30:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/02/novo-membro-bruno</id>
+    <content type="html"><![CDATA[<p>No início da semana, demos boas vindas a mais um integrante do time: Bruno Fernando!</p>
+
+<!--more-->
+
+
+<p><img src="http://helabs.com.br/blog/images/bruno.jpg" alt="image" /></p>
+
+<p>Bruno é designer e reside no Tocantins (mais um! :D). Trabalha em projetos de identidade visual há, aproximadamente, 9 anos e brinca no mundo web como Front-end. E ainda, curte desenvolver projeto mobile (design responsivo).</p>
+
+<p>Siga Bruno nas redes sociais: <a href="http://www.behance.net/3runo">Behance</a>, <a href="http://dribbble.com/3runo">Dribbble</a>, <a href="https://github.com/3runoDesign">Github</a> e <a href="http://3runo.com.br/">site</a>.</p>
+
+<p>Seja muito bem vindo!!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ferramentas para Designers]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/01/ferramentas-para-designers-aluisio/"/>
+    <updated>2013-07-01T10:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/01/ferramentas-para-designers-aluisio</id>
+    <content type="html"><![CDATA[<p>Quando se projeta interfaces para aplicações web diariamente, uma das coisas mais importantes é ter uma gama de ferramentas para deixar o processo de trabalho mais produtivo.</p>
+
+<p>Nesse post, irei listar algumas ferramentas que eu uso no meu dia a dia. E que agilizam o design e desenvolvimento Front-end.</p>
+
+<!-- more -->
+
+
+<h3>Alguns Plugins</h3>
+
+<p><img src="http://helabs.com.br/blog/images/plugins.png" alt="image" /></p>
+
+<p><a href="http://littleipsum.com/"><strong>Little Ipsum</strong></a>
+Apesar de existirem diversos geradores de <em>Lorem Ipsum</em> pela web , o <strong>Little Ipsum</strong> funciona de maneira mais prática como um plugin para OS X.</p>
+
+<p><a href="http://www.jumpzero.com/frank/"><strong>Frank DeLoupe</strong></a>
+Este color-picker também funciona como um plugin para OS X. Você pode utilizá-lo para copiar o <em>rgb</em> ou <em>hexadecimal</em> de uma cor. Ele também guarda o histórico das últimas cores que você utilizou.</p>
+
+<p><a href="http://photoshopscripts.wordpress.com/2013/02/03/corner-editor-photoshop-script/"><strong>Corner Editor</strong></a>
+Para quem sofre com criação e edição de bordas arredondas em elementos no photoshop, este script é uma mão na roda.</p>
+
+<p><a href="http://guideguide.me/"><strong>Guide Guide</strong></a>
+Criação de <em>grids</em> no Photoshop não é uma tarefa muito agradável. Este script permite criar linhas guias para o seu documento com apenas alguns cliques .</p>
+
+<h3>Controle de Arquivos</h3>
+
+<p><img src="http://helabs.com.br/blog/images/layervault.png" alt="image" /></p>
+
+<p>Além do já consagrado Dropbox, algumas ferramentas estão sendo criadas com o foco no controle de arquivos para designers .
+O <a href="https://www.pixelapse.com/"><strong>Pixel Lapse</strong></a> e o <a href="https://layervault.com/"><strong>Layer Vault</strong></a> são aplicações para o controle, armazenamento e versionamento de arquivos. Eles podem melhorar muito o seu workflow e agilizar o processo entre o time.</p>
+
+<h3>Grids</h3>
+
+<p><img src="http://helabs.com.br/blog/images/grid.png" alt="image" /></p>
+
+<p>O site <a href="https://gridsetapp.com/"><strong>Gridset</strong></a> , além da criação de grids, permite também o gerenciamento dos seus grids. Conta também com um grande número de templates já definidos de grids.</p>
+
+<h3>Cores</h3>
+
+<p><img src="http://helabs.com.br/blog/images/colors.png" alt="image" /></p>
+
+<p>O <a href="https://kuler.adobe.com/"><strong>Kuler</strong></a> é um aplicativo bastante avançado e possui uma série de recursos para a criação e gerenciamento de paleta de cores. Além de ter integração com os softwares da Adobe.</p>
+
+<p>Já o <a href="http://www.colourlovers.com/"><strong>Color Lovers</strong></a>, funciona como uma  comunidade onde você consegue criar, gerenciar e ver ótimas referências de paletas criadas por outros designers.</p>
+
+<h3>Tipografia</h3>
+
+<p><img src="http://helabs.com.br/blog/images/type.png" alt="image" /></p>
+
+<p>Web fonts já estão difundidas e sendo amplamente utilizadas, mas são muitas opções, tornando difícil para encontrar e gerenciar todas elas. O <a href="http://typecast.com/"><strong>Typecast</strong></a> é uma aplicação excelente para poder gerenciar, organizar por projetos, comparar fontes, dentre outros recursos.</p>
+
+<h3>HTML e CSS</h3>
+
+<p><img src="http://helabs.com.br/blog/images/sublime.png" alt="image" /></p>
+
+<p><strong>Live Reload</strong></p>
+
+<p>Para fazer o design direto no browser, esta ferramenta é essencial. O <a href="http://livereload.com/"><strong>Live Reload</strong></a> faz com que ao alterar um arquivo HTML, CSS ou uma imagem, o navegador seja atualizado sem a necessidade de um reload na página manualmente.</p>
+
+<p><strong>Browser Stack</strong></p>
+
+<p>O <a href="http://www.browserstack.com/"><strong>Browser Stack</strong></a> é uma aplicação web para testes cross-browser. Com ele, você consegue visualizar o seu projeto em diferentes browsers e versões rapidamente.</p>
+
+<h3>E você?</h3>
+
+<p>Já usa algum destes recursos? Tem outras sugestões para acrescentar?
+Compartilhe suas ferramentas nos comentários também!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Usando decorators nos models Rails de forma intrusiva]]></title>
+    <link href="http://helabs.com.br/blog/2013/06/28/usando-decorators-nos-models-rails-de-forma-intrusiva/"/>
+    <updated>2013-06-28T15:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/06/28/usando-decorators-nos-models-rails-de-forma-intrusiva</id>
+    <content type="html"><![CDATA[<p>Muito já se falou sobre decorators nos últimos tempos, até mesmo por <a href="http://helabs.com.br/blog/categories/decorator/">aqui</a>. Melhorar a legibilidade e remover lógica das views de uma aplicação é um assunto que <a href="http://helabs.com.br/blog/2012/11/16/tech-talk-rodrigo-pinto-explorando-as-views-rails/">me interessa</a> já faz algum tempo. Nesse post falarei sobre a alternativa que, no meu ponto de vista, preencheu a lacuna do problema decorators de views no rails .</p>
+
+<!--more-->
+
+
+<p>Há diversas formas de implementar um decorator e já existem inúmeras gems que auxiliam neste trabalho, como o <a href="https://github.com/fnando/simple_presenter">simple_presenter</a> e o <a href="https://github.com/drapergem/draper">draper</a>. O que me incomodava em todas as diversas soluções existentes, é  o desenvolvedor ter que passar o objeto ou a coleção de objetos para a classe do decorator para que fosse <em>decorado</em>. Pensando no caso de uma action, ela teria de ser alterada, como pode ser visto no exemplo a seguir:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># any controller...</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">index</span>
+</span><span class='line'>  <span class="vi">@users</span> <span class="o">=</span> <span class="no">UserPresenter</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="no">User</span><span class="o">.</span><span class="n">all</span><span class="p">)</span> <span class="c1"># simple presenter</span>
+</span><span class='line'>  <span class="vi">@articles</span> <span class="o">=</span> <span class="no">ArticleDecorator</span><span class="o">.</span><span class="n">decorate_collection</span><span class="p">(</span><span class="no">Article</span><span class="o">.</span><span class="n">all</span><span class="p">)</span> <span class="c1"># draper</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Esse tipo de solução sempre me incomodou, e eu mantive minha busca por alguma que funcionasse de forma intrusiva, sem que fosse preciso modificar a chamada na action. E esta solução existe, chama-se <a href="https://github.com/amatsuda/active_decorator">active_decorator</a>.</p>
+
+<p>O active_decorator <em>injeta</em> automaticamente o decorator em um model, ou em uma coleção de models ou uma instância do ActiveRecord::Relation a partir de um controller ou renderizando uma view com <code>:collection</code> ou <code>:object</code> ou <code>:local</code>. Sendo assim, não é preciso alterar nenhuma chamada no seu controller.</p>
+
+<p>Vamos ver o exemplo anterior usando o active decorator.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># any controller...</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">index</span>
+</span><span class='line'>  <span class="vi">@users</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">all</span>
+</span><span class='line'>  <span class="vi">@articles</span> <span class="o">=</span> <span class="no">Article</span><span class="o">.</span><span class="n">all</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Existindo um <code>UserDecorator</code> e um <code>ArticleDecorator</code>, os objetos das coleções serão automaticamente <em>decorados</em> quando forem ser usados nas views.</p>
+
+<p>Veja um exemplo mais completo:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># any controller...</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">index</span>
+</span><span class='line'>  <span class="vi">@user</span> <span class="o">=</span> <span class="n">current_user</span>
+</span><span class='line'>  <span class="vi">@articles</span> <span class="o">=</span> <span class="n">current_user</span><span class="o">.</span><span class="n">articles</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># user decorator</span>
+</span><span class='line'><span class="k">module</span> <span class="nn">UserDecorator</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">full_name</span>
+</span><span class='line'>    <span class="s2">&quot;</span><span class="si">#{</span><span class="n">first_name</span><span class="si">}</span><span class="s2">-</span><span class="si">#{</span><span class="n">last_name</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># article decorator</span>
+</span><span class='line'><span class="k">module</span> <span class="nn">ArticleDecorator</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">link_to_publish</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">published?</span>
+</span><span class='line'>      <span class="s2">&quot;On air!&quot;</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>      <span class="n">link_to</span> <span class="s2">&quot;Publish&quot;</span><span class="p">,</span> <span class="n">publish_article_path</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x"># app/views/articles/index.erb</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">Olá </span><span class="cp">&lt;%=</span> <span class="vi">@user</span><span class="o">.</span><span class="n">full_name</span> <span class="cp">%&gt;</span><span class="x"></span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;ul&gt;</span>
+</span><span class='line'><span class="cp">&lt;%</span> <span class="vi">@articles</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">article</span><span class="o">|</span> <span class="cp">%&gt;</span><span class="x"></span>
+</span><span class='line'><span class="x">  &lt;li&gt;</span>
+</span><span class='line'><span class="x">    </span><span class="cp">&lt;%=</span> <span class="n">article</span><span class="o">.</span><span class="n">title</span> <span class="cp">%&gt;</span><span class="x"></span>
+</span><span class='line'><span class="x">    </span><span class="cp">&lt;%=</span> <span class="n">article</span><span class="o">.</span><span class="n">link_to_publish</span> <span class="cp">%&gt;</span><span class="x"></span>
+</span><span class='line'><span class="x">  &lt;/li&gt;</span>
+</span><span class='line'><span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span><span class="x"></span>
+</span><span class='line'><span class="x">&lt;/ul&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>O active decorator é totalmente &#8220;plugável&#8221; a uma aplicação existente o que reduz bastante o esforço de implementação de decorators, facilitando a implementação gradual.</p>
+
+<p>Abraços, <a href="http://twitter.com/rodrigoospinto">Rodrigo Pinto</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Retrospectiva Café com DEV - HE:Rio 14/06]]></title>
+    <link href="http://helabs.com.br/blog/2013/06/27/retrospectiva-cafe-com-dev-herio/"/>
+    <updated>2013-06-27T10:30:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/06/27/retrospectiva-cafe-com-dev-herio</id>
+    <content type="html"><![CDATA[<p>No último encontro do Café com DEV da HE:Rio, no dia 14/06, contamos com <a href="https://plus.google.com/110170840223146627892/posts">Rafael Martins</a> falando sobre o tema &#8220;Construindo uma API de dados esportivos que responde a 6000 req/s&#8221;.</p>
+
+<!--more-->
+
+
+<p>A palestra bombou! Muita gente acompanhou presencial e ao vivo pelo Eventials! Não viu a palestra ainda? Então <a href="https://www.eventials.com/pt-br/helabs/cafe-com-dev-he-rio/">clique aqui</a> e confira!</p>
+
+<p>A galera interagiu bastante com o palestrante e foi muito proveitoso para todos! O evento aconteceu no Espaço Curto Circuito (Av 13 de maio, nº13 - sala 616, Cinelândia) e foi regado a snacks, café e RedBull.</p>
+
+<p><img src="http://helabs.com.br/blog/images/cafecomdev14.JPG" alt="image" /></p>
+
+<p>Lembrando que esta semana a HE:Rio receberá, também no Espaço Curto Circuito, <a href="https://twitter.com/diegodukao">Diego Dukão</a> falando sobre &#8220;Porque você não deve fazer seu app nativo (ou introdução ao PhoneGap)&#8221;. Para se inscrever, <a href="https://docs.google.com/a/helabs.com.br/forms/d/1Nk_RWEfTLwPghczIAZnbCUaSDPhZd7Kna20wk0IQblk/viewform">clique aqui</a>.</p>
+
+<p>E também, HE:Londrina contará com Flávio Granero falando sobre &#8220;Trabalho remoto&#8221; no Espaço Junt.us. Para se inscrever acesse <a href="https://www.facebook.com/events/530311203673193/">o evento no Facebook</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Novo membro: Francisco Martins]]></title>
+    <link href="http://helabs.com.br/blog/2013/06/25/novo-membro-francisco/"/>
+    <updated>2013-06-25T10:30:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/06/25/novo-membro-francisco</id>
+    <content type="html"><![CDATA[<p>Nesta segunda, 24/06, iniciamos a semana com mais um integrante no time! Francisco Martins é de Tocantins e estará trabalhando diretamente de lá!</p>
+
+<!--more-->
+
+
+<p><img src="http://helabs.com.br/blog/images/francisco.jpg" alt="image" /></p>
+
+<p>Francisco avassala em ruby, objective-c (iOS) e Android. Cursou Sistemas de Informação e já trabalhou com site responsivo em rails e com app móvel.</p>
+
+<p>Siga Francisco nas redes sociais: <a href="https://github.com/franciscomxs">Github</a> e <a href="https://twitter.com/franciscomxs">Twitter</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Implementando Login via Facebook na sua App Rails]]></title>
+    <link href="http://helabs.com.br/blog/2013/06/24/implementando-login-via-facebook-na-sua-app-rails/"/>
+    <updated>2013-06-24T10:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/06/24/implementando-login-via-facebook-na-sua-app-rails</id>
+    <content type="html"><![CDATA[<p>Eu falei anteriormente sobre o <a href="http://helabs.com.br/blog/2013/04/11/passwordless-login/">Passwordless Login</a> e agora vou falar sobre o Login via Facebook. Este post será mais como uma &#8216;receita&#8217; de como implementar na sua aplicação Rails. Então, vamos lá.</p>
+
+<!--more-->
+
+
+<p>Todo mundo que você conhece tem uma conta no Facebook, certo? Até minha mãe fez uma conta no Facebook! Só o Rafael Lima mesmo que não tem (truestory). Implementar login via Facebook na sua aplicação traz uma facilidade bem grande para o usuário fazer seu cadastro. Com uns dois cliques ele já cria a conta e você tem acesso ao nome, email, data de nascimento, avatar e outras informações que pode-se acessar pedindo permissão, como amigos, fotos, likes e por aí vai&#8230;</p>
+
+<h3>O que você precisa para implementar o login:</h3>
+
+<ul>
+<li>Uma conta no Facebook</li>
+<li>Criar uma App no Facebook</li>
+<li>Ter uma App usando Rails</li>
+<li>As gems <em>omniauth</em> e <em>omniauth-facebook</em></li>
+<li>Alguns métodos e controllers</li>
+</ul>
+
+
+<h2>Criando um aplicativo no Facebook</h2>
+
+<p>Acesse <a href="http://developers.facebook.com/apps">http://developers.facebook.com/apps</a> e clique em &#8221;<strong>Criar Novo Aplicativo</strong>&#8221;. Digite o nome do seu App e um namespace.</p>
+
+<p><img src="http://helabs.com.br/blog/images/posts/facebook-login/img0.png" alt="image" /></p>
+
+<p>Próximo passo é pegar o <em>APP ID</em> e o <em>APP Secret</em> e configurá-los como variáveis de ambiente da sua aplicação Rails. Normalmente, colocamos as variáveis no <em>.rvmrc</em> do projeto, mas nada impede que você crie um arquivo <em>.yml</em> e salve estas informações.</p>
+
+<p><img src="http://helabs.com.br/blog/images/posts/facebook-login/img1.png" alt="image" /></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="n">export</span> <span class="no">FACEBOOK_APP_KEY</span><span class="o">=</span> <span class="c1">#{APP ID}</span>
+</span><span class='line'>  <span class="n">export</span> <span class="no">FACEBOOK_APP_SECRET</span><span class="o">=</span> <span class="c1">#{APP_SECRET}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Existe a opção de deixar o aplicativo no Facebook em modo &#8216;Sandbox&#8217;. Caso esteja ativado, somente você e/ou outras pessoas que estiverem cadastradas como desenvolvedores ou testers poderão usar sua aplicação para fazer o login. Caso você prefira que qualquer pessoa possa se logar sem precisar dar permissão, desative o modo Sandbox. Para ver as configurações de permissões, clique em &#8221;<strong>Privilégios de desenvolvedores</strong>&#8221; na sidebar.</p>
+
+<p><img src="http://helabs.com.br/blog/images/posts/facebook-login/img2.png" alt="image" /></p>
+
+<p>Depois, na seção &#8221;<strong>Selecione o modo como seu aplicativo se integra com Facebook</strong>&#8221; clique em &#8221;<strong>Site com o Login do Facebook</strong>&#8221;. Em <em>Site URL</em>, coloque a url onde o Facebook vai enviar as informações da autenticação. Normalmente o path <em>&#8220;/auth/facebook/callback&#8221;</em> é usado com a gem <em>&#8220;omniauth&#8221;</em>. Vou explicar isto melhor depois.</p>
+
+<p>Se você estiver configurando a App para desenvolvimento local, o host será &#8221;<strong>http://localhost:3000</strong>&#8221; ou qualquer que seja seu host local.</p>
+
+<p><img src="http://helabs.com.br/blog/images/posts/facebook-login/img4.png" alt="image" /></p>
+
+<p>E é isto para o aplicativo do Facebook. Agora, vamos para o Rails:</p>
+
+<h2>A parte do Rails&#8230;</h2>
+
+<p>Primeiro, adicione no seu Gemfile estas gems:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;omniauth&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;omniauth-facebook&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Depois, crie um arquivo chamado <em>&#8220;omniauth.rb&#8221;</em> em config/initializers:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">middleware</span><span class="o">.</span><span class="n">use</span> <span class="ss">OmniAuth</span><span class="p">:</span><span class="ss">:Builder</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">provider</span> <span class="ss">:facebook</span><span class="p">,</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;FACEBOOK_APP_KEY&#39;</span><span class="o">]</span><span class="p">,</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;FACEBOOK_APP_SECRET&#39;</span><span class="o">]</span><span class="p">,</span> <span class="ss">:scope</span> <span class="o">=&gt;</span> <span class="s2">&quot;email&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note que a opção &#8220;scope&#8221; tem o valor &#8220;email&#8221;. Isto significa que pediremos permissão para ter acesso, além das informações básicas do usuários, ao email. Existem outros tipos de &#8220;scopes&#8221; para ter acesso a lista de amigos do usuário e aos posts no mural. Você pode saber mais sobre os tipos de permissão em: <a href="https://developers.facebook.com/docs/reference/login/#permissions">https://developers.facebook.com/docs/reference/login/#permissions</a>.</p>
+
+<p>Precisamos agora de um model para o usuário:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="err">$</span> <span class="n">rails</span> <span class="n">g</span> <span class="n">model</span> <span class="no">User</span> <span class="nb">name</span><span class="ss">:string</span> <span class="ss">email</span><span class="p">:</span><span class="n">string</span> <span class="n">access_token</span><span class="ss">:string</span> <span class="ss">uid</span><span class="p">:</span><span class="n">string</span> <span class="n">photo_url</span><span class="ss">:string</span> <span class="ss">provider</span><span class="p">:</span><span class="n">string</span>
+</span><span class='line'>  <span class="err">$</span> <span class="n">rake</span> <span class="ss">db</span><span class="p">:</span><span class="n">migrate</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Precisamos também de um controller para cuidar da autenticação. Vamos criar o <em>SessionsController</em>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="err">$</span> <span class="n">rails</span> <span class="n">g</span> <span class="n">controller</span> <span class="no">Sessions</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Neste controller vamos implementar algumas actions:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="c1"># encoding: UTF-8</span>
+</span><span class='line'>  <span class="k">class</span> <span class="nc">SessionsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">create</span>
+</span><span class='line'>      <span class="n">auth</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">env</span><span class="o">[</span><span class="s2">&quot;omniauth.auth&quot;</span><span class="o">]</span>
+</span><span class='line'>      <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">find_or_create_with_omniauth</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">session</span><span class="o">[</span><span class="ss">:user_id</span><span class="o">]</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">id</span>
+</span><span class='line'>      <span class="n">redirect_to</span> <span class="n">secret_page_path</span><span class="p">,</span> <span class="ss">:notice</span> <span class="o">=&gt;</span> <span class="s2">&quot;Opa! Você está online!&quot;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">failure</span>
+</span><span class='line'>      <span class="n">redirect_to</span> <span class="n">root_url</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">destroy</span>
+</span><span class='line'>      <span class="n">session</span><span class="o">[</span><span class="ss">:user_id</span><span class="o">]</span> <span class="o">=</span> <span class="kp">nil</span>
+</span><span class='line'>      <span class="n">redirect_to</span> <span class="n">root_url</span><span class="p">,</span> <span class="ss">:notice</span> <span class="o">=&gt;</span> <span class="s2">&quot;Volte em breve!&quot;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A action <em>create</em> vai receber as informações do usuário enviado pelo Facebook através do <em>request.env[&#8220;omniauth.auth&#8221;]</em>. Caso ele não exista no banco de dados, nós criaremos o usuário ou então, somente o encontraremos através do método que ainda será implementado no model <em>User</em>, find_or_create_with_omniauth(). Para saber mais sobre o Auth Hash, <a href="https://github.com/mkdynamic/omniauth-facebook#auth-hash">clique aqui</a>. A action <em>failure</em> vai redirecionar o usuário para o root_url, caso a autenticação falhe. E a action <em>destroy</em>, vai simplesmente deslogar o usuário.</p>
+
+<p>Agora vamos criar as rotas para este controller:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="n">match</span> <span class="s2">&quot;/auth/:provider/callback&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;sessions#create&quot;</span><span class="p">,</span> <span class="ss">as</span><span class="p">:</span> <span class="ss">:auth_callback</span>
+</span><span class='line'>  <span class="n">match</span> <span class="s2">&quot;/auth/failure&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;sessions#failure&quot;</span><span class="p">,</span> <span class="ss">as</span><span class="p">:</span> <span class="ss">:auth_failure</span>
+</span><span class='line'>  <span class="n">match</span> <span class="s2">&quot;/logout&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;sessions#destroy&quot;</span><span class="p">,</span> <span class="ss">as</span><span class="p">:</span> <span class="ss">:logout</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Lembra que ao criarmos o aplicativo no Facebook definimos a url para login como <strong>http://localhost:3000/auth/facebook/callback</strong>? Esta rota aponta para a action create do nosso <em>SessionsController</em>. Você pode mudar a rota para a action create, mas lembre-se de mudar nas configurações do aplicativo do Facebook também.</p>
+
+<p>Vamos voltar ao model <em>User</em> para implementar o método <em>find_or_create_with_omniauth</em>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">find_or_create_with_omniauth</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">user</span> <span class="o">=</span> <span class="nb">self</span><span class="o">.</span><span class="n">find_or_create_by_provider_and_uid</span><span class="p">(</span><span class="n">auth</span><span class="o">.</span><span class="n">provider</span><span class="p">,</span> <span class="n">auth</span><span class="o">.</span><span class="n">uid</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">user</span><span class="o">.</span><span class="n">assign_attributes</span><span class="p">({</span> <span class="nb">name</span><span class="p">:</span> <span class="n">auth</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="ss">email</span><span class="p">:</span> <span class="n">auth</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">email</span><span class="p">,</span> <span class="n">photo_url</span><span class="p">:</span> <span class="n">auth</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">image</span><span class="p">,</span> <span class="n">access_token</span><span class="p">:</span> <span class="n">auth</span><span class="o">.</span><span class="n">credentials</span><span class="o">.</span><span class="n">token</span> <span class="p">})</span>
+</span><span class='line'>    <span class="n">user</span><span class="o">.</span><span class="n">save!</span>
+</span><span class='line'>    <span class="n">user</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Na primeira linha do método tente achar o usuário pelos campos provider e uid. Se não for encontrado, nós criaremos um. Logo na linha debaixo nós setamos alguns atributos pelo Auth Hash, como: <em>nome, email, avatar e o access_token</em>. Então, salvamos o usuário e o retornamos na última linha.</p>
+
+<p>Para finalizar, só precisamos criar algum link onde o usuário clique e faça o login. Adicione na view da sua preferência:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="o">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Login com Facebook&quot;</span><span class="p">,</span> <span class="s2">&quot;/auth/facebook&quot;</span> <span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>E pronto. O usuário já pode fazer o login usando o Facebook na sua aplicação Rails. Como no outro post, eu também preparei uma aplicação exemplo no <a href="https://facebook-login-example.herokuapp.com/">Heroku</a> e disponibilizei o código no <a href="https://github.com/matheusbras/facebook-login-example">Github</a>. É uma versão modificada da aplicação do outro exemplo. ;)</p>
+
+<p>Heroku -> https://facebook-login-example.herokuapp.com/
+Github -> https://github.com/matheusbras/facebook-login-example</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Novo membro]]></title>
+    <link href="http://helabs.com.br/blog/2013/06/19/novo-membro/"/>
+    <updated>2013-06-19T11:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/06/19/novo-membro</id>
+    <content type="html"><![CDATA[<p>No início da semana, demos boas vindas a mais um integrante do time: Thiago Gonzalez!</p>
+
+<!--more-->
+
+
+<p><img src="http://helabs.com.br/blog/images/gonzalez.jpg" alt="image" /></p>
+
+<p>Thiago é formado em Análise e Desenvolvimento de Sistemas pela Universidade Monte Serrat. Avassala em Front-end e já tem experiência com isto há três anos. É apaixonado pelo que faz e já realizou vários projetos, dentre eles: <em>Brasil Memória das Artes</em>, <em>Funarte</em>, <em>Festival do Rio</em>, <em>Agência de Redes</em>, etc.</p>
+
+<p>Siga Thiago nas redes sociais: <a href="https://www.facebook.com/thigonzalez">Facebook</a>, <a href="https://github.com/thiagonzalez">Github</a>, <a href="http://br.linkedin.com/in/thigonzalez/">Linked.In</a>. E confira seu <a href="http://thiagogonzalez.com/">portifólio</a>.</p>
+
+<p>Seja muito bem vindo!!!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Menos é mais]]></title>
+    <link href="http://helabs.com.br/blog/2013/06/18/menos-e-mais/"/>
+    <updated>2013-06-18T11:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/06/18/menos-e-mais</id>
+    <content type="html"><![CDATA[<h3>Quanto menor o produto, melhor.</h3>
+
+<p>A ideia é empreender inovando da forma mais simples possível. Usando o mínimo de recursos e o máximo de velocidade para economizar dinheiro e diminuir riscos. Fazer uma empresa enxuta começando com um produto mínimo viável e através de um processo iterativo de aprendizagem e validação qualitativa junto ao cliente, buscar o ajuste do produto ao mercado. Para só então, crescer em escala e estrutura.</p>
+
+<!--more-->
+
+
+<h3>Quanto menos esconder, melhor.</h3>
+
+<p>Fale com o maior número de pessoas possível e nunca guarde uma ideia pra si. O brasileiro é muito restritivo em compartilhar ideias e isto é uma besteira. Cada vez que você compartilha algo, esta ideia é melhorada. Esse negócio de roubo de ideia é relativo. Se roubaram sua ideia a culpa foi sua de não ter sido competente suficiente de desenvolvê-la antes. Quem sempre vai ganhar o mercado é aquele que executar primeiro e melhor. Neste mundo, o ideal é pedir dicas, indicações, conversar e, obviamente, executar suas ideias.</p>
+
+<h3>Coisas do passado.</h3>
+
+<p>No passado, o crescimento no número de Startups ficava muito restrito devido, sobretudo, a dois fatores (além da taxa de insucesso): <strong>1</strong>. o alto custo de aquisição do primeiro cliente e o ainda maior custo resultante de ter chegado ao produto errado; <strong>2</strong>. ciclos de desenvolvimento de tecnologia muito longos.</p>
+
+<p>A abordagem “lean” reduz estas restrições e oferece uma metodologia científica a novos empreendimentos que pretendem lançar produtos que os clientes realmente desejam, muito mais rapidamente e a custo mais barato do que os métodos tradicionais.</p>
+
+<h3>Dê o primeiro passo.</h3>
+
+<p>Saia da ideia, execute-a e defina o melhor primeiro passo que você puder dar. Nós da HE:labs, já ajudamos mais de 50 Startups a começarem suas atividades e validarem suas ideias. Não só produzimos o MVP, como também, damos uma espécie de consultoria para quem quer começar seu négocio na WEB.</p>
+
+<p>Se ainda não conhece, acesse o site do <a href="http://startupdev.com.br/">Startup DEV</a> e conheça nosso serviço voltado para quem busca o sucesso.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Refatoração Parte I - O que é?!]]></title>
+    <link href="http://helabs.com.br/blog/2013/06/17/refatoracao-parte-i-o-que-e/"/>
+    <updated>2013-06-17T09:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/06/17/refatoracao-parte-i-o-que-e</id>
+    <content type="html"><![CDATA[<p>Vejo várias pessoas falando sobre refatoração, mas este assunto é mais complexo do que os desenvolvedores imaginam. Para se ter a real profundidade do assunto é necessária uma leitura minuciosa do <a href="http://www.amazon.com/Refactoring-Ruby-Edition-Jay-Fields/dp/0321603508">livro Refactoring</a> de Jay Fields, Shane Harvie, Martin Fowler e Kent Beck.</p>
+
+<p>Uma das grandes verdades da refatoração é que um código limpo é mais fácil de receber mudanças do que um complexo.</p>
+
+<!--more-->
+
+
+<p><a href="http://en.wikipedia.org/wiki/Kent_Beck">Kent Beck</a> e <a href="http://en.wikipedia.org/wiki/Ward_Cunningham">Ward Cunningham</a> trabalhavam com Smalltalk desde os anos 80. O ambiente cultural deste desenvolvimento favorecia o ciclo de compilar-linkar-executar rapidamente. Estes caras ajudaram a difundir esta prática  muito comum no ambiente Smalltalk. Hoje, temos ferramentas de ótima qualidade em todas as linguagens de desenvolvimentos atuais.</p>
+
+<blockquote><p>Refatorar é alterar a estrutura do código sem alterar o seu comportamento.</p></blockquote>
+
+<p>Conforme a metáfora de Kent Beck, chamada de dois chapéus (The Two Hats), durante o desenvolvimento deve-se dividir o tempo em duas tarefas distintas: adicionar novas funcionalidades e refatorar. Enquanto estiver adicionando uma nova funcionalidade, não deve-se alterar outro código existente, apenas adicione novos testes e funcionalidades. Quando você refatora, não adicione novas funcionalidades, apenas reestruture seu código. Esta troca de chapéus deve ser feita frequentemente.</p>
+
+<p>Dentro da prática de desenvolvimento orientado a testes temos o uso contínuo de refatoração, pois os testes ajudam o desenvolvedor a ter um feedback rápido sobre suas mudanças e ter a certeza de que nada quebrou no comportamento pensado.</p>
+
+<h2>Por que refatorar?</h2>
+
+<h3>Porque melhora o design do código no projeto.</h3>
+
+<p>Conforme um projeto vai crescendo, o design do código acaba caindo na qualidade. Isto gera um débito de código no sistema, onde este crescerá e ficará mais difícil para adicionar funcionalidades e evoluir.</p>
+
+<h3>Porque torna seu software fácil de entender.</h3>
+
+<p>O código de um sistema deve dizer exatamente o que ele faz. Aplicar pequenas refatorações ajudam a entender o que seu software faz e a deixar o código mais limpo. Todo desenvolvedor deve se preocupar em escrever o melhor código possível, não apenas para os outros integrantes do time, mas para si próprio, pois reentenderá o código quando for preciso fazer alguma modificação.</p>
+
+<h3>Porque ajuda a encontrar bugs.</h3>
+
+<p>Quando você altera a estrutura de um código, você garante e revisa certos comportamentos que deseja. Neste momento, pode-se identificar alguma situação que não foi prevista por você ou pelos integrantes do time.</p>
+
+<h3>Porque ajuda você a programar mais rápido</h3>
+
+<p>Um bom design de código ajuda na evolução do sistema, pois tudo torna-se mais simples de entender. Pode parecer “perda de tempo” efetuar esta melhoria constante de código, mas na prática, um código organizado irá facilitar muito sua vida de programador.</p>
+
+<p>&#8230;</p>
+
+<p>Eu gosto muito da frase de Kent Beck, onde diz: “Eu não sou um grande programador; Sou apenas um bom programador com excelentes hábitos”. Acredito que bons programadores necessitem cultivar estes hábitos. E a refatoração merece um espaço considerável no nosso dia a dia de desenvolvedores de software.</p>
+
+<p>No próximo artigo vou falar sobre os &#8220;mal cheiros&#8221; de códigos.</p>
+
+<p>Siga-me no Twitter: <a href="http://twitter.com/eduardofiorezi">@eduardofiorezi</a></p>
+]]></content>
+  </entry>
+  
+</feed>

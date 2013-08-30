@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: decorator | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/decorator/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Usando decorators nos models Rails de forma intrusiva]]></title>
+    <link href="http://helabs.com.br/blog/2013/06/28/usando-decorators-nos-models-rails-de-forma-intrusiva/"/>
+    <updated>2013-06-28T15:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/06/28/usando-decorators-nos-models-rails-de-forma-intrusiva</id>
+    <content type="html"><![CDATA[<p>Muito já se falou sobre decorators nos últimos tempos, até mesmo por <a href="http://helabs.com.br/blog/categories/decorator/">aqui</a>. Melhorar a legibilidade e remover lógica das views de uma aplicação é um assunto que <a href="http://helabs.com.br/blog/2012/11/16/tech-talk-rodrigo-pinto-explorando-as-views-rails/">me interessa</a> já faz algum tempo. Nesse post falarei sobre a alternativa que, no meu ponto de vista, preencheu a lacuna do problema decorators de views no rails .</p>
+
+<!--more-->
+
+
+<p>Há diversas formas de implementar um decorator e já existem inúmeras gems que auxiliam neste trabalho, como o <a href="https://github.com/fnando/simple_presenter">simple_presenter</a> e o <a href="https://github.com/drapergem/draper">draper</a>. O que me incomodava em todas as diversas soluções existentes, é  o desenvolvedor ter que passar o objeto ou a coleção de objetos para a classe do decorator para que fosse <em>decorado</em>. Pensando no caso de uma action, ela teria de ser alterada, como pode ser visto no exemplo a seguir:</p>
+
+<p>```ruby</p>
+
+<h1>any controller...</h1>
+
+<p>def index
+  @users = UserPresenter.map(User.all) # simple presenter
+  @articles = ArticleDecorator.decorate_collection(Article.all) # draper
+end
+```</p>
+
+<p>Esse tipo de solução sempre me incomodou, e eu mantive minha busca por alguma que funcionasse de forma intrusiva, sem que fosse preciso modificar a chamada na action. E esta solução existe, chama-se <a href="https://github.com/amatsuda/active_decorator">active_decorator</a>.</p>
+
+<p>O active_decorator <em>injeta</em> automaticamente o decorator em um model, ou em uma coleção de models ou uma instância do ActiveRecord::Relation a partir de um controller ou renderizando uma view com <code>:collection</code> ou <code>:object</code> ou <code>:local</code>. Sendo assim, não é preciso alterar nenhuma chamada no seu controller.</p>
+
+<p>Vamos ver o exemplo anterior usando o active decorator.</p>
+
+<p>```ruby</p>
+
+<h1>any controller...</h1>
+
+<p>def index
+  @users = User.all
+  @articles = Article.all
+end
+```</p>
+
+<p>Existindo um <code>UserDecorator</code> e um <code>ArticleDecorator</code>, os objetos das coleções serão automaticamente <em>decorados</em> quando forem ser usados nas views.</p>
+
+<p>Veja um exemplo mais completo:</p>
+
+<p>```ruby</p>
+
+<h1>any controller...</h1>
+
+<p>def index
+  @user = current_user
+  @articles = current_user.articles
+end</p>
+
+<h1>user decorator</h1>
+
+<p>module UserDecorator</p>
+
+<p>  def full_name</p>
+
+<pre><code>"#{first_name}-#{last_name}"
+</code></pre>
+
+<p>  end</p>
+
+<p>end</p>
+
+<h1>article decorator</h1>
+
+<p>module ArticleDecorator</p>
+
+<p>  def link_to_publish</p>
+
+<pre><code>if published?
+  "On air!"
+else
+  link_to "Publish", publish_article_path(self)
+end
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>```</p>
+
+<p>```erb</p>
+
+<h1>app/views/articles/index.erb</h1>
+
+<p>Olá &lt;%= @user.full_name %></p>
+
+<ul>
+<% @articles.each do |article| %>
+  <li>
+    <%= article.title %>
+    <%= article.link_to_publish %>
+  </li>
+<% end %>
+</ul>
+
+
+<p>```</p>
+
+<p>O active decorator é totalmente "plugável" a uma aplicação existente o que reduz bastante o esforço de implementação de decorators, facilitando a implementação gradual.</p>
+
+<p>Abraços, <a href="http://twitter.com/rodrigoospinto">Rodrigo Pinto</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Extraindo responsabilidade de um classe ruby utilizando polimorfismo]]></title>
+    <link href="http://helabs.com.br/blog/2013/06/06/extraindo-responsabilidade-de-um-classe-ruby-que-sabe-demais-com-o-uso-de-polimorfismo/"/>
+    <updated>2013-06-06T00:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/06/06/extraindo-responsabilidade-de-um-classe-ruby-que-sabe-demais-com-o-uso-de-polimorfismo</id>
+    <content type="html"><![CDATA[<p>Já falei anteriormente um pouco sobre o uso do pattern decorator no rails <a href="http://helabs.com.br/blog/2013/01/28/extraindo-a-responsabilidade-de-fat-models-com-o-uso-de-decorators/">neste link</a>. Em algum momento a lógica pode ser tão complexa que quebraríamos os decorators em <em>decorators especializados</em>.</p>
+
+<!--more-->
+
+
+<p>Vamos a um exemplo: dado um <code>PostDecorator</code> com apenas um método público <code>show</code>, responsável por exibir um post, podemos reduzir a sua complexidade e manter a responsabilidade única de cada classe, baseando-se no tipo de status. Mas como?</p>
+
+<p>```ruby
+class PostDecorator</p>
+
+<p>  def initialize(post)</p>
+
+<pre><code>@post = post
+</code></pre>
+
+<p>  end</p>
+
+<p>  def show</p>
+
+<pre><code>if post.status == "draft"
+  # ... lógica de draft aqui
+elsif post.status == 'published'
+  # ... lógica de published aqui
+end
+</code></pre>
+
+<p>  end</p>
+
+<p>  private</p>
+
+<pre><code>attr_reader :post
+</code></pre>
+
+<p>end
+```</p>
+
+<p>O primeiro passo que poderíamos fazer seria extrair a lógica de cada um dos status para classes especializadas, delegando as responsabilidades. Exemplo:</p>
+
+<p>```ruby
+class PostDecorator</p>
+
+<p>  def initialize(post)</p>
+
+<pre><code>@post = post
+</code></pre>
+
+<p>  end</p>
+
+<p>  def show</p>
+
+<pre><code>if post.status == "draft"
+  PostDraftDecorator.new(post).show
+elsif post.status == 'published'
+  PostPublishedDecorator.new(post).show
+end
+</code></pre>
+
+<p>  end</p>
+
+<p>  private</p>
+
+<pre><code>attr_reader :post
+</code></pre>
+
+<p>end</p>
+
+<p>class PostDraftDecorator</p>
+
+<h1>... lógica de draft aqui</h1>
+
+<p>end</p>
+
+<p>class PostPublishedDecorator</p>
+
+<h1>... lógica de published aqui</h1>
+
+<p>end
+```</p>
+
+<p>Agora ficou melhor, já que a responsabilidade foi dividida.</p>
+
+<p>Um outro pequeno refactory que poderíamos fazer é melhorar essa verificação de <code>if post.status == "draft"</code>. Podendo implementar em nosso model <code>Post#draft?</code> e <code>Post#published?</code>.</p>
+
+<p>E assim, encapsulamos a lógica de <code>#draft?</code> e <code>#published?</code>, pois se a complexidade aumentar, teremos que mudar N contextos que fazem a verificação de tal lógica. Como agora elas estão encapsuladas, caso a lógica mude, teremos que alterar apenas no model.</p>
+
+<p>```ruby
+class PostDecorator</p>
+
+<p>  def initialize(post)</p>
+
+<pre><code>@post = post
+</code></pre>
+
+<p>  end</p>
+
+<p>  def show</p>
+
+<pre><code>if post.draft?
+  PostDraftDecorator.new(post).show
+elsif post.published?
+  PostPublishedDecorator.new(post).show
+end
+</code></pre>
+
+<p>  end</p>
+
+<p>  private</p>
+
+<pre><code>attr_reader :post
+</code></pre>
+
+<p>end
+```</p>
+
+<p>Para evitarmos criar todos estes métodos na mão, podemos utilizar a <em>gem</em> <a href="https://github.com/maurogeorge/jacaranda">Jacaranda</a> que foi a minha primeira gem ;)</p>
+
+<p>Mas ainda não é o melhor que podemos fazer para este caso. Vamos agora ao uso de polimorfismo:</p>
+
+<h2>Resolvendo com o uso de polimorfismo</h2>
+
+<p>Podemos usar <em>polimorfismo</em> para, dependendo do status do post, instanciar e utilizar o decorator correto.</p>
+
+<p>```ruby
+class PostDecorator</p>
+
+<p>  def initialize(post)</p>
+
+<pre><code>@post = post
+</code></pre>
+
+<p>  end</p>
+
+<p>  def show</p>
+
+<pre><code>post_decorator.new(post).show
+</code></pre>
+
+<p>  end</p>
+
+<p>  private</p>
+
+<pre><code>attr_reader :post
+
+def post_decorator
+  "Post#{post.status.capitalize}Decorator".constantize
+end
+</code></pre>
+
+<p>end
+```</p>
+
+<p>Como pode-se notar, criamos o método <code>post_decorator</code> que retorna a classe correta. Em seguida, instanciamos ela e chamamos o método <code>show</code> na classe específica.
+Caso não seja de seu conhecimento, utilizamos o <a href="http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html#method-i-constantize"><code>constantize</code></a> do ActiveSupport que nos retorna uma constante de mesmo nome baseado na string recebida.</p>
+
+<p>Agora vamos aos testes do nosso <code>PostDecorator</code>:</p>
+
+<p>```ruby
+describe PostDecorator do</p>
+
+<p>  let(:post_decorator) do</p>
+
+<pre><code>PostDecorator.new(post)
+</code></pre>
+
+<p>  end</p>
+
+<p>  describe "#show" do</p>
+
+<pre><code>context "when post is a draft" do
+
+  let!(:post) do
+    Post.create(status: "draft")
+  end
+
+  it "call PostDraftDecorator" do
+    post_draft_decorator = double("PostDraftDecorator")
+    PostDraftDecorator.should_receive(:new).with(post).and_return(post_draft_decorator)
+    post_draft_decorator.should_receive(:show)
+    post_decorator.show
+  end
+end
+
+context "when post is published" do
+
+  let!(:post) do
+    Post.create(status: "published")
+  end
+
+  it "call PostPublishedDecorator" do
+    post_published_decorator = double("PostPublishedDecorator")
+    PostPublishedDecorator.should_receive(:new).with(post).and_return(post_published_decorator)
+    post_published_decorator.should_receive(:show)
+    post_decorator.show
+  end
+end
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>Como visualiza-se acima, nossos testes ficaram bem simples. Testamos apenas se a delegação foi feita corretamente, pois a implementação seria testada unitariamente em cada uma das classes especializadas (<code>PostDraftDecorator</code> e <code>PostPublishedDecorator</code>).</p>
+
+<h2>Conclusão</h2>
+
+<p>Utilizando <em>polimorfismo</em>, agora nossa classe <code>PostDecorator</code> pode instanciar outros decorators e não precisaremos mais dos <em>ifs</em> e <em>elses</em>. Apenas crie uma nova classe como <code>PostUnpublishedDecorator</code> e todos os posts com o status <strong>unpublished</strong> usarão esta nova classe, pois segue-se a convenção.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Extraindo a responsabilidade de Fat Models com o uso de Decorators no Rails]]></title>
+    <link href="http://helabs.com.br/blog/2013/01/28/extraindo-a-responsabilidade-de-fat-models-com-o-uso-de-decorators/"/>
+    <updated>2013-01-28T10:30:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2013/01/28/extraindo-a-responsabilidade-de-fat-models-com-o-uso-de-decorators</id>
+    <content type="html"><![CDATA[<p>Desde o <a href="http://www.youtube.com/watch?v=Gzj723LkRJY">15 minutes blog</a> o rails tem evoluido bastante e novos conceitos foram introduzidos com o passar do tempo, um mantra que foi introduzido na comunidade foi o "Skinny Controller, Fat Model" que pode gerar uma confusão aos desenvolvedores novatos e alguns mais experientes também.</p>
+
+<!-- more -->
+
+
+<h3>Fat model não necessariamente herda de ActiveRecord::Base</h3>
+
+<p>Quando lemos o mantra pela primeira vez podemos ficar tentados a fazer algo que seria mover nossas lógicas do controller para o model.</p>
+
+<p>Primeiro temos o código de enfileirar o envio de email no controller.</p>
+
+<p>```ruby
+class PostsController &lt; ApplicationController</p>
+
+<p>  def create</p>
+
+<pre><code>@post = Post.new(params[:post])
+
+if @post.save
+  NotifyMailer.delay.notify(@post)
+  redirect_to(@post, :notice =&gt; 'Post was successfully created.') }
+else
+  render :action =&gt; "new"
+end
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>Refatorariamos para algo assim em nosso model Post.</p>
+
+<p>```ruby
+class Post &lt; ActiveRecord::Base
+  after_save :notify_users</p>
+
+<p>  private</p>
+
+<pre><code>def notify_users
+  NotifyMailer.delay.notify(self)
+end
+</code></pre>
+
+<p>end
+```</p>
+
+<p>Com certeza melhor que a solução anterior, mas agora o nosso model está sabendo demais. Além de fazer o seu papel em tratar as informações do banco de dados, agora também enfileira emails toda vez que é salvo. Ou seja, temos um problema de alto acoplamento, a operação de salvar sempre ativa o enfileiramento de envio de emails e com isso violamos o <a href="http://en.wikipedia.org/wiki/Single_responsibility_principle">SRP</a>.</p>
+
+<p>É aí que chegamos no ponto que fat models não necessariamente são classes que herdam de <code>ActiveRecord::Base</code>, pois como vimos isso nos gera os seguintes problemas:</p>
+
+<ul>
+<li>alto acoplamento</li>
+<li>testes mais lentos</li>
+<li>falta de coesão</li>
+</ul>
+
+
+<h3>Definindo melhor as responsabilidades e assim deixando tudo mais claro</h3>
+
+<p>Para deixar as coisas mais claras e com as responsabilidade melhores definidas podemos criar um <a href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator</a>.</p>
+
+<p>```ruby
+class PostNotifyUsers</p>
+
+<p>  def initialize(post)</p>
+
+<pre><code>@post = post
+</code></pre>
+
+<p>  end</p>
+
+<p>  def save</p>
+
+<pre><code>@post.save &amp;&amp; notify_users
+</code></pre>
+
+<p>  end</p>
+
+<p>  private</p>
+
+<pre><code>def notify_users
+  NotifyMailer.delay.notify(@post)
+end
+</code></pre>
+
+<p>end
+```</p>
+
+<p>No código acima criamos uma classe em Ruby pura, conhecida também como PORO (Plain Old Ruby Objects). E o papel desta classe é notificar os usuários de um post novo enfileirando o email. Com isso conseguimos:</p>
+
+<ul>
+<li><strong>Baixo acoplamento</strong>: <code>Post</code> lida com o banco de dados e <code>PostNotifyUsers</code> notifica os usuários. Cada um com sua responsabilidade.</li>
+<li><strong>Testes mais rápidos</strong>: Quando se cria um <code>Post</code> em seus testes ele não envia mais email</li>
+<li><strong>Alta coesão</strong>: Pois agora sabemos de tudo o que ocorre ao salvar um <code>Post</code>, ele apenas é salvo.</li>
+</ul>
+
+
+<p>Veja agora como ficaria o nosso controller usando o decorator que acabamos de criar:</p>
+
+<p>```ruby
+class PostsController &lt; ApplicationController</p>
+
+<p>  def create</p>
+
+<pre><code>@post = Post.new(params[:post])
+
+if PostNotifyUsers.new(@post).save
+  redirect_to(@post, :notice =&gt; 'Post was successfully created.') }
+else
+  render :action =&gt; "new"
+end
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>Como pode ver ficou mais claro pois agora sei que nesta action eu salvo o post e notifico os usuários. Outra coisa legal é que o a nossa classe <code>PostNotifyUsers</code> <a href="http://en.wikipedia.org/wiki/Duck_typing">quacks</a> como <code>User</code> sendo assim podemos continuar usando o <code>#save</code> só que agora do <code>PostNotifyUsers</code> em nosso controller.</p>
+
+<p>O <a href="http://twitter.com/aneziojunior">Anézio</a> falou recentemente sobre a extração de responsábilidades também no post <a href="http://helabs.com.br/blog/2013/01/14/cuidados-com-observers-e-callbacks/">Cuidados com Observers e callbacks</a>.</p>
+
+<h3>O Rails way e os iniciantes no rails</h3>
+
+<p>O que é comum são as pessoas iniciarem no rails sem noção nenhuma de Ruby e às vezes até <a href="https://en.wikipedia.org/wiki/Object-oriented_programming">orientação a objetos</a>. O que levam a seguir sempre a abordagem do conhecido Rails Way esquecendo(às vezes nem sabendo) que Ruby é uma linguagem orientada a objetos, e que assim pode resolver muito dos seus problemas.</p>
+]]></content>
+  </entry>
+  
+</feed>

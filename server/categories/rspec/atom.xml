@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: rspec | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/rspec/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Testes (bem) mais rápidos no RSpec]]></title>
+    <link href="http://helabs.com.br/blog/2013/02/06/testes-mais-rapidos-no-rspec/"/>
+    <updated>2013-02-06T15:45:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2013/02/06/testes-mais-rapidos-no-rspec</id>
+    <content type="html"><![CDATA[<p>Conforme um projeto vai crescendo, a quantidade de casos de teste aumenta e a tendência é que a suíte completa comece a demorar mais para rodar, principalmente se você está fazendo testes de aceitação. Isso pode virar um problema muito grave em projetos legados, mas existem soluções rápidas (a.k.a marretas) que resolvem esse problema. Vou mostrar neste post como fiz para <strong>reduzir em mais de 70% o tempo de execução da suíte de testes</strong> de um projeto.</p>
+
+<!-- more -->
+
+
+<p>Se você está começando um projeto novo, eu sugiro seguir as <a href="http://simplesideias.com.br/fazendo-os-seus-testes-executarem-mais-rapido">recomendação do Nando Vieira</a>, que incluem decisões de como escrever o código de forma limpa, e que não vão criar gargalos para os testes.</p>
+
+<p>No meu caso o buraco era mais embaixo e eu precisava de algo antes de sair refatorando tudo. Eu estava trabalhando num projeto Rails que possui um pouco menos de 8.000 linhas de código e um pouco mais de 30.000 linhas de teste, um Code to Test Ratio de 1:3.9 e mais de 5.000 testes.
+Tanto o código quanto os testes precisavam de melhorias e a suíte estava demorando cerca de <strong>13 minutos para rodar</strong>. Tempo que qualquer um sabe que é ridiculamente alto e inviável para se trabalhar.</p>
+
+<p>```
+rake</p>
+
+<p>Finished in 13 minutes 27.67 seconds
+5162 examples, 0 failures, 16 pending
+```</p>
+
+<p>Eu precisava refatorar os testes, mas também o código e isso exigia um tempo de trabalho considerável.
+Eu praticamente tinha um problema de "referência circular", ou <a href="http://www.youtube.com/watch?v=tJ-BKu-WUEk">efeito Tostines</a>. Eu precisava refatorar para ter os testes mais rápidos, mas também precisava dos testes mais rápidos para poder trabalhar e conseguir refatorar.</p>
+
+<p>Enfim, uma situação desconfortável e que iria demandar paciência e um bocado de trabalho, principalmente no início.
+Não havia mágica para resolver de uma vez, então eu comecei a buscar soluções que diminuíssem a dor do momento.</p>
+
+<p>O resultado foi que <strong>reduzi o tempo de execução dos testes de 13 minutos para 4 minutos</strong>, sem refatorar o código e mexendo muito pouco nos testes. Eu sei que 4 minutos ainda é muito e tem que melhorar, mas para a realidade do momento, já estava ótimo!</p>
+
+<p>Seguem as dicas do que eu fiz com as referências. As duas primeiras eu retirei do <a href="http://blog.plataformatec.com.br/2011/12/three-tips-to-improve-the-performance-of-your-test-suite/">post do José Valim</a></p>
+
+<h3>Dica 1: Shared Connections</h3>
+
+<p>O meu projeto tem testes de aceitação usando <a href="https://github.com/jnicklas/capybara">capybara</a> e <a href="https://github.com/thoughtbot/capybara-webkit">capybara-webkit</a> e eu usava a gem <a href="https://github.com/bmabey/database_cleaner">database_cleaner</a> para limpar o banco de dados entre um teste e outro, como sugerido pelo próprio Capybara.</p>
+
+<p>O problema é que o database cleaner torna a suíte muito lenta, por que a todo momento ele está acessando o banco de dados para limpar a base toda. A solução é fazer uma marreta no ActiveRecord para que o database cleaner não seja mais necessário.</p>
+
+<p>Removi o database cleaner e voltei a configuração <code>use_transactional_fixtures</code> pra <code>true</code></p>
+
+<p>```ruby</p>
+
+<h1>spec/spec_helper.rb</h1>
+
+<p>RSpec.configure do |config|
+  [...]</p>
+
+<p>  config.use_transactional_fixtures = true
+end
+```</p>
+
+<p>Adicionei o código abaixo:</p>
+
+<p>```ruby</p>
+
+<h1>spec/support/shared_connection.rb</h1>
+
+<p>class ActiveRecord::Base
+  mattr_accessor :shared_connection
+  @@shared_connection = nil</p>
+
+<p>  def self.connection</p>
+
+<pre><code>@@shared_connection || retrieve_connection
+</code></pre>
+
+<p>  end
+end</p>
+
+<h1>Forces all threads to share the same connection. This works on</h1>
+
+<h1>Capybara because it starts the web server in a thread.</h1>
+
+<p>ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
+```</p>
+
+<p>Esse código faz com que o ActiveRecord compartilhe a mesma conexão com o banco de dados em todas as threads. Na prática os testes do Capybara acabam rodando dentro de uma transação, então qualquer modificação no banco de dados não é comitada e é descartada a cada teste.</p>
+
+<h3>Dica 2: Increase Log Level</h3>
+
+<p>Por default o Rails grava log de tudo que acontece no environment <code>test</code>. Isso faz com que o acesso à disco seja muito alto, o que torna a execução dos testes mais lenta. Aumentando o nível do log você reduz o IO durante os testes. Para isso, adicionei o código abaixo:</p>
+
+<p>```ruby</p>
+
+<h1>spec/support/suppress_log.rb</h1>
+
+<p>Rails.logger.level = 4 unless ENV['WITH_LOG']
+```</p>
+
+<p>Se você quiser que o log seja gravado, basta setar a variável de ambiente <code>WITH_LOG</code> para true.</p>
+
+<p><code>bash
+$ WITH_LOG=true rake
+</code></p>
+
+<h3>Dica 3: Deferred Garbage Collection</h3>
+
+<p>Quando os testes rodam, muitas variáveis são criadas na memória, o que consome muita memória e faz com que o Garbage Collector seja chamado diversas vezes. Se zerarmos as variáveis de instância e controlarmos "na mão" o Garbage Collector, conseguimos um ganho de performance bastante significativo.</p>
+
+<p>Misturando <a href="http://37signals.com/svn/posts/2742-the-road-to-faster-tests">isso</a> com <a href="https://makandracards.com/makandra/950-speed-up-rspec-by-deferring-garbage-collection">isso</a> eu escrevi e adicionei o código abaixo:</p>
+
+<p>```ruby</p>
+
+<h1>spec/support/deferred_garbage_collection.rb</h1>
+
+<p>class DeferredGarbageCollection
+  RESERVED_IVARS = %w(@loaded_fixtures)
+  DEFERRED_GC_THRESHOLD = (ENV['DEFER_GC'] || 10.0).to_f
+  @@last_gc_run = Time.now
+  def self.start</p>
+
+<pre><code>GC.disable if DEFERRED_GC_THRESHOLD &gt; 0
+</code></pre>
+
+<p>  end
+  def self.reconsider</p>
+
+<pre><code>if DEFERRED_GC_THRESHOLD &gt; 0 &amp;&amp; Time.now - @@last_gc_run &gt;= DEFERRED_GC_THRESHOLD
+  GC.enable
+  GC.start
+  GC.disable
+  @@last_gc_run = Time.now
+end
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>RSpec.configure do |config|
+  config.before(:all) do</p>
+
+<pre><code>DeferredGarbageCollection.start
+</code></pre>
+
+<p>  end
+  config.after(:each) do
+   (instance_variables - DeferredGarbageCollection::RESERVED_IVARS).each do |ivar|</p>
+
+<pre><code> instance_variable_set(ivar, nil)
+</code></pre>
+
+<p>   end
+  end
+  config.after(:all) do</p>
+
+<pre><code>DeferredGarbageCollection.reconsider
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<h3>Resultado: Ganho de 45% de tempo</h3>
+
+<p>Com as implementações acima já consegui ganhar 6 minutos!</p>
+
+<p><code>
+rake
+Finished in 7 minutes 27.48 seconds
+5161 examples, 0 failures, 16 pending
+</code></p>
+
+<p>(sim, eu removi um teste nesse meio tempo)</p>
+
+<h3>Dica 4: Parallel Tests</h3>
+
+<p>Um outro artifício que, não faz com que os testes rodem mais rápidos efetivamente, mas faz com você perca menos tempo ao rodar a suíte, é paralelizar os testes. A gem responsável por isso é a <a href="https://github.com/grosser/parallel_tests">parallel_tests</a></p>
+
+<p>Para instalar a gem, basta colocar a linha abaixo no Gemfile:</p>
+
+<p>```ruby</p>
+
+<h1>add to Gemfile</h1>
+
+<p>gem "parallel_tests", :group => :development
+```</p>
+
+<p>Eu deixei o parallel tests como opção default do rake, incluindo a seguinte rake task:</p>
+
+<p>```ruby</p>
+
+<h1>lib/tasks/default.rake</h1>
+
+<p>task(:default).clear
+task :default  => "parallel:spec"
+```</p>
+
+<p>BTW eu fiz um <a href="https://github.com/rafaelp/guard-rspec/commit/7bfdd649e85d3700716be2fd43277c10aa6cb8df">commit no guard-rspec</a> para ele suportar o parallel tests.</p>
+
+<p>Rodando os testes em paralelo, você aproveita o máximo que da CPU, mas também consome muita bateria. Não recomendado se você estiver trabalhando durante um vôo, por exemplo :)</p>
+
+<h3>Resultado: Testes rodando em menos de 5 minutos</h3>
+
+<p>```
+rake</p>
+
+<p>Results:
+1545 examples, 0 failures, 10 pending
+1188 examples, 0 failures, 3 pending
+1292 examples, 0 failures, 2 pending
+1138 examples, 0 failures, 1 pending</p>
+
+<p>Took 272.119908 seconds
+```</p>
+
+<p>Os testes rodando em paralelo demoraram 4 minutos e 53 segundos e isso é um ganho incrível comparado com os 13 minutos iniciais. Críticos de plantão, eu sei que 4 minutos e pouco ainda é bastante e que dá pra melhorar ;-)</p>
+
+<h3>Dica 5: Ruby Patch railsexpress</h3>
+
+<p>Existe um patch para as versões 1.8.7, 1.9.2 e 1.9.3 do Ruby que diminui o tempo de load do Rails e de execução dos testes.</p>
+
+<p>Para usar é muito fácil.</p>
+
+<p>Se você estiver no Mac OS, instale o automake:</p>
+
+<p><code>bash
+brew install automake
+</code></p>
+
+<p>Agora rode o comando abaixo:</p>
+
+<p><code>bash
+rvm reinstall 1.9.3 --patch railsexpress
+</code>
+(substitua 1.9.3 pela versão do ruby que você está usando)</p>
+
+<p>Depois defina duas variáveis de ambiente:</p>
+
+<p>```bash</p>
+
+<h1>add to .bash_profile</h1>
+
+<p>export RUBY_GC_MALLOC_LIMIT=60000000
+export RUBY_FREE_MIN=200000
+```</p>
+
+<p>Pronto!</p>
+
+<p>Se quiser ler mais sobre isso:</p>
+
+<p><a href="https://gist.github.com/4136519">https://gist.github.com/4136519</a></p>
+
+<p><a href="https://github.com/skaes/rvm-patchsets">https://github.com/skaes/rvm-patchsets</a></p>
+
+<p><a href="https://github.com/wayneeseguin/rvm/tree/master/patches/ruby/1.9.3/p374/railsexpress">https://github.com/wayneeseguin/rvm/tree/master/patches/ruby/1.9.3/p374/railsexpress</a></p>
+
+<h3>Resultado Final: Ganho de mais de 70% de tempo</h3>
+
+<p>Quando eu instalei esse patch do Rails, eu já tinha 203 testes a mais escritos no projeto e a suíte estava demorando 322.394261 segundos rodando em parelelo. Ou seja, mais tempo do que o benchmark anteior. Após aplicar o patch esse tempo diminuiu para 245.99421 segundos, menos tempo que o benchmark anterior!</p>
+
+<p>```
+rake</p>
+
+<p>5366 examples, 0 failures, 9 pendings
+Took 245.99421 seconds
+```</p>
+
+<p>Com esses resultados, posso afirmar que o ganho de tempo total para o meu projeto foi superior a 70%.
+Nada mal, sair de 13 minutos para 4 minutos, não acha!?</p>
+
+<h3>Bônus: Guard + Zeus</h3>
+
+<p>Quando eu estou programando, não fico rodando os testes todos, até por que 4 minutos ainda é inviável para fazer TDD. Para resolver ese problema comecei a usar o <a href="https://github.com/guard/guard-rspec">guard-rspec</a> com <a href="https://github.com/burke/zeus">zeus</a> e <a href="https://www.relishapp.com/rspec/rspec-core/v/2-4/docs/command-line/tag-option">tags do RSpec</a>.</p>
+
+<p>O guard é responsável por monitorar as mudanças nos arquivos e rodar testes específicos que são relativos ao arquivo alterado. O guard-rspec é uma gem que se encarrega de chamar o rspec com os parâmteros corretos para que isso aconteça.</p>
+
+<p>O zeus é um aplicativo que pré carrega o stack do Rails na memória e quando você roda os comandos que precisam do environment do Rails, ele busca o que já está carregado na memória.</p>
+
+<p>As tags do RSpec permitem que você defina uma ou mais tags em um teste e passe um parâmetro na linha de comando <code>rspec</code> para que somente os testes com aquela tag sejam rodados.</p>
+
+<p>Instalando o zeus:</p>
+
+<p><code>
+gem install zeus
+</code></p>
+
+<p>Instalando o guard-spec:</p>
+
+<p>```ruby</p>
+
+<h1>add to Gemfile</h1>
+
+<p>gem "guard-rspec", :group => :development
+```</p>
+
+<p>Meu Guadfile, arquivo de configuração do guard para o projeto:</p>
+
+<p>```ruby</p>
+
+<h1>Guadfile</h1>
+
+<p>notification :growl</p>
+
+<p>guard 'rspec', :cli => "--tag focus --color --fail-fast", :all_after_pass => false, :all_on_start => false, :zeus => true, :parallel => false do
+  watch('spec/spec_helper.rb')                        { "spec" }
+  watch('config/routes.rb')                           { "spec/routing" }
+  watch('app/controllers/application_controller.rb')  { "spec/controllers" }
+  watch(%r{<sup>spec/.+_spec.rb$})</sup>
+  watch(%r{<sup>app/(.+).rb$})</sup>                           { |m| "spec/#{m[1]}<em>spec.rb" }
+  watch(%r{<sup>app/(.*)(.erb|.haml)$})</sup>                 { |m| "spec/#{m[1]}#{m[2]}</em>spec.rb" }
+  watch(%r{<sup>lib/(.+).rb$})</sup>                           { |m| "spec/lib/#{m[1]}<em>spec.rb" }
+  watch(%r{<sup>app/controllers/(.+)_(controller).rb$})</sup>  { |m| ["spec/routing/#{m[1]}</em>routing_spec.rb", "spec/#{m[2]}s/#{m[1]}<em>#{m[2]}</em>spec.rb", "spec/acceptance/#{m[1]}_spec.rb"] }</p>
+
+<p>  # Rspec support
+  watch(%r{<sup>spec/support/(.+).rb$})</sup>                  { "spec" }</p>
+
+<p>  # Blueprints
+  watch(%r{<sup>spec/blueprints.rb$})</sup>                    { "spec" }</p>
+
+<p>  # Capybara
+  watch(%r{<sup>spec/acceptance/(.+).rb$})</sup>
+end
+```</p>
+
+<p>Agora basta abrir duas janelas do terminal e deixar uma rodando o zeus e outra o guard:</p>
+
+<p><code>bash
+$ zeus start
+</code></p>
+
+<p><code>bash
+$ guard start
+</code></p>
+
+<p>No meu ciclo de TDD, eu deixo o guard testando automaticamente os arquivos que ele detecta que foram modificados. Em algums momentos eu quero validar apenas um teste, e é muito chato ter que esperar todos os testes do arquivo que estou trabalhando, todas as vezes que eu o salvo.</p>
+
+<p>Você pode perceber que no meu Guarfile eu passo o parâmetro <code>--tag focus</code> para o rspec. Isso faz com que ele rode apenas os testes com a tag <code>focus</code>. Quando nenhum teste possui essa tag, ele roda todos os testes do arquivo.</p>
+
+<p>Como eu também passo o parâmetro <code>--fail-fast</code>, o rspec pára no primeiro teste que quebra.</p>
+
+<p>Quando estou escrevendo um teste novo em um arquivo com muitos testes ou quando um dos testes quebra, eu coloco a tag <code>focus</code> no teste em questão, ou no contexto inteiro dele. A partir daí o guard roda somente este teste a cada vez que eu salvo o arquivo. Isso agiliza muito o meu trabalho, pois não preciso esperar todos os testes do arquivo serem rodados, ou seja, os testes que eu quero validar são executados de imediato.</p>
+
+<p>Para colocar a tag, basta passar um hash <code>{focus: true}</code> como segundo parâmetro do <code>describe</code>, do <code>context</code> ou do <code>it</code>. Veja um exemplo de como colocar essa tag:</p>
+
+<p>```ruby
+describe "welcome" do
+  let(:account) { Account.make }
+  let(:mailer) { AccountMailer.welcome(account) }
+  it { expect { mailer }.not_to raise_error }
+  it { expect { mailer.deliver }.not_to raise_error }
+  it { expect { mailer.deliver }.to change(ActionMailer::Base.deliveries,:size).by(1) }
+  context "mailer", focus: true do</p>
+
+<pre><code>it { mailer.subject.should == "Muito obrigado por estar conosco" }
+it { mailer.header['From'].to_s.should == "Suporte &lt;suporte@example.com&gt;" }
+it { mailer.header['To'].to_s.should == "Nome do Usuario &lt;emaildousuario@example.com&gt;" }
+it { mailer.from.size.should == 1 }
+it { mailer.to.size.should == 1 }
+it { mailer.cc.should be_nil }
+it { mailer.bcc.should be_nil }
+it { mailer.multipart?.should be_false }
+it { mailer.charset.should == "UTF-8" }
+it { mailer.content_type.should == "text/html; charset=UTF-8" }
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<h3>Conclusão</h3>
+
+<p>Mesmo com problemas no código e testes mal escritos eu consegui reduzir o tempo de execução da suíte e criar um fluxo de trabalho que me permitiu fazer TDD e trabalhar para refatorar tudo, sem perder muito tempo no início. Na prática isso viabilizou a continuidade do trabalho e diminuiu significativamente a dor de ter uma suíte lenta. Uma suíte de testes lenta é um perigo por que nos leva a não querer rodar os testes e ignorar TDD.</p>
+
+<p>Ainda tenho um bom caminho pela frente para melhorar o código atual, mas chegou num nível que já consigo refatorar o que existe em paralelo com desenvolver novas features.</p>
+
+<p>Se uma das dicas já for algo útil pra você, ficarei feliz! Fique a vontade para dar o seu feedback nos comentários ou falar comigo pelo twitter <a href="https://twitter.com/rafaelp">@rafaelp</a></p>
+
+<p>Abraços e até a próxima.</p>
+]]></content>
+  </entry>
+  
+</feed>

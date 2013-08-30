@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: integrante | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/integrante/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Novo membro: Francisco Martins]]></title>
+    <link href="http://helabs.com.br/blog/2013/06/25/novo-membro-francisco/"/>
+    <updated>2013-06-25T10:30:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/06/25/novo-membro-francisco</id>
+    <content type="html"><![CDATA[<p>Nesta segunda, 24/06, iniciamos a semana com mais um integrante no time! Francisco Martins é de Tocantins e estará trabalhando diretamente de lá!</p>
+
+<!--more-->
+
+
+<p><img src="/images/francisco.jpg" alt="image" /></p>
+
+<p>Francisco avassala em ruby, objective-c (iOS) e Android. Cursou Sistemas de Informação e já trabalhou com site responsivo em rails e com app móvel.</p>
+
+<p>Siga Francisco nas redes sociais: <a href="https://github.com/franciscomxs">Github</a> e <a href="https://twitter.com/franciscomxs">Twitter</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

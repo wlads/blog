@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Boas praticas | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/boas-praticas/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[The 12 Factor app]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/10/the-12-factor-app/"/>
+    <updated>2013-07-10T14:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/10/the-12-factor-app</id>
+    <content type="html"><![CDATA[<p>Aplicações web estão muito populares e se tornando preferência pelas vantagens que os SaaS (Software as a Service) oferecem.</p>
+
+<ul>
+<li>Não precisam ser instalados na máquina de quem usa;</li>
+<li>É muito mais fácil de atualizar;</li>
+<li>O cliente não precisa se preocupar com a infraestrutura;</li>
+<li>Geralmente, só precisa de um navegador e conexão com internet.</li>
+</ul>
+
+
+<!-- more -->
+
+
+<p>Com tanta popularidade, esse tipo de sistema recebe diversas sugestões de boas práticas. E o <a href="http://12factor.net/">12 factor</a> é um destes guide lines. Este guia é independente de linguagem de programação e foi criado por Adam Wiggins, Co-fundador do <a href="http://heroku.com/">heroku</a>, um dos mais conhecidos PaaS (Platform as a Service).</p>
+
+<p>Nesse post, falarei um pouco sobre alguns dos <em>factors</em> que merecem atenção especial.</p>
+
+<h3>Codebase</h3>
+
+<p>Use algum sistema de versionamento distribuído. O Git é o mais recomendado hoje e evita soluções toscas como copiar o projeto inteiro em outro diretório para em seguida, adicionar features e fazer alguns experimentos.</p>
+
+<p>Em um sistema ideal, existem, no mínimo, versões de <em>staging</em> e <em>production</em> no ar. Todas executando o mesmo codebase, mas possivelmente versões (commits) diferentes. Os servidores do <em>staging</em> e <em>production</em> devem ter a mesma configuração. Lembrando  que o <em>staging</em> deve ser constantemente atualizado para evitar o famoso "mas funcionou na minha máquina" na hora de enviar para a produção.</p>
+
+<p>Ter o mesmo <strong>codebase</strong> em todos os ambientes acaba forçando o desenvolvedor a utilizar algumas boas práticas, como: não usar o path absoluto para NADA ou impedir que ele altere o código diretamente no servidor.</p>
+
+<h3>Dependências</h3>
+
+<p>A maioria das linguagens possui sistemas de pacotes para distribuição de bibliotecas. Por exemplo: no Ruby é o <em>RubyGems</em>. Uma aplicação que segue os <em>12 factors</em> nunca confia em um pacote que supostamente deveria estar no sistema. As dependências devem ser declaradas explicitamente e o ambiente deve ser isolado para se certificar que nenhuma biblioteca do sistema está sendo usada. No Ruby, as dependências são declaradas no Gemfile (arquivo de manifesto). O isolamento pode ser feito utilizando <code>bundle exec</code> ou ferramentas mais avançadas como <a href="https://rvm.io/">rvm</a> ou <a href="https://github.com/sstephenson/rbenv">rbenv</a>, as quais também isolam as versões do ruby com mais facilidade.</p>
+
+<p>Um exemplo de Gemfile pode ser visto a seguir:</p>
+
+<p><code>ruby
+gem 'rake', '~&gt; 0.9'
+gem 'jekyll', '~&gt; 0.12'
+gem 'rdiscount', '~&gt; 2.0.7'
+gem 'pygments.rb', '~&gt; 0.3.4'
+gem 'RedCloth', '~&gt; 4.2.9'
+</code></p>
+
+<p>É de extrema importância que as versões estejam declaradas neste manifesto. Isto reforça que os diferentes ambientes estejam em funcionamento com as mesmas bibliotecas. No <a href="http://helabs.com.br/blog/2013/07/08/gerenciando-assets-com-o-bower/">post</a> do meu xará, Thiago Belem, ele apresentou o Bower, que é um gerenciador de bibliotecas web.</p>
+
+<h3>Config</h3>
+
+<p>As configurações variam entre os ambientes. Dentre elas, estão as credenciais para o banco de dados, S3, Twitter, Facebook, security tokens, etc. Mas a configuração não deve ficar no código, pois além de não ser seguro, dificulta o setup em outro ambiente.</p>
+
+<p>O problema das configurações pode ser resolvido usando arquivos de configuração para cada ambiente, como yml ou xml, que devem estar no <code>.gitignore</code>. Caso contrário, as credenciais continuam compartilhadas. Porém, a solução mais recomendada é utilizar variáveis de ambiente, pois estão presentes em todos os sistemas operacionais e acessíveis de qualquer linguagem de programação. Além disso, podem ser facilmente alteradas.</p>
+
+<h4>Conclusão</h4>
+
+<p>Esses pontos impactam diretamente na qualidade e manutenção de um SaaS. Também é muito importante um README (atualizado) para facilitar o setup do projeto por qualquer novo desenvolvedor. Deve haver uma padronização do ambiente e o vagrant pode ajudar bastante. O <a href="http://www.twitter.com/smergulhao">Sylvestre Mergulhão</a> propõe <a href="http://helabs.com.br/blog/2013/03/05/seu-ambiente-de-trabalho-mais-limpo-usando-vagrant/">isolar os serviços usando o vagrant</a>. Mas há também quem prefira o seu uso como ambiente completo de desenvolvimento.</p>
+
+<p>O guia completo para o 12 Factor App pode ser acessado <a href="http://12factor.net/">aqui</a>.</p>
+
+<p>Você faz alguma coisa diferente? Pode melhorar algo? Deixe seu comentário.</p>
+
+<h4>Links</h4>
+
+<ul>
+<li><a href="http://www.thiagogabriel.com">Site Pessoal</a></li>
+<li><a href="http://twitter.com/tgabrielborges">Twitter</a></li>
+<li><a href="https://github.com/thiagogabriel">Github</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

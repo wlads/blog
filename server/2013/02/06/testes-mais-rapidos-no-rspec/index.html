@@ -1,0 +1,778 @@
+	
+	<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <title>Testes (bem) mais rápidos no RSpec - Blog da HE:labs</title>
+  <meta name="author" content="Time HE:labs">
+
+  
+  <meta name="description" content="Testes (bem) mais rápidos no RSpec Conforme um projeto vai crescendo, a quantidade de casos de teste aumenta e a tendência é que a suíte completa &hellip;">
+  
+
+  <!-- Facebook stuff taken from main page, not sure it should go here -->
+  <meta property="og:title" content="Testes (bem) mais rápidos no RSpec - Blog da HE:labs"/>
+  <meta property="og:site_name" content="HE:labs blog"/>
+  <meta property="og:image" content="http://helabs.com.br/images/logo-icon.png"/>
+  <meta property="og:description" content="Testes (bem) mais rápidos no RSpec Conforme um projeto vai crescendo, a quantidade de casos de teste aumenta e a tendência é que a suíte completa &hellip;" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://helabs.com.br/blog/2013/02/06/testes-mais-rapidos-no-rspec/">
+  <link href="http://helabs.com.br/favicon.png" rel="icon">
+
+  <!-- CSS --> 
+  <link href="/blog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  
+
+  <!-- JS -->
+  <script type="text/javascript" src="/blog/javascripts/jquery.js"></script>
+  <script type="text/javascript" src="/blog/javascripts/jquery.parallax.min.js"></script>
+  <script type="text/javascript" src="/blog/javascripts/main.js"></script>
+
+  <!--
+  <script src="/blog/javascripts/modernizr-2.0.js"></script>
+  <script src="/blog/javascripts/ender.js"></script>
+  <script src="/blog/javascripts/octopress.js" type="text/javascript"></script>
+  -->
+  
+  <link href="/blog/atom.xml" rel="alternate" title="Blog da HE:labs" type="application/atom+xml">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16326763-1']);
+  _gaq.push(['_setDomainName', 'helabs.com.br']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+	<body   >
+		
+		<!-- #top -->
+<header id="top">
+	<div class="grid">
+		<h1 class="title">
+			<a href="/">
+				<img src="/blog/images/logotipo.png" />
+			</a>
+		</h1>	
+	</div>
+</header>
+<!-- /#top -->
+
+	    <div id="content">
+	    	    <!-- #posts -->
+    <section id="posts" class="single">    
+      <article>
+  <div class="grid">
+
+    
+      <h1 class="post-title">Testes (bem) mais rápidos no RSpec</h1>
+    
+
+
+    
+      <div class="text"><p>Conforme um projeto vai crescendo, a quantidade de casos de teste aumenta e a tendência é que a suíte completa comece a demorar mais para rodar, principalmente se você está fazendo testes de aceitação. Isso pode virar um problema muito grave em projetos legados, mas existem soluções rápidas (a.k.a marretas) que resolvem esse problema. Vou mostrar neste post como fiz para <strong>reduzir em mais de 70% o tempo de execução da suíte de testes</strong> de um projeto.</p>
+
+<!-- more -->
+
+
+<p>Se você está começando um projeto novo, eu sugiro seguir as <a href="http://simplesideias.com.br/fazendo-os-seus-testes-executarem-mais-rapido">recomendação do Nando Vieira</a>, que incluem decisões de como escrever o código de forma limpa, e que não vão criar gargalos para os testes.</p>
+
+<p>No meu caso o buraco era mais embaixo e eu precisava de algo antes de sair refatorando tudo. Eu estava trabalhando num projeto Rails que possui um pouco menos de 8.000 linhas de código e um pouco mais de 30.000 linhas de teste, um Code to Test Ratio de 1:3.9 e mais de 5.000 testes.
+Tanto o código quanto os testes precisavam de melhorias e a suíte estava demorando cerca de <strong>13 minutos para rodar</strong>. Tempo que qualquer um sabe que é ridiculamente alto e inviável para se trabalhar.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake
+</span><span class='line'>
+</span><span class='line'>Finished in 13 minutes 27.67 seconds
+</span><span class='line'>5162 examples, 0 failures, 16 pending</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Eu precisava refatorar os testes, mas também o código e isso exigia um tempo de trabalho considerável.
+Eu praticamente tinha um problema de &#8220;referência circular&#8221;, ou <a href="http://www.youtube.com/watch?v=tJ-BKu-WUEk">efeito Tostines</a>. Eu precisava refatorar para ter os testes mais rápidos, mas também precisava dos testes mais rápidos para poder trabalhar e conseguir refatorar.</p>
+
+<p>Enfim, uma situação desconfortável e que iria demandar paciência e um bocado de trabalho, principalmente no início.
+Não havia mágica para resolver de uma vez, então eu comecei a buscar soluções que diminuíssem a dor do momento.</p>
+
+<p>O resultado foi que <strong>reduzi o tempo de execução dos testes de 13 minutos para 4 minutos</strong>, sem refatorar o código e mexendo muito pouco nos testes. Eu sei que 4 minutos ainda é muito e tem que melhorar, mas para a realidade do momento, já estava ótimo!</p>
+
+<p>Seguem as dicas do que eu fiz com as referências. As duas primeiras eu retirei do <a href="http://blog.plataformatec.com.br/2011/12/three-tips-to-improve-the-performance-of-your-test-suite/">post do José Valim</a></p>
+
+<h3>Dica 1: Shared Connections</h3>
+
+<p>O meu projeto tem testes de aceitação usando <a href="https://github.com/jnicklas/capybara">capybara</a> e <a href="https://github.com/thoughtbot/capybara-webkit">capybara-webkit</a> e eu usava a gem <a href="https://github.com/bmabey/database_cleaner">database_cleaner</a> para limpar o banco de dados entre um teste e outro, como sugerido pelo próprio Capybara.</p>
+
+<p>O problema é que o database cleaner torna a suíte muito lenta, por que a todo momento ele está acessando o banco de dados para limpar a base toda. A solução é fazer uma marreta no ActiveRecord para que o database cleaner não seja mais necessário.</p>
+
+<p>Removi o database cleaner e voltei a configuração <code>use_transactional_fixtures</code> pra <code>true</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># spec/spec_helper.rb</span>
+</span><span class='line'><span class="no">RSpec</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span class='line'>  <span class="o">[.</span><span class="n">.</span><span class="o">.]</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">use_transactional_fixtures</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Adicionei o código abaixo:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># spec/support/shared_connection.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'>  <span class="n">mattr_accessor</span> <span class="ss">:shared_connection</span>
+</span><span class='line'>  <span class="vc">@@shared_connection</span> <span class="o">=</span> <span class="kp">nil</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">connection</span>
+</span><span class='line'>    <span class="vc">@@shared_connection</span> <span class="o">||</span> <span class="n">retrieve_connection</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Forces all threads to share the same connection. This works on</span>
+</span><span class='line'><span class="c1"># Capybara because it starts the web server in a thread.</span>
+</span><span class='line'><span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">shared_connection</span> <span class="o">=</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">connection</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Esse código faz com que o ActiveRecord compartilhe a mesma conexão com o banco de dados em todas as threads. Na prática os testes do Capybara acabam rodando dentro de uma transação, então qualquer modificação no banco de dados não é comitada e é descartada a cada teste.</p>
+
+<h3>Dica 2: Increase Log Level</h3>
+
+<p>Por default o Rails grava log de tudo que acontece no environment <code>test</code>. Isso faz com que o acesso à disco seja muito alto, o que torna a execução dos testes mais lenta. Aumentando o nível do log você reduz o IO durante os testes. Para isso, adicionei o código abaixo:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># spec/support/suppress_log.rb</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Rails</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="mi">4</span> <span class="k">unless</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;WITH_LOG&#39;</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Se você quiser que o log seja gravado, basta setar a variável de ambiente <code>WITH_LOG</code> para true.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ WITH_LOG</span><span class="o">=</span><span class="nb">true </span>rake
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Dica 3: Deferred Garbage Collection</h3>
+
+<p>Quando os testes rodam, muitas variáveis são criadas na memória, o que consome muita memória e faz com que o Garbage Collector seja chamado diversas vezes. Se zerarmos as variáveis de instância e controlarmos &#8220;na mão&#8221; o Garbage Collector, conseguimos um ganho de performance bastante significativo.</p>
+
+<p>Misturando <a href="http://37signals.com/svn/posts/2742-the-road-to-faster-tests">isso</a> com <a href="https://makandracards.com/makandra/950-speed-up-rspec-by-deferring-garbage-collection">isso</a> eu escrevi e adicionei o código abaixo:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># spec/support/deferred_garbage_collection.rb</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">DeferredGarbageCollection</span>
+</span><span class='line'>  <span class="no">RESERVED_IVARS</span> <span class="o">=</span> <span class="sx">%w(@loaded_fixtures)</span>
+</span><span class='line'>  <span class="no">DEFERRED_GC_THRESHOLD</span> <span class="o">=</span> <span class="p">(</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;DEFER_GC&#39;</span><span class="o">]</span> <span class="o">||</span> <span class="mi">10</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to_f</span>
+</span><span class='line'>  <span class="vc">@@last_gc_run</span> <span class="o">=</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">start</span>
+</span><span class='line'>    <span class="no">GC</span><span class="o">.</span><span class="n">disable</span> <span class="k">if</span> <span class="no">DEFERRED_GC_THRESHOLD</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">reconsider</span>
+</span><span class='line'>    <span class="k">if</span> <span class="no">DEFERRED_GC_THRESHOLD</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span> <span class="o">-</span> <span class="vc">@@last_gc_run</span> <span class="o">&gt;=</span> <span class="no">DEFERRED_GC_THRESHOLD</span>
+</span><span class='line'>      <span class="no">GC</span><span class="o">.</span><span class="n">enable</span>
+</span><span class='line'>      <span class="no">GC</span><span class="o">.</span><span class="n">start</span>
+</span><span class='line'>      <span class="no">GC</span><span class="o">.</span><span class="n">disable</span>
+</span><span class='line'>      <span class="vc">@@last_gc_run</span> <span class="o">=</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">RSpec</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">before</span><span class="p">(</span><span class="ss">:all</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>    <span class="no">DeferredGarbageCollection</span><span class="o">.</span><span class="n">start</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="ss">:each</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>   <span class="p">(</span><span class="nb">instance_variables</span> <span class="o">-</span> <span class="ss">DeferredGarbageCollection</span><span class="p">:</span><span class="ss">:RESERVED_IVARS</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">ivar</span><span class="o">|</span>
+</span><span class='line'>     <span class="nb">instance_variable_set</span><span class="p">(</span><span class="n">ivar</span><span class="p">,</span> <span class="kp">nil</span><span class="p">)</span>
+</span><span class='line'>   <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="ss">:all</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>    <span class="no">DeferredGarbageCollection</span><span class="o">.</span><span class="n">reconsider</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Resultado: Ganho de 45% de tempo</h3>
+
+<p>Com as implementações acima já consegui ganhar 6 minutos!</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span>
+</span><span class='line'><span class="no">Finished</span> <span class="k">in</span> <span class="mi">7</span> <span class="n">minutes</span> <span class="mi">27</span><span class="o">.</span><span class="mi">48</span> <span class="n">seconds</span>
+</span><span class='line'><span class="mi">5161</span> <span class="n">examples</span><span class="p">,</span> <span class="mi">0</span> <span class="n">failures</span><span class="p">,</span> <span class="mi">16</span> <span class="n">pending</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>(sim, eu removi um teste nesse meio tempo)</p>
+
+<h3>Dica 4: Parallel Tests</h3>
+
+<p>Um outro artifício que, não faz com que os testes rodem mais rápidos efetivamente, mas faz com você perca menos tempo ao rodar a suíte, é paralelizar os testes. A gem responsável por isso é a <a href="https://github.com/grosser/parallel_tests">parallel_tests</a></p>
+
+<p>Para instalar a gem, basta colocar a linha abaixo no Gemfile:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># add to Gemfile</span>
+</span><span class='line'><span class="n">gem</span> <span class="s2">&quot;parallel_tests&quot;</span><span class="p">,</span> <span class="ss">:group</span> <span class="o">=&gt;</span> <span class="ss">:development</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Eu deixei o parallel tests como opção default do rake, incluindo a seguinte rake task:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># lib/tasks/default.rake</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">task</span><span class="p">(</span><span class="ss">:default</span><span class="p">)</span><span class="o">.</span><span class="n">clear</span>
+</span><span class='line'><span class="n">task</span> <span class="ss">:default</span>  <span class="o">=&gt;</span> <span class="s2">&quot;parallel:spec&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>BTW eu fiz um <a href="https://github.com/rafaelp/guard-rspec/commit/7bfdd649e85d3700716be2fd43277c10aa6cb8df">commit no guard-rspec</a> para ele suportar o parallel tests.</p>
+
+<p>Rodando os testes em paralelo, você aproveita o máximo que da CPU, mas também consome muita bateria. Não recomendado se você estiver trabalhando durante um vôo, por exemplo :)</p>
+
+<h3>Resultado: Testes rodando em menos de 5 minutos</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span>
+</span><span class='line'>
+</span><span class='line'><span class="ss">Results</span><span class="p">:</span>
+</span><span class='line'><span class="mi">1545</span> <span class="n">examples</span><span class="p">,</span> <span class="mi">0</span> <span class="n">failures</span><span class="p">,</span> <span class="mi">10</span> <span class="n">pending</span>
+</span><span class='line'><span class="mi">1188</span> <span class="n">examples</span><span class="p">,</span> <span class="mi">0</span> <span class="n">failures</span><span class="p">,</span> <span class="mi">3</span> <span class="n">pending</span>
+</span><span class='line'><span class="mi">1292</span> <span class="n">examples</span><span class="p">,</span> <span class="mi">0</span> <span class="n">failures</span><span class="p">,</span> <span class="mi">2</span> <span class="n">pending</span>
+</span><span class='line'><span class="mi">1138</span> <span class="n">examples</span><span class="p">,</span> <span class="mi">0</span> <span class="n">failures</span><span class="p">,</span> <span class="mi">1</span> <span class="n">pending</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Took</span> <span class="mi">272</span><span class="o">.</span><span class="mi">119908</span> <span class="n">seconds</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Os testes rodando em paralelo demoraram 4 minutos e 53 segundos e isso é um ganho incrível comparado com os 13 minutos iniciais. Críticos de plantão, eu sei que 4 minutos e pouco ainda é bastante e que dá pra melhorar ;-)</p>
+
+<h3>Dica 5: Ruby Patch railsexpress</h3>
+
+<p>Existe um patch para as versões 1.8.7, 1.9.2 e 1.9.3 do Ruby que diminui o tempo de load do Rails e de execução dos testes.</p>
+
+<p>Para usar é muito fácil.</p>
+
+<p>Se você estiver no Mac OS, instale o automake:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install automake
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Agora rode o comando abaixo:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rvm reinstall 1.9.3 --patch railsexpress
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>(substitua 1.9.3 pela versão do ruby que você está usando)</p>
+
+<p>Depois defina duas variáveis de ambiente:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># add to .bash_profile</span>
+</span><span class='line'><span class="nb">export </span><span class="nv">RUBY_GC_MALLOC_LIMIT</span><span class="o">=</span>60000000
+</span><span class='line'><span class="nb">export </span><span class="nv">RUBY_FREE_MIN</span><span class="o">=</span>200000
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Pronto!</p>
+
+<p>Se quiser ler mais sobre isso:</p>
+
+<p><a href="https://gist.github.com/4136519">https://gist.github.com/4136519</a></p>
+
+<p><a href="https://github.com/skaes/rvm-patchsets">https://github.com/skaes/rvm-patchsets</a></p>
+
+<p><a href="https://github.com/wayneeseguin/rvm/tree/master/patches/ruby/1.9.3/p374/railsexpress">https://github.com/wayneeseguin/rvm/tree/master/patches/ruby/1.9.3/p374/railsexpress</a></p>
+
+<h3>Resultado Final: Ganho de mais de 70% de tempo</h3>
+
+<p>Quando eu instalei esse patch do Rails, eu já tinha 203 testes a mais escritos no projeto e a suíte estava demorando 322.394261 segundos rodando em parelelo. Ou seja, mais tempo do que o benchmark anteior. Após aplicar o patch esse tempo diminuiu para 245.99421 segundos, menos tempo que o benchmark anterior!</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rake
+</span><span class='line'>
+</span><span class='line'>5366 examples, 0 failures, 9 pendings
+</span><span class='line'>Took 245.99421 seconds
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Com esses resultados, posso afirmar que o ganho de tempo total para o meu projeto foi superior a 70%.
+Nada mal, sair de 13 minutos para 4 minutos, não acha!?</p>
+
+<h3>Bônus: Guard + Zeus</h3>
+
+<p>Quando eu estou programando, não fico rodando os testes todos, até por que 4 minutos ainda é inviável para fazer TDD. Para resolver ese problema comecei a usar o <a href="https://github.com/guard/guard-rspec">guard-rspec</a> com <a href="https://github.com/burke/zeus">zeus</a> e <a href="https://www.relishapp.com/rspec/rspec-core/v/2-4/docs/command-line/tag-option">tags do RSpec</a>.</p>
+
+<p>O guard é responsável por monitorar as mudanças nos arquivos e rodar testes específicos que são relativos ao arquivo alterado. O guard-rspec é uma gem que se encarrega de chamar o rspec com os parâmteros corretos para que isso aconteça.</p>
+
+<p>O zeus é um aplicativo que pré carrega o stack do Rails na memória e quando você roda os comandos que precisam do environment do Rails, ele busca o que já está carregado na memória.</p>
+
+<p>As tags do RSpec permitem que você defina uma ou mais tags em um teste e passe um parâmetro na linha de comando <code>rspec</code> para que somente os testes com aquela tag sejam rodados.</p>
+
+<p>Instalando o zeus:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>gem install zeus
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Instalando o guard-spec:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># add to Gemfile</span>
+</span><span class='line'><span class="n">gem</span> <span class="s2">&quot;guard-rspec&quot;</span><span class="p">,</span> <span class="ss">:group</span> <span class="o">=&gt;</span> <span class="ss">:development</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Meu Guadfile, arquivo de configuração do guard para o projeto:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Guadfile</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">notification</span> <span class="ss">:growl</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">guard</span> <span class="s1">&#39;rspec&#39;</span><span class="p">,</span> <span class="ss">:cli</span> <span class="o">=&gt;</span> <span class="s2">&quot;--tag focus --color --fail-fast&quot;</span><span class="p">,</span> <span class="ss">:all_after_pass</span> <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">,</span> <span class="ss">:all_on_start</span> <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">,</span> <span class="ss">:zeus</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:parallel</span> <span class="o">=&gt;</span> <span class="kp">false</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">watch</span><span class="p">(</span><span class="s1">&#39;spec/spec_helper.rb&#39;</span><span class="p">)</span>                        <span class="p">{</span> <span class="s2">&quot;spec&quot;</span> <span class="p">}</span>
+</span><span class='line'>  <span class="n">watch</span><span class="p">(</span><span class="s1">&#39;config/routes.rb&#39;</span><span class="p">)</span>                           <span class="p">{</span> <span class="s2">&quot;spec/routing&quot;</span> <span class="p">}</span>
+</span><span class='line'>  <span class="n">watch</span><span class="p">(</span><span class="s1">&#39;app/controllers/application_controller.rb&#39;</span><span class="p">)</span>  <span class="p">{</span> <span class="s2">&quot;spec/controllers&quot;</span> <span class="p">}</span>
+</span><span class='line'>  <span class="n">watch</span><span class="p">(</span><span class="sr">%r{^spec/.+_spec\.rb$}</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">watch</span><span class="p">(</span><span class="sr">%r{^app/(.+)\.rb$}</span><span class="p">)</span>                           <span class="p">{</span> <span class="o">|</span><span class="n">m</span><span class="o">|</span> <span class="s2">&quot;spec/</span><span class="si">#{</span><span class="n">m</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="s2">_spec.rb&quot;</span> <span class="p">}</span>
+</span><span class='line'>  <span class="n">watch</span><span class="p">(</span><span class="sr">%r{^app/(.*)(\.erb|\.haml)$}</span><span class="p">)</span>                 <span class="p">{</span> <span class="o">|</span><span class="n">m</span><span class="o">|</span> <span class="s2">&quot;spec/</span><span class="si">#{</span><span class="n">m</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}#{</span><span class="n">m</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="si">}</span><span class="s2">_spec.rb&quot;</span> <span class="p">}</span>
+</span><span class='line'>  <span class="n">watch</span><span class="p">(</span><span class="sr">%r{^lib/(.+)\.rb$}</span><span class="p">)</span>                           <span class="p">{</span> <span class="o">|</span><span class="n">m</span><span class="o">|</span> <span class="s2">&quot;spec/lib/</span><span class="si">#{</span><span class="n">m</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="s2">_spec.rb&quot;</span> <span class="p">}</span>
+</span><span class='line'>  <span class="n">watch</span><span class="p">(</span><span class="sr">%r{^app/controllers/(.+)_(controller)\.rb$}</span><span class="p">)</span>  <span class="p">{</span> <span class="o">|</span><span class="n">m</span><span class="o">|</span> <span class="o">[</span><span class="s2">&quot;spec/routing/</span><span class="si">#{</span><span class="n">m</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="s2">_routing_spec.rb&quot;</span><span class="p">,</span> <span class="s2">&quot;spec/</span><span class="si">#{</span><span class="n">m</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="si">}</span><span class="s2">s/</span><span class="si">#{</span><span class="n">m</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="s2">_</span><span class="si">#{</span><span class="n">m</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="si">}</span><span class="s2">_spec.rb&quot;</span><span class="p">,</span> <span class="s2">&quot;spec/acceptance/</span><span class="si">#{</span><span class="n">m</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="s2">_spec.rb&quot;</span><span class="o">]</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Rspec support</span>
+</span><span class='line'>  <span class="n">watch</span><span class="p">(</span><span class="sr">%r{^spec/support/(.+)\.rb$}</span><span class="p">)</span>                  <span class="p">{</span> <span class="s2">&quot;spec&quot;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Blueprints</span>
+</span><span class='line'>  <span class="n">watch</span><span class="p">(</span><span class="sr">%r{^spec/blueprints.rb$}</span><span class="p">)</span>                    <span class="p">{</span> <span class="s2">&quot;spec&quot;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Capybara</span>
+</span><span class='line'>  <span class="n">watch</span><span class="p">(</span><span class="sr">%r{^spec/acceptance/(.+)\.rb$}</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Agora basta abrir duas janelas do terminal e deixar uma rodando o zeus e outra o guard:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>zeus start
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>guard start
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>No meu ciclo de TDD, eu deixo o guard testando automaticamente os arquivos que ele detecta que foram modificados. Em algums momentos eu quero validar apenas um teste, e é muito chato ter que esperar todos os testes do arquivo que estou trabalhando, todas as vezes que eu o salvo.</p>
+
+<p>Você pode perceber que no meu Guarfile eu passo o parâmetro <code>--tag focus</code> para o rspec. Isso faz com que ele rode apenas os testes com a tag <code>focus</code>. Quando nenhum teste possui essa tag, ele roda todos os testes do arquivo.</p>
+
+<p>Como eu também passo o parâmetro <code>--fail-fast</code>, o rspec pára no primeiro teste que quebra.</p>
+
+<p>Quando estou escrevendo um teste novo em um arquivo com muitos testes ou quando um dos testes quebra, eu coloco a tag <code>focus</code> no teste em questão, ou no contexto inteiro dele. A partir daí o guard roda somente este teste a cada vez que eu salvo o arquivo. Isso agiliza muito o meu trabalho, pois não preciso esperar todos os testes do arquivo serem rodados, ou seja, os testes que eu quero validar são executados de imediato.</p>
+
+<p>Para colocar a tag, basta passar um hash <code>{focus: true}</code> como segundo parâmetro do <code>describe</code>, do <code>context</code> ou do <code>it</code>. Veja um exemplo de como colocar essa tag:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">describe</span> <span class="s2">&quot;welcome&quot;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">let</span><span class="p">(</span><span class="ss">:account</span><span class="p">)</span> <span class="p">{</span> <span class="no">Account</span><span class="o">.</span><span class="n">make</span> <span class="p">}</span>
+</span><span class='line'>  <span class="n">let</span><span class="p">(</span><span class="ss">:mailer</span><span class="p">)</span> <span class="p">{</span> <span class="no">AccountMailer</span><span class="o">.</span><span class="n">welcome</span><span class="p">(</span><span class="n">account</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'>  <span class="n">it</span> <span class="p">{</span> <span class="n">expect</span> <span class="p">{</span> <span class="n">mailer</span> <span class="p">}</span><span class="o">.</span><span class="n">not_to</span> <span class="n">raise_error</span> <span class="p">}</span>
+</span><span class='line'>  <span class="n">it</span> <span class="p">{</span> <span class="n">expect</span> <span class="p">{</span> <span class="n">mailer</span><span class="o">.</span><span class="n">deliver</span> <span class="p">}</span><span class="o">.</span><span class="n">not_to</span> <span class="n">raise_error</span> <span class="p">}</span>
+</span><span class='line'>  <span class="n">it</span> <span class="p">{</span> <span class="n">expect</span> <span class="p">{</span> <span class="n">mailer</span><span class="o">.</span><span class="n">deliver</span> <span class="p">}</span><span class="o">.</span><span class="n">to</span> <span class="n">change</span><span class="p">(</span><span class="ss">ActionMailer</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">deliveries</span><span class="p">,</span><span class="ss">:size</span><span class="p">)</span><span class="o">.</span><span class="n">by</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'>  <span class="n">context</span> <span class="s2">&quot;mailer&quot;</span><span class="p">,</span> <span class="ss">focus</span><span class="p">:</span> <span class="kp">true</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">it</span> <span class="p">{</span> <span class="n">mailer</span><span class="o">.</span><span class="n">subject</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="s2">&quot;Muito obrigado por estar conosco&quot;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="n">it</span> <span class="p">{</span> <span class="n">mailer</span><span class="o">.</span><span class="n">header</span><span class="o">[</span><span class="s1">&#39;From&#39;</span><span class="o">].</span><span class="n">to_s</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="s2">&quot;Suporte &lt;suporte@example.com&gt;&quot;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="n">it</span> <span class="p">{</span> <span class="n">mailer</span><span class="o">.</span><span class="n">header</span><span class="o">[</span><span class="s1">&#39;To&#39;</span><span class="o">].</span><span class="n">to_s</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="s2">&quot;Nome do Usuario &lt;emaildousuario@example.com&gt;&quot;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="n">it</span> <span class="p">{</span> <span class="n">mailer</span><span class="o">.</span><span class="n">from</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">}</span>
+</span><span class='line'>    <span class="n">it</span> <span class="p">{</span> <span class="n">mailer</span><span class="o">.</span><span class="n">to</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">}</span>
+</span><span class='line'>    <span class="n">it</span> <span class="p">{</span> <span class="n">mailer</span><span class="o">.</span><span class="n">cc</span><span class="o">.</span><span class="n">should</span> <span class="n">be_nil</span> <span class="p">}</span>
+</span><span class='line'>    <span class="n">it</span> <span class="p">{</span> <span class="n">mailer</span><span class="o">.</span><span class="n">bcc</span><span class="o">.</span><span class="n">should</span> <span class="n">be_nil</span> <span class="p">}</span>
+</span><span class='line'>    <span class="n">it</span> <span class="p">{</span> <span class="n">mailer</span><span class="o">.</span><span class="n">multipart?</span><span class="o">.</span><span class="n">should</span> <span class="n">be_false</span> <span class="p">}</span>
+</span><span class='line'>    <span class="n">it</span> <span class="p">{</span> <span class="n">mailer</span><span class="o">.</span><span class="n">charset</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="s2">&quot;UTF-8&quot;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="n">it</span> <span class="p">{</span> <span class="n">mailer</span><span class="o">.</span><span class="n">content_type</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="s2">&quot;text/html; charset=UTF-8&quot;</span> <span class="p">}</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Conclusão</h3>
+
+<p>Mesmo com problemas no código e testes mal escritos eu consegui reduzir o tempo de execução da suíte e criar um fluxo de trabalho que me permitiu fazer TDD e trabalhar para refatorar tudo, sem perder muito tempo no início. Na prática isso viabilizou a continuidade do trabalho e diminuiu significativamente a dor de ter uma suíte lenta. Uma suíte de testes lenta é um perigo por que nos leva a não querer rodar os testes e ignorar TDD.</p>
+
+<p>Ainda tenho um bom caminho pela frente para melhorar o código atual, mas chegou num nível que já consigo refatorar o que existe em paralelo com desenvolver novas features.</p>
+
+<p>Se uma das dicas já for algo útil pra você, ficarei feliz! Fique a vontade para dar o seu feedback nos comentários ou falar comigo pelo twitter <a href="https://twitter.com/rafaelp">@rafaelp</a></p>
+
+<p>Abraços e até a próxima.</p>
+</div>
+    
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-06T15:45:00-02:00" pubdate data-updated="true">Feb 6<span>th</span>, 2013</time>
+    
+  </div>
+</article>  
+
+      <aside id="more-information" class="grid">
+        <p class="meta">
+          
+  
+
+<span class="byline author vcard">Postado por <span class="fn">Rafael Lima</span></span>
+
+          
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/rafael-lima/'>rafael lima</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/rspec/'>rspec</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/tests/'>tests</a>
+  
+</span>
+
+
+        </p>
+
+        
+          <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://helabs.com.br/blog/2013/02/06/testes-mais-rapidos-no-rspec/" data-via="helabs" data-counturl="http://helabs.com.br/blog/2013/02/06/testes-mais-rapidos-no-rspec/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+        
+    
+        <p class="meta">
+          
+            <a class="basic-alignment left" href="/blog/2013/02/05/retrospectiva-1-cafe-com-dev/" title="Previous Post: Retrospectiva - 1° Café com DEV">&laquo;Retrospectiva - 1° Café com DEV</a>
+          
+      
+          
+            <a class="basic-alignment right" href="/blog/2013/02/25/retrospectiva-2-cafe-com-dev/" title="Next Post: Retrospectiva - 2° Café com DEV">Retrospectiva - 2° Café com DEV &raquo;</a>
+          
+        </p>
+    
+        <div id="cover" class="cover-mailing-page">
+          <div class="containner">
+            <div class="mailing-form">
+              <h2>Gostou desse post? Receba nossa newsletter e fique por dentro dos novos posts e outras novidades da HE:labs.</h2>
+              <form style="width:100%" action="http://clientela.us2.list-manage.com/subscribe/post?u=78c4c9df5db794cd68f358456&amp;id=020e7504d2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+                <input type="email" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Insira seu email e faça parte da comunidade" required />
+
+                <input type="submit" value="Fazer Parte" name="subscribe" id="mc-embedded-subscribe" class="button"/>
+
+              </form>
+              <a href="http://antispam.br" target="_blank"><img src="http://helabs.com.br/images/antispam.jpg" title="Selo AntiSpam"></a>
+              <p>
+                <a href="http://helabs.com.br/privacidade" target="_blank" title="Política de Privacidade">Política de Privacidade</a> /
+                <a href="http://helabs.us2.list-manage.com/unsubscribe?u=78c4c9df5db794cd68f358456&id=020e7504d2" target="_blank" title="Retirar o e-mail da lista">Retirar o e-mail da lista</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        
+          <div id="disqus_thread" aria-live="polite">
+            <h6>Comentários</h6>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+          </div>
+        
+
+      </aside>
+    </section>
+	    </div>
+
+	  	<footer id="bottom">
+  
+  <div id="social-footer">
+    <div class="grid">
+    <a ref="#" class="github">Github</a>
+    <a ref="#" class="twitter">Twitter</a>
+    <a ref="#" class="facebook">Facebook</a>
+    <a ref="#" class="rss">RSS</a>
+    </div>
+ </div>
+ 
+	<div class="grid">
+    <div class="collumn">
+      <h3>Últimos Posts</h3>
+      <ul>
+        <li>Melhorando o Email Activity do SendGrid</li>
+        <li>Um pouco sobre Lean UX</li>
+        <li>Como colaborar com projetos open-source</li>
+        <li>Retrospectiva Café com DEV HE:Rio 12/07 </li>
+      </ul>
+      
+    </div>
+    
+  	<div class="grid">
+      <div class="collumn">
+        <h3>GitHub Repos</h3>
+        <ul>
+          <li>startupdev.github.com <span>Startup DEV Website</span></li>
+          <li>pah<span>Command line interface to generate rails apps used at HE:labs.</span> </li>
+          <li>acts_as_hashed<span>acts_as_hashed makes it easier to create unique non-discoverable URIs and all other sorts of uuid you may need in your app.</span> </li>
+        </ul>
+      
+      </div>
+      
+    	<div class="grid">
+        <div class="collumn">
+          <h3>Últimos Tweets</h3>
+          <ul>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget.  adipiscing elit. </li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget. </li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget.  </li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget. Lorem ipsum dolor sit amet </li>
+          </ul>
+      
+        </div>
+    
+		<p>
+		  Copyright &copy; 2013 - Time HE:labs -
+		  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+		</p>
+	</div>
+</footer>
+
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'helabsblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://helabs.com.br/blog/2013/02/06/testes-mais-rapidos-no-rspec/';
+        var disqus_url = 'http://helabs.com.br/blog/2013/02/06/testes-mais-rapidos-no-rspec/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#appId=294124694041877&xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  window.fbAsyncInit = function(){
+    FB.Event.subscribe('edge.create', function(targetUrl) {
+      _gaq.push(['_trackSocial', 'facebook', 'like', targetUrl]);
+    });
+    FB.Event.subscribe('edge.remove', function(targetUrl) {
+      _gaq.push(['_trackSocial', 'facebook', 'unlike', targetUrl]);
+    });
+    FB.Event.subscribe('message.send', function(targetUrl) {
+      _gaq.push(['_trackSocial', 'facebook', 'send', targetUrl]);
+    });
+  }
+</script>
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+  window.twttr = (function (d,s,id) {
+    var t, js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+    js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+    return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+  }(document, "script", "twitter-wjs"));
+  function extractParamFromUri(uri, paramName) {
+    if (!uri) {
+      return;
+    }
+    var regex = new RegExp('[\\?&#]' + paramName + '=([^&#]*)');
+    var params = regex.exec(uri);
+    if (params != null) {
+      return unescape(params[1]);
+    }
+    return;
+  }
+  function trackTwitter(intent_event) {
+    if (intent_event) {
+      var opt_pagePath;
+      if (intent_event.target && intent_event.target.nodeName == 'IFRAME') {
+        opt_target = extractParamFromUri(intent_event.target.src, 'url');
+      }
+      _gaq.push(['_trackSocial', 'twitter', 'tweet', opt_pagePath]);
+    }
+  }
+
+  //Wrap event bindings - Wait for async js to load
+  twttr.ready(function (twttr) {
+    //event bindings
+    twttr.events.bind('tweet', trackTwitter);
+  });
+</script>
+
+
+
+	</body>
+</html>

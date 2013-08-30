@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: lunks | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/lunks/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Como colaborar com projetos open-source]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/31/como-colaborar-com-projetos-open-source/"/>
+    <updated>2013-07-31T15:20:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/31/como-colaborar-com-projetos-open-source</id>
+    <content type="html"><![CDATA[<p>Atualmente, quase todas as empresas de desenvolvimento de software usam algum projeto open-source no seu dia a dia. Nós da HE:labs acreditamos que faz parte do nosso trabalho contribuir de volta. Isto é, colaborar com projetos open-source e melhorar o conteúdo disponível para a comunidade. Mas muitas vezes, desenvolvedores e designers ficam perdidos em como contribuir. Vou tentar listar algumas formas produtivas de fazê-lo, seja em projetos grandes, como o <a href="https://github.com/rails/rails">Rails</a>, ou mesmo em projetos menores, que, porventura, você tenha utilizado e/ou tenha interesse em contribuir.</p>
+
+<!--more-->
+
+
+<h3>Tradução</h3>
+
+<p>Traduzir projetos como o <a href="http://betterspecs.org/">Better Specs</a> é uma excelente forma de começar se você ainda se sente inseguro em contribuir com código. Traduzir permite que você, obrigatoriamente, leia e entenda como funciona. E ainda, facilita que desenvolvedores iniciantes, considerando que não dominam o Inglês, leiam determinado guia ou tutorial e possam aprender determinada tecnologia ou técnica sem ter a linguagem como barreira. A quantidade de materiais em Português é ainda bastante precária e apesar de eu mesmo não dar muita bola para os mesmos, já vi muitos desenvolvedores mais inexperientes procurando incessantemente como resolver determinado problema buscando por uma solução em português.</p>
+
+<h3>Ressucitar issues antigas</h3>
+
+<p><a href="https://github.com/rails/rails/issues">Projetos</a> <a href="https://github.com/joyent/node/issues">maiores</a> <a href="https://github.com/gregbell/active_admin/issues">muitas</a> <a href="https://github.com/robbyrussell/oh-my-zsh/issues">vezes</a> <a href="https://github.com/FortAwesome/Font-Awesome/issues">tem</a> <a href="https://github.com/angular/angular.js/issues">centenas</a> <a href="https://github.com/zurb/foundation/issues">de</a> <a href="https://github.com/mxcl/homebrew/issues">issues</a> <a href="https://github.com/EllisLab/CodeIgniter/issues">abertas</a>, e simplesmente tentar reproduzir o problema para ver se já foi resolvido ou não, e depois reportar é totalmente válido.</p>
+
+<p>Outra forma útil e eficiente de ressucitar issues é tentar isolar o problema com um exemplo em um <a href="https://github.com/plentz/jruby_report">repositório com testes</a>. Isto ajuda outras pessoas a entenderem mais facilmente o problema. Às vezes, o simples fato de isolá-lo já melhora a visibilidade do mesmo e permite desenvolvedores mais experientes e com menos tempo a resolvê-los.</p>
+
+<p>Um simples "isso pode ser fechado?" também ajuda.</p>
+
+<h3>Faça backports e publique-os</h3>
+
+<p>Às vezes você se encontra em um projeto com dependências mais antigas, onde precisa resolver certos problemas que já foram anteriormente resolvidos para versões mais recentes. E ainda, necessita fazer o backport das soluções. Após consertar para seu projeto interno, contribua de volta. Existem inúmeros exemplos:</p>
+
+<ul>
+<li><a href="https://github.com/lunks/kiqstand">lunks/kiqstand</a></li>
+<li><a href="https://github.com/grosser/rails2_asset_pipeline">grosser/rails2_asset_pipeline</a></li>
+<li><a href="https://github.com/grosser/strong_parameters/tree/rails2">grosser/strong_parameters</a></li>
+<li><a href="https://github.com/marcandre/backports">marcandre/backports</a></li>
+</ul>
+
+
+<h3>Melhore a biblioteca para você, extraia para um plugin e faça um pull request</h3>
+
+<p>Uma das coisas mais recorrentes no Rails são desenvolvedores experientes aparecerem no <a href="https://groups.google.com/forum/#!forum/rubyonrails-core">Ruby on Rails Core</a> fazendo sugestões de melhorias, com a intenção de fazê-lo, mas somente se a comunidade aceitar. 90% das vezes a resposta é <em>você pode fazer um pull request?</em>.</p>
+
+<p>A argumentação é simples: Se você quer uma feature, vá lá e faça! Não espere algum commiter ou core member falar que seria legal. Muitas vezes somente vislumbrar uma feature não é nem de perto vislumbrar o esforço para que ela se concretize e que <em>side effects</em> ela pode trazer. Não é à toa que <a href="https://github.com/rails/rails-observers">observers</a> e <a href="https://github.com/rails/activeresource">Active Resource</a> não fazem mais parte do Rails. Mesmo features boas requerem manutenção uma vez incorporadas à algum projeto open-source e isso é custoso.</p>
+
+<p>Com o código pronto, é muito mais fácil convencer alguém a aceitar a sua sugestão. É claro, não garante. Não fique chateado se rejeitarem. Lançar em um plugin (uma <em>gem</em> no vocabulário Ruby) permite que outras pessoas que concordam com você usufruam do seu trabalho e possam fazer parte do lobby para incorporar a sua sugestão à biblioteca que você tanto quer contribuir.</p>
+
+<p>Contribuir com projetos open-source é extremamente gratificante. De quebra, ainda é um excelente portfólio se você pretende se candidatar a alguma vaga <a href="http://helabs.com.br/jobs">em uma empresa legal</a>. E fica bonito no seu <a href="http://osrc.dfm.io/lunks">Open Source Report Card</a>.</p>
+
+<p>E você, tem alguma outra forma interessante de contribuir para projetos open-source?</p>
+
+<p><em>Se quiser ajuda, inclusive para parear em um projeto opensource, <a href="https://twitter.com/lunks">me siga no Twitter</a> e entre em contato.</em></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Métodos estáticos, porque evitá-los]]></title>
+    <link href="http://helabs.com.br/blog/2013/03/13/metodos-estaticos-porque-evita-los/"/>
+    <updated>2013-03-13T08:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/03/13/metodos-estaticos-porque-evita-los</id>
+    <content type="html"><![CDATA[<p>Aparentemente existe na cultura de alguns desenvolvedores uma certa convenção sobre quando usar métodos estáticos. Se é um método relativamente simples, que itera sobre uma coleção dos objetos da classe em si, implementar um método estático é uma forma possível de implementação.</p>
+
+<p>Diga-se que uma API está sendo feita, e é preciso retornar os usuários novos em um JSON bem específico às características da aplicação. Segue um exemplo, extraído de um projeto real:</p>
+
+<!-- more -->
+
+
+<p>```ruby
+class User &lt; ActiveRecord::Base
+  # ...
+  def self.last_users_since(time)</p>
+
+<pre><code>response_data = {new_users: []}
+where(updated_at: time..Time.now).each do |user|
+  user_hash = user.as_new_user
+  response[:new_users] &lt;&lt; (user_hash) if user_hash.present?
+end
+response_data
+</code></pre>
+
+<p>  end
+  # ...
+end
+```</p>
+
+<p>Da forma como se encontra, temos alguns problemas:</p>
+
+<ul>
+<li>É um método relativamente complexo;</li>
+<li>Não é um método fácil de ler;</li>
+<li>Existe um método no objeto user que só serve pra essa API (<code>User#as_new_user</code>);</li>
+<li>É chato de testar, pois só temos o retorno para ser testado.</li>
+</ul>
+
+
+<p>Mas até então, ainda não é um problema.</p>
+
+<p>Só que software é uma coisa que muda constantemente, e o cliente resolveu alterar a API. Agora existe um campo booleano em user chamado <code>synced</code> que dita quais objetos vão ser retornados para a API e, em seguida, considerar os mesmos como sincronizados. Ou seja, uma nova chamada à API não vai mais retornar os mesmos objetos, e sim somente os não sincronizados. Existe também um novo campo no JSON que indica quando a chamada foi resolvida.</p>
+
+<p>Altera-se o método para a nova necessidade:</p>
+
+<p>```ruby
+class User &lt; ActiveRecord::Base
+  # ...
+  def self.sync_unsynchronized_users</p>
+
+<pre><code>response_data = {new_users: [], synced_at: Time.now}
+where(synced: false).each do |user|
+  user_hash = user.as_new_user
+  response[:new_users] &lt;&lt; (user_hash) if user_hash.present?
+  user.sync!
+end
+response_data
+</code></pre>
+
+<p>  end
+  # ...
+end
+```</p>
+
+<p>Todos os problemas ainda existem e dificilmente serão resolvidos se mantermos o método estático.</p>
+
+<p>E o pior de tudo: Mesmo com a introdução acima, a implementação é um pouco confusa. Imagine daqui há 2 meses quando algum desenvolvedor (ou até mesmo o próprio que escreveu) tiver que pegar esse código pra entender. Ainda que seja perfeitamente possível que se compreenda como o mesmo funciona, um método estático não declara intenção, os testes normalmente não são tão claros quanto se gostaria, e introduzir qualquer nova funcionalidade traz uma certa insegurança.</p>
+
+<h2>Extraindo um método estático para uma nova classe</h2>
+
+<p>Extrair um método complexo para uma classe é um dos refactors mais clássicos e, no caso dos métodos estáticos, ataca-se os principais problemas:</p>
+
+<ul>
+<li>Facilita a leitura;</li>
+<li>Declara-se intenções através de nomes de métodos;</li>
+<li>Melhora a testabilidade.</li>
+</ul>
+
+
+<p>O método acima extraído para uma classe ficaria assim:</p>
+
+<p>```ruby
+class User &lt; ActiveRecord::Base
+  # ...
+  def self.sync_unsynchronized_users</p>
+
+<pre><code>UsersSyncer.new.sync!
+</code></pre>
+
+<p>  end
+  # ...
+end</p>
+
+<p>class UsersSyncer
+  attr_reader :recently_synchronized_users
+  def initialize</p>
+
+<pre><code>@recently_synchronized_users = []
+</code></pre>
+
+<p>  end</p>
+
+<p>  def unsyncronized_users</p>
+
+<pre><code>User.where(synced: false)
+</code></pre>
+
+<p>  end</p>
+
+<p>  def sync!</p>
+
+<pre><code>add_and_sync_users
+response_hash
+</code></pre>
+
+<p>  end</p>
+
+<p>  private</p>
+
+<pre><code>def response_hash
+  {new_users: recently_synchronized_users, synced_at: Time.now}
+end
+
+def add_and_sync_users
+  unsyncronized_users.each do |user|
+    mark_as_sync(user)
+    add_user_to_list_if_present(user)
+  end
+end
+
+def mark_as_sync(user)
+  user.sync!
+end
+
+def add_user_to_list_if_present(user)
+  user_hash = format_user_for_api(user)
+  @recently_synchronized_users &lt;&lt; if user_hash.present?
+end
+
+def format_user_for_api(user)
+  # método extraído de User
+end
+</code></pre>
+
+<p>end
+```</p>
+
+<p>Nota-se que o método estático ainda existe, mas somente como uma interface. Esse é um dos poucos casos em que se é aceitável a criação de métodos estáticos, já que é bem prático chamar <code>User.sync_unsynchronized_users</code>.</p>
+
+<p>O método <code>as_new_user</code> foi extraído de <code>User</code> porque neste caso somente
+era usado somente uma vez. Poderia ficar em <code>User</code>, mas acredito ficar
+mais claro desta forma.</p>
+
+<p>Ler a classe acima 2 meses depois requer muito menos esforço por parte do desenvolvedor para compreender o funcionamento da mesma, e com certeza os testes estarão mais claros, além da complexidade ter diminuído consideravelmente.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Modularizando sua aplicação usando Engines]]></title>
+    <link href="http://helabs.com.br/blog/2012/12/12/modularizando-sua-aplicacao-usando-engines/"/>
+    <updated>2012-12-12T12:12:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2012/12/12/modularizando-sua-aplicacao-usando-engines</id>
+    <content type="html"><![CDATA[<p>Este é o primeiro post da série <a href="http://helabs.com.br/blog/categories/engines/">Engines</a> aqui no blog da
+<a href="http://helabs.com.br">HE:labs</a>.</p>
+
+<p>Durante a última semana criamos três engines para agilizar nossos processos
+no <a href="http://startupdev.com.br/">StartupDev</a>:
+<a href="https://github.com/Helabs/omniauth-facebook-rails">omniauth-facebook-rails</a>, <a href="https://github.com/Helabs/sigame">sigame</a> e
+<a href="https://github.com/Helabs/favorite_it">favorite_it</a>. Todas elas partiram de códigos utilizados
+várias vezes em outros projetos. Como qualquer outro projeto open
+source, qualquer colaboração é bem vinda e incentivada.</p>
+
+<!-- more -->
+
+
+<h2>O que são Engines?</h2>
+
+<p><a href="http://guides.rubyonrails.org/engines.html">Engines</a> são aplicações Rails que podem ser incluídas dentro da sua
+aplicação. Um exemplo clássico é o Devise. Ele adiciona entre outras
+coisas, controllers, views e vários helpers, além de disponibilizar
+alguns generators.</p>
+
+<h2>Quando criar Engines?</h2>
+
+<p>Engines servem para diminuir a duplicação de código em suas aplicações
+e/ou permitir um bootstrap mais eficiente de novas aplicações. Casos
+comuns:</p>
+
+<ul>
+<li>Aplicações dentro da empresa que usam um layout e estrutura
+semelhantes.</li>
+<li>Coisas que são feitas em grande parte das aplicações novas e que se
+perde algum tempo copiando código de uma aplicação pra outra.</li>
+</ul>
+
+
+<p>Sem engines, se existe algum bug nessa funcionalidade duplicada, ou uma
+alteração no layout compartilhado, todas as aplicações tem que ser
+conferidas e consertadas. Isso demanda tempo desnecessário e caso você
+esqueça alguma aplicação, pode ser difícil verificar em que situação ela
+se encontra depois de um certo tempo.</p>
+
+<h2>Como criar engines?</h2>
+
+<p>Essa é a parte mais fácil! Apesar de existir algumas formas diferentes
+de fazê-lo, eu prefiro criar sempre uma "full engine", usando o comando:</p>
+
+<p><code>
+rails plugin new nome_da_engine --full
+</code></p>
+
+<p>Isso permite a você criar uma classe disponível em todas
+as suas aplicações. Por exemplo:</p>
+
+<p>```ruby</p>
+
+<h1>Na sua engine, em app/models/tweet_new_user.rb</h1>
+
+<p>class TweetNewUser
+  def initialize(user)
+   @user = user
+  end</p>
+
+<p>  def tweet!
+   Twitter.update("Novo usuário criado! #{@user.username}")
+  end
+end
+```</p>
+
+<p>```ruby</p>
+
+<h1>Na sua app, em app/model/user.rb</h1>
+
+<p>after_create :tweet_about_me
+def tweet_about_me
+  TweetNewUser.new(self).tweet!
+end
+```</p>
+
+<p>It just works&trade;. Tudo que você criar dentro da Engine fica
+disponível na sua aplicação.</p>
+
+<p>No próximo post da série discutiremos sobre alguns problemas que
+você encontra ao desenvolver usando Engines, e como resolvê-los.</p>
+
+<p>Tem alguma tip sobre Engines? Fala aí nos comentários!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hello World]]></title>
+    <link href="http://helabs.com.br/blog/2012/09/19/hello-world/"/>
+    <updated>2012-09-19T08:44:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2012/09/19/hello-world</id>
+    <content type="html"><![CDATA[<p>Olá, mundo! Há algumas semanas atrás pensamos em criar um blog pra toda
+a equipe <em>avassaladora</em> da HE:labs poder publicar o que anda acontecendo
+de interessante em nossos projetos, seja na parte exclusivamente técnica
+ou não.</p>
+
+<!-- more -->
+
+
+<p>Espere posts bem variados por aqui. Podemos discutir desde <a href="http://rodrigopinto.me/2012/09/12/testando-factories-para-manter-a-sanidade/">como testar
+factories</a> até como <a href="http://www.youtube.com/watch?v=EYvTJnWrH2Q">a nossa nova AR:Drone</a> voa bem. Não existe uma
+restrição sobre o que falar, mas vamos tentar usar as categorias da
+forma mais clara possível pra que você possa acompanhar determinado
+assunto ou autor.</p>
+
+<p>Aguardem novos posts em breve!</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: tdd | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/tdd/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Retrospectiva - 2° Café com DEV]]></title>
+    <link href="http://helabs.com.br/blog/2013/02/25/retrospectiva-2-cafe-com-dev/"/>
+    <updated>2013-02-25T12:03:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/02/25/retrospectiva-2-cafe-com-dev</id>
+    <content type="html"><![CDATA[<p>Na última sexta-feira, dia 22 de fevereiro, aconteceu a segunda edição do Café com DEV. O evento reuniu interessados em debater o tema "design, usabilidade e acabamento de software".</p>
+
+<!-- more -->
+
+
+<p><img src="/images/posts/2-cafe-com-dev.jpg" alt="image" /></p>
+
+<p>Novamente estávamos com a casa cheia e o papo foi extremamente rico e dinâmico, regado a café, Red Bull e Heineken. Tivemos inclusive convidados de São Paulo presentes no evento.</p>
+
+<p>Os tópicos discutidos foram baseados no artigo <a href="http://agilewarrior.wordpress.com/2012/10/06/its-not-about-the-unit-tests/">"It's not about unit tests"</a> de <a href="http://agilewarrior.wordpress.com/">Jonathan Rasmusson</a>. O artigo diz que programadores iOS não desenvolvem de forma orientada por testes, mas nem por isso o código escrito por eles é pior ou o aplicativo não funciona. Pelo contrário, muitos aplicativos para iOS são adorados por seus usuários.</p>
+
+<p>A realidade é que o desenvolvimento para iOS tem que seguir uma guideline extremamente rígida. A atualização de um aplicativo em caso de bug também é muito lenta, as vezes ineficiente. Com isso os programadores tendem a se importar mais com que estão entregando, já que qualquer alteração depois de um deploy, pode demorar semanas e custar muito caro para o aplicativo, em termos de reviews negativas.</p>
+
+<p>Num projeto web tradicional, o deploy é muito simples e rápido de se realizar. Com isso, os programadores tendem e ficar um pouco menos preocupados com a qualidade e o refino do produto final, dado que um erro pode rapidamente ser ajustado.</p>
+
+<p>Por fim, a conclusão é que programadores web tem muito a aprender com a comunidade iOS, principalmente no quesito do cuidado e carinho com o trabalho de um verdadeiro artesão de software.</p>
+
+<p>Quem levou esse Café com Dev foi <a href="http://mergulhao.info/">Sylvestre Mergulhão</a>, que além de outros tópicos levantou questões como:</p>
+
+<ul>
+<li>O que define qualidade?</li>
+<li>O que é se importar?</li>
+<li>Conceito de pronto</li>
+<li>Subestimação de esforço</li>
+<li>Pensar um software no visual é bom (desenho de telas)</li>
+<li>Menos é mais</li>
+<li>Se importe também com o que não tem interface</li>
+<li>Que tipo de artista você prefere ser?</li>
+</ul>
+
+
+<p>Abaixo temos um link para vídeo do bate-papo para quem não pode estar presente. O video começa aos 3:48s.</p>
+
+<p><a href="http://twitcam.livestream.com/dwwho">Video do Café com DEV</a></p>
+]]></content>
+  </entry>
+  
+</feed>

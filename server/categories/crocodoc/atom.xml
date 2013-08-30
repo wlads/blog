@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Crocodoc | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/crocodoc/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Incorpore documentos em sua aplicação com Crocodoc]]></title>
+    <link href="http://helabs.com.br/blog/2013/05/06/incorpore-documentos-em-sua-aplicacao-com-crocodoc/"/>
+    <updated>2013-05-06T14:56:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/05/06/incorpore-documentos-em-sua-aplicacao-com-crocodoc</id>
+    <content type="html"><![CDATA[<p>O <a href="https://crocodoc.com/">Crocodoc</a> é uma forma fácil de embutir documentos na sua aplicação protegendo-os de download e CTRL + C/ CTRL + V. É possível adicionar comentários no texto, criar um thumbnail de qualquer arquivo doc, xls e pdf. E ainda, pode-se adicionar uma marca d'água no documento, protegendo-o de print screen.
+Para fazer essa integração é necessário fazer um cadastro no site do <strong>crocodoc</strong> para conseguir o <em>token</em>. E em seguida, o acesso ao dashboard para acompanhar o gráfico com os uploads dos documentos.</p>
+
+<p>O <em>token</em> é necessário para fazer qualquer transação com a API do <strong>crocodoc</strong>. Ele se parece com o exemplo abaixo:</p>
+
+<p><code>ruby
+token: A7s7BwvDKOp@nqtYmQfPyLNx
+</code></p>
+
+<!-- more -->
+
+
+<p>Dashboard:</p>
+
+<p><img src="/images/posts/2013-05-02/crocodoc_dashboard.jpg" alt="image" /></p>
+
+<p>Será usado o <a href="https://github.com/crocodoc/crocodoc-ruby">crocodoc-ruby</a>, a gem oficial indicada no site do <strong>crocodoc</strong>.</p>
+
+<p>Para fazer o upload dos documentos é bem fácil! Basta usar as 2 linhas de código abaixo: (Explicarei mais adiante sobre o <em>path</em> do arquivo.)</p>
+
+<p><code>ruby
+Crocodoc.api_token = "A7s7BwvDKOp@nqtYmQfPyLNx"
+uid = Crocodoc::Document.upload(path_do_arquivo)
+</code></p>
+
+<p>É gerado um <em>uid</em> que através dele será possível acessar o documento mais tarde. Portanto, grave esse uid para cada arquivo que for feito upload.</p>
+
+<p>Existem 2 formas de visualizar o documento: por Iframe ou pela <a href="https://crocodoc.com/docs/js-intro/">API</a> via javascript. Nesta, tive alguns problemas com o layout. Toda vez que um usuário for visualizar um arquivo é necessário gerar uma sessão específica do <strong>crocodoc</strong>. Lembrando que cada sessão é válida por 1 hora. Para gerá-la basta usar o seguinte código:</p>
+
+<p><code>ruby
+Crocodoc.api_token = " A7s7BwvDKOp@nqtYmQfPyLNx "
+session_key = Crocodoc::Session.create(document.uid, {'is_editable' =&gt; false, 'is_downloadable' =&gt; false, 'is_copyprotected' =&gt; true})
+</code></p>
+
+<p>Na sessão, ainda é possível passar alguns parâmetros como proteger o documento de cópia, download e edição. Estas opções são as mais importantes, mas existem outras como filtros e sidebar.</p>
+
+<p>É necessária uma cópia do projeto que está utilizando o <strong>crocodoc</strong> na <em>Amazon S3</em>.
+Logo, o processo de upload do documento para a Amazon é o mesmo. Nós optamos pela <em>gem</em> <a href="https://github.com/jnicklas/carrierwave">carrierwave</a>.</p>
+
+<p>Assim que o envio para a <em>Amazon S3</em> é finalizado, gera-se uma URL. A partir dela, é feita o upload do documento para o <strong>crocodoc</strong>. Outro item fundamental é o suporte. As dúvidas enviadas são esclarecidas através do email, com no máximo, 24 horas.</p>
+
+<p>Nesse <a href="https://crocodoc.com/see-it-in-action/">link</a> é possível ver o <strong>crocodoc</strong> em ação.</p>
+]]></content>
+  </entry>
+  
+</feed>

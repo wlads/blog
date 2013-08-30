@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ramon page | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/ramon-page/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[HE:labs in Rails Girls RJ]]></title>
+    <link href="http://helabs.com.br/blog/2013/01/18/he-labs-in-rails-girls-rj/"/>
+    <updated>2013-01-18T12:20:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2013/01/18/he-labs-in-rails-girls-rj</id>
+    <content type="html"><![CDATA[<p><img src="/images/posts/rails-gils-logo.png" alt="image" /></p>
+
+<p>Autor convidado: <em>Organização Rails Girls RJ</em></p>
+
+<!-- more -->
+
+
+<p>Desde que resolvemos realizar o Rails Girls aqui no Rio, a HE:labs se prontificou não somente
+com o apoio financeiro, que facilitou bastante, mas com qualquer tipo necessidade que
+poderíamos ter. Nosso primeiro parceiro patrocinador e ainda abrindo portas para outras
+parcerias que conquistamos ao longo do período de preparação para o Rails Girls RJ.</p>
+
+<p>Dentre os nossos palestrantes, dois representantes da HE:labs, estiveram presentes no time,
+Rodrigo Pinto com a palestra Introdução ao RubyOnRails e Ramon Page com a palestra
+“Programação Front-end”, além da contribuição na parte da tarde do evento, como coaches.</p>
+
+<p>Por fim, a organização do Rails Girls RJ não tem palavras para agradecer à HE:labs. Esperamos
+que essa postura se espalhe no meio corporativo tecnológico, que mais empresas sigam o
+exemplo dado pela HE:labs, pois assim as comunidades de Desenvolvimento no Rio de Janeiro
+se fortalecem cada vez mais.</p>
+
+<p>Até a próxima edição!</p>
+
+<p><strong>Fotos do evento</strong></p>
+
+<p><img src="/images/posts/rails-gils-rodrigo-pinto.jpg" alt="image" />
+<img src="/images/posts/rails-gils-rodrigo-pinto-2.jpg" alt="image" />
+<img src="/images/posts/rails-gils-ramon-page.jpg" alt="image" />
+<img src="/images/posts/rails-gils-ramon-page-2.jpg" alt="image" /></p>
+]]></content>
+  </entry>
+  
+</feed>

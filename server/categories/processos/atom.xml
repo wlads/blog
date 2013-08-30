@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: processos | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/processos/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ferramentas para Designers]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/01/ferramentas-para-designers-aluisio/"/>
+    <updated>2013-07-01T10:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/01/ferramentas-para-designers-aluisio</id>
+    <content type="html"><![CDATA[<p>Quando se projeta interfaces para aplicações web diariamente, uma das coisas mais importantes é ter uma gama de ferramentas para deixar o processo de trabalho mais produtivo.</p>
+
+<p>Nesse post, irei listar algumas ferramentas que eu uso no meu dia a dia. E que agilizam o design e desenvolvimento Front-end.</p>
+
+<!-- more -->
+
+
+<h3>Alguns Plugins</h3>
+
+<p><img src="/images/plugins.png" alt="image" /></p>
+
+<p><a href="http://littleipsum.com/"><strong>Little Ipsum</strong></a>
+Apesar de existirem diversos geradores de <em>Lorem Ipsum</em> pela web , o <strong>Little Ipsum</strong> funciona de maneira mais prática como um plugin para OS X.</p>
+
+<p><a href="http://www.jumpzero.com/frank/"><strong>Frank DeLoupe</strong></a>
+Este color-picker também funciona como um plugin para OS X. Você pode utilizá-lo para copiar o <em>rgb</em> ou <em>hexadecimal</em> de uma cor. Ele também guarda o histórico das últimas cores que você utilizou.</p>
+
+<p><a href="http://photoshopscripts.wordpress.com/2013/02/03/corner-editor-photoshop-script/"><strong>Corner Editor</strong></a>
+Para quem sofre com criação e edição de bordas arredondas em elementos no photoshop, este script é uma mão na roda.</p>
+
+<p><a href="http://guideguide.me/"><strong>Guide Guide</strong></a>
+Criação de <em>grids</em> no Photoshop não é uma tarefa muito agradável. Este script permite criar linhas guias para o seu documento com apenas alguns cliques .</p>
+
+<h3>Controle de Arquivos</h3>
+
+<p><img src="/images/layervault.png" alt="image" /></p>
+
+<p>Além do já consagrado Dropbox, algumas ferramentas estão sendo criadas com o foco no controle de arquivos para designers .
+O <a href="https://www.pixelapse.com/"><strong>Pixel Lapse</strong></a> e o <a href="https://layervault.com/"><strong>Layer Vault</strong></a> são aplicações para o controle, armazenamento e versionamento de arquivos. Eles podem melhorar muito o seu workflow e agilizar o processo entre o time.</p>
+
+<h3>Grids</h3>
+
+<p><img src="/images/grid.png" alt="image" /></p>
+
+<p>O site <a href="https://gridsetapp.com/"><strong>Gridset</strong></a> , além da criação de grids, permite também o gerenciamento dos seus grids. Conta também com um grande número de templates já definidos de grids.</p>
+
+<h3>Cores</h3>
+
+<p><img src="/images/colors.png" alt="image" /></p>
+
+<p>O <a href="https://kuler.adobe.com/"><strong>Kuler</strong></a> é um aplicativo bastante avançado e possui uma série de recursos para a criação e gerenciamento de paleta de cores. Além de ter integração com os softwares da Adobe.</p>
+
+<p>Já o <a href="http://www.colourlovers.com/"><strong>Color Lovers</strong></a>, funciona como uma  comunidade onde você consegue criar, gerenciar e ver ótimas referências de paletas criadas por outros designers.</p>
+
+<h3>Tipografia</h3>
+
+<p><img src="/images/type.png" alt="image" /></p>
+
+<p>Web fonts já estão difundidas e sendo amplamente utilizadas, mas são muitas opções, tornando difícil para encontrar e gerenciar todas elas. O <a href="http://typecast.com/"><strong>Typecast</strong></a> é uma aplicação excelente para poder gerenciar, organizar por projetos, comparar fontes, dentre outros recursos.</p>
+
+<h3>HTML e CSS</h3>
+
+<p><img src="/images/sublime.png" alt="image" /></p>
+
+<p><strong>Live Reload</strong></p>
+
+<p>Para fazer o design direto no browser, esta ferramenta é essencial. O <a href="http://livereload.com/"><strong>Live Reload</strong></a> faz com que ao alterar um arquivo HTML, CSS ou uma imagem, o navegador seja atualizado sem a necessidade de um reload na página manualmente.</p>
+
+<p><strong>Browser Stack</strong></p>
+
+<p>O <a href="http://www.browserstack.com/"><strong>Browser Stack</strong></a> é uma aplicação web para testes cross-browser. Com ele, você consegue visualizar o seu projeto em diferentes browsers e versões rapidamente.</p>
+
+<h3>E você?</h3>
+
+<p>Já usa algum destes recursos? Tem outras sugestões para acrescentar?
+Compartilhe suas ferramentas nos comentários também!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Trabalho remoto, e daí?]]></title>
+    <link href="http://helabs.com.br/blog/2013/04/18/trabalho-remoto-e-dai/"/>
+    <updated>2013-04-18T11:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/04/18/trabalho-remoto-e-dai</id>
+    <content type="html"><![CDATA[<p><img src="/images/posts/2013-04-17/RemoteWorking.jpg" alt="image" /></p>
+
+<p>Faço parte de alguns seletos grupos de pessoas: o primeiro desses grupos é o de desenvolvedores da HE:labs. O segundo, totalmente relacionado ao primeiro, de desenvolvedor remoto.</p>
+
+<p>Desde o início dos meus trabalhos de desenvolvimento de softwares e web, eu já trabalhava remotamente, mas nunca <em>fulltime</em>, era sempre meu trabalho secundário. E a HE:labs me deu a oportunidade de exercer minhas atividades, remotamente, em tempo integral.</p>
+
+<!-- more -->
+
+
+<p>Mas qual é a diferença? É bom? É mais fácil?</p>
+
+<p>Tirando a conclusão óbvia de que trabalho remoto significa remoto, existem algumas diferenças, mas também, muitas semelhanças. É um tipo de trabalho como qualquer outro, porém, com desafios e valores diferentes.</p>
+
+<p>No trabalho remoto, o empregador e seus colegas de trabalho precisam ter total confiança em você. E, como isto é uma situação atípica, o profissional remoto precisa fazer valer essa confiança depositada. Para quem gosta desse desafio, só tem a ganhar. E para a empresa que aposta, também.</p>
+
+<p><img src="/images/posts/2013-04-17/Polar_bear_Arctic_ice.jpg" alt="image" /></p>
+
+<p>Um dos maiores desafios desse tipo de trabalho é a aparente solidão. Apesar de existirem diversas maneiras de comunicação e de contato constante, é real a sensação de muitas vezes estar trabalhando sozinho.</p>
+
+<p>O trabalhador remoto precisa ter umas características básicas. Não apenas para continuar remotamente, mas também, para gostar de trabalhar das seguintes formas:</p>
+
+<h1>Auto gestão</h1>
+
+<p>Eu sou responsável por me manter focado e trabalhar nas minhas tarefas da melhor forma possível e trazer o melhor resultado que eu puder. Não há um gerente ou alguém verificando se estou mesmo trabalhando ou se estou sentado no sofá assistindo <em>Sessão da Tarde</em> e isso leva a uma das diferenças básicas que eu sinto como desenvolvedor remoto:</p>
+
+<p>Enquanto um profissional normal tem seu valor baseado, principalmente, no tempo que fica na empresa (das 8:00 às 17:00, por exemplo), em remoto, minha produção é o que se destaca e é o principal valor. Nessa forma de trabalho não dá para ficar olhando para o relógio e esperar dar 18:00 e simplesmente parar de fazer suas obrigações.</p>
+
+<p>Não existe tempo fixo, mas sim, uma cobrança própria por produtividade. Mas não é por pressão, é por gostar do que faço e, principalmente, gostar de onde faço.</p>
+
+<p>Trabalho em maior parte, diretamente de casa. Tenho todo o meio-ambiente familiar com suas rotinas, barulhos e distrações. Tenho uma filha de 2 anos que parece que aprendeu que quando o relógio passa das 19 horas, ela tem que me tirar da frente do notebook.</p>
+
+<p>Isso nos leva para a próxima característica:</p>
+
+<h1>Disciplina</h1>
+
+<p>Não me entendam mal, uma das pessoas menos disciplinadas e mais desorganizadas que conheço sou eu. Sou filho de um militar que era altamente disciplinado. Essa foi uma característica que não herdei (nota pessoal: considerar a possibilidade de ter sido adotado). No entanto, acredito totalmente que a forma como a HE:labs trabalha torna mais fácil esse tipo de trabalho. Somos times pequenos, auto geridos de desenvolvimento ágil com tarefas definidas e adequadas ao escopo de trabalho. Nunca fui tão produtivo e focado ao mesmo tempo. Ever!</p>
+
+<p>E o porquê disso é o que nos leva ao terceiro ponto:</p>
+
+<h1>Auto motivação</h1>
+
+<p>Esta era uma das características mais difíceis para eu conseguir ter.
+Veja bem, gosto de programar. Sempre falei para as pessoas que me perguntam que programar é como se fosse um mago, que com palavras mágicas faz coisas incríveis acontecerem.... ou gifs piscarem na tela, dependendo do designer.
+Mas de um modo geral, a única motivação que eu tinha era a de ganhar mais. E é lógico que esta não é uma motivação que faz bem. Em geral, isso nos faz trabalhar mais, ficarmos mais cansados e extressados e produzir menos.... <a href="http://www.ted.com/talks/dan_pink_on_motivation.html">às vezes, bem menos.</a></p>
+
+<p>O que me motiva atualmente é a falta de rotina. Hoje, posso programar da varanda da minha casa. Amanhã, poderei trabalhar em uma co-working. No próximo dia, poderei levar minha família para o shopping e trabalhar de um <em>coffee shop</em>. Posso ser produtivo de diversas maneiras, e espero dentro de algum tempo, trabalhar saltando de paraquedas (seria essa a definição de XP?).</p>
+
+<p>O que me motiva é estar em um ambiente familiar, onde posso acompanhar a primeira vez que minha filha descobriu algo e não um repeteco do tipo "mostra pro papai agora que todo mundo já viu". O que me motiva é manter isso tudo e ser cada vez melhor apenas por ser melhor.</p>
+
+<p>Apenas gostaria de ressaltar que não estou de forma alguma dizendo que o trabalho da maneira tradicional não funciona ou que deixa sempre infeliz. Ou mesmo, que somente os profissionais remotos ficam com as melhores garotas. Mas posso dizer com quase absoluta certeza que, se a empresa aposta em trabalho remoto, é um bom lugar para se trabalhar.</p>
+
+<p>Acredito que trabalho remoto não seja para todos. Existem pessoas que são muito mais produtivas quando vão para o escritório, ou que precisam de um tipo de ambiente propício a ele. Bem como existem metodologias que dificultam esse tipo de trabalho funcionar bem. Não é um tipo de trabalho mais fácil, mas para quem está disposto a pagar o preço, vale a pena.</p>
+]]></content>
+  </entry>
+  
+</feed>

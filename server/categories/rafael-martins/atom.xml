@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: rafael martins | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/rafael-martins/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Retrospectiva Café com DEV - HE:Rio 14/06]]></title>
+    <link href="http://helabs.com.br/blog/2013/06/27/retrospectiva-cafe-com-dev-herio/"/>
+    <updated>2013-06-27T10:30:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/06/27/retrospectiva-cafe-com-dev-herio</id>
+    <content type="html"><![CDATA[<p>No último encontro do Café com DEV da HE:Rio, no dia 14/06, contamos com <a href="https://plus.google.com/110170840223146627892/posts">Rafael Martins</a> falando sobre o tema "Construindo uma API de dados esportivos que responde a 6000 req/s".</p>
+
+<!--more-->
+
+
+<p>A palestra bombou! Muita gente acompanhou presencial e ao vivo pelo Eventials! Não viu a palestra ainda? Então <a href="https://www.eventials.com/pt-br/helabs/cafe-com-dev-he-rio/">clique aqui</a> e confira!</p>
+
+<p>A galera interagiu bastante com o palestrante e foi muito proveitoso para todos! O evento aconteceu no Espaço Curto Circuito (Av 13 de maio, nº13 - sala 616, Cinelândia) e foi regado a snacks, café e RedBull.</p>
+
+<p><img src="/images/cafecomdev14.JPG" alt="image" /></p>
+
+<p>Lembrando que esta semana a HE:Rio receberá, também no Espaço Curto Circuito, <a href="https://twitter.com/diegodukao">Diego Dukão</a> falando sobre "Porque você não deve fazer seu app nativo (ou introdução ao PhoneGap)". Para se inscrever, <a href="https://docs.google.com/a/helabs.com.br/forms/d/1Nk_RWEfTLwPghczIAZnbCUaSDPhZd7Kna20wk0IQblk/viewform">clique aqui</a>.</p>
+
+<p>E também, HE:Londrina contará com Flávio Granero falando sobre "Trabalho remoto" no Espaço Junt.us. Para se inscrever acesse <a href="https://www.facebook.com/events/530311203673193/">o evento no Facebook</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

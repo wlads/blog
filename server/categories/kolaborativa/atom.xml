@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: kolaborativa | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/kolaborativa/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Retrospectiva - evento Kolaborativa]]></title>
+    <link href="http://helabs.com.br/blog/2013/01/29/retrospectiva-evento-kolaborativa/"/>
+    <updated>2013-01-29T10:30:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2013/01/29/retrospectiva-evento-kolaborativa</id>
+    <content type="html"><![CDATA[<p>Neste último sábado dia 26 de janeiro, fui ao <a href="http://kolaborativa.com.br">Kolaborativa</a>, um evento que tem como intenção criar uma comunidade ativa de Profissionais da Web. A ideia é que seja um evento mensal que reúna desde o programador ao profissional de mídias sociais em meio de palestras, mesas de discussão, networking, etc.</p>
+
+<!--more-->
+
+
+<p>Este primeiro evento teve como tema o segmento que mais cresce em termos de tecnologia, o segmento mobile. Aceitei o convite do Vinícius Machado para participar da mesa de discussão do mercado Mobile, representando a HE:Labs, junto com a <a href="https://twitter.com/barbaracones">Barbara Wolff</a> da <a href="https://mineo.co">Mineo.co</a>/<a href="http://engage.is">Engage.is</a> e <a href="https://twitter.com/jotaefe">João Felipe Jotaefe</a> - Community Manager da BlackBerry.</p>
+
+<p><img src="/images/posts/kolaborativa.jpg" alt="image" /></p>
+
+<p>Foi uma experiência muito legal poder discutir desde os vigentes sistemas operacionais móveis até o que esperamos que surja como novas tecnologias. A participação do público foi essencial pra saber quais são as maiores preocupações tanto de usuários quanto de desenvolvedores mobile.</p>
+
+<p>Fora isso o evento contou com outras palestras interessantes como: front-end com layout fluido, opções de desenvolvimento para BB10 e JQuery Mobile para contruir web apps.</p>
+
+<p>Esperamos que todos passem a kolaborar com o evento para que ele cresça e se torne efetivamente uma comunidade.</p>
+]]></content>
+  </entry>
+  
+</feed>

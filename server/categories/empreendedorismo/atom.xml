@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: empreendedorismo | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/empreendedorismo/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Global Entrepreneurship Congress 2013 no Rio de Janeiro]]></title>
+    <link href="http://helabs.com.br/blog/2013/04/01/gec2013/"/>
+    <updated>2013-04-01T09:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/04/01/gec2013</id>
+    <content type="html"><![CDATA[<p>Na semana reatrasada aconteceu aqui no Rio de Janeiro o <a href="http://gec2013.com/">Global Entrepreneurship Congress 2013</a>, que é um congresso global realizado pela Endeavour em todo o mundo, onde empreendedores, investidores, pesquisadores, líderes e políticos trabalham em conjunto para ajudar a trazer idéias para a vida, impulsionar o crescimento econômico e ampliar o bem-estar humano.</p>
+
+<!-- more -->
+
+
+<p>Mais de 40 delegações de vários países do mundo estiveram presente participando ativamente do evento. Nós da HE:labs também estivemos presente e participamos de algumas atividades.</p>
+
+<p>O último dia foi mais marcante, pois foi a inauguração oficial do <a href="http://startupbrasil.mcti.gov.br/">Startup Brasil</a>, programa do governo brasileiro para acelerar o desenvolvimento de empresas nascentes de base tecnológica. O programa irá disponibilizar R$ 40 milhões e tem a meta de acelerar 150 startups de software e serviços de TI até 2014.</p>
+
+<p>Fique ligado no edital.</p>
+]]></content>
+  </entry>
+  
+</feed>

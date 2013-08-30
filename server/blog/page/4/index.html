@@ -1,0 +1,617 @@
+	
+	<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <title>Blog da HE:labs</title>
+  <meta name="author" content="Time HE:labs">
+
+  
+  <meta name="description" content="Protegendo seus buckets do S3 com chaves IAM Você usa buckets do S3 para armazenar os uploads e assets da sua aplicação? A maioria das pessoas usam &hellip;">
+  
+
+  <!-- Facebook stuff taken from main page, not sure it should go here -->
+  <meta property="og:title" content="Blog da HE:labs"/>
+  <meta property="og:site_name" content="HE:labs blog"/>
+  <meta property="og:image" content="http://helabs.com.br/images/logo-icon.png"/>
+  <meta property="og:description" content="Protegendo seus buckets do S3 com chaves IAM Você usa buckets do S3 para armazenar os uploads e assets da sua aplicação? A maioria das pessoas usam &hellip;" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://helabs.com.br/blog/blog/page/4/">
+  <link href="http://helabs.com.br/favicon.png" rel="icon">
+
+  <!-- CSS --> 
+  <link href="/blog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  
+
+  <!-- JS -->
+  <script type="text/javascript" src="/blog/javascripts/jquery.js"></script>
+  <script type="text/javascript" src="/blog/javascripts/jquery.parallax.min.js"></script>
+  <script type="text/javascript" src="/blog/javascripts/main.js"></script>
+
+  <!--
+  <script src="/blog/javascripts/modernizr-2.0.js"></script>
+  <script src="/blog/javascripts/ender.js"></script>
+  <script src="/blog/javascripts/octopress.js" type="text/javascript"></script>
+  -->
+  
+  <link href="/blog/atom.xml" rel="alternate" title="Blog da HE:labs" type="application/atom+xml">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16326763-1']);
+  _gaq.push(['_setDomainName', 'helabs.com.br']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+	<body   >
+		
+		<!-- #top -->
+<header id="top">
+	<div class="grid">
+		<h1 class="title">
+			<a href="/">
+				<img src="/blog/images/logotipo.png" />
+			</a>
+		</h1>	
+	</div>
+</header>
+<!-- /#top -->
+
+	    <div id="content">
+	    	<!-- #posts -->
+<section id="posts" class="streaming"> 
+  <div class="wrap">
+
+    
+    
+    
+      <article>
+  <div class="grid">
+
+    
+      <h2 class="post-title"><a href="/blog/2013/05/09/protegendo-seus-buckets-do-s3-com-chaves-iam/">Protegendo seus buckets do S3 com chaves IAM</a></h2>
+    
+
+
+    
+      <div class="text"><p><img src="/blog/images/posts/2013-05-08/bucket.jpg" alt="image" /></p>
+
+<p>Você usa <strong>buckets</strong> do S3 para armazenar os uploads e assets da sua aplicação?</p>
+
+<p>A maioria das pessoas usam os mesmos dados de acesso (<em>access key</em> e <em>secret access key</em>) para acessar o(s) bucket(s), tanto em desenvolvimento quanto em produção.</p>
+
+<p>Isso pode trazer alguns problemas para a aplicação&#8230;</p>
+
+</div>
+      
+    
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-09T11:00:00-03:00" pubdate data-updated="true">May 9<span>th</span>, 2013</time>
+    
+  </div>
+</article>  
+    
+    
+      <article>
+  <div class="grid">
+
+    
+      <h2 class="post-title"><a href="/blog/2013/05/06/incorpore-documentos-em-sua-aplicacao-com-crocodoc/">Incorpore documentos em sua aplicação com Crocodoc</a></h2>
+    
+
+
+    
+      <div class="text"><p>O <a href="https://crocodoc.com/">Crocodoc</a> é uma forma fácil de embutir documentos na sua aplicação protegendo-os de download e CTRL + C/ CTRL + V. É possível adicionar comentários no texto, criar um thumbnail de qualquer arquivo doc, xls e pdf. E ainda, pode-se adicionar uma marca d&#8217;água no documento, protegendo-o de print screen.
+Para fazer essa integração é necessário fazer um cadastro no site do <strong>crocodoc</strong> para conseguir o <em>token</em>. E em seguida, o acesso ao dashboard para acompanhar o gráfico com os uploads dos documentos.</p>
+
+<p>O <em>token</em> é necessário para fazer qualquer transação com a API do <strong>crocodoc</strong>. Ele se parece com o exemplo abaixo:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">token</span><span class="p">:</span> <span class="no">A7s7BwvDKOp</span><span class="vi">@nqtYmQfPyLNx</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+</div>
+      
+    
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-06T14:56:00-03:00" pubdate data-updated="true">May 6<span>th</span>, 2013</time>
+    
+  </div>
+</article>  
+    
+    
+      <article>
+  <div class="grid">
+
+    
+      <h2 class="post-title"><a href="/blog/2013/04/26/retrospectiva-5-cafe-com-dev/">Retrospectiva - Café com DEV 19/04</a></h2>
+    
+
+
+    
+      <div class="text"><p>Mais uma vez aconteceu na sede da HE:labs da Cidade Maravilhosa, o nosso Café com DEV! O tema da vez foi Usabilidade e pensamento na era pós-pc. <a href="https://twitter.com/indistinguivel">Marcelo Pereira</a> comandou a palestra e nos mostrou as evoluções das máquinas. E claro, tudo regado a Heineken e Redbull!</p>
+
+</div>
+      
+    
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-26T12:00:00-03:00" pubdate data-updated="true">Apr 26<span>th</span>, 2013</time>
+    
+  </div>
+</article>  
+    
+    
+      <article>
+  <div class="grid">
+
+    
+      <h2 class="post-title"><a href="/blog/2013/04/18/trabalho-remoto-e-dai/">Trabalho remoto, e daí?</a></h2>
+    
+
+
+    
+      <div class="text"><p><img src="/blog/images/posts/2013-04-17/RemoteWorking.jpg" alt="image" /></p>
+
+<p>Faço parte de alguns seletos grupos de pessoas: o primeiro desses grupos é o de desenvolvedores da HE:labs. O segundo, totalmente relacionado ao primeiro, de desenvolvedor remoto.</p>
+
+<p>Desde o início dos meus trabalhos de desenvolvimento de softwares e web, eu já trabalhava remotamente, mas nunca <em>fulltime</em>, era sempre meu trabalho secundário. E a HE:labs me deu a oportunidade de exercer minhas atividades, remotamente, em tempo integral.</p>
+
+</div>
+      
+    
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-18T11:00:00-03:00" pubdate data-updated="true">Apr 18<span>th</span>, 2013</time>
+    
+  </div>
+</article>  
+    
+    
+      <article>
+  <div class="grid">
+
+    
+      <h2 class="post-title"><a href="/blog/2013/04/11/passwordless-login/">Passwordless Login</a></h2>
+    
+
+
+    
+      <div class="text"><p><img src="/blog/images/posts/passwordless.png" alt="image" /></p>
+
+<p>Neste post, vou mostrar como fazer uma aplicação permitir que o usuário faça login sem precisar digitar/lembrar de sua senha. Não será nada complexo demais e nem uma solução perfeita. No final, postarei o link para uma aplicação exemplo que preparei exemplificando o método.</p>
+
+<h1>Por que fazer login sem senha?</h1>
+
+<p>Fazer login está se tornando uma tarefa complicada. Agora que temos muitos usuários acessando aplicações pelo smartphone, digitar a senha na telinha do telefone é complicado. Mesmo nas telas gigantes dos celulares da Samsung, é chato e ruim. Precisamos de uma maneira mais simples de fazê-lo.</p>
+
+</div>
+      
+    
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-11T11:15:00-03:00" pubdate data-updated="true">Apr 11<span>th</span>, 2013</time>
+    
+  </div>
+</article>  
+    
+    
+      <article>
+  <div class="grid">
+
+    
+      <h2 class="post-title"><a href="/blog/2013/04/11/estimar-e-colocar-o-peso-ideal-de-trabalho-em-cada-iteracao/">Estimar é colocar o peso ideal de trabalho em cada iteração</a></h2>
+    
+
+
+    
+      <div class="text"><p><img src="/blog/images/posts/2013-04-12-estimar-e-colocar-o-peso-ideal-de-trabalho-em-cada-sprint.jpg" alt="http://www.flickr.com/photos/mermadon_1967/3682014732/sizes/l/in/photostream/" /></p>
+
+<p>Imagine a seguinte situação: você pretende escalar uma montanha, bem difícil e perigosa, e deve levar apenas uma mochila. Neste caso, você levaria uma mochila pesada ou uma leve?</p>
+
+</div>
+      
+    
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-11T11:00:00-03:00" pubdate data-updated="true">Apr 11<span>th</span>, 2013</time>
+    
+  </div>
+</article>  
+    
+    
+      <article>
+  <div class="grid">
+
+    
+      <h2 class="post-title"><a href="/blog/2013/04/09/retrospectiva-4-cafe-com-dev/">Retrospectiva - 4° Café com DEV</a></h2>
+    
+
+
+    
+      <div class="text"><p>Na última sexta, dia 5 de abril, aconteceu o nosso quarto Café com DEV com participação de Rodrigo Vidal. O palestrante da vez explicou como ocorre a Programação Funcional e seus mecanismos.</p>
+
+</div>
+      
+    
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-09T14:00:00-03:00" pubdate data-updated="true">Apr 9<span>th</span>, 2013</time>
+    
+  </div>
+</article>  
+    
+    
+      <article>
+  <div class="grid">
+
+    
+      <h2 class="post-title"><a href="/blog/2013/04/07/remova-ifs-e-elses-em-ruby-utilizando-o-null-object-pattern/">Remova Ifs e Elses em Ruby utilizando o Null Object Pattern</a></h2>
+    
+
+
+    
+      <div class="text"><p>O <a href="https://en.wikipedia.org/wiki/Null_object">Null Object pattern</a> tem como principal objetivo tratar o comportamento do valor <code>Null</code>, ou em ruby o <code>nil</code>.
+Sabemos que em algum momento de nosso código podemos ter referências nulas, sendo assim, temos que verificar se tal refêrencia é nula ou não para não recebermos uma <em>exception</em> como a seguinte:</p>
+
+<pre><code>NoMethodError: undefined method `name' for nil:NilClass
+</code></pre>
+
+</div>
+      
+    
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-07T11:16:00-03:00" pubdate data-updated="true">Apr 7<span>th</span>, 2013</time>
+    
+  </div>
+</article>  
+    
+    
+      <article>
+  <div class="grid">
+
+    
+      <h2 class="post-title"><a href="/blog/2013/04/04/retrospectiva-3-cafe-com-dev/">Retrospectiva - 3° Café com DEV</a></h2>
+    
+
+
+    
+      <div class="text"><p>No dia 15, ocorreu o nosso terceiro Café com DEV. Júnior Carvalho, desenvolvedor de software e palestrante do dia, falou sobre notas fiscais eletrônicas(NF-e), DANFE e ICMS.</p>
+
+</div>
+      
+    
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-04T10:21:00-03:00" pubdate data-updated="true">Apr 4<span>th</span>, 2013</time>
+    
+  </div>
+</article>  
+    
+    
+      <article>
+  <div class="grid">
+
+    
+      <h2 class="post-title"><a href="/blog/2013/04/04/sebrae-startup-rio/">SEBRAE Startup Rio</a></h2>
+    
+
+
+    
+      <div class="text"><p>As Startups brasileiras vêm crescendo cada vez mais e o Rio de Janeiro concentra boa parte dos principais negócios do ramo como investidores e aceleradoradas, entre outros. Cinco das nove aceleradoras contempladas para o Programa Start-Up Brasil do Governo Federal estão localizadas no Rio.</p>
+
+<p>O SEBRAE RJ e a StartupBase estão organizando um evento para aproximar as Startups, aceleradoras, investidores e os fatores importantes para as associações. E para debater sobre oportunidades, investimento e sucesso, estarão presentes diversos participantes. Dentre eles, o Rafael Lima sócio e mentor estratégico da <a href="http://www.helabs.com.br">HE:labs</a>, que se apresentará na noite do dia 09/04, no debate sobre &#8220;o ecossistema de startups do Rio&#8221;.</p>
+
+<p>O evento acontecerá nos dias 09 e 10 de abril, das 18h30 às 22h30, na sede da SEBRAE RJ (Rua Santa Luzia, 685, 9o andar). Entrada franca, <a href="https://www.sympla.com.br/sebrae-startup-rio__12124.html">faça sua inscrição</a> e garanta sua vaga.</p>
+</div>
+      
+    
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-04T07:45:00-03:00" pubdate data-updated="true">Apr 4<span>th</span>, 2013</time>
+    
+  </div>
+</article>  
+    
+
+
+    <div id="pagination">
+      <div class="grid">
+        
+          <a class="prev" href="/blog/blog/page/5/">&larr; Mais Antigo</a>
+        
+        <a href="archives">Histórico do Blog</a>
+        
+        <a class="next" href="/blog/blog/page/3/">Mais Novo &rarr;</a>
+        
+      </div>
+    </div>
+
+  </div>
+</section>
+	    </div>
+
+	  	<footer id="bottom">
+  
+  <div id="social-footer">
+    <div class="grid">
+    <a ref="#" class="github">Github</a>
+    <a ref="#" class="twitter">Twitter</a>
+    <a ref="#" class="facebook">Facebook</a>
+    <a ref="#" class="rss">RSS</a>
+    </div>
+ </div>
+ 
+	<div class="grid">
+    <div class="collumn">
+      <h3>Últimos Posts</h3>
+      <ul>
+        <li>Melhorando o Email Activity do SendGrid</li>
+        <li>Um pouco sobre Lean UX</li>
+        <li>Como colaborar com projetos open-source</li>
+        <li>Retrospectiva Café com DEV HE:Rio 12/07 </li>
+      </ul>
+      
+    </div>
+    
+  	<div class="grid">
+      <div class="collumn">
+        <h3>GitHub Repos</h3>
+        <ul>
+          <li>startupdev.github.com <span>Startup DEV Website</span></li>
+          <li>pah<span>Command line interface to generate rails apps used at HE:labs.</span> </li>
+          <li>acts_as_hashed<span>acts_as_hashed makes it easier to create unique non-discoverable URIs and all other sorts of uuid you may need in your app.</span> </li>
+        </ul>
+      
+      </div>
+      
+    	<div class="grid">
+        <div class="collumn">
+          <h3>Últimos Tweets</h3>
+          <ul>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget.  adipiscing elit. </li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget. </li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget.  </li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget. Lorem ipsum dolor sit amet </li>
+          </ul>
+      
+        </div>
+    
+		<p>
+		  Copyright &copy; 2013 - Time HE:labs -
+		  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+		</p>
+	</div>
+</footer>
+
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'helabsblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#appId=294124694041877&xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  window.fbAsyncInit = function(){
+    FB.Event.subscribe('edge.create', function(targetUrl) {
+      _gaq.push(['_trackSocial', 'facebook', 'like', targetUrl]);
+    });
+    FB.Event.subscribe('edge.remove', function(targetUrl) {
+      _gaq.push(['_trackSocial', 'facebook', 'unlike', targetUrl]);
+    });
+    FB.Event.subscribe('message.send', function(targetUrl) {
+      _gaq.push(['_trackSocial', 'facebook', 'send', targetUrl]);
+    });
+  }
+</script>
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+  window.twttr = (function (d,s,id) {
+    var t, js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+    js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+    return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+  }(document, "script", "twitter-wjs"));
+  function extractParamFromUri(uri, paramName) {
+    if (!uri) {
+      return;
+    }
+    var regex = new RegExp('[\\?&#]' + paramName + '=([^&#]*)');
+    var params = regex.exec(uri);
+    if (params != null) {
+      return unescape(params[1]);
+    }
+    return;
+  }
+  function trackTwitter(intent_event) {
+    if (intent_event) {
+      var opt_pagePath;
+      if (intent_event.target && intent_event.target.nodeName == 'IFRAME') {
+        opt_target = extractParamFromUri(intent_event.target.src, 'url');
+      }
+      _gaq.push(['_trackSocial', 'twitter', 'tweet', opt_pagePath]);
+    }
+  }
+
+  //Wrap event bindings - Wait for async js to load
+  twttr.ready(function (twttr) {
+    //event bindings
+    twttr.events.bind('tweet', trackTwitter);
+  });
+</script>
+
+
+
+	</body>
+</html>

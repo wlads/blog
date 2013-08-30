@@ -1,0 +1,949 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ruby | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Passwordless Login]]></title>
+    <link href="http://helabs.com.br/blog/2013/04/11/passwordless-login/"/>
+    <updated>2013-04-11T11:15:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/04/11/passwordless-login</id>
+    <content type="html"><![CDATA[<p><img src="/images/posts/passwordless.png" alt="image" /></p>
+
+<p>Neste post, vou mostrar como fazer uma aplicação permitir que o usuário faça login sem precisar digitar/lembrar de sua senha. Não será nada complexo demais e nem uma solução perfeita. No final, postarei o link para uma aplicação exemplo que preparei exemplificando o método.</p>
+
+<h1>Por que fazer login sem senha?</h1>
+
+<p>Fazer login está se tornando uma tarefa complicada. Agora que temos muitos usuários acessando aplicações pelo smartphone, digitar a senha na telinha do telefone é complicado. Mesmo nas telas gigantes dos celulares da Samsung, é chato e ruim. Precisamos de uma maneira mais simples de fazê-lo.</p>
+
+<!-- more -->
+
+
+<p>Os usuários têm que lembrar seu username e senha para logarem. Mas muitas vezes não os lembram. E é aí que entra o “esqueci minha senha” e o usuário precisa abrir seu email e clicar no link para poder recuperar sua senha. Ou então para que a senha não seja esquecida eles usam: password, senha123 ou 123456.</p>
+
+<p>Uma solução proposta por Ben Brown neste <a href="http://notes.xoxco.com/post/27999787765/is-it-time-for-password-less-login">post</a> é gerar uma senha totalmente aleatória quando o usuário se cadastrar no site e enviar por email um link para fazer o login. A maioria dos sites permitem que o login seja mantido pra sempre, porém se o usuário precisar fazer o login novamente, a aplicação gera outra senha para o usuário e envia outro link para ele por email.</p>
+
+<h1>Como eu resolvi esse problema</h1>
+
+<p>Então vamos ao código:</p>
+
+<p>Primeiro, criei um model User com os campos <em>email</em> e <em>access_token</em>.</p>
+
+<p><code>ruby
+rails g model User email:string access_token:string
+</code></p>
+
+<p>Depois, criei um método <em>generate_access_token </em>que se encarrega de gerar uma nova senha para o usuário. E também o método <em>access_token_exists? </em>(token) para checar se, por acaso, a senha já existe para algum usuário.</p>
+
+<p>```ruby
+def self.access_token_exists?(token)
+  where(access_token: token).any?
+end</p>
+
+<p>private
+  def generate_access_token</p>
+
+<pre><code>loop do
+  token = SecureRandom.hex(30)
+  return self.access_token = token unless User.access_token_exists?(token)
+end
+</code></pre>
+
+<p>  end
+```</p>
+
+<p>E então implementei o método <em>generate_access_token_and_save </em>para gerar a senha para o usuário e salvá-la. Isso fecha por enquanto o model User. Voltaremos nele mais tarde.</p>
+
+<p><code>ruby
+def generate_access_token_and_save
+  generate_access_token and save
+end
+</code></p>
+
+<p>Agora vamos ao <em>UsersController </em>. Criei um controller simples com duas actions: New e Create.</p>
+
+<p>```ruby</p>
+
+<h1>encoding: UTF-8</h1>
+
+<p>class UsersController &lt; ApplicationController
+  def new</p>
+
+<pre><code>@user = User.new
+</code></pre>
+
+<p>  end</p>
+
+<p>  def create</p>
+
+<pre><code>@user = User.new(params[:user])
+if @user.generate_access_token_and_save
+  redirect_to new_user_path, notice: "Agora olha teu email lá! :)"
+else
+  render :new
+end
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>Em seguida, criei o SessionsController para lidar com o login. O controller vai encontrar o usuário que possua a access_token fornecida e colocar seu id em uma session.</p>
+
+<p>```ruby</p>
+
+<h1>encoding: UTF-8</h1>
+
+<p>class SessionsController &lt; ApplicationController
+  def create</p>
+
+<pre><code>user = User.find_by_access_token!(params[:token])
+session[:user_id] = user.id
+redirect_to(secret_page_path, notice: "Você está logado! :)")
+</code></pre>
+
+<p>  rescue ActiveRecord::RecordNotFound</p>
+
+<pre><code>redirect_to(root_url, notice: "Acesso inválido... recupere sua senha.")
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>Agora que já tenho o controller para lidar com o link de login, posso criar o Mailer para enviar o link para o email do usuário.</p>
+
+<p>```ruby</p>
+
+<h1>encoding: UTF-8</h1>
+
+<p>class Notification &lt; ActionMailer::Base
+  default from: "estagiario@passwordlessapp.com"
+  layout "mailer"</p>
+
+<p>  def auth_link(user)</p>
+
+<pre><code>@user = user
+
+mail to: @user.email, subject: "[Passwordless App] Aqui está seu link de acesso"
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>Coloquei, então, a chamada para o envio do email dentro do método <em>generate_access_token_and_save </em>no model User.</p>
+
+<p><code>ruby
+def generate_access_token_and_save
+  Notification.auth_link(self).deliver if generate_access_token and save
+end
+</code></p>
+
+<p>Usei o SecretPageController para ter uma action que requer autenticação.</p>
+
+<p>```ruby
+class SecretController &lt; ApplicationController
+  before_filter :authenticate!</p>
+
+<p>  def index
+  end
+end
+```</p>
+
+<p>Aqui estão os helpers de autenticação criados para o SecretPageController.</p>
+
+<p>```ruby</p>
+
+<h1>encoding: UTF-8</h1>
+
+<p>class ApplicationController &lt; ActionController::Base
+  protect_from_forgery
+  ensure_security_headers
+  helper_method :current_user, :user_signed_in?</p>
+
+<p>  private</p>
+
+<p>  def current_user</p>
+
+<pre><code>@current_user ||= User.find(session[:user_id]) if session[:user_id]
+rescue ActiveRecord::RecordNotFound
+  session.delete(:user_id)
+  nil
+</code></pre>
+
+<p>  end</p>
+
+<p>  def user_signed_in?</p>
+
+<pre><code>!current_user.nil?
+</code></pre>
+
+<p>  end</p>
+
+<p>  def authenticate!</p>
+
+<pre><code>user_signed_in? || redirect_to(root_url, notice: "Você precisa estar autenticado...")
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>E isso já faz o login sem senha funcionar. O usuário se cadastra, recebe um link por email, clica no link, se loga e é redirecionado para a action que requer autenticação.</p>
+
+<p>Eu fiz uma aplicação exemplo que pode ser acessada <a href="http://passwordless.herokuapp.com">clicando aqui</a> e o código também está no <a href="https://github.com/matheusbras/passwordless-app">GitHub</a> com todos os testes. Sintam-se à vontade para mandar pull requests, issues e perguntas.</p>
+
+<p>Obrigado pela sua atenção e abraços!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Remova Ifs e Elses em Ruby utilizando o Null Object Pattern]]></title>
+    <link href="http://helabs.com.br/blog/2013/04/07/remova-ifs-e-elses-em-ruby-utilizando-o-null-object-pattern/"/>
+    <updated>2013-04-07T11:16:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/04/07/remova-ifs-e-elses-em-ruby-utilizando-o-null-object-pattern</id>
+    <content type="html"><![CDATA[<p>O <a href="https://en.wikipedia.org/wiki/Null_object">Null Object pattern</a> tem como principal objetivo tratar o comportamento do valor <code>Null</code>, ou em ruby o <code>nil</code>.
+Sabemos que em algum momento de nosso código podemos ter referências nulas, sendo assim, temos que verificar se tal refêrencia é nula ou não para não recebermos uma <em>exception</em> como a seguinte:</p>
+
+<pre><code>NoMethodError: undefined method `name' for nil:NilClass
+</code></pre>
+
+<!-- more -->
+
+
+<p>Vamos a um exemplo: Temos uma classe Game responsável pelas informações de um dado jogo e um classe Report, responsável por imprimir os dados deste tal jogo.</p>
+
+<p>Vamos a classe Game:</p>
+
+<p>```ruby
+require 'ostruct'</p>
+
+<p>class Game &lt; OpenStruct
+end
+```</p>
+
+<p>Uma simples classe que herda de OpenStruct.</p>
+
+<p>Agora vamos a nossa classe Report:</p>
+
+<p>```ruby
+class Report</p>
+
+<p>  def initialize(game)</p>
+
+<pre><code>@game = game
+</code></pre>
+
+<p>  end</p>
+
+<p>  def show</p>
+
+<pre><code>%Q{Game: #{name}
+Platform: #{platform}
+Description: #{description}}
+</code></pre>
+
+<p>  end</p>
+
+<p>  private</p>
+
+<pre><code>def name
+  @game.name
+end
+
+def platform
+  @game.platform
+end
+
+def description
+  @game.description
+end
+</code></pre>
+
+<p>end
+```</p>
+
+<p>Como podem ver, a nossa classe funciona muito bem para o Game. No entanto, se em algum momento recebermos uma referência nula (por exemplo de um find do ActiveRecord),  receberemos a seguinte exception:</p>
+
+<p><code>ruby
+game = nil
+report = Report.new(game)
+puts report.show # undefined method `name' for nil:NilClass (NoMethodError) ...
+</code></p>
+
+<p>Vamos resolvê-la utilizando os mais comuns: <code>if</code> e <code>else</code>.</p>
+
+<p>```ruby
+class Report</p>
+
+<p>  def initialize(game)</p>
+
+<pre><code>@game = game
+</code></pre>
+
+<p>  end</p>
+
+<p>  def show</p>
+
+<pre><code>%Q{Game: #{name}
+Platform: #{platform}
+Description: #{description}}
+</code></pre>
+
+<p>  end</p>
+
+<p>  private</p>
+
+<pre><code>def name
+  if @game
+    @game.name
+  else
+   'no name'
+  end
+end
+
+def platform
+  if @game
+    @game.platform
+  else
+    'no platform'
+  end
+end
+
+def description
+  if @game
+    @game.description
+  else
+    'no description'
+  end
+end
+</code></pre>
+
+<p>end
+```</p>
+
+<p>Como podem ver, alteramos os métodos da classe <code>Report</code>, responsável por criar os campos de <code>Game</code> na exibição do relatório, para tratar quando recebemos um valor nil.
+Até funciona, mas como notamos, estamos adicionando mais complexidade a simples métodos que apenas delegam o valor, além de, claramente, estarmos repetindo código. E é neste ponto que o Null Object Pattern vem para nos ajudar. Vamos aos refactories.</p>
+
+<p>```ruby
+class NullGame</p>
+
+<p>  def name</p>
+
+<pre><code>'no name'
+</code></pre>
+
+<p>  end</p>
+
+<p>  def platform</p>
+
+<pre><code>'no platform'
+</code></pre>
+
+<p>  end</p>
+
+<p>  def description</p>
+
+<pre><code>'no description'
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>class Report</p>
+
+<p>  def initialize(game)</p>
+
+<pre><code>@game = game || NullGame.new
+</code></pre>
+
+<p>  end</p>
+
+<p>  def show</p>
+
+<pre><code>%Q{Game: #{name}
+Platform: #{platform}
+Description: #{description}}
+</code></pre>
+
+<p>  end</p>
+
+<p>  private</p>
+
+<pre><code>def name
+  @game.name
+end
+
+def platform
+  @game.platform
+end
+
+def description
+  @game.description
+end
+</code></pre>
+
+<p>end
+```</p>
+
+<p>Primeiro criamos uma classe <code>NullGame</code> responsável por definir os valores quando um <code>Game</code> for nulo. Em Seguida, alteramos a classe <code>Report</code> para instanciar um <code>NullGame</code> (caso o game seja nulo) e assim, podemos alterar nossos métodos que funcionam como delegators para continuarem fazendo apenas isto.
+Veja como seria o comportamento de <code>Report</code> ao receber um <code>nil</code>:</p>
+
+<p>```ruby
+game = nil
+report = Report.new(game)
+puts report.show # Game: no name</p>
+
+<pre><code>             # Platform: no platform
+             # Description: no description
+</code></pre>
+
+<p>```</p>
+
+<p>Como podem ver, ao utilizarmos o Null Object Pattern, conseguimos manter o nosso código muito mais Ruby Way utilizando classes coesas, com responsabilidades bem definidas e one line methods.</p>
+
+<p>Para finalizar fica a dica da excelente palestra do <a href="https://twitter.com/@r00k">Ben Orenstein</a> <a href="http://www.confreaks.com/videos/1233-aloharuby2012-refactoring-from-good-to-great">Refactoring from Good to Great</a> , de onde este post foi inspirado.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Métodos estáticos, porque evitá-los]]></title>
+    <link href="http://helabs.com.br/blog/2013/03/13/metodos-estaticos-porque-evita-los/"/>
+    <updated>2013-03-13T08:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/03/13/metodos-estaticos-porque-evita-los</id>
+    <content type="html"><![CDATA[<p>Aparentemente existe na cultura de alguns desenvolvedores uma certa convenção sobre quando usar métodos estáticos. Se é um método relativamente simples, que itera sobre uma coleção dos objetos da classe em si, implementar um método estático é uma forma possível de implementação.</p>
+
+<p>Diga-se que uma API está sendo feita, e é preciso retornar os usuários novos em um JSON bem específico às características da aplicação. Segue um exemplo, extraído de um projeto real:</p>
+
+<!-- more -->
+
+
+<p>```ruby
+class User &lt; ActiveRecord::Base
+  # ...
+  def self.last_users_since(time)</p>
+
+<pre><code>response_data = {new_users: []}
+where(updated_at: time..Time.now).each do |user|
+  user_hash = user.as_new_user
+  response[:new_users] &lt;&lt; (user_hash) if user_hash.present?
+end
+response_data
+</code></pre>
+
+<p>  end
+  # ...
+end
+```</p>
+
+<p>Da forma como se encontra, temos alguns problemas:</p>
+
+<ul>
+<li>É um método relativamente complexo;</li>
+<li>Não é um método fácil de ler;</li>
+<li>Existe um método no objeto user que só serve pra essa API (<code>User#as_new_user</code>);</li>
+<li>É chato de testar, pois só temos o retorno para ser testado.</li>
+</ul>
+
+
+<p>Mas até então, ainda não é um problema.</p>
+
+<p>Só que software é uma coisa que muda constantemente, e o cliente resolveu alterar a API. Agora existe um campo booleano em user chamado <code>synced</code> que dita quais objetos vão ser retornados para a API e, em seguida, considerar os mesmos como sincronizados. Ou seja, uma nova chamada à API não vai mais retornar os mesmos objetos, e sim somente os não sincronizados. Existe também um novo campo no JSON que indica quando a chamada foi resolvida.</p>
+
+<p>Altera-se o método para a nova necessidade:</p>
+
+<p>```ruby
+class User &lt; ActiveRecord::Base
+  # ...
+  def self.sync_unsynchronized_users</p>
+
+<pre><code>response_data = {new_users: [], synced_at: Time.now}
+where(synced: false).each do |user|
+  user_hash = user.as_new_user
+  response[:new_users] &lt;&lt; (user_hash) if user_hash.present?
+  user.sync!
+end
+response_data
+</code></pre>
+
+<p>  end
+  # ...
+end
+```</p>
+
+<p>Todos os problemas ainda existem e dificilmente serão resolvidos se mantermos o método estático.</p>
+
+<p>E o pior de tudo: Mesmo com a introdução acima, a implementação é um pouco confusa. Imagine daqui há 2 meses quando algum desenvolvedor (ou até mesmo o próprio que escreveu) tiver que pegar esse código pra entender. Ainda que seja perfeitamente possível que se compreenda como o mesmo funciona, um método estático não declara intenção, os testes normalmente não são tão claros quanto se gostaria, e introduzir qualquer nova funcionalidade traz uma certa insegurança.</p>
+
+<h2>Extraindo um método estático para uma nova classe</h2>
+
+<p>Extrair um método complexo para uma classe é um dos refactors mais clássicos e, no caso dos métodos estáticos, ataca-se os principais problemas:</p>
+
+<ul>
+<li>Facilita a leitura;</li>
+<li>Declara-se intenções através de nomes de métodos;</li>
+<li>Melhora a testabilidade.</li>
+</ul>
+
+
+<p>O método acima extraído para uma classe ficaria assim:</p>
+
+<p>```ruby
+class User &lt; ActiveRecord::Base
+  # ...
+  def self.sync_unsynchronized_users</p>
+
+<pre><code>UsersSyncer.new.sync!
+</code></pre>
+
+<p>  end
+  # ...
+end</p>
+
+<p>class UsersSyncer
+  attr_reader :recently_synchronized_users
+  def initialize</p>
+
+<pre><code>@recently_synchronized_users = []
+</code></pre>
+
+<p>  end</p>
+
+<p>  def unsyncronized_users</p>
+
+<pre><code>User.where(synced: false)
+</code></pre>
+
+<p>  end</p>
+
+<p>  def sync!</p>
+
+<pre><code>add_and_sync_users
+response_hash
+</code></pre>
+
+<p>  end</p>
+
+<p>  private</p>
+
+<pre><code>def response_hash
+  {new_users: recently_synchronized_users, synced_at: Time.now}
+end
+
+def add_and_sync_users
+  unsyncronized_users.each do |user|
+    mark_as_sync(user)
+    add_user_to_list_if_present(user)
+  end
+end
+
+def mark_as_sync(user)
+  user.sync!
+end
+
+def add_user_to_list_if_present(user)
+  user_hash = format_user_for_api(user)
+  @recently_synchronized_users &lt;&lt; if user_hash.present?
+end
+
+def format_user_for_api(user)
+  # método extraído de User
+end
+</code></pre>
+
+<p>end
+```</p>
+
+<p>Nota-se que o método estático ainda existe, mas somente como uma interface. Esse é um dos poucos casos em que se é aceitável a criação de métodos estáticos, já que é bem prático chamar <code>User.sync_unsynchronized_users</code>.</p>
+
+<p>O método <code>as_new_user</code> foi extraído de <code>User</code> porque neste caso somente
+era usado somente uma vez. Poderia ficar em <code>User</code>, mas acredito ficar
+mais claro desta forma.</p>
+
+<p>Ler a classe acima 2 meses depois requer muito menos esforço por parte do desenvolvedor para compreender o funcionamento da mesma, e com certeza os testes estarão mais claros, além da complexidade ter diminuído consideravelmente.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Testes (bem) mais rápidos no RSpec]]></title>
+    <link href="http://helabs.com.br/blog/2013/02/06/testes-mais-rapidos-no-rspec/"/>
+    <updated>2013-02-06T15:45:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2013/02/06/testes-mais-rapidos-no-rspec</id>
+    <content type="html"><![CDATA[<p>Conforme um projeto vai crescendo, a quantidade de casos de teste aumenta e a tendência é que a suíte completa comece a demorar mais para rodar, principalmente se você está fazendo testes de aceitação. Isso pode virar um problema muito grave em projetos legados, mas existem soluções rápidas (a.k.a marretas) que resolvem esse problema. Vou mostrar neste post como fiz para <strong>reduzir em mais de 70% o tempo de execução da suíte de testes</strong> de um projeto.</p>
+
+<!-- more -->
+
+
+<p>Se você está começando um projeto novo, eu sugiro seguir as <a href="http://simplesideias.com.br/fazendo-os-seus-testes-executarem-mais-rapido">recomendação do Nando Vieira</a>, que incluem decisões de como escrever o código de forma limpa, e que não vão criar gargalos para os testes.</p>
+
+<p>No meu caso o buraco era mais embaixo e eu precisava de algo antes de sair refatorando tudo. Eu estava trabalhando num projeto Rails que possui um pouco menos de 8.000 linhas de código e um pouco mais de 30.000 linhas de teste, um Code to Test Ratio de 1:3.9 e mais de 5.000 testes.
+Tanto o código quanto os testes precisavam de melhorias e a suíte estava demorando cerca de <strong>13 minutos para rodar</strong>. Tempo que qualquer um sabe que é ridiculamente alto e inviável para se trabalhar.</p>
+
+<p>```
+rake</p>
+
+<p>Finished in 13 minutes 27.67 seconds
+5162 examples, 0 failures, 16 pending
+```</p>
+
+<p>Eu precisava refatorar os testes, mas também o código e isso exigia um tempo de trabalho considerável.
+Eu praticamente tinha um problema de "referência circular", ou <a href="http://www.youtube.com/watch?v=tJ-BKu-WUEk">efeito Tostines</a>. Eu precisava refatorar para ter os testes mais rápidos, mas também precisava dos testes mais rápidos para poder trabalhar e conseguir refatorar.</p>
+
+<p>Enfim, uma situação desconfortável e que iria demandar paciência e um bocado de trabalho, principalmente no início.
+Não havia mágica para resolver de uma vez, então eu comecei a buscar soluções que diminuíssem a dor do momento.</p>
+
+<p>O resultado foi que <strong>reduzi o tempo de execução dos testes de 13 minutos para 4 minutos</strong>, sem refatorar o código e mexendo muito pouco nos testes. Eu sei que 4 minutos ainda é muito e tem que melhorar, mas para a realidade do momento, já estava ótimo!</p>
+
+<p>Seguem as dicas do que eu fiz com as referências. As duas primeiras eu retirei do <a href="http://blog.plataformatec.com.br/2011/12/three-tips-to-improve-the-performance-of-your-test-suite/">post do José Valim</a></p>
+
+<h3>Dica 1: Shared Connections</h3>
+
+<p>O meu projeto tem testes de aceitação usando <a href="https://github.com/jnicklas/capybara">capybara</a> e <a href="https://github.com/thoughtbot/capybara-webkit">capybara-webkit</a> e eu usava a gem <a href="https://github.com/bmabey/database_cleaner">database_cleaner</a> para limpar o banco de dados entre um teste e outro, como sugerido pelo próprio Capybara.</p>
+
+<p>O problema é que o database cleaner torna a suíte muito lenta, por que a todo momento ele está acessando o banco de dados para limpar a base toda. A solução é fazer uma marreta no ActiveRecord para que o database cleaner não seja mais necessário.</p>
+
+<p>Removi o database cleaner e voltei a configuração <code>use_transactional_fixtures</code> pra <code>true</code></p>
+
+<p>```ruby</p>
+
+<h1>spec/spec_helper.rb</h1>
+
+<p>RSpec.configure do |config|
+  [...]</p>
+
+<p>  config.use_transactional_fixtures = true
+end
+```</p>
+
+<p>Adicionei o código abaixo:</p>
+
+<p>```ruby</p>
+
+<h1>spec/support/shared_connection.rb</h1>
+
+<p>class ActiveRecord::Base
+  mattr_accessor :shared_connection
+  @@shared_connection = nil</p>
+
+<p>  def self.connection</p>
+
+<pre><code>@@shared_connection || retrieve_connection
+</code></pre>
+
+<p>  end
+end</p>
+
+<h1>Forces all threads to share the same connection. This works on</h1>
+
+<h1>Capybara because it starts the web server in a thread.</h1>
+
+<p>ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
+```</p>
+
+<p>Esse código faz com que o ActiveRecord compartilhe a mesma conexão com o banco de dados em todas as threads. Na prática os testes do Capybara acabam rodando dentro de uma transação, então qualquer modificação no banco de dados não é comitada e é descartada a cada teste.</p>
+
+<h3>Dica 2: Increase Log Level</h3>
+
+<p>Por default o Rails grava log de tudo que acontece no environment <code>test</code>. Isso faz com que o acesso à disco seja muito alto, o que torna a execução dos testes mais lenta. Aumentando o nível do log você reduz o IO durante os testes. Para isso, adicionei o código abaixo:</p>
+
+<p>```ruby</p>
+
+<h1>spec/support/suppress_log.rb</h1>
+
+<p>Rails.logger.level = 4 unless ENV['WITH_LOG']
+```</p>
+
+<p>Se você quiser que o log seja gravado, basta setar a variável de ambiente <code>WITH_LOG</code> para true.</p>
+
+<p><code>bash
+$ WITH_LOG=true rake
+</code></p>
+
+<h3>Dica 3: Deferred Garbage Collection</h3>
+
+<p>Quando os testes rodam, muitas variáveis são criadas na memória, o que consome muita memória e faz com que o Garbage Collector seja chamado diversas vezes. Se zerarmos as variáveis de instância e controlarmos "na mão" o Garbage Collector, conseguimos um ganho de performance bastante significativo.</p>
+
+<p>Misturando <a href="http://37signals.com/svn/posts/2742-the-road-to-faster-tests">isso</a> com <a href="https://makandracards.com/makandra/950-speed-up-rspec-by-deferring-garbage-collection">isso</a> eu escrevi e adicionei o código abaixo:</p>
+
+<p>```ruby</p>
+
+<h1>spec/support/deferred_garbage_collection.rb</h1>
+
+<p>class DeferredGarbageCollection
+  RESERVED_IVARS = %w(@loaded_fixtures)
+  DEFERRED_GC_THRESHOLD = (ENV['DEFER_GC'] || 10.0).to_f
+  @@last_gc_run = Time.now
+  def self.start</p>
+
+<pre><code>GC.disable if DEFERRED_GC_THRESHOLD &gt; 0
+</code></pre>
+
+<p>  end
+  def self.reconsider</p>
+
+<pre><code>if DEFERRED_GC_THRESHOLD &gt; 0 &amp;&amp; Time.now - @@last_gc_run &gt;= DEFERRED_GC_THRESHOLD
+  GC.enable
+  GC.start
+  GC.disable
+  @@last_gc_run = Time.now
+end
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>RSpec.configure do |config|
+  config.before(:all) do</p>
+
+<pre><code>DeferredGarbageCollection.start
+</code></pre>
+
+<p>  end
+  config.after(:each) do
+   (instance_variables - DeferredGarbageCollection::RESERVED_IVARS).each do |ivar|</p>
+
+<pre><code> instance_variable_set(ivar, nil)
+</code></pre>
+
+<p>   end
+  end
+  config.after(:all) do</p>
+
+<pre><code>DeferredGarbageCollection.reconsider
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<h3>Resultado: Ganho de 45% de tempo</h3>
+
+<p>Com as implementações acima já consegui ganhar 6 minutos!</p>
+
+<p><code>
+rake
+Finished in 7 minutes 27.48 seconds
+5161 examples, 0 failures, 16 pending
+</code></p>
+
+<p>(sim, eu removi um teste nesse meio tempo)</p>
+
+<h3>Dica 4: Parallel Tests</h3>
+
+<p>Um outro artifício que, não faz com que os testes rodem mais rápidos efetivamente, mas faz com você perca menos tempo ao rodar a suíte, é paralelizar os testes. A gem responsável por isso é a <a href="https://github.com/grosser/parallel_tests">parallel_tests</a></p>
+
+<p>Para instalar a gem, basta colocar a linha abaixo no Gemfile:</p>
+
+<p>```ruby</p>
+
+<h1>add to Gemfile</h1>
+
+<p>gem "parallel_tests", :group => :development
+```</p>
+
+<p>Eu deixei o parallel tests como opção default do rake, incluindo a seguinte rake task:</p>
+
+<p>```ruby</p>
+
+<h1>lib/tasks/default.rake</h1>
+
+<p>task(:default).clear
+task :default  => "parallel:spec"
+```</p>
+
+<p>BTW eu fiz um <a href="https://github.com/rafaelp/guard-rspec/commit/7bfdd649e85d3700716be2fd43277c10aa6cb8df">commit no guard-rspec</a> para ele suportar o parallel tests.</p>
+
+<p>Rodando os testes em paralelo, você aproveita o máximo que da CPU, mas também consome muita bateria. Não recomendado se você estiver trabalhando durante um vôo, por exemplo :)</p>
+
+<h3>Resultado: Testes rodando em menos de 5 minutos</h3>
+
+<p>```
+rake</p>
+
+<p>Results:
+1545 examples, 0 failures, 10 pending
+1188 examples, 0 failures, 3 pending
+1292 examples, 0 failures, 2 pending
+1138 examples, 0 failures, 1 pending</p>
+
+<p>Took 272.119908 seconds
+```</p>
+
+<p>Os testes rodando em paralelo demoraram 4 minutos e 53 segundos e isso é um ganho incrível comparado com os 13 minutos iniciais. Críticos de plantão, eu sei que 4 minutos e pouco ainda é bastante e que dá pra melhorar ;-)</p>
+
+<h3>Dica 5: Ruby Patch railsexpress</h3>
+
+<p>Existe um patch para as versões 1.8.7, 1.9.2 e 1.9.3 do Ruby que diminui o tempo de load do Rails e de execução dos testes.</p>
+
+<p>Para usar é muito fácil.</p>
+
+<p>Se você estiver no Mac OS, instale o automake:</p>
+
+<p><code>bash
+brew install automake
+</code></p>
+
+<p>Agora rode o comando abaixo:</p>
+
+<p><code>bash
+rvm reinstall 1.9.3 --patch railsexpress
+</code>
+(substitua 1.9.3 pela versão do ruby que você está usando)</p>
+
+<p>Depois defina duas variáveis de ambiente:</p>
+
+<p>```bash</p>
+
+<h1>add to .bash_profile</h1>
+
+<p>export RUBY_GC_MALLOC_LIMIT=60000000
+export RUBY_FREE_MIN=200000
+```</p>
+
+<p>Pronto!</p>
+
+<p>Se quiser ler mais sobre isso:</p>
+
+<p><a href="https://gist.github.com/4136519">https://gist.github.com/4136519</a></p>
+
+<p><a href="https://github.com/skaes/rvm-patchsets">https://github.com/skaes/rvm-patchsets</a></p>
+
+<p><a href="https://github.com/wayneeseguin/rvm/tree/master/patches/ruby/1.9.3/p374/railsexpress">https://github.com/wayneeseguin/rvm/tree/master/patches/ruby/1.9.3/p374/railsexpress</a></p>
+
+<h3>Resultado Final: Ganho de mais de 70% de tempo</h3>
+
+<p>Quando eu instalei esse patch do Rails, eu já tinha 203 testes a mais escritos no projeto e a suíte estava demorando 322.394261 segundos rodando em parelelo. Ou seja, mais tempo do que o benchmark anteior. Após aplicar o patch esse tempo diminuiu para 245.99421 segundos, menos tempo que o benchmark anterior!</p>
+
+<p>```
+rake</p>
+
+<p>5366 examples, 0 failures, 9 pendings
+Took 245.99421 seconds
+```</p>
+
+<p>Com esses resultados, posso afirmar que o ganho de tempo total para o meu projeto foi superior a 70%.
+Nada mal, sair de 13 minutos para 4 minutos, não acha!?</p>
+
+<h3>Bônus: Guard + Zeus</h3>
+
+<p>Quando eu estou programando, não fico rodando os testes todos, até por que 4 minutos ainda é inviável para fazer TDD. Para resolver ese problema comecei a usar o <a href="https://github.com/guard/guard-rspec">guard-rspec</a> com <a href="https://github.com/burke/zeus">zeus</a> e <a href="https://www.relishapp.com/rspec/rspec-core/v/2-4/docs/command-line/tag-option">tags do RSpec</a>.</p>
+
+<p>O guard é responsável por monitorar as mudanças nos arquivos e rodar testes específicos que são relativos ao arquivo alterado. O guard-rspec é uma gem que se encarrega de chamar o rspec com os parâmteros corretos para que isso aconteça.</p>
+
+<p>O zeus é um aplicativo que pré carrega o stack do Rails na memória e quando você roda os comandos que precisam do environment do Rails, ele busca o que já está carregado na memória.</p>
+
+<p>As tags do RSpec permitem que você defina uma ou mais tags em um teste e passe um parâmetro na linha de comando <code>rspec</code> para que somente os testes com aquela tag sejam rodados.</p>
+
+<p>Instalando o zeus:</p>
+
+<p><code>
+gem install zeus
+</code></p>
+
+<p>Instalando o guard-spec:</p>
+
+<p>```ruby</p>
+
+<h1>add to Gemfile</h1>
+
+<p>gem "guard-rspec", :group => :development
+```</p>
+
+<p>Meu Guadfile, arquivo de configuração do guard para o projeto:</p>
+
+<p>```ruby</p>
+
+<h1>Guadfile</h1>
+
+<p>notification :growl</p>
+
+<p>guard 'rspec', :cli => "--tag focus --color --fail-fast", :all_after_pass => false, :all_on_start => false, :zeus => true, :parallel => false do
+  watch('spec/spec_helper.rb')                        { "spec" }
+  watch('config/routes.rb')                           { "spec/routing" }
+  watch('app/controllers/application_controller.rb')  { "spec/controllers" }
+  watch(%r{<sup>spec/.+_spec.rb$})</sup>
+  watch(%r{<sup>app/(.+).rb$})</sup>                           { |m| "spec/#{m[1]}<em>spec.rb" }
+  watch(%r{<sup>app/(.*)(.erb|.haml)$})</sup>                 { |m| "spec/#{m[1]}#{m[2]}</em>spec.rb" }
+  watch(%r{<sup>lib/(.+).rb$})</sup>                           { |m| "spec/lib/#{m[1]}<em>spec.rb" }
+  watch(%r{<sup>app/controllers/(.+)_(controller).rb$})</sup>  { |m| ["spec/routing/#{m[1]}</em>routing_spec.rb", "spec/#{m[2]}s/#{m[1]}<em>#{m[2]}</em>spec.rb", "spec/acceptance/#{m[1]}_spec.rb"] }</p>
+
+<p>  # Rspec support
+  watch(%r{<sup>spec/support/(.+).rb$})</sup>                  { "spec" }</p>
+
+<p>  # Blueprints
+  watch(%r{<sup>spec/blueprints.rb$})</sup>                    { "spec" }</p>
+
+<p>  # Capybara
+  watch(%r{<sup>spec/acceptance/(.+).rb$})</sup>
+end
+```</p>
+
+<p>Agora basta abrir duas janelas do terminal e deixar uma rodando o zeus e outra o guard:</p>
+
+<p><code>bash
+$ zeus start
+</code></p>
+
+<p><code>bash
+$ guard start
+</code></p>
+
+<p>No meu ciclo de TDD, eu deixo o guard testando automaticamente os arquivos que ele detecta que foram modificados. Em algums momentos eu quero validar apenas um teste, e é muito chato ter que esperar todos os testes do arquivo que estou trabalhando, todas as vezes que eu o salvo.</p>
+
+<p>Você pode perceber que no meu Guarfile eu passo o parâmetro <code>--tag focus</code> para o rspec. Isso faz com que ele rode apenas os testes com a tag <code>focus</code>. Quando nenhum teste possui essa tag, ele roda todos os testes do arquivo.</p>
+
+<p>Como eu também passo o parâmetro <code>--fail-fast</code>, o rspec pára no primeiro teste que quebra.</p>
+
+<p>Quando estou escrevendo um teste novo em um arquivo com muitos testes ou quando um dos testes quebra, eu coloco a tag <code>focus</code> no teste em questão, ou no contexto inteiro dele. A partir daí o guard roda somente este teste a cada vez que eu salvo o arquivo. Isso agiliza muito o meu trabalho, pois não preciso esperar todos os testes do arquivo serem rodados, ou seja, os testes que eu quero validar são executados de imediato.</p>
+
+<p>Para colocar a tag, basta passar um hash <code>{focus: true}</code> como segundo parâmetro do <code>describe</code>, do <code>context</code> ou do <code>it</code>. Veja um exemplo de como colocar essa tag:</p>
+
+<p>```ruby
+describe "welcome" do
+  let(:account) { Account.make }
+  let(:mailer) { AccountMailer.welcome(account) }
+  it { expect { mailer }.not_to raise_error }
+  it { expect { mailer.deliver }.not_to raise_error }
+  it { expect { mailer.deliver }.to change(ActionMailer::Base.deliveries,:size).by(1) }
+  context "mailer", focus: true do</p>
+
+<pre><code>it { mailer.subject.should == "Muito obrigado por estar conosco" }
+it { mailer.header['From'].to_s.should == "Suporte &lt;suporte@example.com&gt;" }
+it { mailer.header['To'].to_s.should == "Nome do Usuario &lt;emaildousuario@example.com&gt;" }
+it { mailer.from.size.should == 1 }
+it { mailer.to.size.should == 1 }
+it { mailer.cc.should be_nil }
+it { mailer.bcc.should be_nil }
+it { mailer.multipart?.should be_false }
+it { mailer.charset.should == "UTF-8" }
+it { mailer.content_type.should == "text/html; charset=UTF-8" }
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<h3>Conclusão</h3>
+
+<p>Mesmo com problemas no código e testes mal escritos eu consegui reduzir o tempo de execução da suíte e criar um fluxo de trabalho que me permitiu fazer TDD e trabalhar para refatorar tudo, sem perder muito tempo no início. Na prática isso viabilizou a continuidade do trabalho e diminuiu significativamente a dor de ter uma suíte lenta. Uma suíte de testes lenta é um perigo por que nos leva a não querer rodar os testes e ignorar TDD.</p>
+
+<p>Ainda tenho um bom caminho pela frente para melhorar o código atual, mas chegou num nível que já consigo refatorar o que existe em paralelo com desenvolver novas features.</p>
+
+<p>Se uma das dicas já for algo útil pra você, ficarei feliz! Fique a vontade para dar o seu feedback nos comentários ou falar comigo pelo twitter <a href="https://twitter.com/rafaelp">@rafaelp</a></p>
+
+<p>Abraços e até a próxima.</p>
+]]></content>
+  </entry>
+  
+</feed>

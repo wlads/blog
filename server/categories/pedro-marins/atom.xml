@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: pedro marins | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/pedro-marins/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Retrospectiva - 2° Café com DEV]]></title>
+    <link href="http://helabs.com.br/blog/2013/02/25/retrospectiva-2-cafe-com-dev/"/>
+    <updated>2013-02-25T12:03:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/02/25/retrospectiva-2-cafe-com-dev</id>
+    <content type="html"><![CDATA[<p>Na última sexta-feira, dia 22 de fevereiro, aconteceu a segunda edição do Café com DEV. O evento reuniu interessados em debater o tema "design, usabilidade e acabamento de software".</p>
+
+<!-- more -->
+
+
+<p><img src="/images/posts/2-cafe-com-dev.jpg" alt="image" /></p>
+
+<p>Novamente estávamos com a casa cheia e o papo foi extremamente rico e dinâmico, regado a café, Red Bull e Heineken. Tivemos inclusive convidados de São Paulo presentes no evento.</p>
+
+<p>Os tópicos discutidos foram baseados no artigo <a href="http://agilewarrior.wordpress.com/2012/10/06/its-not-about-the-unit-tests/">"It's not about unit tests"</a> de <a href="http://agilewarrior.wordpress.com/">Jonathan Rasmusson</a>. O artigo diz que programadores iOS não desenvolvem de forma orientada por testes, mas nem por isso o código escrito por eles é pior ou o aplicativo não funciona. Pelo contrário, muitos aplicativos para iOS são adorados por seus usuários.</p>
+
+<p>A realidade é que o desenvolvimento para iOS tem que seguir uma guideline extremamente rígida. A atualização de um aplicativo em caso de bug também é muito lenta, as vezes ineficiente. Com isso os programadores tendem a se importar mais com que estão entregando, já que qualquer alteração depois de um deploy, pode demorar semanas e custar muito caro para o aplicativo, em termos de reviews negativas.</p>
+
+<p>Num projeto web tradicional, o deploy é muito simples e rápido de se realizar. Com isso, os programadores tendem e ficar um pouco menos preocupados com a qualidade e o refino do produto final, dado que um erro pode rapidamente ser ajustado.</p>
+
+<p>Por fim, a conclusão é que programadores web tem muito a aprender com a comunidade iOS, principalmente no quesito do cuidado e carinho com o trabalho de um verdadeiro artesão de software.</p>
+
+<p>Quem levou esse Café com Dev foi <a href="http://mergulhao.info/">Sylvestre Mergulhão</a>, que além de outros tópicos levantou questões como:</p>
+
+<ul>
+<li>O que define qualidade?</li>
+<li>O que é se importar?</li>
+<li>Conceito de pronto</li>
+<li>Subestimação de esforço</li>
+<li>Pensar um software no visual é bom (desenho de telas)</li>
+<li>Menos é mais</li>
+<li>Se importe também com o que não tem interface</li>
+<li>Que tipo de artista você prefere ser?</li>
+</ul>
+
+
+<p>Abaixo temos um link para vídeo do bate-papo para quem não pode estar presente. O video começa aos 3:48s.</p>
+
+<p><a href="http://twitcam.livestream.com/dwwho">Video do Café com DEV</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Retrospectiva - 1° Café com DEV]]></title>
+    <link href="http://helabs.com.br/blog/2013/02/05/retrospectiva-1-cafe-com-dev/"/>
+    <updated>2013-02-05T09:30:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2013/02/05/retrospectiva-1-cafe-com-dev</id>
+    <content type="html"><![CDATA[<p>Aconteceu na sexta-feira dia 01/02 o primeiro Café com DEV da HE:labs! O objetivo do encontro é reunir interessados e debater sobre um tema específico. Nesta primeira edição o tema do encontro foi produtividade e os aplicativos que nos ajudam a aumentá-la. Batemos um papo sobre o que usamos e como usamos essas ferramentas para aumentar nossa produtividade.</p>
+
+<!-- more -->
+
+
+<p><img src="/images/posts/cafe-com-dev-1.jpg" alt="image" /></p>
+
+<p><a href="http://twitter.com/pedromarins">Eu</a> por exemplo, falei sobre como uso o <a href="http://evernote.com/">Evernote</a>, o <a href="http://getpocket.com/">Pocket</a> e o <a href="https://www.wunderlist.com/#/login">Wunderlist</a> para organizar minha vida.</p>
+
+<p>No <a href="http://evernote.com/">Evernote</a> mostrei 3 casos de uso:</p>
+
+<ul>
+<li><strong><em>paperless</em></strong> é um bloco de notas onde estou guardando todos os meus boletos e comprovantes de pagamento de todas as minhas contas para não ter papeis armazenados em casa;</li>
+<li><strong>documentos</strong> é o bloco de notas que uso para guardar todos os meus documentos escaneados. Desde cartões de banco até passaporte e documentos diversos. Com isso passei a ter tudo sempre a mão quando preciso;</li>
+<li>inpiração é a tag que uso para marcar todas as coisas relevantes para quanto preciso buscar inspiração. Pode ser uma imagem, uma url, um artigo ou um site. Sempre que preciso buscar algo inspirador sei que vou encontrar algo nessa tag.</li>
+</ul>
+
+
+<p>No <a href="http://getpocket.com/">Pocket</a>, falei sobre como é o meu fluxo para salvar artigos, videos ou sites para ver depois. Tem horas que estamos focados no meio do trabalho e aparecem coisas que você não tem tempo de ler/assistir. Uso o pocket com o widget para o chrome para salvar tudo. Com o <a href="https://play.google.com/store/apps/details?id=com.ideashower.readitlater.pro&amp;hl=pt_BR">aplicativo para Android</a> consigo gastar o tempo que estou na rua absorvendo esse conteúdo, por exemplo.</p>
+
+<p>Já o <a href="https://www.wunderlist.com/#/login">Wunderlist</a> é o meu salvador quanto à coisas a fazer. Tenho uma memória péssima para lembrar das coisas que tenho para fazer, e a forma do <a href="https://www.wunderlist.com/#/login">Wunderlist</a> de organizar as to-dos em grupos me ajuda muito. Uso também o <a href="https://play.google.com/store/apps/details?id=com.wunderkinder.wunderlistandroid&amp;hl=pt_PT">widget para o Android</a>, que fica mostrando na minha tela inicial do celular as coisas que tenho que fazer no dia corrente.</p>
+
+<p>A interação com a galera rolou solta, e logo começaram a surgir perguntas sobre nosso fluxo de produtividade dentro da HE:labs. O que fazemos para entregar os <em>sprints</em> no prazo, como fazemos para convencer os clientes que o desenvolvimento ágil é a única solução para o projeto deles e que ferramentas usamos para fazer o deploy dos aplicativos que desenvolvemos.</p>
+
+<p>O <a href="http://twitter.com/rodrigoospinto">Rodrigo Pinto</a> e o <a href="http://twitter.com/maurogeorge">Mauro George</a> assumiram nessa hora e mostraram como é a relação deles com o desenvolvimento do projeto e com o cliente. Eles avassalaram e contaram tudo sobre o nosso processo de desenvolvimento!</p>
+
+<p>O primeiro encontro foi sensacional, e na retrospectiva o único ponto de destaque que precisa ser melhorado é o espaço. Todos elogiaram o conteúdo, a participação da galera, a cerveja liberada no escritório nas sextas-feiras!</p>
+
+<p>Para ficar por dentro de quando será o próximo Café com DEV se inscreva na nossa <a href="http://helabs.com.br/mailing">mailing</a>.</p>
+
+<p><img src="/images/posts/cafe-com-dev-2.jpg" alt="image" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Melhorando a performance do web site com gzip]]></title>
+    <link href="http://helabs.com.br/blog/2013/02/01/melhorando-a-performance-do-web-site-com-gzip/"/>
+    <updated>2013-02-01T12:30:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2013/02/01/melhorando-a-performance-do-web-site-com-gzip</id>
+    <content type="html"><![CDATA[<p>O tempo inteiro chovem dicas de performance pela internet. É bem difícil filtrar tudo que aparece e saber o que realmente importa, o que realmente dá resultado, e mais ainda, o que é fácil de se fazer. Não adianta uma solução mirabolante, em que para ganhar 1 milisegundo tenhamos que envolver toda a equipe de um projeto e consumir um sprint inteiro.</p>
+
+<!-- more -->
+
+
+<p>Assistindo uma palestra do <a href="https://twitter.com/chriscoyier">Chris Coyier</a>, fiquei impressionado em como ele organizou as dicas. Achei genial a forma como ele resumiu como uma dica de performance deve ser. E a dica de hoje segue esses pontos:</p>
+
+<ul>
+<li>Eleve a performance de bom à excelente.</li>
+<li><strong>Uma</strong> única pessoa pode resolver.</li>
+<li>Não necessite de processos complexos.</li>
+<li>Não precise de manutenção constante.</li>
+</ul>
+
+
+<p>O objetivo desse post, é explicar como usar o gzip para que os arquivos do seu website sejam comprimidos e fornecidos ao browser quando receber uma requisição. Uma dica simples, mas de altíssimo impacto. <em>Comprimir</em> os arquivos reduz o tempo de transferência de arquivos em <strong>70%</strong> em media.</p>
+
+<p>O primeiro passo para ativar a compressão de HTTP é conferir se o seu projeto já está comprimido. Você pode testar a sua url nesse site:
+<strong><a href="http://gzipwtf.com/">http://gzipwtf.com/</a></strong></p>
+
+<p>Se já tiver comprimido seu trabalho já está feito. Se foi alguem da sua equipe, descubra e dê os parabéns, se não foi, a compressão pode ter sido feita pelo serviço de hospedagem que você está usando, por exemplo. Sei que o <a href="http://heroku.com">Heroku</a>, o serviço que usamos para hospedar os 40+ projetos internos e de clientes aqui na <a href="http://helabs.com.br">HE:labs</a> já faz isso automáticamente, por exemplo.</p>
+
+<p>Se você constatou que no seu projeto os arquivos não estão comprimidos, a única coisa que precisa fazer é colar esse código no <code>.htaccess</code> se você usar o Apache.</p>
+
+<p>```</p>
+
+<h1>----------------------------------------------------------------------</h1>
+
+<h1>Gzip compression</h1>
+
+<h1>----------------------------------------------------------------------</h1>
+
+<p><IfModule mod_deflate.c></p>
+
+<p>  # Force deflate for mangled headers developer.yahoo.com/blogs/ydn/posts/2010/12/pushing-beyond-gzipping/
+  <IfModule mod_setenvif.c></p>
+
+<pre><code>&lt;IfModule mod_headers.c&gt;
+  SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
+  RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
+&lt;/IfModule&gt;
+</code></pre>
+
+<p>  </IfModule></p>
+
+<p>  # Compress all output labeled with one of the following MIME-types
+  # (for Apache versions below 2.3.7, you don't need to enable <code>mod_filter</code>
+  # and can remove the <code>&lt;IfModule mod_filter.c&gt;</code> and <code>&lt;/IfModule&gt;</code> lines as
+  # <code>AddOutputFilterByType</code> is still in the core directives)
+  <IfModule mod_filter.c></p>
+
+<pre><code>AddOutputFilterByType DEFLATE application/atom+xml \
+                              application/javascript \
+                              application/json \
+                              application/rss+xml \
+                              application/vnd.ms-fontobject \
+                              application/x-font-ttf \
+                              application/xhtml+xml \
+                              application/xml \
+                              font/opentype \
+                              image/svg+xml \
+                              image/x-icon \
+                              text/css \
+                              text/html \
+                              text/plain \
+                              text/x-component \
+                              text/xml
+</code></pre>
+
+<p>  </IfModule></p>
+
+<p></IfModule>
+```</p>
+
+<p>Simples assim!</p>
+
+<p>Com esse código, a compressão já está habilitada e os arquivos do seu site estarão carregando ridiculamente mais <strong>rápido</strong>.</p>
+
+<p>Esse conteúdo foi retirado do <code>.htaccess</code> do HTML5 Boilerplate, que além de ser um excelente boilerplate para iniciar o seu projeto, é um repositório enorme de excelentes dicas e boas práticas.</p>
+
+<p>Espero que essa dica seja útil para você! Em breve postarei outras dicas simples e efetivas.</p>
+
+<p>Aquele abraço,
+Pedro Marins</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tech Talks - Rodrigo Martins: Escrevendo código de forma clara e objetiva]]></title>
+    <link href="http://helabs.com.br/blog/2012/11/30/tech-talks-rodrigo-martins-escrevendo-codigo-de-forma-clara-e-objetiva/"/>
+    <updated>2012-11-30T15:52:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2012/11/30/tech-talks-rodrigo-martins-escrevendo-codigo-de-forma-clara-e-objetiva</id>
+    <content type="html"><![CDATA[<p>Hoje rolou a segunda edição das Tech Talks da HE:labs! <a href="http://rrmartins.github.com/">Rodrigo Martins</a> avassalou comparando códigos bem escritos. Novamente a Tech Talk foi regada a pizza e refrigerante.</p>
+
+<!-- more -->
+
+
+<p>Ele começou contando um pouco de sua história e como se apaixonou pela filosofia do Ruby e sua foma simples de fazer código.</p>
+
+<p>Depois foi direto mostrar a sua solução para escrever códigos melhores: PRATICAR! E sem perder tempo, caiu para os exemplos mostrando códigos reais, de projetos reais, que refatorados faziam o código inicial parecer uma aberração. Mostrou inclusive exemplos de códigos próprios, mostrando onde tinha errado e o que fez para consertar depois que praticou e aprendeu uma forma melhor de resolver o mesmo problema.</p>
+
+<p>Por fim, recomendou a todos que não fujam do escopo, façam sempre o simples, lembre que colorir código não dá dinheiro e conheça bem a sua caixa de ferramentas. Finalizou relembrando sua mensagem do início: PRATIQUE!</p>
+
+<p>Esta foi a primeira vez que fizemos uma transmissão ao vivo da Teck Talk. A experiência foi sensacional mas nos mostrou que tem muita coisa que tem que ser melhorada.</p>
+
+<p>Na próxima sexta, dia 07/12/2012, às 14h começa nosso dojo de iOS. Quer aprender e treinar o desenvolvimento para iOS com a gente? Chega mais! O encontro vai ser na sede carioca da HE:labs, Av. Pres. Vargas n° 633, sala 1417 - Centro - Rio de Janeiro. <a href="https://docs.google.com/a/helabs.com.br/spreadsheet/ccc?key=0AgEiZy4SrymRdHcwcG9FdXVVWV9nR3UtQWwtQXhaWGc">Inscreva-se</a>!</p>
+
+<p>Os slides da apresentação do Rodrigo Martins estão no link:
+<a href="https://speakerdeck.com/rrmartins/escrevendo-codigo-de-forma-clara-e-objetiva">https://speakerdeck.com/rrmartins/escrevendo-codigo-de-forma-clara-e-objetiva</a></p>
+
+<p>A gravação da Tech Talk está no link:
+<a href="http://twitcam.livestream.com/cx8kx">http://twitcam.livestream.com/cx8kx</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tech Talks - Rodrigo Pinto: Explorando as views Rails]]></title>
+    <link href="http://helabs.com.br/blog/2012/11/16/tech-talk-rodrigo-pinto-explorando-as-views-rails/"/>
+    <updated>2012-11-16T14:24:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2012/11/16/tech-talk-rodrigo-pinto-explorando-as-views-rails</id>
+    <content type="html"><![CDATA[<p>Hoje recomeçamos as Tech Talks internas aqui na HE:Labs! Depois de algum tempo sem acontercer, as Tech Talks voltaram com tudo, com o <a href="http://rodrigopinto.me">Rodrigo Pinto</a> avassalando explorando as views do Rails. E para animar a galera a Tech Talk foi regada a pizza e refrigerante.</p>
+
+<!-- more -->
+
+
+<p>Ele começou falando sobre o MVC do Rails e a forma como as responsabilidades acabam ficando mal definidas e se confundem ao longo do projeto, por má interpretação dos desenvolvedores. O que gera views super populadas com regras de negócio e de exibição e formatação das informações, quando não deveriam, e tambem falou sobre a forma procedural dos helpers de resolver esses problemas.</p>
+
+<p>Depois disso ele falou sobre patterns de aprensentação como <a href="http://martinfowler.com/eaaDev/SeparatedPresentation.html">Separeted Presentation</a> e Decorators, também falou como usar <a href="http://blog.steveklabnik.com/posts/2011-09-06-the-secret-to-rails-oo-design">Orientação a Objetos</a> em classes ruby puras e sua importância. Na realidade ele não só falou como usar, ele mostrou! Abriu o código que devia ser melhorado e botou a mão na massa, sugerindo e fazendo as mudanças em tempo real.</p>
+
+<p>A interação com a galera foi sensacional e as dúvidas não paravam de pipocar! Terminou indicando livros, posts e videos para que os estudos continuem.</p>
+
+<p>As Tech Talks vão acontecer a cada 15 dias. O próximo é o Beni falando sobre UX.</p>
+
+<p>Os slides da apresentação do Rodrigo estão no link:
+<a href="https://speakerdeck.com/rodrigoospinto/explorando-as-views-rails">https://speakerdeck.com/rodrigoospinto/explorando-as-views-rails</a></p>
+]]></content>
+  </entry>
+  
+</feed>

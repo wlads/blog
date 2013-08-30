@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Lato, Arial, Helvetica, sans-serif;
 }
 
 .grid {
@@ -22,6 +22,11 @@ p {
 }
 
 
+h2 {
+    font-family: lato,sans-serif;
+    font-size: 1.6em;
+    margin-bottom: 1em;
+}
 /* HEADER */
 #top {
     padding: 20px 0;
@@ -192,6 +197,63 @@ p {
     }
 }
 
+
+/* SINGLE POST */
+.posted-by {
+    line-height: 1.5em;
+}
+
+.meta{
+  float:left;
+  margin-top:2em;
+  width:100%;
+  box-sizing: border-box;
+}
+
+.half{
+  width:50%;
+  float:left;
+  margin-top:1em;
+}
+
+.author-pic{
+  border-radius:250px;
+  height:50px;
+  float:left;
+  margin-right:20px;
+}
+
+.author-info{
+  float:left;
+  
+  .author-name{
+    font-weight:bold;
+  }
+}
+
+.sharing {
+    float: left;
+    padding: 0.5em;
+    width: 48%;
+}
+
+.left{
+  float:left;
+}
+.right{
+  float:right;
+}
+
+.cover-mailing-page { 
+    background: image-url('mailing-cover-bg.jpg');
+    background-position: center bottom;
+    border-radius: 5px 5px 5px 5px;
+    float: left;
+    margin-bottom: 2em;
+    margin-top: 20px;
+    padding: 2em;
+    width: 93%;
+}
 /* FOOTER */
 
 #social-footer{

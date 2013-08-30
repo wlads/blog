@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: capybara | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/capybara/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Testes de aceitação com capybara e cucumber]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/03/testes-de-aceitacao-com-capybara-e-cucumber/"/>
+    <updated>2013-07-03T12:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/03/testes-de-aceitacao-com-capybara-e-cucumber</id>
+    <content type="html"><![CDATA[<p>A ideia desse post é mostrar um pouco como funciona o <strong>capybara</strong> com o <strong>cucumber</strong>.</p>
+
+<!--more-->
+
+
+<p>Vou criar um projeto com apenas um formulário para usar de exemplo para os testes de aceitação. Usarei o <em>ruby 2.0.0-p0</em> e <em>rails 3.2.13</em>.</p>
+
+<p><strong>Cucumber</strong> é uma <em>gem</em> que cria um novo ambiente no projeto e permite a escrita de testes de aceitação em uma linguagem muito próxima da natural.</p>
+
+<p><strong>Capybara</strong> também é uma <em>gem</em> que ajuda a testar aplicações web, simulando como um usuário real iria interagir com o aplicativo.</p>
+
+<p>Primeira etapa é adicionar a <em>gem</em> <strong>cucumber</strong> em seu gemfile. Adicione também a <em>gem</em> <strong>database_cleaner</strong>. Ela não é obrigatória, mas altamente recomendável. E por último, o <strong>'bundle install'</strong>.</p>
+
+<p><code>ruby
+group :test do
+  gem 'cucumber-rails', :require =&gt; false
+  gem 'database_cleaner'
+end
+</code></p>
+
+<p>Após a instalação das gems, rode o comando para gerar os aquivos de configuração do cucumber.</p>
+
+<p><code>bash
+$ rails generate cucumber:install
+</code></p>
+
+<p>Agora execute o comando:</p>
+
+<p><code>bash
+$ rake cucumber
+</code>
+Você deve obter o resultado a seguir:</p>
+
+<p><code>bash
+0 scenarios
+0 steps
+0m0.000s
+</code></p>
+
+<p>Crie um arquivo “/features/valida_form.feature” onde será escrito os <strong>Cenários</strong>. Descreva a ação de como o sistema deve se comportar.</p>
+
+<p>```cucumber</p>
+
+<h1>encoding: utf-8</h1>
+
+<h1>language: pt</h1>
+
+<p>Funcionalidade: Preencher o formulário</p>
+
+<p>  Cenário: Deve preencher todos os campos do forumlário e salvar com sucesso</p>
+
+<pre><code>Dado que eu estou na página do formulario
+Quando eu preencher todos os campos
+E clicar em "Salvar"
+Então deve ver receber a mensagem "Usuarios cadastrado com sucesso"
+</code></pre>
+
+<p>```</p>
+
+<p>Após salvar este arquivo, execute novamente o comando:</p>
+
+<p><code>bash
+$ rake cucumber
+</code></p>
+
+<p>O resultado obtido será:</p>
+
+<p><code>bash
+1 scenario (1 undefined)
+4 steps (4 undefined)
+0m0.812s
+</code></p>
+
+<p>Próximo passo para agilizar o processo será a criação de um <strong>scaffold</strong> de Usuário e validar a presença de todos os campos.</p>
+
+<p><code>bash
+$ rails g scaffold usuario nome:string endereco:string telefone:string estado:string tipo:string
+$ rake db:migrate
+</code></p>
+
+<p>Vários <strong>Cenários</strong> podem ser criados. Um exemplo é não preencher todos os campos do formulário para um novo usuário e clicar em salvar. E sim, criar um passo onde deve-se garantir que não foi redirecionado para o “show” do usuário, mantendo-o na mesma página “new”.
+O <strong>capybara</strong> vai nos ajudar a preencher os fields do formulário.</p>
+
+<p>Agora crie um arquivo “/features/step_definitions/valida_form_steps.rb” com o conteúdo abaixo:</p>
+
+<p>```cucumber</p>
+
+<h1>encoding: utf-8</h1>
+
+<p>Dado /<sup>que</sup> eu estou na página do formulario$/ do
+  visit new_usuario_path
+end</p>
+
+<p>Quando /<sup>eu</sup> preencher todos os campos$/ do
+  fill_in "usuario_nome", :with=> "Rodrigo Reginato"
+  fill_in "usuario_endereco", :with=> "Rua alagoas 3872"
+  fill_in "usuario_telefone", :with=> '4398765425'
+  page.select "SC", :from => 'usuario_estado'
+  page.choose("usuario_tipo_fisico")
+end</p>
+
+<p>E /<sup>clicar</sup> em "(.*?)"$/ do |nome_do_botao|
+  find_button(nome_do_botao).click
+  save_and_open_page
+end</p>
+
+<p>Então /<sup>deve</sup> ver receber a mensagem "(.*?)"$/ do |mensagem|
+  page.has_content?(mensagem)
+end
+```</p>
+
+<p>Após adicionar este código rode novamente o comando:</p>
+
+<p><code>bash
+$ rake cucumber
+</code></p>
+
+<p>O resultado obtido será:</p>
+
+<p><code>bash
+1 scenario (1 passed)
+4 steps (4 passed)
+0m0.425s
+</code></p>
+
+<h2>Dicas</h2>
+
+<p>Para facilitar a nossa vida, existem algumas funções que são fundamentais, como:</p>
+
+<p><code>ruby
+save_and_open_page
+</code></p>
+
+<p>Para utilizarmos este recurso, é necessário instalar a <em>gem</em>:</p>
+
+<p><code>ruby
+gem 'launchy'
+</code></p>
+
+<p>Um browser é aberto no momento que este comando é adicionado entre os steps, facilitando para encontrar possíveis erros.</p>
+
+<p>No caso da página ter algum javascript ou se quiser ver todo o processo passo a passo como se o usuário estivesse digitando os dados, é necessário instalar a <em>gem</em> <a href="https://github.com/vertis/selenium-webdriver">selenium-webdriver</a>.</p>
+
+<p>Existem outras opções como o <a href="https://github.com/thoughtbot/capybara-webkit">capybara-webkit</a>, mas apresentou um erro na hora do bundle. Já o <a href="https://github.com/vertis/selenium-webdriver">selenium-webdriver</a>, funcionou perfeitamente.</p>
+
+<p><code>ruby
+gem 'selenium-webdriver'
+</code></p>
+
+<p>Adicione @javascript na primeira linha antes do <strong>Cenário</strong> iniciar.</p>
+
+<p><code>cucumber
+@javascript
+Cenário: Deve preencher todos os campos do formulário e salvar com sucesso
+</code></p>
+
+<p>Um browser será aberto logo no início do processo  e todos os passos que descrevi acima ficarão visíveis como se um usuário estivesse preenchendo os campos.</p>
+
+<p>É isso pessoal, até a próxima.</p>
+]]></content>
+  </entry>
+  
+</feed>

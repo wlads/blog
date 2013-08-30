@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: sylvestre mergulhao | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/sylvestre-mergulhao/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Seu ambiente de trabalho mais limpo usando Vagrant]]></title>
+    <link href="http://helabs.com.br/blog/2013/03/05/seu-ambiente-de-trabalho-mais-limpo-usando-vagrant/"/>
+    <updated>2013-03-05T10:20:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/03/05/seu-ambiente-de-trabalho-mais-limpo-usando-vagrant</id>
+    <content type="html"><![CDATA[<p>Cada projeto tem suas peculiaridades. Alguns precisam apenas de um <a href="http://www.postgresql.org/">banco de dados</a> para rodar e outros precisam de uma série de serviços adicionais como <a href="http://redis.io/">redis</a> ou <a href="http://sphinxsearch.com/">sphinx</a>. Instalar todos esses serviços diretamente no sistema operacional é uma opção, mas com o tempo a <a href="http://en.wikipedia.org/wiki/Software_erosion">erosão</a> atua e por muitas vezes os serviços ou o próprio sistema começam a apresentar problemas.</p>
+
+<!-- more -->
+
+
+<h3>Os serviços e o sistema sofrem erosão</h3>
+
+<p>Um exemplo bem simples de <a href="http://en.wikipedia.org/wiki/Software_erosion">erosão</a> ocorreu comigo há alguns dias. Fazia muito tempo que não rodava um projeto que usasse o <a href="http://www.mongodb.org/">mongodb</a> como banco de dados.</p>
+
+<p>Quando precisei, percebi que o serviço não estava no ar. Avaliando os logs do sistema descobri que a cada 10 segundos o sistema tentava subir o serviço, mas por algum motivo ele dava um <a href="http://en.wikipedia.org/wiki/Segmentation_fault">segmentation fault</a>. O motivo do problema pode ter sido algumas das dezenas de atualizações feitas no sistema operacional e que podem ter atualizado uma biblioteca qualquer para uma versão incompatível com a versão do <a href="http://www.mongodb.org/">mongodb</a> que estava instalada.</p>
+
+<p>Esse problema poderia estar acontecendo há meses, sem que eu percebesse. Não só influenciando no serviço específico, mas também degradando o sistema operacional como um todo.</p>
+
+<h3>Vagrant como fornecedor de serviços</h3>
+
+<p>Algumas pessoas utilizam o <a href="http://www.vagrantup.com/">Vagrant</a> como ambiente completo de desenvolvimento. Eu estou feliz com o ambiente que tenho no Mac OSX, me dou bem com o <a href="http://mxcl.github.com/homebrew/">brew</a> e não tenho interesse em desenvolver dentro de uma máquina Linux. Nem mesmo por questões de compatibilidade. Nos dias de hoje são mínimas as diferenças e os problemas que podem ocorrer por desenvolver num ambiente e rodar em outro.</p>
+
+<p>Minha proposta é utilizar o <a href="http://www.vagrantup.com/">Vagrant</a> como fornecedor de serviços para o ambiente de desenvolvimento. Através da funcionalidade <a href="http://docs.vagrantup.com/v1/docs/config/vm/forward_port.html">forward_port</a> do <a href="http://www.vagrantup.com/">Vagrant</a> é possível rodar um serviço dentro da VM e mapeá-lo para uma porta da máquina host. Isso é perfeito.</p>
+
+<p>Baseado nessa proposta eu criei uma box para o <a href="http://www.vagrantup.com/">Vagrant</a> que roda <a href="http://releases.ubuntu.com/precise/">Ubuntu Precise 64</a> com <a href="http://www.postgresql.org/">postgresql</a> 9.1 e mapeia a porta 5432 (usada normalmente pelo <a href="http://www.postgresql.org/">postgresql</a>) do host para dentro da VM. Isso tem o mesmo efeito de ter o <a href="http://www.postgresql.org/">postgresql</a> rodando nativamente e fica transparente para qualquer projeto.</p>
+
+<p>Para mais informações veja: <a href="https://github.com/mergulhao/vagrant-precise64-postgresql">https://github.com/mergulhao/vagrant-precise64-postgresql</a></p>
+
+<h3>Boxes para outros serviços</h3>
+
+<p>Por enquanto foi só isso que eu precisei, mas a ideia é criar um box desse para cada tipo de projeto que precise de serviços específicos.</p>
+
+<p>Até o próximo!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Retrospectiva - 2° Café com DEV]]></title>
+    <link href="http://helabs.com.br/blog/2013/02/25/retrospectiva-2-cafe-com-dev/"/>
+    <updated>2013-02-25T12:03:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/02/25/retrospectiva-2-cafe-com-dev</id>
+    <content type="html"><![CDATA[<p>Na última sexta-feira, dia 22 de fevereiro, aconteceu a segunda edição do Café com DEV. O evento reuniu interessados em debater o tema "design, usabilidade e acabamento de software".</p>
+
+<!-- more -->
+
+
+<p><img src="/images/posts/2-cafe-com-dev.jpg" alt="image" /></p>
+
+<p>Novamente estávamos com a casa cheia e o papo foi extremamente rico e dinâmico, regado a café, Red Bull e Heineken. Tivemos inclusive convidados de São Paulo presentes no evento.</p>
+
+<p>Os tópicos discutidos foram baseados no artigo <a href="http://agilewarrior.wordpress.com/2012/10/06/its-not-about-the-unit-tests/">"It's not about unit tests"</a> de <a href="http://agilewarrior.wordpress.com/">Jonathan Rasmusson</a>. O artigo diz que programadores iOS não desenvolvem de forma orientada por testes, mas nem por isso o código escrito por eles é pior ou o aplicativo não funciona. Pelo contrário, muitos aplicativos para iOS são adorados por seus usuários.</p>
+
+<p>A realidade é que o desenvolvimento para iOS tem que seguir uma guideline extremamente rígida. A atualização de um aplicativo em caso de bug também é muito lenta, as vezes ineficiente. Com isso os programadores tendem a se importar mais com que estão entregando, já que qualquer alteração depois de um deploy, pode demorar semanas e custar muito caro para o aplicativo, em termos de reviews negativas.</p>
+
+<p>Num projeto web tradicional, o deploy é muito simples e rápido de se realizar. Com isso, os programadores tendem e ficar um pouco menos preocupados com a qualidade e o refino do produto final, dado que um erro pode rapidamente ser ajustado.</p>
+
+<p>Por fim, a conclusão é que programadores web tem muito a aprender com a comunidade iOS, principalmente no quesito do cuidado e carinho com o trabalho de um verdadeiro artesão de software.</p>
+
+<p>Quem levou esse Café com Dev foi <a href="http://mergulhao.info/">Sylvestre Mergulhão</a>, que além de outros tópicos levantou questões como:</p>
+
+<ul>
+<li>O que define qualidade?</li>
+<li>O que é se importar?</li>
+<li>Conceito de pronto</li>
+<li>Subestimação de esforço</li>
+<li>Pensar um software no visual é bom (desenho de telas)</li>
+<li>Menos é mais</li>
+<li>Se importe também com o que não tem interface</li>
+<li>Que tipo de artista você prefere ser?</li>
+</ul>
+
+
+<p>Abaixo temos um link para vídeo do bate-papo para quem não pode estar presente. O video começa aos 3:48s.</p>
+
+<p><a href="http://twitcam.livestream.com/dwwho">Video do Café com DEV</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Dezembro de RUPY, RailsGirls-RJ e muitos eventos]]></title>
+    <link href="http://helabs.com.br/blog/2012/12/19/dezembro-de-rupy-railsgirlsrj-e-muitos-eventos/"/>
+    <updated>2012-12-19T12:00:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2012/12/19/dezembro-de-rupy-railsgirlsrj-e-muitos-eventos</id>
+    <content type="html"><![CDATA[<p>Dezembro está sendo um mês movimentado para a turma da <a href="http://www.helabs.com.br">HE:Labs</a>. O mês começou com a ida ao <a href="http://www.rupy.com.br">RUPY</a>, evento focado em linguagems dinâmicas como Ruby, Python e JavaScript, que aconteceu em São José dos Campos e reuniu desenvolvedores de todo o Brasil.</p>
+
+<!-- more -->
+
+
+<p>A <a href="http://www.rupy.com.br">RUPY</a> aconteceu nos dias 08 e 09 de Dezembro. <a href="http://www.twitter.com/rodrigoospinto">Eu(Rodrigo Pinto)</a> e o <a href="http://www.twitter.com/smergulhao">Sylvestre Mergulhão</a>, fomos reprensentar a empresa e falar sobre <a href="http://en.wikipedia.org/wiki/Platform_as_a_service">PaaS - Plataform as a Service</a>; Especificamente sobre o Heroku, dando uma visão de prós e contras baseado na experiência de já termos deployado mais de 35 apps no <a href="http://www.startupdev.com.br">StartupDEV</a> e mais de 50 apps durante o último 1 ano e meio de <a href="http://www.helabs.com.br">HE:labs</a> utilizando o Heroku. No fim do primeiro dia rolou a HE:labs Party um happy hour dentro do evento regado a petiscos, refrigerantes e cervejas patrocinado por nós. \o/</p>
+
+<p>O evento contou com excelentes apresentações, entre elas, palestras como <em>"Usando o vagrant como ambiente de desenvolvimento Ruby"</em> do <a href="https://twitter.com/fnando">Nando Vieira</a>, <em>"Google App Engine, Python e Startups"</em> com o <a href="https://twitter.com/nuccitec">Renzo Nuccitelli</a>, e keynotes muito interessantes como <em>"De Smalltalk a Clojure"</em> com <a href="https://twitter.com/rferraz">Ronaldo Ferraz</a> e o <a href="https://twitter.com/AkitaOnRails">Fabio Akita</a> fechando o evento falando sobre <em>"O que há de novo no Rails 4"</em>.</p>
+
+<p>Não se atendo somente as palestras da grade de programação, uma que me chamou bastante a atenção, foi a apresentação do <a href="https://twitter.com/tonylampada">Tony Lâmpada</a> compartilhando seu projeto <a href="http://www.freedomsponsors.org">FreedomSponsors.org</a>. Um projeto de crowdfunding onde você pode contribuir financeiramente, para a implementação e/ou correção de funcionalidades em projetos open source.</p>
+
+<!-- Faltaram os links para os palestrantes e para as palestras, se estiverem disponíveis -->
+
+
+<p>Nesse mesmo final de semana o <a href="http://www.twitter.com/rafaelp">Rafael Lima</a> esteve do <a href="http://rio.startupweekend.org/">StartupWeekend Rio</a> de Janeiro e mentorando os times que por lá estavam.</p>
+
+<p>Na semana seguinte, nos dias 11 e 13 de Dezembro foi ministrado o 1º curso Rails for Zombies 2 presencial, nascido da parceria <a href="http://www.helabs.com.br">HE:labs</a> + <a href="http://www.codeschool.com.br">CodeSchool</a>. Em breve teremos novas datas para o curso, então fique ligado e <a href="http://helabs.com.br/mailing/">inscreva-se na nossa mailing</a> para ser avisado quando as novas datas forem definidas.</p>
+
+<p>Ainda aconteceu o <a href="http://geeksonbeer.com">GeeksOnBeer</a>, no dia  e novamente estávamos presentes. A <a href="http://www.helabs.com.br">HE:labs</a> estava representada por <a href="http://www.twitter.com/smergulhao">Sylvestre Mergulhão</a>, <a href="http://www.twitter.com/rafaelp">Rafael Lima</a> e Raphael Periard, que aproveitaram as cervejas para fazer muito networking. O <a href="http://geeksonbeer.com">GeeksOnBeer</a> foi mais um evento patrocinado pela HE:labs.</p>
+
+<p>Para fecher o ciclo de eventos no sábado dia 15, rolou o <a href="http://railsgirls.com/riodejaneiro">RailsGirls-RJ</a> e o 9° encontro do Rio.JS.</p>
+
+<p>O <a href="http://railsgirls.com/riodejaneiro">RailsGirls-RJ</a> é um evento que tem como meta <em>"dar ferramentas para garotas e mulheres construirem seus próprios sonhos"</em>, ou seja, um evento de um dia inteiro, focado em ensinar Rails para mulheres, para que elas possam a partir daí começar a construir aplicações web. O evento foi sensacional, com mais de 60 pessoas presentes, a <a href="http://www.helabs.com.br">HE:labs</a> também apoiou e <a href="http://www.twitter.com/rodrigoospinto">eu</a> estive lá ajudando como coach e apresentando uma palestra sobre <a href="https://speakerdeck.com/rodrigoospinto/introducao-ao-ruby-on-rails-railsgirls-rj">"Introdução ao Ruby on Rails"</a>.</p>
+
+<p><a href="https://www.facebook.com/groups/riojs/">No 9° encontro do Rio.JS</a> quem esteve presente foi o <a href="https://twitter.com/pedromarins">Pedro Marins</a>. O evento reuniu a comunidade de desenvolvedores para palestras sobre JavaScript. Entre os temas abordados estão peculiaridade do javascript, qualidade de código e o Angular.JS.</p>
+
+<p>Os eventos entram em recesso durante esse período de fim de ano, mas nós não. Já estamos preparando eventos e cursos para o ano que vem, então <a href="http://helabs.com.br/mailing/">assine nossa mailing</a> para ficar atualizado sobre onde e com o que estamos envolvidos.</p>
+
+<p>Grande Abraço,<br/>
+<a href="http://www.twitter.com/rodrigoospinto">Rodrigo Pinto</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[4 Hour Workweek, Lean Startup, Teste A/B, Optimizely e o Futuro]]></title>
+    <link href="http://helabs.com.br/blog/2012/11/09/4-hour-workweek-lean-startup-teste-a-slash-b-optimizely-e-o-futuro/"/>
+    <updated>2012-11-09T12:12:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2012/11/09/4-hour-workweek-lean-startup-teste-a-slash-b-optimizely-e-o-futuro</id>
+    <content type="html"><![CDATA[<p>Quando li o livro <a href="http://www.fourhourworkweek.com/">The 4 Hour Workweek</a> , percebi que muitas das otimizações exemplificadas pelo <a href="http://en.wikipedia.org/wiki/Timothy_Ferriss">Timothy</a> eram baseadas em experimentação sobre o que funciona melhor, ou seja, tem maior taxa de conversão. Na época não existia uma ferramenta como o <a href="https://www.optimizely.com/">Optimizely</a>. Ele deve ter tido um bom trabalho para chegar nas conclusões sobre que converte melhor.</p>
+
+<!-- more -->
+
+
+<p>Algum tempo depois li o <a href="http://lean.st/">The Lean Startup</a> do <a href="http://en.wikipedia.org/wiki/Eric_Ries">Eric Ries</a>. Depois de muitas repetições sobre <a href="http://lean.st/principles/validated-learning">validated learning</a>, caiu a ficha de que para isso existir, não basta um serviço como o <a href="https://www.optimizely.com/">Optimizely</a>.</p>
+
+<p>É claro que o <a href="https://www.optimizely.com/">Optimizely</a> é sensacional para testar coisas como cor, imagem ou descrição que faz melhores conversões... Ou seja: faz o usuário se cadastrar ou clicar num determinado botão. Para isso ele é imbatível.</p>
+
+<p>Contudo, para o processo do Lean Startup, mais que isso é necessário. Para se obter aprendizado validado dentro de um aplicativo web, é necessário que ele se comporte realmente de forma diferente. Não é apenas um posicionamento, cor ou imagem. É uma coisa interna!</p>
+
+<p>Dado que validamos com o <a href="https://www.optimizely.com/">Optimizely</a> qual é a melhor posição, cor e descrição para um botão, agora precisamos validar qual é a melhor implementação! Precisamos que um mesmo clique de botão execute uma determinada função de forma diferente, que exiba o resultado de forma diferente. Uma mesma action, no caso do Rails, deve ser implementada de mais de uma forma. Quantas forem as versões que estão sendo validadas. E, após um número de experimentos executados, determinamos qual a melhor, removendo as demais.</p>
+
+<p>Isso tudo já estava na minha cabeça há bastante tempo, mas o arcabouço técnico necessário para ter isso realizado e funcionando de forma simples é enorme. Não tenho dúvidas de que o Eric construiu esse arcabouço para o <a href="http://www.imvu.com/">IMVU</a>, case que ele conta no livro.</p>
+
+<p>A parte boa é que agora apareceu uma ferramenta chamada <a href="http://www.fluidfeatures.com/">FluidFeatures</a> que tem o propósito de exatamente fornecer suporte a esses tipos de testes. É o futuro!</p>
+]]></content>
+  </entry>
+  
+</feed>

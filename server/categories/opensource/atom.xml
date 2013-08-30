@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: opensource | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/opensource/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Como colaborar com projetos open-source]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/31/como-colaborar-com-projetos-open-source/"/>
+    <updated>2013-07-31T15:20:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/31/como-colaborar-com-projetos-open-source</id>
+    <content type="html"><![CDATA[<p>Atualmente, quase todas as empresas de desenvolvimento de software usam algum projeto open-source no seu dia a dia. Nós da HE:labs acreditamos que faz parte do nosso trabalho contribuir de volta. Isto é, colaborar com projetos open-source e melhorar o conteúdo disponível para a comunidade. Mas muitas vezes, desenvolvedores e designers ficam perdidos em como contribuir. Vou tentar listar algumas formas produtivas de fazê-lo, seja em projetos grandes, como o <a href="https://github.com/rails/rails">Rails</a>, ou mesmo em projetos menores, que, porventura, você tenha utilizado e/ou tenha interesse em contribuir.</p>
+
+<!--more-->
+
+
+<h3>Tradução</h3>
+
+<p>Traduzir projetos como o <a href="http://betterspecs.org/">Better Specs</a> é uma excelente forma de começar se você ainda se sente inseguro em contribuir com código. Traduzir permite que você, obrigatoriamente, leia e entenda como funciona. E ainda, facilita que desenvolvedores iniciantes, considerando que não dominam o Inglês, leiam determinado guia ou tutorial e possam aprender determinada tecnologia ou técnica sem ter a linguagem como barreira. A quantidade de materiais em Português é ainda bastante precária e apesar de eu mesmo não dar muita bola para os mesmos, já vi muitos desenvolvedores mais inexperientes procurando incessantemente como resolver determinado problema buscando por uma solução em português.</p>
+
+<h3>Ressucitar issues antigas</h3>
+
+<p><a href="https://github.com/rails/rails/issues">Projetos</a> <a href="https://github.com/joyent/node/issues">maiores</a> <a href="https://github.com/gregbell/active_admin/issues">muitas</a> <a href="https://github.com/robbyrussell/oh-my-zsh/issues">vezes</a> <a href="https://github.com/FortAwesome/Font-Awesome/issues">tem</a> <a href="https://github.com/angular/angular.js/issues">centenas</a> <a href="https://github.com/zurb/foundation/issues">de</a> <a href="https://github.com/mxcl/homebrew/issues">issues</a> <a href="https://github.com/EllisLab/CodeIgniter/issues">abertas</a>, e simplesmente tentar reproduzir o problema para ver se já foi resolvido ou não, e depois reportar é totalmente válido.</p>
+
+<p>Outra forma útil e eficiente de ressucitar issues é tentar isolar o problema com um exemplo em um <a href="https://github.com/plentz/jruby_report">repositório com testes</a>. Isto ajuda outras pessoas a entenderem mais facilmente o problema. Às vezes, o simples fato de isolá-lo já melhora a visibilidade do mesmo e permite desenvolvedores mais experientes e com menos tempo a resolvê-los.</p>
+
+<p>Um simples "isso pode ser fechado?" também ajuda.</p>
+
+<h3>Faça backports e publique-os</h3>
+
+<p>Às vezes você se encontra em um projeto com dependências mais antigas, onde precisa resolver certos problemas que já foram anteriormente resolvidos para versões mais recentes. E ainda, necessita fazer o backport das soluções. Após consertar para seu projeto interno, contribua de volta. Existem inúmeros exemplos:</p>
+
+<ul>
+<li><a href="https://github.com/lunks/kiqstand">lunks/kiqstand</a></li>
+<li><a href="https://github.com/grosser/rails2_asset_pipeline">grosser/rails2_asset_pipeline</a></li>
+<li><a href="https://github.com/grosser/strong_parameters/tree/rails2">grosser/strong_parameters</a></li>
+<li><a href="https://github.com/marcandre/backports">marcandre/backports</a></li>
+</ul>
+
+
+<h3>Melhore a biblioteca para você, extraia para um plugin e faça um pull request</h3>
+
+<p>Uma das coisas mais recorrentes no Rails são desenvolvedores experientes aparecerem no <a href="https://groups.google.com/forum/#!forum/rubyonrails-core">Ruby on Rails Core</a> fazendo sugestões de melhorias, com a intenção de fazê-lo, mas somente se a comunidade aceitar. 90% das vezes a resposta é <em>você pode fazer um pull request?</em>.</p>
+
+<p>A argumentação é simples: Se você quer uma feature, vá lá e faça! Não espere algum commiter ou core member falar que seria legal. Muitas vezes somente vislumbrar uma feature não é nem de perto vislumbrar o esforço para que ela se concretize e que <em>side effects</em> ela pode trazer. Não é à toa que <a href="https://github.com/rails/rails-observers">observers</a> e <a href="https://github.com/rails/activeresource">Active Resource</a> não fazem mais parte do Rails. Mesmo features boas requerem manutenção uma vez incorporadas à algum projeto open-source e isso é custoso.</p>
+
+<p>Com o código pronto, é muito mais fácil convencer alguém a aceitar a sua sugestão. É claro, não garante. Não fique chateado se rejeitarem. Lançar em um plugin (uma <em>gem</em> no vocabulário Ruby) permite que outras pessoas que concordam com você usufruam do seu trabalho e possam fazer parte do lobby para incorporar a sua sugestão à biblioteca que você tanto quer contribuir.</p>
+
+<p>Contribuir com projetos open-source é extremamente gratificante. De quebra, ainda é um excelente portfólio se você pretende se candidatar a alguma vaga <a href="http://helabs.com.br/jobs">em uma empresa legal</a>. E fica bonito no seu <a href="http://osrc.dfm.io/lunks">Open Source Report Card</a>.</p>
+
+<p>E você, tem alguma outra forma interessante de contribuir para projetos open-source?</p>
+
+<p><em>Se quiser ajuda, inclusive para parear em um projeto opensource, <a href="https://twitter.com/lunks">me siga no Twitter</a> e entre em contato.</em></p>
+]]></content>
+  </entry>
+  
+</feed>

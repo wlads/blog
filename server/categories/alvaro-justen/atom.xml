@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: alvaro justen | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/alvaro-justen/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Retrospectiva Café com DEV HE:Rio 12/07]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/29/retrospectiva-cafe-com-dev-he-rio-12-de-julho/"/>
+    <updated>2013-07-29T14:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/29/retrospectiva-cafe-com-dev-he-rio-12-de-julho</id>
+    <content type="html"><![CDATA[<p>Na sexta-feira, dia 12/07, a HE:Rio organizou mais um Café com DEV no espaço Curto Circuito (Av. 13 de maio, nº13 - sala 616, Cinelândia) e recebeu <a href="https://twitter.com/turicas">Álvaro Justen</a> com o tema "Arduino: robótica com software e hardware livres".</p>
+
+<!--more-->
+
+
+<p><img src="/images/DSCN3736.JPG" alt="image" /></p>
+
+<p>Durante a palestra, Álvaro, também conhecido como Turicas, nos mostrou diversos exemplos de como rodar um comando e fazer com que lâmpadas de led (ou qualquer outro dispositivo) obedecessem a este comando.</p>
+
+<p><img src="/images/DSCN3738.JPG" alt="image" /></p>
+
+<p>A palestra foi bem interessante! Até para leigos, como eu, descobrir como a "mágica" funciona foi super interessante!</p>
+
+<p>Para quem não conseguiu acompanhar ao vivo, a transmissão pode ser conferida <a href="https://www.eventials.com/pt-br/helabs/arduino-robotica-com-software-e-hardware-livres/">neste link</a>.</p>
+
+<p>O próximo encontro da HE:Rio acontecerá no dia <strong>09/08</strong>. João Felipe (jotafê) falará sobre o tema "Desenvolvendo com HTML/CSS/JS para BlackBerry, conhecendo a plataforma e o apoio ao desenvolvedor."</p>
+
+<p>Confira todos os cafezinhos acessando a <a href="http://helabs.com.br/eventos/cafe-com-dev/">Página do Café com DEV</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

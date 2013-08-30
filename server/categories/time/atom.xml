@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: time | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/time/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Novo membro: Bruno Fernando]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/02/novo-membro-bruno/"/>
+    <updated>2013-07-02T11:30:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/02/novo-membro-bruno</id>
+    <content type="html"><![CDATA[<p>No início da semana, demos boas vindas a mais um integrante do time: Bruno Fernando!</p>
+
+<!--more-->
+
+
+<p><img src="/images/bruno.jpg" alt="image" /></p>
+
+<p>Bruno é designer e reside no Tocantins (mais um! :D). Trabalha em projetos de identidade visual há, aproximadamente, 9 anos e brinca no mundo web como Front-end. E ainda, curte desenvolver projeto mobile (design responsivo).</p>
+
+<p>Siga Bruno nas redes sociais: <a href="http://www.behance.net/3runo">Behance</a>, <a href="http://dribbble.com/3runo">Dribbble</a>, <a href="https://github.com/3runoDesign">Github</a> e <a href="http://3runo.com.br/">site</a>.</p>
+
+<p>Seja muito bem vindo!!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Novo membro: Francisco Martins]]></title>
+    <link href="http://helabs.com.br/blog/2013/06/25/novo-membro-francisco/"/>
+    <updated>2013-06-25T10:30:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/06/25/novo-membro-francisco</id>
+    <content type="html"><![CDATA[<p>Nesta segunda, 24/06, iniciamos a semana com mais um integrante no time! Francisco Martins é de Tocantins e estará trabalhando diretamente de lá!</p>
+
+<!--more-->
+
+
+<p><img src="/images/francisco.jpg" alt="image" /></p>
+
+<p>Francisco avassala em ruby, objective-c (iOS) e Android. Cursou Sistemas de Informação e já trabalhou com site responsivo em rails e com app móvel.</p>
+
+<p>Siga Francisco nas redes sociais: <a href="https://github.com/franciscomxs">Github</a> e <a href="https://twitter.com/franciscomxs">Twitter</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Novo membro]]></title>
+    <link href="http://helabs.com.br/blog/2013/06/19/novo-membro/"/>
+    <updated>2013-06-19T11:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/06/19/novo-membro</id>
+    <content type="html"><![CDATA[<p>No início da semana, demos boas vindas a mais um integrante do time: Thiago Gonzalez!</p>
+
+<!--more-->
+
+
+<p><img src="/images/gonzalez.jpg" alt="image" /></p>
+
+<p>Thiago é formado em Análise e Desenvolvimento de Sistemas pela Universidade Monte Serrat. Avassala em Front-end e já tem experiência com isto há três anos. É apaixonado pelo que faz e já realizou vários projetos, dentre eles: <em>Brasil Memória das Artes</em>, <em>Funarte</em>, <em>Festival do Rio</em>, <em>Agência de Redes</em>, etc.</p>
+
+<p>Siga Thiago nas redes sociais: <a href="https://www.facebook.com/thigonzalez">Facebook</a>, <a href="https://github.com/thiagonzalez">Github</a>, <a href="http://br.linkedin.com/in/thigonzalez/">Linked.In</a>. E confira seu <a href="http://thiagogonzalez.com/">portifólio</a>.</p>
+
+<p>Seja muito bem vindo!!!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Novos membros]]></title>
+    <link href="http://helabs.com.br/blog/2013/06/07/boas-vindas-aos-novos-integrantes/"/>
+    <updated>2013-06-07T18:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/06/07/boas-vindas-aos-novos-integrantes</id>
+    <content type="html"><![CDATA[<p>Nessa semana, a HE:labs recebeu dois novos integrantes no time! Flavia Fortes e Dirceu Pauka Jr nos ajudarão como developers!</p>
+
+<!--more-->
+
+
+<p><img src="/images/flavia.jpg" alt="image" /></p>
+
+<p>Flavia Fortes avassala em Ruby há um ano e estuda Análise de Sistemas no ISTRio. Já fez diversos cursos, como Desenvolvimento Web com PHP e MySQL. Já passou pela Accenture, MediaFactory e HJM Tecnologia até chegar aqui.</p>
+
+<p>Siga-a nas redes sociais:<a href="https://twitter.com/FlaFortes">Twitter</a>,  <a href="https://github.com/FlaviaFortes">Github</a>, <a href="https://www.facebook.com/fla.fortes">Facebook</a>.</p>
+
+<p><img src="/images/dirceu.jpg" alt="image" /></p>
+
+<p>Dirceu Pauka Jr estudou Ciência da Computação na Universidade Estadual de Londrina, mas largou o curso para fazer parte do time de uma empresa de publicidade on-line. Passou pelo Buscapé e pela Appies em São Paulo antes de se juntar ao time da HE:Labs em Londrina. É avassalante em Ruby, Python e JS; versionamento de código (Git); e plataformas de computação Amazon e Google AppEngine.</p>
+
+<p>Siga-o nas redes sociais: <a href="https://github.com/dirs">Github</a>, <a href="https://twitter.com/dirs">Twitter</a>, <a href="https://www.facebook.com/dirceu">Facebook</a>.</p>
+
+<p>Sejam muito bem vindos! É o time da HE crescendo! o/</p>
+]]></content>
+  </entry>
+  
+</feed>

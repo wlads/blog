@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: decide as late as possible | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/decide-as-late-as-possible/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA['Decide as late as possible' - Por que adiar decisões em projetos de desenvolvimento ágil]]></title>
+    <link href="http://helabs.com.br/blog/2013/01/11/decide-as-late-as-possible-por-que-adiar-decioes-em-projetos-de-desenvolvimento-agil/"/>
+    <updated>2013-01-11T10:47:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2013/01/11/decide-as-late-as-possible-por-que-adiar-decioes-em-projetos-de-desenvolvimento-agil</id>
+    <content type="html"><![CDATA[<p>O conceito de "Decide as late as possible" faz parte de um dos princípios <a href="http://theleanstartup.com/">"Lean"</a> e consiste em prorrogar decisões até o momento em que elas são realmente necessárias.</p>
+
+<p><strong>Mas quanto antes eu tomar minhas decisões melhor, não?</strong></p>
+
+<!-- more -->
+
+
+<p>Salvo algumas exceções durante minha carreira como desenvolvedor, eu responderia que não. Como já diria <a href="http://www.startuplessonslearned.com/">Eric Ries</a>: "Startups are designed to confront situations of extreme uncertainty". Isso nos diz que uma startup está sujeita a mudanças a cada ciclo de aprendizado e tomar decisões precoces que engessam uma solução podem ser vitais para sua empresa. Ao invés disso, devemos criar soluções flexíveis para que possamos mudar posteriormente caso necessário. E acredite em mim, será necessário. Quanto mais você evitar uma decisão até o momento que ela for realmente necessária, mais informações você terá para poder embasar essa escolha.</p>
+
+<p>Muitos defendem que o nome do princípio deveria ser "Decide as late as responsibly possible", pois podemos evitar tomar uma decisão até certo ponto. A partir daí começamos a ter perdas mas não significa que uma decisão não possa mais ser tomada, e sim que quanto mais tempo passar, maiores elas serão. Por isso pensar e planejar ao longo do caminho é importante, mas não bata o martelo tão cedo.</p>
+
+<p>Esse é um conceito que você pode usar no seu dia a dia, em suas decisões pessoais. No entanto, gostaria de mostrar como isso se adapta ao modelo de <a href="http://desenvolvimentoagil.com.br/">desenvolvimento ágil</a>.</p>
+
+<p>Em um projeto de software agile o ideal é que tenhamos iterações pequenas, para que possamos coletar mais informações e assim poder priorizar melhor as atividades da próxima iteração, afinal devemos lembrar que estamos confrontando uma situação de extrema incerteza onde detalhes podem mudar a qualquer instante.</p>
+
+<p>O que acontece se você tomar decisões muito cedo?</p>
+
+<ul>
+<li><p>Você pode perder um aspecto fundamental do problema, porque você está focado nos detalhes cedo demais.</p></li>
+<li><p>Você pode complicar mais a situação, tentando olhar para todos os aspectos conhecidos do problema.</p></li>
+<li><p>Você pode gastar muita energia desnecessária para tentar resolver um problema antes de saber a real extensão do problema, ou mesmo de explorar soluções alternativas.</p></li>
+</ul>
+
+
+<p>O que acontece se eu adiar as decisões?</p>
+
+<ul>
+<li><p>Você pode vir com a solução mais simples para atender a sua necessidade atual, com um código que seja extensível e refatorável, evitando adição de features "just-in-case".</p></li>
+<li><p>Você tem tempo para explorar outras soluções alternativas a um nível elevado e tomar a decisões com mais e/ou melhores informações.</p></li>
+<li><p>Você pode mitigar os riscos por não tomar uma decisão errada muito cedo.</p></li>
+</ul>
+
+
+<p>Por fim, decisões menores, se forem tomadas muito cedo, apesar de serem ineficientes, não representam grandes problemas pois podem ser alteradas com menor esforço. Decisões com um alto custo/risco são as que devemos prolongar, com o cuidado de não deixar passar do "last responsible moment".</p>
+]]></content>
+  </entry>
+  
+</feed>

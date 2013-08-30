@@ -1,0 +1,521 @@
+	
+	<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <title>Métodos estáticos, porque evitá-los - Blog da HE:labs</title>
+  <meta name="author" content="Time HE:labs">
+
+  
+  <meta name="description" content="Métodos estáticos, porque evitá-los Aparentemente existe na cultura de alguns desenvolvedores uma certa convenção sobre quando usar métodos &hellip;">
+  
+
+  <!-- Facebook stuff taken from main page, not sure it should go here -->
+  <meta property="og:title" content="Métodos estáticos, porque evitá-los - Blog da HE:labs"/>
+  <meta property="og:site_name" content="HE:labs blog"/>
+  <meta property="og:image" content="http://helabs.com.br/images/logo-icon.png"/>
+  <meta property="og:description" content="Métodos estáticos, porque evitá-los Aparentemente existe na cultura de alguns desenvolvedores uma certa convenção sobre quando usar métodos &hellip;" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://helabs.com.br/blog/2013/03/13/metodos-estaticos-porque-evita-los/">
+  <link href="http://helabs.com.br/favicon.png" rel="icon">
+
+  <!-- CSS --> 
+  <link href="/blog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  
+
+  <!-- JS -->
+  <script type="text/javascript" src="/blog/javascripts/jquery.js"></script>
+  <script type="text/javascript" src="/blog/javascripts/jquery.parallax.min.js"></script>
+  <script type="text/javascript" src="/blog/javascripts/main.js"></script>
+
+  <!--
+  <script src="/blog/javascripts/modernizr-2.0.js"></script>
+  <script src="/blog/javascripts/ender.js"></script>
+  <script src="/blog/javascripts/octopress.js" type="text/javascript"></script>
+  -->
+  
+  <link href="/blog/atom.xml" rel="alternate" title="Blog da HE:labs" type="application/atom+xml">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16326763-1']);
+  _gaq.push(['_setDomainName', 'helabs.com.br']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+	<body   >
+		
+		<!-- #top -->
+<header id="top">
+	<div class="grid">
+		<h1 class="title">
+			<a href="/">
+				<img src="/blog/images/logotipo.png" />
+			</a>
+		</h1>	
+	</div>
+</header>
+<!-- /#top -->
+
+	    <div id="content">
+	    	    <!-- #posts -->
+    <section id="posts" class="single">    
+      <article>
+  <div class="grid">
+
+    
+      <h1 class="post-title">Métodos estáticos, porque evitá-los</h1>
+    
+
+
+    
+      <div class="text"><p>Aparentemente existe na cultura de alguns desenvolvedores uma certa convenção sobre quando usar métodos estáticos. Se é um método relativamente simples, que itera sobre uma coleção dos objetos da classe em si, implementar um método estático é uma forma possível de implementação.</p>
+
+<p>Diga-se que uma API está sendo feita, e é preciso retornar os usuários novos em um JSON bem específico às características da aplicação. Segue um exemplo, extraído de um projeto real:</p>
+
+<!-- more -->
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="c1"># ...</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">last_users_since</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">response_data</span> <span class="o">=</span> <span class="p">{</span><span class="n">new_users</span><span class="p">:</span> <span class="o">[]</span><span class="p">}</span>
+</span><span class='line'>    <span class="n">where</span><span class="p">(</span><span class="n">updated_at</span><span class="p">:</span> <span class="n">time</span><span class="o">.</span><span class="n">.</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span>
+</span><span class='line'>      <span class="n">user_hash</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">as_new_user</span>
+</span><span class='line'>      <span class="n">response</span><span class="o">[</span><span class="ss">:new_users</span><span class="o">]</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">user_hash</span><span class="p">)</span> <span class="k">if</span> <span class="n">user_hash</span><span class="o">.</span><span class="n">present?</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="n">response_data</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="c1"># ...</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Da forma como se encontra, temos alguns problemas:</p>
+
+<ul>
+<li>É um método relativamente complexo;</li>
+<li>Não é um método fácil de ler;</li>
+<li>Existe um método no objeto user que só serve pra essa API (<code>User#as_new_user</code>);</li>
+<li>É chato de testar, pois só temos o retorno para ser testado.</li>
+</ul>
+
+
+<p>Mas até então, ainda não é um problema.</p>
+
+<p>Só que software é uma coisa que muda constantemente, e o cliente resolveu alterar a API. Agora existe um campo booleano em user chamado <code>synced</code> que dita quais objetos vão ser retornados para a API e, em seguida, considerar os mesmos como sincronizados. Ou seja, uma nova chamada à API não vai mais retornar os mesmos objetos, e sim somente os não sincronizados. Existe também um novo campo no JSON que indica quando a chamada foi resolvida.</p>
+
+<p>Altera-se o método para a nova necessidade:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="c1"># ...</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">sync_unsynchronized_users</span>
+</span><span class='line'>    <span class="n">response_data</span> <span class="o">=</span> <span class="p">{</span><span class="n">new_users</span><span class="p">:</span> <span class="o">[]</span><span class="p">,</span> <span class="n">synced_at</span><span class="p">:</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="p">}</span>
+</span><span class='line'>    <span class="n">where</span><span class="p">(</span><span class="ss">synced</span><span class="p">:</span> <span class="kp">false</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span>
+</span><span class='line'>      <span class="n">user_hash</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">as_new_user</span>
+</span><span class='line'>      <span class="n">response</span><span class="o">[</span><span class="ss">:new_users</span><span class="o">]</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">user_hash</span><span class="p">)</span> <span class="k">if</span> <span class="n">user_hash</span><span class="o">.</span><span class="n">present?</span>
+</span><span class='line'>      <span class="n">user</span><span class="o">.</span><span class="n">sync!</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="n">response_data</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="c1"># ...</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Todos os problemas ainda existem e dificilmente serão resolvidos se mantermos o método estático.</p>
+
+<p>E o pior de tudo: Mesmo com a introdução acima, a implementação é um pouco confusa. Imagine daqui há 2 meses quando algum desenvolvedor (ou até mesmo o próprio que escreveu) tiver que pegar esse código pra entender. Ainda que seja perfeitamente possível que se compreenda como o mesmo funciona, um método estático não declara intenção, os testes normalmente não são tão claros quanto se gostaria, e introduzir qualquer nova funcionalidade traz uma certa insegurança.</p>
+
+<h2>Extraindo um método estático para uma nova classe</h2>
+
+<p>Extrair um método complexo para uma classe é um dos refactors mais clássicos e, no caso dos métodos estáticos, ataca-se os principais problemas:</p>
+
+<ul>
+<li>Facilita a leitura;</li>
+<li>Declara-se intenções através de nomes de métodos;</li>
+<li>Melhora a testabilidade.</li>
+</ul>
+
+
+<p>O método acima extraído para uma classe ficaria assim:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="c1"># ...</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">sync_unsynchronized_users</span>
+</span><span class='line'>    <span class="no">UsersSyncer</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">sync!</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="c1"># ...</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">UsersSyncer</span>
+</span><span class='line'>  <span class="kp">attr_reader</span> <span class="ss">:recently_synchronized_users</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span>
+</span><span class='line'>    <span class="vi">@recently_synchronized_users</span> <span class="o">=</span> <span class="o">[]</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">unsyncronized_users</span>
+</span><span class='line'>    <span class="no">User</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">synced</span><span class="p">:</span> <span class="kp">false</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">sync!</span>
+</span><span class='line'>    <span class="n">add_and_sync_users</span>
+</span><span class='line'>    <span class="n">response_hash</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kp">private</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">response_hash</span>
+</span><span class='line'>      <span class="p">{</span><span class="n">new_users</span><span class="p">:</span> <span class="n">recently_synchronized_users</span><span class="p">,</span> <span class="n">synced_at</span><span class="p">:</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="p">}</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">add_and_sync_users</span>
+</span><span class='line'>      <span class="n">unsyncronized_users</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span>
+</span><span class='line'>        <span class="n">mark_as_sync</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">add_user_to_list_if_present</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">mark_as_sync</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">user</span><span class="o">.</span><span class="n">sync!</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">add_user_to_list_if_present</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">user_hash</span> <span class="o">=</span> <span class="n">format_user_for_api</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</span><span class='line'>      <span class="vi">@recently_synchronized_users</span> <span class="o">&lt;&lt;</span> <span class="k">if</span> <span class="n">user_hash</span><span class="o">.</span><span class="n">present?</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">format_user_for_api</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</span><span class='line'>      <span class="c1"># método extraído de User</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Nota-se que o método estático ainda existe, mas somente como uma interface. Esse é um dos poucos casos em que se é aceitável a criação de métodos estáticos, já que é bem prático chamar <code>User.sync_unsynchronized_users</code>.</p>
+
+<p>O método <code>as_new_user</code> foi extraído de <code>User</code> porque neste caso somente
+era usado somente uma vez. Poderia ficar em <code>User</code>, mas acredito ficar
+mais claro desta forma.</p>
+
+<p>Ler a classe acima 2 meses depois requer muito menos esforço por parte do desenvolvedor para compreender o funcionamento da mesma, e com certeza os testes estarão mais claros, além da complexidade ter diminuído consideravelmente.</p>
+</div>
+    
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-13T08:00:00-03:00" pubdate data-updated="true">Mar 13<span>th</span>, 2013</time>
+    
+  </div>
+</article>  
+
+      <aside id="more-information" class="grid">
+        <p class="meta">
+          
+  
+
+<span class="byline author vcard">Postado por <span class="fn">Pedro Nascimento</span></span>
+
+          
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/lunks/'>lunks</a>, <a class='category' href='/blog/categories/refactor/'>refactor</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>
+  
+</span>
+
+
+        </p>
+
+        
+          <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://helabs.com.br/blog/2013/03/13/metodos-estaticos-porque-evita-los/" data-via="helabs" data-counturl="http://helabs.com.br/blog/2013/03/13/metodos-estaticos-porque-evita-los/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+        
+    
+        <p class="meta">
+          
+            <a class="basic-alignment left" href="/blog/2013/03/05/seu-ambiente-de-trabalho-mais-limpo-usando-vagrant/" title="Previous Post: Seu ambiente de trabalho mais limpo usando Vagrant">&laquo;Seu ambiente de trabalho mais limpo usando &hellip;</a>
+          
+      
+          
+            <a class="basic-alignment right" href="/blog/2013/04/01/gec2013/" title="Next Post: Global Entrepreneurship Congress 2013 no Rio de Janeiro">Global Entrepreneurship Congress 2013 no Rio &hellip; &raquo;</a>
+          
+        </p>
+    
+        <div id="cover" class="cover-mailing-page">
+          <div class="containner">
+            <div class="mailing-form">
+              <h2>Gostou desse post? Receba nossa newsletter e fique por dentro dos novos posts e outras novidades da HE:labs.</h2>
+              <form style="width:100%" action="http://clientela.us2.list-manage.com/subscribe/post?u=78c4c9df5db794cd68f358456&amp;id=020e7504d2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+                <input type="email" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Insira seu email e faça parte da comunidade" required />
+
+                <input type="submit" value="Fazer Parte" name="subscribe" id="mc-embedded-subscribe" class="button"/>
+
+              </form>
+              <a href="http://antispam.br" target="_blank"><img src="http://helabs.com.br/images/antispam.jpg" title="Selo AntiSpam"></a>
+              <p>
+                <a href="http://helabs.com.br/privacidade" target="_blank" title="Política de Privacidade">Política de Privacidade</a> /
+                <a href="http://helabs.us2.list-manage.com/unsubscribe?u=78c4c9df5db794cd68f358456&id=020e7504d2" target="_blank" title="Retirar o e-mail da lista">Retirar o e-mail da lista</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        
+          <div id="disqus_thread" aria-live="polite">
+            <h6>Comentários</h6>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+          </div>
+        
+
+      </aside>
+    </section>
+	    </div>
+
+	  	<footer id="bottom">
+  
+  <div id="social-footer">
+    <div class="grid">
+    <a ref="#" class="github">Github</a>
+    <a ref="#" class="twitter">Twitter</a>
+    <a ref="#" class="facebook">Facebook</a>
+    <a ref="#" class="rss">RSS</a>
+    </div>
+ </div>
+ 
+	<div class="grid">
+    <div class="collumn">
+      <h3>Últimos Posts</h3>
+      <ul>
+        <li>Melhorando o Email Activity do SendGrid</li>
+        <li>Um pouco sobre Lean UX</li>
+        <li>Como colaborar com projetos open-source</li>
+        <li>Retrospectiva Café com DEV HE:Rio 12/07 </li>
+      </ul>
+      
+    </div>
+    
+  	<div class="grid">
+      <div class="collumn">
+        <h3>GitHub Repos</h3>
+        <ul>
+          <li>startupdev.github.com <span>Startup DEV Website</span></li>
+          <li>pah<span>Command line interface to generate rails apps used at HE:labs.</span> </li>
+          <li>acts_as_hashed<span>acts_as_hashed makes it easier to create unique non-discoverable URIs and all other sorts of uuid you may need in your app.</span> </li>
+        </ul>
+      
+      </div>
+      
+    	<div class="grid">
+        <div class="collumn">
+          <h3>Últimos Tweets</h3>
+          <ul>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget.  adipiscing elit. </li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget. </li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget.  </li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget. Lorem ipsum dolor sit amet </li>
+          </ul>
+      
+        </div>
+    
+		<p>
+		  Copyright &copy; 2013 - Time HE:labs -
+		  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+		</p>
+	</div>
+</footer>
+
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'helabsblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://helabs.com.br/blog/2013/03/13/metodos-estaticos-porque-evita-los/';
+        var disqus_url = 'http://helabs.com.br/blog/2013/03/13/metodos-estaticos-porque-evita-los/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#appId=294124694041877&xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  window.fbAsyncInit = function(){
+    FB.Event.subscribe('edge.create', function(targetUrl) {
+      _gaq.push(['_trackSocial', 'facebook', 'like', targetUrl]);
+    });
+    FB.Event.subscribe('edge.remove', function(targetUrl) {
+      _gaq.push(['_trackSocial', 'facebook', 'unlike', targetUrl]);
+    });
+    FB.Event.subscribe('message.send', function(targetUrl) {
+      _gaq.push(['_trackSocial', 'facebook', 'send', targetUrl]);
+    });
+  }
+</script>
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+  window.twttr = (function (d,s,id) {
+    var t, js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+    js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+    return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+  }(document, "script", "twitter-wjs"));
+  function extractParamFromUri(uri, paramName) {
+    if (!uri) {
+      return;
+    }
+    var regex = new RegExp('[\\?&#]' + paramName + '=([^&#]*)');
+    var params = regex.exec(uri);
+    if (params != null) {
+      return unescape(params[1]);
+    }
+    return;
+  }
+  function trackTwitter(intent_event) {
+    if (intent_event) {
+      var opt_pagePath;
+      if (intent_event.target && intent_event.target.nodeName == 'IFRAME') {
+        opt_target = extractParamFromUri(intent_event.target.src, 'url');
+      }
+      _gaq.push(['_trackSocial', 'twitter', 'tweet', opt_pagePath]);
+    }
+  }
+
+  //Wrap event bindings - Wait for async js to load
+  twttr.ready(function (twttr) {
+    //event bindings
+    twttr.events.bind('tweet', trackTwitter);
+  });
+</script>
+
+
+
+	</body>
+</html>

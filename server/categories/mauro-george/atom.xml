@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: mauro george | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/mauro-george/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Extraindo responsabilidade de um classe ruby utilizando polimorfismo]]></title>
+    <link href="http://helabs.com.br/blog/2013/06/06/extraindo-responsabilidade-de-um-classe-ruby-que-sabe-demais-com-o-uso-de-polimorfismo/"/>
+    <updated>2013-06-06T00:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/06/06/extraindo-responsabilidade-de-um-classe-ruby-que-sabe-demais-com-o-uso-de-polimorfismo</id>
+    <content type="html"><![CDATA[<p>Já falei anteriormente um pouco sobre o uso do pattern decorator no rails <a href="http://helabs.com.br/blog/2013/01/28/extraindo-a-responsabilidade-de-fat-models-com-o-uso-de-decorators/">neste link</a>. Em algum momento a lógica pode ser tão complexa que quebraríamos os decorators em <em>decorators especializados</em>.</p>
+
+<!--more-->
+
+
+<p>Vamos a um exemplo: dado um <code>PostDecorator</code> com apenas um método público <code>show</code>, responsável por exibir um post, podemos reduzir a sua complexidade e manter a responsabilidade única de cada classe, baseando-se no tipo de status. Mas como?</p>
+
+<p>```ruby
+class PostDecorator</p>
+
+<p>  def initialize(post)</p>
+
+<pre><code>@post = post
+</code></pre>
+
+<p>  end</p>
+
+<p>  def show</p>
+
+<pre><code>if post.status == "draft"
+  # ... lógica de draft aqui
+elsif post.status == 'published'
+  # ... lógica de published aqui
+end
+</code></pre>
+
+<p>  end</p>
+
+<p>  private</p>
+
+<pre><code>attr_reader :post
+</code></pre>
+
+<p>end
+```</p>
+
+<p>O primeiro passo que poderíamos fazer seria extrair a lógica de cada um dos status para classes especializadas, delegando as responsabilidades. Exemplo:</p>
+
+<p>```ruby
+class PostDecorator</p>
+
+<p>  def initialize(post)</p>
+
+<pre><code>@post = post
+</code></pre>
+
+<p>  end</p>
+
+<p>  def show</p>
+
+<pre><code>if post.status == "draft"
+  PostDraftDecorator.new(post).show
+elsif post.status == 'published'
+  PostPublishedDecorator.new(post).show
+end
+</code></pre>
+
+<p>  end</p>
+
+<p>  private</p>
+
+<pre><code>attr_reader :post
+</code></pre>
+
+<p>end</p>
+
+<p>class PostDraftDecorator</p>
+
+<h1>... lógica de draft aqui</h1>
+
+<p>end</p>
+
+<p>class PostPublishedDecorator</p>
+
+<h1>... lógica de published aqui</h1>
+
+<p>end
+```</p>
+
+<p>Agora ficou melhor, já que a responsabilidade foi dividida.</p>
+
+<p>Um outro pequeno refactory que poderíamos fazer é melhorar essa verificação de <code>if post.status == "draft"</code>. Podendo implementar em nosso model <code>Post#draft?</code> e <code>Post#published?</code>.</p>
+
+<p>E assim, encapsulamos a lógica de <code>#draft?</code> e <code>#published?</code>, pois se a complexidade aumentar, teremos que mudar N contextos que fazem a verificação de tal lógica. Como agora elas estão encapsuladas, caso a lógica mude, teremos que alterar apenas no model.</p>
+
+<p>```ruby
+class PostDecorator</p>
+
+<p>  def initialize(post)</p>
+
+<pre><code>@post = post
+</code></pre>
+
+<p>  end</p>
+
+<p>  def show</p>
+
+<pre><code>if post.draft?
+  PostDraftDecorator.new(post).show
+elsif post.published?
+  PostPublishedDecorator.new(post).show
+end
+</code></pre>
+
+<p>  end</p>
+
+<p>  private</p>
+
+<pre><code>attr_reader :post
+</code></pre>
+
+<p>end
+```</p>
+
+<p>Para evitarmos criar todos estes métodos na mão, podemos utilizar a <em>gem</em> <a href="https://github.com/maurogeorge/jacaranda">Jacaranda</a> que foi a minha primeira gem ;)</p>
+
+<p>Mas ainda não é o melhor que podemos fazer para este caso. Vamos agora ao uso de polimorfismo:</p>
+
+<h2>Resolvendo com o uso de polimorfismo</h2>
+
+<p>Podemos usar <em>polimorfismo</em> para, dependendo do status do post, instanciar e utilizar o decorator correto.</p>
+
+<p>```ruby
+class PostDecorator</p>
+
+<p>  def initialize(post)</p>
+
+<pre><code>@post = post
+</code></pre>
+
+<p>  end</p>
+
+<p>  def show</p>
+
+<pre><code>post_decorator.new(post).show
+</code></pre>
+
+<p>  end</p>
+
+<p>  private</p>
+
+<pre><code>attr_reader :post
+
+def post_decorator
+  "Post#{post.status.capitalize}Decorator".constantize
+end
+</code></pre>
+
+<p>end
+```</p>
+
+<p>Como pode-se notar, criamos o método <code>post_decorator</code> que retorna a classe correta. Em seguida, instanciamos ela e chamamos o método <code>show</code> na classe específica.
+Caso não seja de seu conhecimento, utilizamos o <a href="http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html#method-i-constantize"><code>constantize</code></a> do ActiveSupport que nos retorna uma constante de mesmo nome baseado na string recebida.</p>
+
+<p>Agora vamos aos testes do nosso <code>PostDecorator</code>:</p>
+
+<p>```ruby
+describe PostDecorator do</p>
+
+<p>  let(:post_decorator) do</p>
+
+<pre><code>PostDecorator.new(post)
+</code></pre>
+
+<p>  end</p>
+
+<p>  describe "#show" do</p>
+
+<pre><code>context "when post is a draft" do
+
+  let!(:post) do
+    Post.create(status: "draft")
+  end
+
+  it "call PostDraftDecorator" do
+    post_draft_decorator = double("PostDraftDecorator")
+    PostDraftDecorator.should_receive(:new).with(post).and_return(post_draft_decorator)
+    post_draft_decorator.should_receive(:show)
+    post_decorator.show
+  end
+end
+
+context "when post is published" do
+
+  let!(:post) do
+    Post.create(status: "published")
+  end
+
+  it "call PostPublishedDecorator" do
+    post_published_decorator = double("PostPublishedDecorator")
+    PostPublishedDecorator.should_receive(:new).with(post).and_return(post_published_decorator)
+    post_published_decorator.should_receive(:show)
+    post_decorator.show
+  end
+end
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>Como visualiza-se acima, nossos testes ficaram bem simples. Testamos apenas se a delegação foi feita corretamente, pois a implementação seria testada unitariamente em cada uma das classes especializadas (<code>PostDraftDecorator</code> e <code>PostPublishedDecorator</code>).</p>
+
+<h2>Conclusão</h2>
+
+<p>Utilizando <em>polimorfismo</em>, agora nossa classe <code>PostDecorator</code> pode instanciar outros decorators e não precisaremos mais dos <em>ifs</em> e <em>elses</em>. Apenas crie uma nova classe como <code>PostUnpublishedDecorator</code> e todos os posts com o status <strong>unpublished</strong> usarão esta nova classe, pois segue-se a convenção.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Retrospectiva - Café com DEV 10/05]]></title>
+    <link href="http://helabs.com.br/blog/2013/05/17/retrospectiva-cafe-com-dev-10-05-2013/"/>
+    <updated>2013-05-17T17:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/05/17/retrospectiva-cafe-com-dev-10-05-2013</id>
+    <content type="html"><![CDATA[<p>Na sexta-feira, dia 10/05, <a href="https://twitter.com/maurogeorge">Mauro George</a> apresentou a palestra <strong>"Model of the Colossus"</strong> para a galera que estava presente e pela internet!</p>
+
+<!--more-->
+
+
+<p><img src="/images/mario.jpg" alt="image" /></p>
+
+<p>Durante a apresentação, Mauro contou sobre migração de outras linguagens para Rails, as suas confusões para com os novatos e <strong>AR</strong> que quebra <strong>SRP</strong>. Além de mostrar alguns anti-patterns e soluções para eles.</p>
+
+<p>E ainda, falou sobre <code>ActiveSupport::Concerns</code> e como devemos evitá-lo e preferir uma abordagem utilizando <abbr title="Plain Old Ruby Objects">POROs</abbr>.</p>
+
+<p>Por último, apresentou alguns <strong>Bad Smells</strong> que podem nos alertar sobre o nosso Model estar virando um grande "Colosso".</p>
+
+<p>Slides da apresentação abaixo:</p>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/20946985" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen webkitallowfullscreen mozallowfullscreen> </iframe>
+
+
+<p> <div style="margin-bottom:5px"> <strong> <a href="http://www.slideshare.net/maurogeorge/model-of-colossus" title="Model of the colossus" target="_blank">Model of the colossus</a> </strong> from <strong><a href="http://www.slideshare.net/maurogeorge" target="_blank">Mauro George</a></strong> </div></p>
+
+<p>Se interessou? Perdeu a palestra? Então <a href="https://www.eventials.com/pt-br/helabs/model-of-the-colossus/">clique aqui</a> e confira como foi!</p>
+
+<p><img src="/images/galeramauro.jpg" alt="image" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Remova Ifs e Elses em Ruby utilizando o Null Object Pattern]]></title>
+    <link href="http://helabs.com.br/blog/2013/04/07/remova-ifs-e-elses-em-ruby-utilizando-o-null-object-pattern/"/>
+    <updated>2013-04-07T11:16:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/04/07/remova-ifs-e-elses-em-ruby-utilizando-o-null-object-pattern</id>
+    <content type="html"><![CDATA[<p>O <a href="https://en.wikipedia.org/wiki/Null_object">Null Object pattern</a> tem como principal objetivo tratar o comportamento do valor <code>Null</code>, ou em ruby o <code>nil</code>.
+Sabemos que em algum momento de nosso código podemos ter referências nulas, sendo assim, temos que verificar se tal refêrencia é nula ou não para não recebermos uma <em>exception</em> como a seguinte:</p>
+
+<pre><code>NoMethodError: undefined method `name' for nil:NilClass
+</code></pre>
+
+<!-- more -->
+
+
+<p>Vamos a um exemplo: Temos uma classe Game responsável pelas informações de um dado jogo e um classe Report, responsável por imprimir os dados deste tal jogo.</p>
+
+<p>Vamos a classe Game:</p>
+
+<p>```ruby
+require 'ostruct'</p>
+
+<p>class Game &lt; OpenStruct
+end
+```</p>
+
+<p>Uma simples classe que herda de OpenStruct.</p>
+
+<p>Agora vamos a nossa classe Report:</p>
+
+<p>```ruby
+class Report</p>
+
+<p>  def initialize(game)</p>
+
+<pre><code>@game = game
+</code></pre>
+
+<p>  end</p>
+
+<p>  def show</p>
+
+<pre><code>%Q{Game: #{name}
+Platform: #{platform}
+Description: #{description}}
+</code></pre>
+
+<p>  end</p>
+
+<p>  private</p>
+
+<pre><code>def name
+  @game.name
+end
+
+def platform
+  @game.platform
+end
+
+def description
+  @game.description
+end
+</code></pre>
+
+<p>end
+```</p>
+
+<p>Como podem ver, a nossa classe funciona muito bem para o Game. No entanto, se em algum momento recebermos uma referência nula (por exemplo de um find do ActiveRecord),  receberemos a seguinte exception:</p>
+
+<p><code>ruby
+game = nil
+report = Report.new(game)
+puts report.show # undefined method `name' for nil:NilClass (NoMethodError) ...
+</code></p>
+
+<p>Vamos resolvê-la utilizando os mais comuns: <code>if</code> e <code>else</code>.</p>
+
+<p>```ruby
+class Report</p>
+
+<p>  def initialize(game)</p>
+
+<pre><code>@game = game
+</code></pre>
+
+<p>  end</p>
+
+<p>  def show</p>
+
+<pre><code>%Q{Game: #{name}
+Platform: #{platform}
+Description: #{description}}
+</code></pre>
+
+<p>  end</p>
+
+<p>  private</p>
+
+<pre><code>def name
+  if @game
+    @game.name
+  else
+   'no name'
+  end
+end
+
+def platform
+  if @game
+    @game.platform
+  else
+    'no platform'
+  end
+end
+
+def description
+  if @game
+    @game.description
+  else
+    'no description'
+  end
+end
+</code></pre>
+
+<p>end
+```</p>
+
+<p>Como podem ver, alteramos os métodos da classe <code>Report</code>, responsável por criar os campos de <code>Game</code> na exibição do relatório, para tratar quando recebemos um valor nil.
+Até funciona, mas como notamos, estamos adicionando mais complexidade a simples métodos que apenas delegam o valor, além de, claramente, estarmos repetindo código. E é neste ponto que o Null Object Pattern vem para nos ajudar. Vamos aos refactories.</p>
+
+<p>```ruby
+class NullGame</p>
+
+<p>  def name</p>
+
+<pre><code>'no name'
+</code></pre>
+
+<p>  end</p>
+
+<p>  def platform</p>
+
+<pre><code>'no platform'
+</code></pre>
+
+<p>  end</p>
+
+<p>  def description</p>
+
+<pre><code>'no description'
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>class Report</p>
+
+<p>  def initialize(game)</p>
+
+<pre><code>@game = game || NullGame.new
+</code></pre>
+
+<p>  end</p>
+
+<p>  def show</p>
+
+<pre><code>%Q{Game: #{name}
+Platform: #{platform}
+Description: #{description}}
+</code></pre>
+
+<p>  end</p>
+
+<p>  private</p>
+
+<pre><code>def name
+  @game.name
+end
+
+def platform
+  @game.platform
+end
+
+def description
+  @game.description
+end
+</code></pre>
+
+<p>end
+```</p>
+
+<p>Primeiro criamos uma classe <code>NullGame</code> responsável por definir os valores quando um <code>Game</code> for nulo. Em Seguida, alteramos a classe <code>Report</code> para instanciar um <code>NullGame</code> (caso o game seja nulo) e assim, podemos alterar nossos métodos que funcionam como delegators para continuarem fazendo apenas isto.
+Veja como seria o comportamento de <code>Report</code> ao receber um <code>nil</code>:</p>
+
+<p>```ruby
+game = nil
+report = Report.new(game)
+puts report.show # Game: no name</p>
+
+<pre><code>             # Platform: no platform
+             # Description: no description
+</code></pre>
+
+<p>```</p>
+
+<p>Como podem ver, ao utilizarmos o Null Object Pattern, conseguimos manter o nosso código muito mais Ruby Way utilizando classes coesas, com responsabilidades bem definidas e one line methods.</p>
+
+<p>Para finalizar fica a dica da excelente palestra do <a href="https://twitter.com/@r00k">Ben Orenstein</a> <a href="http://www.confreaks.com/videos/1233-aloharuby2012-refactoring-from-good-to-great">Refactoring from Good to Great</a> , de onde este post foi inspirado.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Retrospectiva - 1° Café com DEV]]></title>
+    <link href="http://helabs.com.br/blog/2013/02/05/retrospectiva-1-cafe-com-dev/"/>
+    <updated>2013-02-05T09:30:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2013/02/05/retrospectiva-1-cafe-com-dev</id>
+    <content type="html"><![CDATA[<p>Aconteceu na sexta-feira dia 01/02 o primeiro Café com DEV da HE:labs! O objetivo do encontro é reunir interessados e debater sobre um tema específico. Nesta primeira edição o tema do encontro foi produtividade e os aplicativos que nos ajudam a aumentá-la. Batemos um papo sobre o que usamos e como usamos essas ferramentas para aumentar nossa produtividade.</p>
+
+<!-- more -->
+
+
+<p><img src="/images/posts/cafe-com-dev-1.jpg" alt="image" /></p>
+
+<p><a href="http://twitter.com/pedromarins">Eu</a> por exemplo, falei sobre como uso o <a href="http://evernote.com/">Evernote</a>, o <a href="http://getpocket.com/">Pocket</a> e o <a href="https://www.wunderlist.com/#/login">Wunderlist</a> para organizar minha vida.</p>
+
+<p>No <a href="http://evernote.com/">Evernote</a> mostrei 3 casos de uso:</p>
+
+<ul>
+<li><strong><em>paperless</em></strong> é um bloco de notas onde estou guardando todos os meus boletos e comprovantes de pagamento de todas as minhas contas para não ter papeis armazenados em casa;</li>
+<li><strong>documentos</strong> é o bloco de notas que uso para guardar todos os meus documentos escaneados. Desde cartões de banco até passaporte e documentos diversos. Com isso passei a ter tudo sempre a mão quando preciso;</li>
+<li>inpiração é a tag que uso para marcar todas as coisas relevantes para quanto preciso buscar inspiração. Pode ser uma imagem, uma url, um artigo ou um site. Sempre que preciso buscar algo inspirador sei que vou encontrar algo nessa tag.</li>
+</ul>
+
+
+<p>No <a href="http://getpocket.com/">Pocket</a>, falei sobre como é o meu fluxo para salvar artigos, videos ou sites para ver depois. Tem horas que estamos focados no meio do trabalho e aparecem coisas que você não tem tempo de ler/assistir. Uso o pocket com o widget para o chrome para salvar tudo. Com o <a href="https://play.google.com/store/apps/details?id=com.ideashower.readitlater.pro&amp;hl=pt_BR">aplicativo para Android</a> consigo gastar o tempo que estou na rua absorvendo esse conteúdo, por exemplo.</p>
+
+<p>Já o <a href="https://www.wunderlist.com/#/login">Wunderlist</a> é o meu salvador quanto à coisas a fazer. Tenho uma memória péssima para lembrar das coisas que tenho para fazer, e a forma do <a href="https://www.wunderlist.com/#/login">Wunderlist</a> de organizar as to-dos em grupos me ajuda muito. Uso também o <a href="https://play.google.com/store/apps/details?id=com.wunderkinder.wunderlistandroid&amp;hl=pt_PT">widget para o Android</a>, que fica mostrando na minha tela inicial do celular as coisas que tenho que fazer no dia corrente.</p>
+
+<p>A interação com a galera rolou solta, e logo começaram a surgir perguntas sobre nosso fluxo de produtividade dentro da HE:labs. O que fazemos para entregar os <em>sprints</em> no prazo, como fazemos para convencer os clientes que o desenvolvimento ágil é a única solução para o projeto deles e que ferramentas usamos para fazer o deploy dos aplicativos que desenvolvemos.</p>
+
+<p>O <a href="http://twitter.com/rodrigoospinto">Rodrigo Pinto</a> e o <a href="http://twitter.com/maurogeorge">Mauro George</a> assumiram nessa hora e mostraram como é a relação deles com o desenvolvimento do projeto e com o cliente. Eles avassalaram e contaram tudo sobre o nosso processo de desenvolvimento!</p>
+
+<p>O primeiro encontro foi sensacional, e na retrospectiva o único ponto de destaque que precisa ser melhorado é o espaço. Todos elogiaram o conteúdo, a participação da galera, a cerveja liberada no escritório nas sextas-feiras!</p>
+
+<p>Para ficar por dentro de quando será o próximo Café com DEV se inscreva na nossa <a href="http://helabs.com.br/mailing">mailing</a>.</p>
+
+<p><img src="/images/posts/cafe-com-dev-2.jpg" alt="image" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Extraindo a responsabilidade de Fat Models com o uso de Decorators no Rails]]></title>
+    <link href="http://helabs.com.br/blog/2013/01/28/extraindo-a-responsabilidade-de-fat-models-com-o-uso-de-decorators/"/>
+    <updated>2013-01-28T10:30:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2013/01/28/extraindo-a-responsabilidade-de-fat-models-com-o-uso-de-decorators</id>
+    <content type="html"><![CDATA[<p>Desde o <a href="http://www.youtube.com/watch?v=Gzj723LkRJY">15 minutes blog</a> o rails tem evoluido bastante e novos conceitos foram introduzidos com o passar do tempo, um mantra que foi introduzido na comunidade foi o "Skinny Controller, Fat Model" que pode gerar uma confusão aos desenvolvedores novatos e alguns mais experientes também.</p>
+
+<!-- more -->
+
+
+<h3>Fat model não necessariamente herda de ActiveRecord::Base</h3>
+
+<p>Quando lemos o mantra pela primeira vez podemos ficar tentados a fazer algo que seria mover nossas lógicas do controller para o model.</p>
+
+<p>Primeiro temos o código de enfileirar o envio de email no controller.</p>
+
+<p>```ruby
+class PostsController &lt; ApplicationController</p>
+
+<p>  def create</p>
+
+<pre><code>@post = Post.new(params[:post])
+
+if @post.save
+  NotifyMailer.delay.notify(@post)
+  redirect_to(@post, :notice =&gt; 'Post was successfully created.') }
+else
+  render :action =&gt; "new"
+end
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>Refatorariamos para algo assim em nosso model Post.</p>
+
+<p>```ruby
+class Post &lt; ActiveRecord::Base
+  after_save :notify_users</p>
+
+<p>  private</p>
+
+<pre><code>def notify_users
+  NotifyMailer.delay.notify(self)
+end
+</code></pre>
+
+<p>end
+```</p>
+
+<p>Com certeza melhor que a solução anterior, mas agora o nosso model está sabendo demais. Além de fazer o seu papel em tratar as informações do banco de dados, agora também enfileira emails toda vez que é salvo. Ou seja, temos um problema de alto acoplamento, a operação de salvar sempre ativa o enfileiramento de envio de emails e com isso violamos o <a href="http://en.wikipedia.org/wiki/Single_responsibility_principle">SRP</a>.</p>
+
+<p>É aí que chegamos no ponto que fat models não necessariamente são classes que herdam de <code>ActiveRecord::Base</code>, pois como vimos isso nos gera os seguintes problemas:</p>
+
+<ul>
+<li>alto acoplamento</li>
+<li>testes mais lentos</li>
+<li>falta de coesão</li>
+</ul>
+
+
+<h3>Definindo melhor as responsabilidades e assim deixando tudo mais claro</h3>
+
+<p>Para deixar as coisas mais claras e com as responsabilidade melhores definidas podemos criar um <a href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator</a>.</p>
+
+<p>```ruby
+class PostNotifyUsers</p>
+
+<p>  def initialize(post)</p>
+
+<pre><code>@post = post
+</code></pre>
+
+<p>  end</p>
+
+<p>  def save</p>
+
+<pre><code>@post.save &amp;&amp; notify_users
+</code></pre>
+
+<p>  end</p>
+
+<p>  private</p>
+
+<pre><code>def notify_users
+  NotifyMailer.delay.notify(@post)
+end
+</code></pre>
+
+<p>end
+```</p>
+
+<p>No código acima criamos uma classe em Ruby pura, conhecida também como PORO (Plain Old Ruby Objects). E o papel desta classe é notificar os usuários de um post novo enfileirando o email. Com isso conseguimos:</p>
+
+<ul>
+<li><strong>Baixo acoplamento</strong>: <code>Post</code> lida com o banco de dados e <code>PostNotifyUsers</code> notifica os usuários. Cada um com sua responsabilidade.</li>
+<li><strong>Testes mais rápidos</strong>: Quando se cria um <code>Post</code> em seus testes ele não envia mais email</li>
+<li><strong>Alta coesão</strong>: Pois agora sabemos de tudo o que ocorre ao salvar um <code>Post</code>, ele apenas é salvo.</li>
+</ul>
+
+
+<p>Veja agora como ficaria o nosso controller usando o decorator que acabamos de criar:</p>
+
+<p>```ruby
+class PostsController &lt; ApplicationController</p>
+
+<p>  def create</p>
+
+<pre><code>@post = Post.new(params[:post])
+
+if PostNotifyUsers.new(@post).save
+  redirect_to(@post, :notice =&gt; 'Post was successfully created.') }
+else
+  render :action =&gt; "new"
+end
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>Como pode ver ficou mais claro pois agora sei que nesta action eu salvo o post e notifico os usuários. Outra coisa legal é que o a nossa classe <code>PostNotifyUsers</code> <a href="http://en.wikipedia.org/wiki/Duck_typing">quacks</a> como <code>User</code> sendo assim podemos continuar usando o <code>#save</code> só que agora do <code>PostNotifyUsers</code> em nosso controller.</p>
+
+<p>O <a href="http://twitter.com/aneziojunior">Anézio</a> falou recentemente sobre a extração de responsábilidades também no post <a href="http://helabs.com.br/blog/2013/01/14/cuidados-com-observers-e-callbacks/">Cuidados com Observers e callbacks</a>.</p>
+
+<h3>O Rails way e os iniciantes no rails</h3>
+
+<p>O que é comum são as pessoas iniciarem no rails sem noção nenhuma de Ruby e às vezes até <a href="https://en.wikipedia.org/wiki/Object-oriented_programming">orientação a objetos</a>. O que levam a seguir sempre a abordagem do conhecido Rails Way esquecendo(às vezes nem sabendo) que Ruby é uma linguagem orientada a objetos, e que assim pode resolver muito dos seus problemas.</p>
+]]></content>
+  </entry>
+  
+</feed>

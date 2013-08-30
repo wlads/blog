@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: thiago gonzalez | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/thiago-gonzalez/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Novo membro]]></title>
+    <link href="http://helabs.com.br/blog/2013/06/19/novo-membro/"/>
+    <updated>2013-06-19T11:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/06/19/novo-membro</id>
+    <content type="html"><![CDATA[<p>No início da semana, demos boas vindas a mais um integrante do time: Thiago Gonzalez!</p>
+
+<!--more-->
+
+
+<p><img src="/images/gonzalez.jpg" alt="image" /></p>
+
+<p>Thiago é formado em Análise e Desenvolvimento de Sistemas pela Universidade Monte Serrat. Avassala em Front-end e já tem experiência com isto há três anos. É apaixonado pelo que faz e já realizou vários projetos, dentre eles: <em>Brasil Memória das Artes</em>, <em>Funarte</em>, <em>Festival do Rio</em>, <em>Agência de Redes</em>, etc.</p>
+
+<p>Siga Thiago nas redes sociais: <a href="https://www.facebook.com/thigonzalez">Facebook</a>, <a href="https://github.com/thiagonzalez">Github</a>, <a href="http://br.linkedin.com/in/thigonzalez/">Linked.In</a>. E confira seu <a href="http://thiagogonzalez.com/">portifólio</a>.</p>
+
+<p>Seja muito bem vindo!!!</p>
+]]></content>
+  </entry>
+  
+</feed>

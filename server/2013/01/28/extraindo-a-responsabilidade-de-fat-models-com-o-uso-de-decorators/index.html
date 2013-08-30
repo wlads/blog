@@ -1,0 +1,475 @@
+	
+	<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <title>Extraindo a responsabilidade de Fat Models com o uso de Decorators no Rails - Blog da HE:labs</title>
+  <meta name="author" content="Time HE:labs">
+
+  
+  <meta name="description" content="Extraindo a responsabilidade de Fat Models com o uso de Decorators no Rails Desde o 15 minutes blog o rails tem evoluido bastante e novos conceitos &hellip;">
+  
+
+  <!-- Facebook stuff taken from main page, not sure it should go here -->
+  <meta property="og:title" content="Extraindo a responsabilidade de Fat Models com o uso de Decorators no Rails - Blog da HE:labs"/>
+  <meta property="og:site_name" content="HE:labs blog"/>
+  <meta property="og:image" content="http://helabs.com.br/images/logo-icon.png"/>
+  <meta property="og:description" content="Extraindo a responsabilidade de Fat Models com o uso de Decorators no Rails Desde o 15 minutes blog o rails tem evoluido bastante e novos conceitos &hellip;" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://helabs.com.br/blog/2013/01/28/extraindo-a-responsabilidade-de-fat-models-com-o-uso-de-decorators/">
+  <link href="http://helabs.com.br/favicon.png" rel="icon">
+
+  <!-- CSS --> 
+  <link href="/blog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  
+
+  <!-- JS -->
+  <script type="text/javascript" src="/blog/javascripts/jquery.js"></script>
+  <script type="text/javascript" src="/blog/javascripts/jquery.parallax.min.js"></script>
+  <script type="text/javascript" src="/blog/javascripts/main.js"></script>
+
+  <!--
+  <script src="/blog/javascripts/modernizr-2.0.js"></script>
+  <script src="/blog/javascripts/ender.js"></script>
+  <script src="/blog/javascripts/octopress.js" type="text/javascript"></script>
+  -->
+  
+  <link href="/blog/atom.xml" rel="alternate" title="Blog da HE:labs" type="application/atom+xml">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16326763-1']);
+  _gaq.push(['_setDomainName', 'helabs.com.br']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+	<body   >
+		
+		<!-- #top -->
+<header id="top">
+	<div class="grid">
+		<h1 class="title">
+			<a href="/">
+				<img src="/blog/images/logotipo.png" />
+			</a>
+		</h1>	
+	</div>
+</header>
+<!-- /#top -->
+
+	    <div id="content">
+	    	    <!-- #posts -->
+    <section id="posts" class="single">    
+      <article>
+  <div class="grid">
+
+    
+      <h1 class="post-title">Extraindo a responsabilidade de Fat Models com o uso de Decorators no Rails</h1>
+    
+
+
+    
+      <div class="text"><p>Desde o <a href="http://www.youtube.com/watch?v=Gzj723LkRJY">15 minutes blog</a> o rails tem evoluido bastante e novos conceitos foram introduzidos com o passar do tempo, um mantra que foi introduzido na comunidade foi o &#8220;Skinny Controller, Fat Model&#8221; que pode gerar uma confusão aos desenvolvedores novatos e alguns mais experientes também.</p>
+
+<!-- more -->
+
+
+<h3>Fat model não necessariamente herda de ActiveRecord::Base</h3>
+
+<p>Quando lemos o mantra pela primeira vez podemos ficar tentados a fazer algo que seria mover nossas lógicas do controller para o model.</p>
+
+<p>Primeiro temos o código de enfileirar o envio de email no controller.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">PostsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">create</span>
+</span><span class='line'>    <span class="vi">@post</span> <span class="o">=</span> <span class="no">Post</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:post</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span> <span class="vi">@post</span><span class="o">.</span><span class="n">save</span>
+</span><span class='line'>      <span class="no">NotifyMailer</span><span class="o">.</span><span class="n">delay</span><span class="o">.</span><span class="n">notify</span><span class="p">(</span><span class="vi">@post</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">redirect_to</span><span class="p">(</span><span class="vi">@post</span><span class="p">,</span> <span class="ss">:notice</span> <span class="o">=&gt;</span> <span class="s1">&#39;Post was successfully created.&#39;</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>      <span class="n">render</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="s2">&quot;new&quot;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Refatorariamos para algo assim em nosso model Post.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Post</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">after_save</span> <span class="ss">:notify_users</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kp">private</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">notify_users</span>
+</span><span class='line'>      <span class="no">NotifyMailer</span><span class="o">.</span><span class="n">delay</span><span class="o">.</span><span class="n">notify</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Com certeza melhor que a solução anterior, mas agora o nosso model está sabendo demais. Além de fazer o seu papel em tratar as informações do banco de dados, agora também enfileira emails toda vez que é salvo. Ou seja, temos um problema de alto acoplamento, a operação de salvar sempre ativa o enfileiramento de envio de emails e com isso violamos o <a href="http://en.wikipedia.org/wiki/Single_responsibility_principle">SRP</a>.</p>
+
+<p>É aí que chegamos no ponto que fat models não necessariamente são classes que herdam de <code>ActiveRecord::Base</code>, pois como vimos isso nos gera os seguintes problemas:</p>
+
+<ul>
+<li>alto acoplamento</li>
+<li>testes mais lentos</li>
+<li>falta de coesão</li>
+</ul>
+
+
+<h3>Definindo melhor as responsabilidades e assim deixando tudo mais claro</h3>
+
+<p>Para deixar as coisas mais claras e com as responsabilidade melhores definidas podemos criar um <a href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator</a>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">PostNotifyUsers</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">post</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@post</span> <span class="o">=</span> <span class="n">post</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">save</span>
+</span><span class='line'>    <span class="vi">@post</span><span class="o">.</span><span class="n">save</span> <span class="o">&amp;&amp;</span> <span class="n">notify_users</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kp">private</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">notify_users</span>
+</span><span class='line'>      <span class="no">NotifyMailer</span><span class="o">.</span><span class="n">delay</span><span class="o">.</span><span class="n">notify</span><span class="p">(</span><span class="vi">@post</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>No código acima criamos uma classe em Ruby pura, conhecida também como PORO (Plain Old Ruby Objects). E o papel desta classe é notificar os usuários de um post novo enfileirando o email. Com isso conseguimos:</p>
+
+<ul>
+<li><strong>Baixo acoplamento</strong>: <code>Post</code> lida com o banco de dados e <code>PostNotifyUsers</code> notifica os usuários. Cada um com sua responsabilidade.</li>
+<li><strong>Testes mais rápidos</strong>: Quando se cria um <code>Post</code> em seus testes ele não envia mais email</li>
+<li><strong>Alta coesão</strong>: Pois agora sabemos de tudo o que ocorre ao salvar um <code>Post</code>, ele apenas é salvo.</li>
+</ul>
+
+
+<p>Veja agora como ficaria o nosso controller usando o decorator que acabamos de criar:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">PostsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">create</span>
+</span><span class='line'>    <span class="vi">@post</span> <span class="o">=</span> <span class="no">Post</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:post</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span> <span class="no">PostNotifyUsers</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@post</span><span class="p">)</span><span class="o">.</span><span class="n">save</span>
+</span><span class='line'>      <span class="n">redirect_to</span><span class="p">(</span><span class="vi">@post</span><span class="p">,</span> <span class="ss">:notice</span> <span class="o">=&gt;</span> <span class="s1">&#39;Post was successfully created.&#39;</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>      <span class="n">render</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="s2">&quot;new&quot;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Como pode ver ficou mais claro pois agora sei que nesta action eu salvo o post e notifico os usuários. Outra coisa legal é que o a nossa classe <code>PostNotifyUsers</code> <a href="http://en.wikipedia.org/wiki/Duck_typing">quacks</a> como <code>User</code> sendo assim podemos continuar usando o <code>#save</code> só que agora do <code>PostNotifyUsers</code> em nosso controller.</p>
+
+<p>O <a href="http://twitter.com/aneziojunior">Anézio</a> falou recentemente sobre a extração de responsábilidades também no post <a href="http://helabs.com.br/blog/2013/01/14/cuidados-com-observers-e-callbacks/">Cuidados com Observers e callbacks</a>.</p>
+
+<h3>O Rails way e os iniciantes no rails</h3>
+
+<p>O que é comum são as pessoas iniciarem no rails sem noção nenhuma de Ruby e às vezes até <a href="https://en.wikipedia.org/wiki/Object-oriented_programming">orientação a objetos</a>. O que levam a seguir sempre a abordagem do conhecido Rails Way esquecendo(às vezes nem sabendo) que Ruby é uma linguagem orientada a objetos, e que assim pode resolver muito dos seus problemas.</p>
+</div>
+    
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-28T10:30:00-02:00" pubdate data-updated="true">Jan 28<span>th</span>, 2013</time>
+    
+  </div>
+</article>  
+
+      <aside id="more-information" class="grid">
+        <p class="meta">
+          
+  
+
+<span class="byline author vcard">Postado por <span class="fn">Mauro George</span></span>
+
+          
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/decorator/'>decorator</a>, <a class='category' href='/blog/categories/mauro-george/'>mauro george</a>, <a class='category' href='/blog/categories/model/'>model</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
+  
+</span>
+
+
+        </p>
+
+        
+          <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://helabs.com.br/blog/2013/01/28/extraindo-a-responsabilidade-de-fat-models-com-o-uso-de-decorators/" data-via="helabs" data-counturl="http://helabs.com.br/blog/2013/01/28/extraindo-a-responsabilidade-de-fat-models-com-o-uso-de-decorators/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+        
+    
+        <p class="meta">
+          
+            <a class="basic-alignment left" href="/blog/2013/01/25/aprendizados-com-startup-dev/" title="Previous Post: Aprendizados com o Startup DEV">&laquo;Aprendizados com o Startup DEV</a>
+          
+      
+          
+            <a class="basic-alignment right" href="/blog/2013/01/29/retrospectiva-evento-kolaborativa/" title="Next Post: Retrospectiva - evento Kolaborativa">Retrospectiva - evento Kolaborativa &raquo;</a>
+          
+        </p>
+    
+        <div id="cover" class="cover-mailing-page">
+          <div class="containner">
+            <div class="mailing-form">
+              <h2>Gostou desse post? Receba nossa newsletter e fique por dentro dos novos posts e outras novidades da HE:labs.</h2>
+              <form style="width:100%" action="http://clientela.us2.list-manage.com/subscribe/post?u=78c4c9df5db794cd68f358456&amp;id=020e7504d2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+                <input type="email" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Insira seu email e faça parte da comunidade" required />
+
+                <input type="submit" value="Fazer Parte" name="subscribe" id="mc-embedded-subscribe" class="button"/>
+
+              </form>
+              <a href="http://antispam.br" target="_blank"><img src="http://helabs.com.br/images/antispam.jpg" title="Selo AntiSpam"></a>
+              <p>
+                <a href="http://helabs.com.br/privacidade" target="_blank" title="Política de Privacidade">Política de Privacidade</a> /
+                <a href="http://helabs.us2.list-manage.com/unsubscribe?u=78c4c9df5db794cd68f358456&id=020e7504d2" target="_blank" title="Retirar o e-mail da lista">Retirar o e-mail da lista</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        
+          <div id="disqus_thread" aria-live="polite">
+            <h6>Comentários</h6>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+          </div>
+        
+
+      </aside>
+    </section>
+	    </div>
+
+	  	<footer id="bottom">
+  
+  <div id="social-footer">
+    <div class="grid">
+    <a ref="#" class="github">Github</a>
+    <a ref="#" class="twitter">Twitter</a>
+    <a ref="#" class="facebook">Facebook</a>
+    <a ref="#" class="rss">RSS</a>
+    </div>
+ </div>
+ 
+	<div class="grid">
+    <div class="collumn">
+      <h3>Últimos Posts</h3>
+      <ul>
+        <li>Melhorando o Email Activity do SendGrid</li>
+        <li>Um pouco sobre Lean UX</li>
+        <li>Como colaborar com projetos open-source</li>
+        <li>Retrospectiva Café com DEV HE:Rio 12/07 </li>
+      </ul>
+      
+    </div>
+    
+  	<div class="grid">
+      <div class="collumn">
+        <h3>GitHub Repos</h3>
+        <ul>
+          <li>startupdev.github.com <span>Startup DEV Website</span></li>
+          <li>pah<span>Command line interface to generate rails apps used at HE:labs.</span> </li>
+          <li>acts_as_hashed<span>acts_as_hashed makes it easier to create unique non-discoverable URIs and all other sorts of uuid you may need in your app.</span> </li>
+        </ul>
+      
+      </div>
+      
+    	<div class="grid">
+        <div class="collumn">
+          <h3>Últimos Tweets</h3>
+          <ul>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget.  adipiscing elit. </li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget. </li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget.  </li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget. Lorem ipsum dolor sit amet </li>
+          </ul>
+      
+        </div>
+    
+		<p>
+		  Copyright &copy; 2013 - Time HE:labs -
+		  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+		</p>
+	</div>
+</footer>
+
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'helabsblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://helabs.com.br/blog/2013/01/28/extraindo-a-responsabilidade-de-fat-models-com-o-uso-de-decorators/';
+        var disqus_url = 'http://helabs.com.br/blog/2013/01/28/extraindo-a-responsabilidade-de-fat-models-com-o-uso-de-decorators/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#appId=294124694041877&xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  window.fbAsyncInit = function(){
+    FB.Event.subscribe('edge.create', function(targetUrl) {
+      _gaq.push(['_trackSocial', 'facebook', 'like', targetUrl]);
+    });
+    FB.Event.subscribe('edge.remove', function(targetUrl) {
+      _gaq.push(['_trackSocial', 'facebook', 'unlike', targetUrl]);
+    });
+    FB.Event.subscribe('message.send', function(targetUrl) {
+      _gaq.push(['_trackSocial', 'facebook', 'send', targetUrl]);
+    });
+  }
+</script>
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+  window.twttr = (function (d,s,id) {
+    var t, js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+    js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+    return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+  }(document, "script", "twitter-wjs"));
+  function extractParamFromUri(uri, paramName) {
+    if (!uri) {
+      return;
+    }
+    var regex = new RegExp('[\\?&#]' + paramName + '=([^&#]*)');
+    var params = regex.exec(uri);
+    if (params != null) {
+      return unescape(params[1]);
+    }
+    return;
+  }
+  function trackTwitter(intent_event) {
+    if (intent_event) {
+      var opt_pagePath;
+      if (intent_event.target && intent_event.target.nodeName == 'IFRAME') {
+        opt_target = extractParamFromUri(intent_event.target.src, 'url');
+      }
+      _gaq.push(['_trackSocial', 'twitter', 'tweet', opt_pagePath]);
+    }
+  }
+
+  //Wrap event bindings - Wait for async js to load
+  twttr.ready(function (twttr) {
+    //event bindings
+    twttr.events.bind('tweet', trackTwitter);
+  });
+</script>
+
+
+
+	</body>
+</html>

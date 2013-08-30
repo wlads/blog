@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: rodrigo martins | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/rodrigo-martins/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Tech Talks - Rodrigo Martins: Escrevendo código de forma clara e objetiva]]></title>
+    <link href="http://helabs.com.br/blog/2012/11/30/tech-talks-rodrigo-martins-escrevendo-codigo-de-forma-clara-e-objetiva/"/>
+    <updated>2012-11-30T15:52:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2012/11/30/tech-talks-rodrigo-martins-escrevendo-codigo-de-forma-clara-e-objetiva</id>
+    <content type="html"><![CDATA[<p>Hoje rolou a segunda edição das Tech Talks da HE:labs! <a href="http://rrmartins.github.com/">Rodrigo Martins</a> avassalou comparando códigos bem escritos. Novamente a Tech Talk foi regada a pizza e refrigerante.</p>
+
+<!-- more -->
+
+
+<p>Ele começou contando um pouco de sua história e como se apaixonou pela filosofia do Ruby e sua foma simples de fazer código.</p>
+
+<p>Depois foi direto mostrar a sua solução para escrever códigos melhores: PRATICAR! E sem perder tempo, caiu para os exemplos mostrando códigos reais, de projetos reais, que refatorados faziam o código inicial parecer uma aberração. Mostrou inclusive exemplos de códigos próprios, mostrando onde tinha errado e o que fez para consertar depois que praticou e aprendeu uma forma melhor de resolver o mesmo problema.</p>
+
+<p>Por fim, recomendou a todos que não fujam do escopo, façam sempre o simples, lembre que colorir código não dá dinheiro e conheça bem a sua caixa de ferramentas. Finalizou relembrando sua mensagem do início: PRATIQUE!</p>
+
+<p>Esta foi a primeira vez que fizemos uma transmissão ao vivo da Teck Talk. A experiência foi sensacional mas nos mostrou que tem muita coisa que tem que ser melhorada.</p>
+
+<p>Na próxima sexta, dia 07/12/2012, às 14h começa nosso dojo de iOS. Quer aprender e treinar o desenvolvimento para iOS com a gente? Chega mais! O encontro vai ser na sede carioca da HE:labs, Av. Pres. Vargas n° 633, sala 1417 - Centro - Rio de Janeiro. <a href="https://docs.google.com/a/helabs.com.br/spreadsheet/ccc?key=0AgEiZy4SrymRdHcwcG9FdXVVWV9nR3UtQWwtQXhaWGc">Inscreva-se</a>!</p>
+
+<p>Os slides da apresentação do Rodrigo Martins estão no link:
+<a href="https://speakerdeck.com/rrmartins/escrevendo-codigo-de-forma-clara-e-objetiva">https://speakerdeck.com/rrmartins/escrevendo-codigo-de-forma-clara-e-objetiva</a></p>
+
+<p>A gravação da Tech Talk está no link:
+<a href="http://twitcam.livestream.com/cx8kx">http://twitcam.livestream.com/cx8kx</a></p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,490 @@
+	
+	<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <title>Implementando Login via Facebook na sua App Rails - Blog da HE:labs</title>
+  <meta name="author" content="Time HE:labs">
+
+  
+  <meta name="description" content="Implementando Login via Facebook na sua App Rails Eu falei anteriormente sobre o Passwordless Login e agora vou falar sobre o Login via Facebook. &hellip;">
+  
+
+  <!-- Facebook stuff taken from main page, not sure it should go here -->
+  <meta property="og:title" content="Implementando Login via Facebook na sua App Rails - Blog da HE:labs"/>
+  <meta property="og:site_name" content="HE:labs blog"/>
+  <meta property="og:image" content="http://helabs.com.br/images/logo-icon.png"/>
+  <meta property="og:description" content="Implementando Login via Facebook na sua App Rails Eu falei anteriormente sobre o Passwordless Login e agora vou falar sobre o Login via Facebook. &hellip;" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://helabs.com.br/blog/2013/06/24/implementando-login-via-facebook-na-sua-app-rails/">
+  <link href="http://helabs.com.br/favicon.png" rel="icon">
+
+  <!-- CSS --> 
+  <link href="/blog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  
+
+  <!-- JS -->
+  <script type="text/javascript" src="/blog/javascripts/jquery.js"></script>
+  <script type="text/javascript" src="/blog/javascripts/jquery.parallax.min.js"></script>
+  <script type="text/javascript" src="/blog/javascripts/main.js"></script>
+
+  <!--
+  <script src="/blog/javascripts/modernizr-2.0.js"></script>
+  <script src="/blog/javascripts/ender.js"></script>
+  <script src="/blog/javascripts/octopress.js" type="text/javascript"></script>
+  -->
+  
+  <link href="/blog/atom.xml" rel="alternate" title="Blog da HE:labs" type="application/atom+xml">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16326763-1']);
+  _gaq.push(['_setDomainName', 'helabs.com.br']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+	<body   >
+		
+		<!-- #top -->
+<header id="top">
+	<div class="grid">
+		<h1 class="title">
+			<a href="/">
+				<img src="/blog/images/logotipo.png" />
+			</a>
+		</h1>	
+	</div>
+</header>
+<!-- /#top -->
+
+	    <div id="content">
+	    	    <!-- #posts -->
+    <section id="posts" class="single">    
+      <article>
+  <div class="grid">
+
+    
+      <h1 class="post-title">Implementando Login via Facebook na sua App Rails</h1>
+    
+
+
+    
+      <div class="text"><p>Eu falei anteriormente sobre o <a href="http://helabs.com.br/blog/2013/04/11/passwordless-login/">Passwordless Login</a> e agora vou falar sobre o Login via Facebook. Este post será mais como uma &#8216;receita&#8217; de como implementar na sua aplicação Rails. Então, vamos lá.</p>
+
+<!--more-->
+
+
+<p>Todo mundo que você conhece tem uma conta no Facebook, certo? Até minha mãe fez uma conta no Facebook! Só o Rafael Lima mesmo que não tem (truestory). Implementar login via Facebook na sua aplicação traz uma facilidade bem grande para o usuário fazer seu cadastro. Com uns dois cliques ele já cria a conta e você tem acesso ao nome, email, data de nascimento, avatar e outras informações que pode-se acessar pedindo permissão, como amigos, fotos, likes e por aí vai&#8230;</p>
+
+<h3>O que você precisa para implementar o login:</h3>
+
+<ul>
+<li>Uma conta no Facebook</li>
+<li>Criar uma App no Facebook</li>
+<li>Ter uma App usando Rails</li>
+<li>As gems <em>omniauth</em> e <em>omniauth-facebook</em></li>
+<li>Alguns métodos e controllers</li>
+</ul>
+
+
+<h2>Criando um aplicativo no Facebook</h2>
+
+<p>Acesse <a href="http://developers.facebook.com/apps">http://developers.facebook.com/apps</a> e clique em &#8221;<strong>Criar Novo Aplicativo</strong>&#8221;. Digite o nome do seu App e um namespace.</p>
+
+<p><img src="/blog/images/posts/facebook-login/img0.png" alt="image" /></p>
+
+<p>Próximo passo é pegar o <em>APP ID</em> e o <em>APP Secret</em> e configurá-los como variáveis de ambiente da sua aplicação Rails. Normalmente, colocamos as variáveis no <em>.rvmrc</em> do projeto, mas nada impede que você crie um arquivo <em>.yml</em> e salve estas informações.</p>
+
+<p><img src="/blog/images/posts/facebook-login/img1.png" alt="image" /></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="n">export</span> <span class="no">FACEBOOK_APP_KEY</span><span class="o">=</span> <span class="c1">#{APP ID}</span>
+</span><span class='line'>  <span class="n">export</span> <span class="no">FACEBOOK_APP_SECRET</span><span class="o">=</span> <span class="c1">#{APP_SECRET}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Existe a opção de deixar o aplicativo no Facebook em modo &#8216;Sandbox&#8217;. Caso esteja ativado, somente você e/ou outras pessoas que estiverem cadastradas como desenvolvedores ou testers poderão usar sua aplicação para fazer o login. Caso você prefira que qualquer pessoa possa se logar sem precisar dar permissão, desative o modo Sandbox. Para ver as configurações de permissões, clique em &#8221;<strong>Privilégios de desenvolvedores</strong>&#8221; na sidebar.</p>
+
+<p><img src="/blog/images/posts/facebook-login/img2.png" alt="image" /></p>
+
+<p>Depois, na seção &#8221;<strong>Selecione o modo como seu aplicativo se integra com Facebook</strong>&#8221; clique em &#8221;<strong>Site com o Login do Facebook</strong>&#8221;. Em <em>Site URL</em>, coloque a url onde o Facebook vai enviar as informações da autenticação. Normalmente o path <em>&#8220;/auth/facebook/callback&#8221;</em> é usado com a gem <em>&#8220;omniauth&#8221;</em>. Vou explicar isto melhor depois.</p>
+
+<p>Se você estiver configurando a App para desenvolvimento local, o host será &#8221;<strong>http://localhost:3000</strong>&#8221; ou qualquer que seja seu host local.</p>
+
+<p><img src="/blog/images/posts/facebook-login/img4.png" alt="image" /></p>
+
+<p>E é isto para o aplicativo do Facebook. Agora, vamos para o Rails:</p>
+
+<h2>A parte do Rails&#8230;</h2>
+
+<p>Primeiro, adicione no seu Gemfile estas gems:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;omniauth&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;omniauth-facebook&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Depois, crie um arquivo chamado <em>&#8220;omniauth.rb&#8221;</em> em config/initializers:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">middleware</span><span class="o">.</span><span class="n">use</span> <span class="ss">OmniAuth</span><span class="p">:</span><span class="ss">:Builder</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">provider</span> <span class="ss">:facebook</span><span class="p">,</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;FACEBOOK_APP_KEY&#39;</span><span class="o">]</span><span class="p">,</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;FACEBOOK_APP_SECRET&#39;</span><span class="o">]</span><span class="p">,</span> <span class="ss">:scope</span> <span class="o">=&gt;</span> <span class="s2">&quot;email&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note que a opção &#8220;scope&#8221; tem o valor &#8220;email&#8221;. Isto significa que pediremos permissão para ter acesso, além das informações básicas do usuários, ao email. Existem outros tipos de &#8220;scopes&#8221; para ter acesso a lista de amigos do usuário e aos posts no mural. Você pode saber mais sobre os tipos de permissão em: <a href="https://developers.facebook.com/docs/reference/login/#permissions">https://developers.facebook.com/docs/reference/login/#permissions</a>.</p>
+
+<p>Precisamos agora de um model para o usuário:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="err">$</span> <span class="n">rails</span> <span class="n">g</span> <span class="n">model</span> <span class="no">User</span> <span class="nb">name</span><span class="ss">:string</span> <span class="ss">email</span><span class="p">:</span><span class="n">string</span> <span class="n">access_token</span><span class="ss">:string</span> <span class="ss">uid</span><span class="p">:</span><span class="n">string</span> <span class="n">photo_url</span><span class="ss">:string</span> <span class="ss">provider</span><span class="p">:</span><span class="n">string</span>
+</span><span class='line'>  <span class="err">$</span> <span class="n">rake</span> <span class="ss">db</span><span class="p">:</span><span class="n">migrate</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Precisamos também de um controller para cuidar da autenticação. Vamos criar o <em>SessionsController</em>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="err">$</span> <span class="n">rails</span> <span class="n">g</span> <span class="n">controller</span> <span class="no">Sessions</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Neste controller vamos implementar algumas actions:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="c1"># encoding: UTF-8</span>
+</span><span class='line'>  <span class="k">class</span> <span class="nc">SessionsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">create</span>
+</span><span class='line'>      <span class="n">auth</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">env</span><span class="o">[</span><span class="s2">&quot;omniauth.auth&quot;</span><span class="o">]</span>
+</span><span class='line'>      <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">find_or_create_with_omniauth</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">session</span><span class="o">[</span><span class="ss">:user_id</span><span class="o">]</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">id</span>
+</span><span class='line'>      <span class="n">redirect_to</span> <span class="n">secret_page_path</span><span class="p">,</span> <span class="ss">:notice</span> <span class="o">=&gt;</span> <span class="s2">&quot;Opa! Você está online!&quot;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">failure</span>
+</span><span class='line'>      <span class="n">redirect_to</span> <span class="n">root_url</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">destroy</span>
+</span><span class='line'>      <span class="n">session</span><span class="o">[</span><span class="ss">:user_id</span><span class="o">]</span> <span class="o">=</span> <span class="kp">nil</span>
+</span><span class='line'>      <span class="n">redirect_to</span> <span class="n">root_url</span><span class="p">,</span> <span class="ss">:notice</span> <span class="o">=&gt;</span> <span class="s2">&quot;Volte em breve!&quot;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A action <em>create</em> vai receber as informações do usuário enviado pelo Facebook através do <em>request.env[&#8220;omniauth.auth&#8221;]</em>. Caso ele não exista no banco de dados, nós criaremos o usuário ou então, somente o encontraremos através do método que ainda será implementado no model <em>User</em>, find_or_create_with_omniauth(). Para saber mais sobre o Auth Hash, <a href="https://github.com/mkdynamic/omniauth-facebook#auth-hash">clique aqui</a>. A action <em>failure</em> vai redirecionar o usuário para o root_url, caso a autenticação falhe. E a action <em>destroy</em>, vai simplesmente deslogar o usuário.</p>
+
+<p>Agora vamos criar as rotas para este controller:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="n">match</span> <span class="s2">&quot;/auth/:provider/callback&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;sessions#create&quot;</span><span class="p">,</span> <span class="ss">as</span><span class="p">:</span> <span class="ss">:auth_callback</span>
+</span><span class='line'>  <span class="n">match</span> <span class="s2">&quot;/auth/failure&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;sessions#failure&quot;</span><span class="p">,</span> <span class="ss">as</span><span class="p">:</span> <span class="ss">:auth_failure</span>
+</span><span class='line'>  <span class="n">match</span> <span class="s2">&quot;/logout&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;sessions#destroy&quot;</span><span class="p">,</span> <span class="ss">as</span><span class="p">:</span> <span class="ss">:logout</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Lembra que ao criarmos o aplicativo no Facebook definimos a url para login como <strong>http://localhost:3000/auth/facebook/callback</strong>? Esta rota aponta para a action create do nosso <em>SessionsController</em>. Você pode mudar a rota para a action create, mas lembre-se de mudar nas configurações do aplicativo do Facebook também.</p>
+
+<p>Vamos voltar ao model <em>User</em> para implementar o método <em>find_or_create_with_omniauth</em>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">find_or_create_with_omniauth</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">user</span> <span class="o">=</span> <span class="nb">self</span><span class="o">.</span><span class="n">find_or_create_by_provider_and_uid</span><span class="p">(</span><span class="n">auth</span><span class="o">.</span><span class="n">provider</span><span class="p">,</span> <span class="n">auth</span><span class="o">.</span><span class="n">uid</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">user</span><span class="o">.</span><span class="n">assign_attributes</span><span class="p">({</span> <span class="nb">name</span><span class="p">:</span> <span class="n">auth</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="ss">email</span><span class="p">:</span> <span class="n">auth</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">email</span><span class="p">,</span> <span class="n">photo_url</span><span class="p">:</span> <span class="n">auth</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">image</span><span class="p">,</span> <span class="n">access_token</span><span class="p">:</span> <span class="n">auth</span><span class="o">.</span><span class="n">credentials</span><span class="o">.</span><span class="n">token</span> <span class="p">})</span>
+</span><span class='line'>    <span class="n">user</span><span class="o">.</span><span class="n">save!</span>
+</span><span class='line'>    <span class="n">user</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Na primeira linha do método tente achar o usuário pelos campos provider e uid. Se não for encontrado, nós criaremos um. Logo na linha debaixo nós setamos alguns atributos pelo Auth Hash, como: <em>nome, email, avatar e o access_token</em>. Então, salvamos o usuário e o retornamos na última linha.</p>
+
+<p>Para finalizar, só precisamos criar algum link onde o usuário clique e faça o login. Adicione na view da sua preferência:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="o">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Login com Facebook&quot;</span><span class="p">,</span> <span class="s2">&quot;/auth/facebook&quot;</span> <span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>E pronto. O usuário já pode fazer o login usando o Facebook na sua aplicação Rails. Como no outro post, eu também preparei uma aplicação exemplo no <a href="https://facebook-login-example.herokuapp.com/">Heroku</a> e disponibilizei o código no <a href="https://github.com/matheusbras/facebook-login-example">Github</a>. É uma versão modificada da aplicação do outro exemplo. ;)</p>
+
+<p>Heroku -> https://facebook-login-example.herokuapp.com/
+Github -> https://github.com/matheusbras/facebook-login-example</p>
+</div>
+    
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-24T10:00:00-03:00" pubdate data-updated="true">Jun 24<span>th</span>, 2013</time>
+    
+  </div>
+</article>  
+
+      <aside id="more-information" class="grid">
+        <p class="meta">
+          
+  
+
+<span class="byline author vcard">Postado por <span class="fn">Matheus Bras</span></span>
+
+          
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/facebook-login/'>facebook login</a>, <a class='category' href='/blog/categories/matheus-bras/'>matheus bras</a>, <a class='category' href='/blog/categories/oauth/'>oauth</a>, <a class='category' href='/blog/categories/omniauth/'>omniauth</a>
+  
+</span>
+
+
+        </p>
+
+        
+          <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://helabs.com.br/blog/2013/06/24/implementando-login-via-facebook-na-sua-app-rails/" data-via="helabs" data-counturl="http://helabs.com.br/blog/2013/06/24/implementando-login-via-facebook-na-sua-app-rails/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+        
+    
+        <p class="meta">
+          
+            <a class="basic-alignment left" href="/blog/2013/06/19/novo-membro/" title="Previous Post: Novo membro">&laquo;Novo membro</a>
+          
+      
+          
+            <a class="basic-alignment right" href="/blog/2013/06/25/novo-membro-francisco/" title="Next Post: Novo membro: Francisco Martins">Novo membro: Francisco Martins &raquo;</a>
+          
+        </p>
+    
+        <div id="cover" class="cover-mailing-page">
+          <div class="containner">
+            <div class="mailing-form">
+              <h2>Gostou desse post? Receba nossa newsletter e fique por dentro dos novos posts e outras novidades da HE:labs.</h2>
+              <form style="width:100%" action="http://clientela.us2.list-manage.com/subscribe/post?u=78c4c9df5db794cd68f358456&amp;id=020e7504d2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+                <input type="email" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Insira seu email e faça parte da comunidade" required />
+
+                <input type="submit" value="Fazer Parte" name="subscribe" id="mc-embedded-subscribe" class="button"/>
+
+              </form>
+              <a href="http://antispam.br" target="_blank"><img src="http://helabs.com.br/images/antispam.jpg" title="Selo AntiSpam"></a>
+              <p>
+                <a href="http://helabs.com.br/privacidade" target="_blank" title="Política de Privacidade">Política de Privacidade</a> /
+                <a href="http://helabs.us2.list-manage.com/unsubscribe?u=78c4c9df5db794cd68f358456&id=020e7504d2" target="_blank" title="Retirar o e-mail da lista">Retirar o e-mail da lista</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        
+          <div id="disqus_thread" aria-live="polite">
+            <h6>Comentários</h6>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+          </div>
+        
+
+      </aside>
+    </section>
+	    </div>
+
+	  	<footer id="bottom">
+  
+  <div id="social-footer">
+    <div class="grid">
+    <a ref="#" class="github">Github</a>
+    <a ref="#" class="twitter">Twitter</a>
+    <a ref="#" class="facebook">Facebook</a>
+    <a ref="#" class="rss">RSS</a>
+    </div>
+ </div>
+ 
+	<div class="grid">
+    <div class="collumn">
+      <h3>Últimos Posts</h3>
+      <ul>
+        <li>Melhorando o Email Activity do SendGrid</li>
+        <li>Um pouco sobre Lean UX</li>
+        <li>Como colaborar com projetos open-source</li>
+        <li>Retrospectiva Café com DEV HE:Rio 12/07 </li>
+      </ul>
+      
+    </div>
+    
+  	<div class="grid">
+      <div class="collumn">
+        <h3>GitHub Repos</h3>
+        <ul>
+          <li>startupdev.github.com <span>Startup DEV Website</span></li>
+          <li>pah<span>Command line interface to generate rails apps used at HE:labs.</span> </li>
+          <li>acts_as_hashed<span>acts_as_hashed makes it easier to create unique non-discoverable URIs and all other sorts of uuid you may need in your app.</span> </li>
+        </ul>
+      
+      </div>
+      
+    	<div class="grid">
+        <div class="collumn">
+          <h3>Últimos Tweets</h3>
+          <ul>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget.  adipiscing elit. </li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget. </li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget.  </li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget. Lorem ipsum dolor sit amet </li>
+          </ul>
+      
+        </div>
+    
+		<p>
+		  Copyright &copy; 2013 - Time HE:labs -
+		  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+		</p>
+	</div>
+</footer>
+
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'helabsblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://helabs.com.br/blog/2013/06/24/implementando-login-via-facebook-na-sua-app-rails/';
+        var disqus_url = 'http://helabs.com.br/blog/2013/06/24/implementando-login-via-facebook-na-sua-app-rails/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#appId=294124694041877&xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  window.fbAsyncInit = function(){
+    FB.Event.subscribe('edge.create', function(targetUrl) {
+      _gaq.push(['_trackSocial', 'facebook', 'like', targetUrl]);
+    });
+    FB.Event.subscribe('edge.remove', function(targetUrl) {
+      _gaq.push(['_trackSocial', 'facebook', 'unlike', targetUrl]);
+    });
+    FB.Event.subscribe('message.send', function(targetUrl) {
+      _gaq.push(['_trackSocial', 'facebook', 'send', targetUrl]);
+    });
+  }
+</script>
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+  window.twttr = (function (d,s,id) {
+    var t, js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+    js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+    return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+  }(document, "script", "twitter-wjs"));
+  function extractParamFromUri(uri, paramName) {
+    if (!uri) {
+      return;
+    }
+    var regex = new RegExp('[\\?&#]' + paramName + '=([^&#]*)');
+    var params = regex.exec(uri);
+    if (params != null) {
+      return unescape(params[1]);
+    }
+    return;
+  }
+  function trackTwitter(intent_event) {
+    if (intent_event) {
+      var opt_pagePath;
+      if (intent_event.target && intent_event.target.nodeName == 'IFRAME') {
+        opt_target = extractParamFromUri(intent_event.target.src, 'url');
+      }
+      _gaq.push(['_trackSocial', 'twitter', 'tweet', opt_pagePath]);
+    }
+  }
+
+  //Wrap event bindings - Wait for async js to load
+  twttr.ready(function (twttr) {
+    //event bindings
+    twttr.events.bind('tweet', trackTwitter);
+  });
+</script>
+
+
+
+	</body>
+</html>

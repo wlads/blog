@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: rupy | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/rupy/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Dezembro de RUPY, RailsGirls-RJ e muitos eventos]]></title>
+    <link href="http://helabs.com.br/blog/2012/12/19/dezembro-de-rupy-railsgirlsrj-e-muitos-eventos/"/>
+    <updated>2012-12-19T12:00:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2012/12/19/dezembro-de-rupy-railsgirlsrj-e-muitos-eventos</id>
+    <content type="html"><![CDATA[<p>Dezembro está sendo um mês movimentado para a turma da <a href="http://www.helabs.com.br">HE:Labs</a>. O mês começou com a ida ao <a href="http://www.rupy.com.br">RUPY</a>, evento focado em linguagems dinâmicas como Ruby, Python e JavaScript, que aconteceu em São José dos Campos e reuniu desenvolvedores de todo o Brasil.</p>
+
+<!-- more -->
+
+
+<p>A <a href="http://www.rupy.com.br">RUPY</a> aconteceu nos dias 08 e 09 de Dezembro. <a href="http://www.twitter.com/rodrigoospinto">Eu(Rodrigo Pinto)</a> e o <a href="http://www.twitter.com/smergulhao">Sylvestre Mergulhão</a>, fomos reprensentar a empresa e falar sobre <a href="http://en.wikipedia.org/wiki/Platform_as_a_service">PaaS - Plataform as a Service</a>; Especificamente sobre o Heroku, dando uma visão de prós e contras baseado na experiência de já termos deployado mais de 35 apps no <a href="http://www.startupdev.com.br">StartupDEV</a> e mais de 50 apps durante o último 1 ano e meio de <a href="http://www.helabs.com.br">HE:labs</a> utilizando o Heroku. No fim do primeiro dia rolou a HE:labs Party um happy hour dentro do evento regado a petiscos, refrigerantes e cervejas patrocinado por nós. \o/</p>
+
+<p>O evento contou com excelentes apresentações, entre elas, palestras como <em>"Usando o vagrant como ambiente de desenvolvimento Ruby"</em> do <a href="https://twitter.com/fnando">Nando Vieira</a>, <em>"Google App Engine, Python e Startups"</em> com o <a href="https://twitter.com/nuccitec">Renzo Nuccitelli</a>, e keynotes muito interessantes como <em>"De Smalltalk a Clojure"</em> com <a href="https://twitter.com/rferraz">Ronaldo Ferraz</a> e o <a href="https://twitter.com/AkitaOnRails">Fabio Akita</a> fechando o evento falando sobre <em>"O que há de novo no Rails 4"</em>.</p>
+
+<p>Não se atendo somente as palestras da grade de programação, uma que me chamou bastante a atenção, foi a apresentação do <a href="https://twitter.com/tonylampada">Tony Lâmpada</a> compartilhando seu projeto <a href="http://www.freedomsponsors.org">FreedomSponsors.org</a>. Um projeto de crowdfunding onde você pode contribuir financeiramente, para a implementação e/ou correção de funcionalidades em projetos open source.</p>
+
+<!-- Faltaram os links para os palestrantes e para as palestras, se estiverem disponíveis -->
+
+
+<p>Nesse mesmo final de semana o <a href="http://www.twitter.com/rafaelp">Rafael Lima</a> esteve do <a href="http://rio.startupweekend.org/">StartupWeekend Rio</a> de Janeiro e mentorando os times que por lá estavam.</p>
+
+<p>Na semana seguinte, nos dias 11 e 13 de Dezembro foi ministrado o 1º curso Rails for Zombies 2 presencial, nascido da parceria <a href="http://www.helabs.com.br">HE:labs</a> + <a href="http://www.codeschool.com.br">CodeSchool</a>. Em breve teremos novas datas para o curso, então fique ligado e <a href="http://helabs.com.br/mailing/">inscreva-se na nossa mailing</a> para ser avisado quando as novas datas forem definidas.</p>
+
+<p>Ainda aconteceu o <a href="http://geeksonbeer.com">GeeksOnBeer</a>, no dia  e novamente estávamos presentes. A <a href="http://www.helabs.com.br">HE:labs</a> estava representada por <a href="http://www.twitter.com/smergulhao">Sylvestre Mergulhão</a>, <a href="http://www.twitter.com/rafaelp">Rafael Lima</a> e Raphael Periard, que aproveitaram as cervejas para fazer muito networking. O <a href="http://geeksonbeer.com">GeeksOnBeer</a> foi mais um evento patrocinado pela HE:labs.</p>
+
+<p>Para fecher o ciclo de eventos no sábado dia 15, rolou o <a href="http://railsgirls.com/riodejaneiro">RailsGirls-RJ</a> e o 9° encontro do Rio.JS.</p>
+
+<p>O <a href="http://railsgirls.com/riodejaneiro">RailsGirls-RJ</a> é um evento que tem como meta <em>"dar ferramentas para garotas e mulheres construirem seus próprios sonhos"</em>, ou seja, um evento de um dia inteiro, focado em ensinar Rails para mulheres, para que elas possam a partir daí começar a construir aplicações web. O evento foi sensacional, com mais de 60 pessoas presentes, a <a href="http://www.helabs.com.br">HE:labs</a> também apoiou e <a href="http://www.twitter.com/rodrigoospinto">eu</a> estive lá ajudando como coach e apresentando uma palestra sobre <a href="https://speakerdeck.com/rodrigoospinto/introducao-ao-ruby-on-rails-railsgirls-rj">"Introdução ao Ruby on Rails"</a>.</p>
+
+<p><a href="https://www.facebook.com/groups/riojs/">No 9° encontro do Rio.JS</a> quem esteve presente foi o <a href="https://twitter.com/pedromarins">Pedro Marins</a>. O evento reuniu a comunidade de desenvolvedores para palestras sobre JavaScript. Entre os temas abordados estão peculiaridade do javascript, qualidade de código e o Angular.JS.</p>
+
+<p>Os eventos entram em recesso durante esse período de fim de ano, mas nós não. Já estamos preparando eventos e cursos para o ano que vem, então <a href="http://helabs.com.br/mailing/">assine nossa mailing</a> para ficar atualizado sobre onde e com o que estamos envolvidos.</p>
+
+<p>Grande Abraço,<br/>
+<a href="http://www.twitter.com/rodrigoospinto">Rodrigo Pinto</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

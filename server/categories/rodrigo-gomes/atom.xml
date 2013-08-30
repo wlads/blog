@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Rodrigo Gomes | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/rodrigo-gomes/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Era HTML5: A nova Era da web]]></title>
+    <link href="http://helabs.com.br/blog/2013/07/09/nova-era-html5/"/>
+    <updated>2013-07-09T13:35:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/07/09/nova-era-html5</id>
+    <content type="html"><![CDATA[<p>Nesse meu novo post falarei sobre a linguagem de marcação HTML5.</p>
+
+<p>O <strong>Hyper Text Markup Language</strong> (Linguagem de marcação de hipertexto), conhecido como código HTML, está presente em todas as páginas da WEB.
+Há, aproximadamente, dez anos, o HTML está presente na vida dos internautas. Possui uma grande aceitação pelas pessoas que o usam. O código HTML já está se adequando para sua quinta versão(HTML5), deste modo, poderá beneficiar os desenvolvedores e todos os usuários da internet.</p>
+
+<!--more-->
+
+
+<p>Novos elementos foram introduzidos no HTML5: todos têm a finalidade de facilitar a compreensão e a manutenção do código. Alguns deles são uma evolução natural do elemento &lt; div > focado na semântica; outros, no entanto, surgiram da necessidade de padronizar a maneira de se publicar conteúdo.</p>
+
+<ul>
+<li><p>Os principais elementos de estrutura básica do HTML5 são:</p></li>
+<li><p>&lt;header&gt; - cabeçalho da página ou de uma seção;</p></li>
+<li>&lt;section&gt; - cada seção do conteúdo;</li>
+<li>&lt;article&gt; - um item do conteúdo dentro da página ou da seção;</li>
+<li>&lt;footer&gt; - o rodapé da página ou de uma seção;</li>
+<li>&lt;nav&gt; - o conjunto de links que formam a navegação, seja o menu principal do site ou links relacionados ao conteúdo da página;</li>
+<li>&lt;aside&gt; - conteúdo relacionado ao artigo (como arquivos e posts relacionados em um blog, por exemplo).</li>
+</ul>
+
+
+<p>Abaixo mostrarei 2 exemplos da marcação no HTML e no HTML5:</p>
+
+<p><em>Estrutura no HTML</em></p>
+
+<p>&lt;!DOCTYPE HTML PUBLIC” -// W3C//DTD HTML 4.01 Transitional //EN” http://www.w3.org/TR/html4/loose.dtd”>
+<html lang=”pt-br”>
+<head></p>
+
+<pre><code>&lt;meta http-equiv=”Content-Type” content =”text/html; charset=utf-8”&gt;
+</code></pre>
+
+<p><title>Titulo da página</title>
+<link rel=”stylesheet” type=”text/css” href=”/estilos/main.css”>
+</head>
+<body></p>
+
+<h1>Minha Página HTML4 </h1>
+
+
+<p></body></p>
+
+<p></html></p>
+
+<p><em>Estrutura no HTML5 compativel com a estrutura do HTML</em></p>
+
+<p>&lt;!DOCTYPE html>
+<html lang=”pt-br”></p>
+
+<pre><code>&lt;head&gt;
+    &lt;meta charset=”utf-8”&gt;
+    &lt;title&gt; Titulo da Página&lt;/title&gt;
+    &lt;link rel=”stylesheet” href=”/estilos/main.css”&gt;
+&lt;/head&gt;
+</code></pre>
+
+<p><body></p>
+
+<pre><code>&lt;h1&gt; Minha Página em HTML5&lt;/h1&gt;
+</code></pre>
+
+<p></body></p>
+
+<p></html></p>
+
+<p>Como percebemos, muitos elementos foram introduzidos no HTML5. Porém, é indiscutível a grande semelhança com seus antecessores. Os usuários que conheciam bem os anteriores não sentirão nenhuma dificuldade em lidar com o novo HTML. No entanto, para os iniciantes, estima-se que os novos elementos deixarão o acesso mais fácil.</p>
+
+<p>Para tanto, é indiscutível a aceitação do HTML5. Ele está contribuindo para uma nova Era no que diz respeito ao desenvolvimento de páginas para a internet. Sendo que o principal foco é o alto poder de mobilidade do usuário. As mudanças que ocorreram foram postas ou ajustadas a partir das necessidades dos desenvolvedores e dos erros e acertos. Com essa inovação, os usuários terão aplicações na web mais ricas e com maior integração entre conteúdo on-line e off-line.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Falando sobre HAML e SASS]]></title>
+    <link href="http://helabs.com.br/blog/2013/05/10/falando-sobre-haml-e-sass/"/>
+    <updated>2013-05-10T15:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/05/10/falando-sobre-haml-e-sass</id>
+    <content type="html"><![CDATA[<p>A <a href="http://www.haml.info/">HAML</a> é uma <em>gem</em> que facilita toda a parte visual de uma aplicação web.</p>
+
+<p>O framework <strong>Ruby on Rails</strong> ajuda bastante no quesito agilidade. E por que não ser mais ágil, não precisando ficar fechando tags do HTML? Isso é resolvido criando estilos mais ágeis e legíveis para alguém que, futuramente, venha mexer no seu código.</p>
+
+<!-- more -->
+
+
+<p>Eu, particularmente, estou começando a aprender e usá-la em alguns projetos web. Tenho mais costume com o HTML tradicional, mas é bem tranquilo usar a HAML. Ela utiliza as mesmas tags do HTML, mas a vantagen é que não precisa ficar fechando as tags. Em vez disso, você usa prefixos como <code>%</code> ou <code>.</code> para chamar as tags HTML. Não se preocupe, pois quando executado no browser, o HTML gerado será o tradicional.</p>
+
+<p>Antes o nome do arquivo que era <code>index.html</code> passa a ser <code>index.haml</code>.</p>
+
+<p>Mostrando na prática, citarei dois exemplos: com o HTML tradicional e o outro no HAML.</p>
+
+<p>Método tradicional do <strong>HTML</strong>:</p>
+
+<p>```html
+<html>
+  <head></p>
+
+<pre><code>&lt;title&gt;HE:labs &lt;/title&gt;
+</code></pre>
+
+<p>  </head>
+  <body></p>
+
+<pre><code>&lt;h1&gt;Meu 1 post | blog&lt;/h1&gt;
+</code></pre>
+
+<p>  </body>
+</html>
+```</p>
+
+<p>No HAML ficaria assim:</p>
+
+<p>```haml
+%html
+  %head</p>
+
+<pre><code>%title HE:labs
+</code></pre>
+
+<p>  %body</p>
+
+<pre><code>%h1
+  Meu 1 post | blog
+</code></pre>
+
+<p>```</p>
+
+<p>Um dos cuidados que se deve ter com o <strong>HAML</strong> é a sua indentação. Ela deve ficar de forma correta (alinhada), pois se o código estiver desalinhado, não rodará.</p>
+
+<p>Assim está errado:</p>
+
+<p>```haml
+%html</p>
+
+<pre><code>    %head
+</code></pre>
+
+<p>%title
+   HE:labs</p>
+
+<pre><code>     %body
+    %h1
+     Meu 1 post  |  blog
+</code></pre>
+
+<p>```</p>
+
+<p>Bem mais prático e tranquilo sobrescrever o HTML com o HAML, onde o código fica mais organizado e limpo. Outra coisa ainda não mencionada é a possibilidade de adicionar código <strong>Ruby</strong> dentro do HAML.</p>
+
+<h1>SASS</h1>
+
+<p>O SASS faz parte do HAML e consiste em criar os css de um modo ágil, prático e legível. Não é necessesário instalar nada, porém, esses procedimentos que citarei logo abaixo, devem ser seguidos para que se tenha uma boa utilização. Lembrando que quando você executar o seu projeto no browse, o css vai ser interpretado de forma tradicional.</p>
+
+<p>Forma tradicional do CSS:</p>
+
+<p><code>css
+body {
+  background-color: #000;
+  font-size: 16pt;
+}
+</code></p>
+
+<p>No SASS funciona da seguinte maneira:</p>
+
+<p><code>sass
+body
+  background-color: #000
+  font-size: 16pt
+</code></p>
+
+<p><em>Obs: Notem que não utilizamos mais as chaves e o ponto e vírgula. E ainda, o uso do espaço entre a propriedade e o valor.</em></p>
+
+<h2>Adicionando o estilo ao HAML:</h2>
+
+<p>```haml
+= stylesheets_link_tag "nome_do_estilo"
+%html
+  %head</p>
+
+<pre><code>%title HE:labs  
+</code></pre>
+
+<p>```</p>
+
+<h2>Vamos agora aprender como instalar a <em>gem</em> do HAML</h2>
+
+<p>A instalação é bem fácil: basta rodar o comando abaixo em seu terminal. Não esqueça de adicionar a <em>gem</em> dentro do projeto.</p>
+
+<p><code>
+gem install haml
+</code></p>
+
+<p>Quando a etapa acima for concluída, rode o próximo comando que será adicionado no seu projeto:</p>
+
+<p><code>
+haml --rails meuprojeto/app
+</code></p>
+
+<p>Depois de executado, uma mensagem será exibida:</p>
+
+<p><code>
+Haml plugin added to meuprojeto
+</code></p>
+
+<p>Pronto, agora você já tem o HAML instalado na sua aplicação web pronto para uso.</p>
+
+<p>Até a próxima galera.</p>
+]]></content>
+  </entry>
+  
+</feed>

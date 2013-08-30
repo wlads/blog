@@ -9,15 +9,15 @@ single: true
       {% include article.html %}
 
       <aside id="more-information" class="grid">
-        <p class="meta">
+        <div class="half">
           {% include post/author.html %}
           {% include post/categories.html %}
-        </p>
-
+        </div>
+        <div class="half">
         {% unless page.sharing == false %}
           {% include post/sharing.html %}
         {% endunless %}
-    
+      </div>
         <p class="meta">
           {% if page.previous.url %}
             <a class="basic-alignment left" href="{{page.previous.url}}" title="Previous Post: {{page.previous.title}}">&laquo;{{page.previous.title | truncate: 45}}</a>
@@ -31,7 +31,8 @@ single: true
         <div id="cover" class="cover-mailing-page">
           <div class="containner">
             <div class="mailing-form">
-              <h2>Gostou desse post? Receba nossa newsletter e fique por dentro dos novos posts e outras novidades da HE:labs.</h2>
+              <h2>Gostou desse post? </h2>
+              <p>Receba nossa newsletter e fique por dentro dos novos posts e outras novidades da HE:labs.</p>
               <form style="width:100%" action="http://clientela.us2.list-manage.com/subscribe/post?u=78c4c9df5db794cd68f358456&amp;id=020e7504d2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 
                 <input type="email" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Insira seu email e faça parte da comunidade" required />

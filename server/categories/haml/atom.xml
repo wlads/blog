@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: HAML | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/haml/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Falando sobre HAML e SASS]]></title>
+    <link href="http://helabs.com.br/blog/2013/05/10/falando-sobre-haml-e-sass/"/>
+    <updated>2013-05-10T15:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/05/10/falando-sobre-haml-e-sass</id>
+    <content type="html"><![CDATA[<p>A <a href="http://www.haml.info/">HAML</a> é uma <em>gem</em> que facilita toda a parte visual de uma aplicação web.</p>
+
+<p>O framework <strong>Ruby on Rails</strong> ajuda bastante no quesito agilidade. E por que não ser mais ágil, não precisando ficar fechando tags do HTML? Isso é resolvido criando estilos mais ágeis e legíveis para alguém que, futuramente, venha mexer no seu código.</p>
+
+<!-- more -->
+
+
+<p>Eu, particularmente, estou começando a aprender e usá-la em alguns projetos web. Tenho mais costume com o HTML tradicional, mas é bem tranquilo usar a HAML. Ela utiliza as mesmas tags do HTML, mas a vantagen é que não precisa ficar fechando as tags. Em vez disso, você usa prefixos como <code>%</code> ou <code>.</code> para chamar as tags HTML. Não se preocupe, pois quando executado no browser, o HTML gerado será o tradicional.</p>
+
+<p>Antes o nome do arquivo que era <code>index.html</code> passa a ser <code>index.haml</code>.</p>
+
+<p>Mostrando na prática, citarei dois exemplos: com o HTML tradicional e o outro no HAML.</p>
+
+<p>Método tradicional do <strong>HTML</strong>:</p>
+
+<p>```html
+<html>
+  <head></p>
+
+<pre><code>&lt;title&gt;HE:labs &lt;/title&gt;
+</code></pre>
+
+<p>  </head>
+  <body></p>
+
+<pre><code>&lt;h1&gt;Meu 1 post | blog&lt;/h1&gt;
+</code></pre>
+
+<p>  </body>
+</html>
+```</p>
+
+<p>No HAML ficaria assim:</p>
+
+<p>```haml
+%html
+  %head</p>
+
+<pre><code>%title HE:labs
+</code></pre>
+
+<p>  %body</p>
+
+<pre><code>%h1
+  Meu 1 post | blog
+</code></pre>
+
+<p>```</p>
+
+<p>Um dos cuidados que se deve ter com o <strong>HAML</strong> é a sua indentação. Ela deve ficar de forma correta (alinhada), pois se o código estiver desalinhado, não rodará.</p>
+
+<p>Assim está errado:</p>
+
+<p>```haml
+%html</p>
+
+<pre><code>    %head
+</code></pre>
+
+<p>%title
+   HE:labs</p>
+
+<pre><code>     %body
+    %h1
+     Meu 1 post  |  blog
+</code></pre>
+
+<p>```</p>
+
+<p>Bem mais prático e tranquilo sobrescrever o HTML com o HAML, onde o código fica mais organizado e limpo. Outra coisa ainda não mencionada é a possibilidade de adicionar código <strong>Ruby</strong> dentro do HAML.</p>
+
+<h1>SASS</h1>
+
+<p>O SASS faz parte do HAML e consiste em criar os css de um modo ágil, prático e legível. Não é necessesário instalar nada, porém, esses procedimentos que citarei logo abaixo, devem ser seguidos para que se tenha uma boa utilização. Lembrando que quando você executar o seu projeto no browse, o css vai ser interpretado de forma tradicional.</p>
+
+<p>Forma tradicional do CSS:</p>
+
+<p><code>css
+body {
+  background-color: #000;
+  font-size: 16pt;
+}
+</code></p>
+
+<p>No SASS funciona da seguinte maneira:</p>
+
+<p><code>sass
+body
+  background-color: #000
+  font-size: 16pt
+</code></p>
+
+<p><em>Obs: Notem que não utilizamos mais as chaves e o ponto e vírgula. E ainda, o uso do espaço entre a propriedade e o valor.</em></p>
+
+<h2>Adicionando o estilo ao HAML:</h2>
+
+<p>```haml
+= stylesheets_link_tag "nome_do_estilo"
+%html
+  %head</p>
+
+<pre><code>%title HE:labs  
+</code></pre>
+
+<p>```</p>
+
+<h2>Vamos agora aprender como instalar a <em>gem</em> do HAML</h2>
+
+<p>A instalação é bem fácil: basta rodar o comando abaixo em seu terminal. Não esqueça de adicionar a <em>gem</em> dentro do projeto.</p>
+
+<p><code>
+gem install haml
+</code></p>
+
+<p>Quando a etapa acima for concluída, rode o próximo comando que será adicionado no seu projeto:</p>
+
+<p><code>
+haml --rails meuprojeto/app
+</code></p>
+
+<p>Depois de executado, uma mensagem será exibida:</p>
+
+<p><code>
+Haml plugin added to meuprojeto
+</code></p>
+
+<p>Pronto, agora você já tem o HAML instalado na sua aplicação web pronto para uso.</p>
+
+<p>Até a próxima galera.</p>
+]]></content>
+  </entry>
+  
+</feed>

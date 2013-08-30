@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: xp | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/xp/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Construindo um projeto de sucesso]]></title>
+    <link href="http://helabs.com.br/blog/2013/03/01/construindo-um-projeto-de-sucesso/"/>
+    <updated>2013-03-01T16:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/03/01/construindo-um-projeto-de-sucesso</id>
+    <content type="html"><![CDATA[<p>Esse não será um post técnico sobre uma nova gem ou alguma técnica de programação. Neste post vou compartilhar o processo/metodologia que utilizamos para guiar nossos projetos.</p>
+
+<p>Depois de trabalhar em diversos projetos dentro da <a href="http://www.helabs.com.br">HE:labs</a>, atualmente estou no meu projeto mais longo que completou 5 meses na última semana e ontem fechamos a iteração número #21. Esse projeto tinha uma previsão de durar apenas 8 semanas e por esse motivo resolvi compartilhar nesse post o que exergamos como pontos importantes para conseguirmos termos projetos com resultados positivos, com cliente feliz com o andamento do projeto e <strong>ganhando dinheiro</strong></p>
+
+<!--more-->
+
+
+<h1>Um pouco de explicação</h1>
+
+<p>O nosso modelo de trabalho baseia-se em <a href="http://desenvolvimentoagil.com.br/xp/praticas/ciclo_semanal/">iterações semanais</a>. As segundas-feiras temos uma reunião de planejamento, onde conversamos com o cliente sobre a última entrega e o que o cliente vislumbra para a iteração que se inicia. Feita a reunião, o time segue o trabalho de quebrar as histórias em tarefas e estimar o esforço, para que o cliente possa fazer a priorização das histórias que serão trabalhadas durante a iteração e ficar claro o que será entregue ao fim da iteração. Isso faz com que o cliente saiba exatamente o que irá receber.</p>
+
+<p>Nesse processo alguns pontos são muito importantes. No nosso modelo, a cada nova semana fazemos uma nova <em>"venda"</em> para os nossos clientes, e a nossa missão é fazer com que eles <em>"comprem"</em> semana após semana, e dêem continuídade ao projeto. Essa <em>"venda"</em> acontece semanalmente, pois o nosso contrato permite que os clientes cancelem o contrato a <em>"qualquer"</em> momento, ou seja, se o cliente estiver insatifeito ele pode descontinuar o projeto.</p>
+
+<h1>Simplicidade</h1>
+
+<p>Nós desenvolvedores temos o hábito de criar soluções mirabolantes para problemas simples e o cliente por sua vez acredita que toda solução é simples. Isso acontece principalmente pelo fato do software não ser um produto palpável. O <a href="http://desenvolvimentoagil.com.br/xp/">Extreme Programming</a>,   tem como um de seus valores a <a href="http://en.wikipedia.org/wiki/Lean_software_development">simplicidade</a> que é definida como: <strong>não produzir mais que o necessário</strong>. Seguindo esse conceito, mostramos aos nossos clientes as complexidades do desenvolvimento de um software, auxiliamo-os a tomar decisões mais simples que atendam aos requisitos do negócio, e ao mesmo tempo nos educamos para criarmos soluções simples também.</p>
+
+<p>Uma das ferramentas que nos auxilía tanto na comunicação com o cliente quanto a dar soluções mais simples, é uma tecnologia muita avançada chamada de:</p>
+
+<blockquote><p><em><strong>desenho a mão livre</strong></em></p></blockquote>
+
+<p>Tanto o cliente quanto o time passam para o papel o entendimento da funcionalidade, para ser discutida, lapidada e chegar a uma solução final e que <strong>fique entendida por todos</strong>. Normalmente temos mais uma de solução para o problema. No início do projeto nem sempre é assim, o cliente normalmente leva algum tempo até começar a tomar as melhores decisões, mas depois de algumas iterações o cliente passa a optar pela mais simples, pois isso significa para ele menos esforço para o mesmo resultado. Além dessas vantagens, o desenho faz com que o cliente saiba exatamente o que vai receber e evita problemas como o famoso desenho a seguir.</p>
+
+<p><img src="/images/posts/2013-02-25/software-understanding.jpg" alt="image" /></p>
+
+<h1>Redução de ruído</h1>
+
+<p>O ruído é um dos maiores problemas na comunição e isso já é mais que sabído. O mercado tradicional, que chamam por aí de fábricas de software, com seus níveis hierárquicos é bem famoso pelas geração de ruído entre o "desejo" do cliente e o produto que é entregue. Esse modelo para piorar entrou em um ciclo vicioso auto-alimentado.</p>
+
+<p>A pior parte é que esse processo <em>"treina"</em> desenvolvedores/profissinais que não saberão se portar e se comunicar com um cliente por serem isolados da comunicação. Entretanto esses mesmos profissionais depois de algum tempo são promovidos a Analistas/Gerentes sem qualquer experiência de comunicação/social/interação, pois isso nunca lhe foi cobrado/apoiado pela própria estrutura da empresa.</p>
+
+<p>Uma das formas de retirarmos o ruído entre o time e o cliente na <a href="http://www.helabs.com.br">HE:labs</a>, é que <strong>todos participantes de qualquer um de nossos time</strong>, isso mesmo os desenvolvedores, fazem a reunião diretamente com o cliente. Não existe um papel de gerente e/ou qualquer outro nome/função que isole o time da comunicação, nossos times são auto-geridos e capazes de levar uma reunião não só no âmbito técnico como também em relação ao negócio do cliente, isso exige uma habilidade "social" e interação de cada membro do time. Como resultado, o cliente conhece quem está trabalhando no projeto, remove o mito de que o programador só sabe escrever código, e gera um <strong>"contrato"</strong> em forma de responsabilidade do time com o cliente, pois este mesmo time, é que se encontra com o cliente todas as segundas-feiras e não vai querer ver o cliente decepcionado. Outro benefício desse modelo é que estreita-se o relacionamento entre o time/empresa e o cliente fazendo com que a confiança aumente.</p>
+
+<h1>Comunicação clara e honesta</h1>
+
+<p>A <a href="http://desenvolvimentoagil.com.br/xp/valores/simplicidade/">comunicação</a> clara, compreende a redução de ruído e tem como resultado a <strong>confiança</strong>. Para exemplificar, cito a estimativa das tarefas de uma iteração, onde o time possui uma velocidade média dependendo de quantos membros a equipe é composta. Partindo desse ponto o cliente sabe exatemente o que irá receber ao final da semana no fim do dia de reunião, dado a relação velocidade do time e  "pontos" estimados referentes as tarefas que irão entrar na iteração. Além disso, é preciso que a comunicação seja contínua durante a semana, ou seja, o cliente também deve estar disponível e em contato com o time durante o andamento da iteração, afinal de contas o projeto é como um filho, precisa de atenção sempre que necessário.</p>
+
+<p>A relação da honestidade posso exemplicar, como o caso de haver um imprevisto durante a semana, o cliente do projeto é notificado o mais rápido possível que o time precisa de algo e/ou algo aconteceu. Assim como se o time acabar todas as tarefas da semana antes do prazo, o time pega tarefas do backlog para dar continuidade e o cliente tem clareza disso, pois no fim da semana ele recebe um roteiro de testes dizendo como testar o que foi feito.</p>
+
+<h1>Constância</h1>
+
+<blockquote><p>Reprodução não interrompida de um mesmo fato ou fenômeno; frequência, habitualidade:  (1)</p></blockquote>
+
+<p>Manter a frequência, o hábito, o ritmo é um dos desafios mais difíceis em um projeto em geral. Manter a produtividade, manter a qualidade, manter uma boa comunição são só algumas das variáveis de um projeto, porém alcançar e manter esse conjunto de variáveis funcionando é o que leva o projeto mais próximo da perfeição. Esse é o desafio de todo gestor e que toda empresa, seja desenvolvendo produtos internos ou prestando serviço, visa alcançar. Mas isso é fruto de um trabalho constante e contínuo para que o que está funcionando se mantenha e o que tiver de melhorar seja consertado rápidamente.</p>
+
+<p>Esses pontos abordados, são alguns dos pontos que não só eu mas a empresa como um todo, enxergamos como importante para o sucesso de um projeto. Coragem para seguir em frente com o que você acredita é importante, porém mais importante é coragem para mudar e corrigir o rumo quando necessário, ou seja, estar adaptável as situações.</p>
+
+<p>Cada projeto tem suas peculiaridades, assim como cada cliente tem o seu perfil. O importante é utilizar as ferramentas que funcionem para o seu time, mas manter a mente aberta para melhoria contínua. O que eu compartilho nesse post é o que acreditamos e vimos funcionar até o momento deste post. Entretanto estamos em aprendizado contínuo com cada novo cliente e projeto, <strong>então coragem para mudar é essencial</strong>!</p>
+
+<p>Basedo nessas premissas que eu compartilhei, estamos entregando semana a semana cada projeto. E o nosso time/empresa recebeu do cliente do projeto que estou trabalhando um depoimento, resultado do trabalho que estamos fazendo. Veja a seguir.</p>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/vZfu7rP5JRo" frameborder="0" allowfullscreen></iframe>
+
+
+<p>Na nossa página existem <a href="http://helabs.com.br/#cliente">outros depoimentos</a>.</p>
+
+<p>Abraço, <a href="http://www.twitter.com/rodrigoospinto">Rodrigo Pinto</a>.</p>
+
+<p>(1) http://www.dicio.com.br/constancia/</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Lançamento do site DesenvolvimentoAgil.com.br]]></title>
+    <link href="http://helabs.com.br/blog/2013/01/21/lancamento-do-site-desenvolvimentoagil-com-br/"/>
+    <updated>2013-01-21T16:00:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2013/01/21/lancamento-do-site-desenvolvimentoagil-com-br</id>
+    <content type="html"><![CDATA[<p>Autor convidado: <em>Vinícius Teles</em></p>
+
+<p>Quando comecei a me envolver com Extreme Programming, há pouco mais de dez anos, havia um site no Brasil chamado Xispe no endereço http://www.xispe.com.br, que infelizmente já não existe mais. Tratava-se de um <a href="http://pt.wikipedia.org/wiki/Wiki">Wiki</a> criado por meu amigo <a href="https://github.com/klauswuestefeld">Klaus Wuestefeld</a>, que foi um dos primeiros brasileiros a trabalhar com <a href="http://desenvolvimentoagil.com.br/xp/">Extreme Programming</a>.</p>
+
+<!-- more -->
+
+
+<p>Embora eu consultasse inúmeros sites estrangeiros para aprender mais sobre <a href="http://desenvolvimentoagil.com.br/xp/">XP</a>, o site Xispe era sensacional porque inúmeros brasileiros colaboravam ativamente, escrevendo sobre as características do <a href="http://desenvolvimentoagil.com.br/xp/">XP</a> e como o estavam utilizando em seus projetos. Aprendi demais com esse site e ele certamente seria um sucesso até hoje se não tivesse saído do ar, por razões que desconheço.</p>
+
+<p>Depois de publicar o <a href="http://improveit.com.br/xp/livroxp">livro Extreme Programming</a>, em 2004, decidi escrever inúmeros <a href="http://improveit.com.br/xp">artigos para o site da Improve It</a> para que pessoas interessadas em aprender sobre <a href="http://desenvolvimentoagil.com.br/xp/">XP</a> e <a href="http://desenvolvimentoagil.com.br">Desenvolvimento Ágil</a> em geral pudessem encontrar na internet informação fácil de digerir e bem organizada, em português.</p>
+
+<p>Produzi muitos artigos e muita gente aprendeu alguma coisa com eles. Mas, me sentia mal porque não era algo colaborativo, como o Xispe. Talvez até fosse melhor estruturado e mais fácil de navegar pelas informações, mas o conteúdo não tinha a riqueza de contribuições que encontrávamos no Xispe.</p>
+
+<p>A situação ficou ainda pior há seis anos, quando decidi parar de fazer consultoria em <a href="http://desenvolvimentoagil.com.br">Desenvolvimento Ágil</a> e passei a me dedicar à criação de produtos. Daí por diante não escrevi mais nenhum artigo.</p>
+
+<p>Atualmente, quando as pessoas procuram sobre <a href="http://desenvolvimentoagil.com.br">Desenvolvimento Ágil</a>, <a href="http://desenvolvimentoagil.com.br/scrum/">Scrum</a> ou <a href="http://desenvolvimentoagil.com.br/xp/">Extreme Programming</a> no Google, os <a href="http://improveit.com.br/xp">artigos do site da Improve It</a> frequentemente aparecem entre os primeiros resultados. Mas, isso não é bom. Porque esses artigos não estão evoluindo e nenhum novo artigo está sendo produzido.</p>
+
+<p>Essa situação me entristece há tempos, mas finalmente está sendo corrigida. Conversei sobre isso com meu amigo <a href="http://rafael.adm.br/">Rafael Lima</a>, da <a href="http://helabs.com.br/">HE:labs</a> e concluímos que o ideal seria termos um site que pudesse preservar esses artigos, mas dar a outras pessoas a liberdade de editá-los, além de acrescentar outros novos.</p>
+
+<p>Como se trata de um conteúdo sobre desenvolvimento de software, provalmente escrito em grande parte por desenvolvedores de software, nada melhor que usar uma plataforma como o <a href="https://github.com/desenvolvimentoagilcombr/desenvolvimentoagilcombr.github.com">Github</a>, que facilita a colaboração em projetos de software livre.</p>
+
+<p>O <a href="http://rafael.adm.br/">Rafael</a>, o <a href="http://mergulhao.info/">Sylvestre</a> e todos da <a href="http://helabs.com.br/">HE:labs</a> compraram essa ideia. E foi assim que a galera estruturou o novo site <a href="http://desenvolvimentoagil.com.br">DesenvolvimentoÁgil.com.br</a>.</p>
+
+<p>Ele tem o seu pontapé inicial com o conteúdo que veio do site da Improve It, com os meus artigos. Mas, isso é só o começo. Daqui por diante, todo mundo pode colaborar para transformar esse site em um excelente repositório de informações sobre <a href="http://desenvolvimentoagil.com.br">Desenvolvimento Ágil</a>, em português e, de preferência, com muitos relatos de projetos.</p>
+
+<p>Para participar e contribuir, veja as instruções logo na primeira página do <a href="http://desenvolvimentoagil.com.br">DesenvolvimentoÁgil.com.br</a>. Logo iremos remover os artigos do site da Improve It e redirecionar todos os acessos automaticamente para as respectivas páginas no <a href="http://desenvolvimentoagil.com.br">DesenvolvimentoÁgil.com.br</a>.</p>
+
+<p>Muito obrigado à toda a equipe da <a href="http://helabs.com.br/">HE:labs</a> por abraçar essa ideia e se empenhar tanto para concretizá-la.</p>
+
+<p>E agora, tá esperando o quê? Vai lá e <a href="https://help.github.com/articles/using-pull-requests">envia o seu pull request</a>!</p>
+]]></content>
+  </entry>
+  
+</feed>

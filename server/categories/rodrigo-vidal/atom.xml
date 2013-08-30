@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: rodrigo vidal | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/rodrigo-vidal/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Retrospectiva - 4° Café com DEV]]></title>
+    <link href="http://helabs.com.br/blog/2013/04/09/retrospectiva-4-cafe-com-dev/"/>
+    <updated>2013-04-09T14:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/04/09/retrospectiva-4-cafe-com-dev</id>
+    <content type="html"><![CDATA[<p>Na última sexta, dia 5 de abril, aconteceu o nosso quarto Café com DEV com participação de Rodrigo Vidal. O palestrante da vez explicou como ocorre a Programação Funcional e seus mecanismos.</p>
+
+<!-- more -->
+
+
+<p><img src="/images/posts/rodrigo-vidal.jpg" alt="Rodrigo Vidal" /></p>
+
+<p>Rodrigo, engenheiro e desenvolvedor, citou a história da composição, linguagens e objetivos da Função juntamente com a computabilidade. E ainda, explicou matematicamente como as Funções se aplicam e seus efeitos.</p>
+
+<p>Além disso, Funções de Alta Ordem, como ZIP, MAX e LENGHT e 'Essência do LINQ' foram detalhadamente explicadas.</p>
+
+<p>O evento ocorreu na sede da HE:labs e foi regado, mais uma vez, a Heineken e Redbull.</p>
+]]></content>
+  </entry>
+  
+</feed>

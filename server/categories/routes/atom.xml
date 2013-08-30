@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: routes | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/routes/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Scoped route com a gem friendly_id]]></title>
+    <link href="http://helabs.com.br/blog/2013/02/26/scoped-route-com-a-gem-friendly-id/"/>
+    <updated>2013-02-26T11:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/02/26/scoped-route-com-a-gem-friendly-id</id>
+    <content type="html"><![CDATA[<p>Quando participei do desenvolvimento do projeto <a href="http://clubedomenu.com">clubedomenu.com</a>, um sistema voltado para delivery de comida, foi feito pensando exclusivamente para a cidade de Londrina.
+Recentemente surgiu a necessidade de expandir o sistema para outras localidades.
+Feito um estudo das funcionalidades existentes.</p>
+
+<!-- more -->
+
+
+<p>Foi visto que as urls do sistema foram contruídas dessa forma:</p>
+
+<p><code>
+clubedomenu.com/nome_do_restaurante
+</code></p>
+
+<p>Agora é preciso que a url seja montada dessa forma, para distinguir os restaurantes por cidade:</p>
+
+<p><code>
+clubedomenu.com.br/nome_da_cidade/nome_do_restaurante
+</code></p>
+
+<p>Além disso pode acontecer casos onde 2 restaurantes em diferentes cidades com o mesmo slug nome_do_restaurante. Como isso pode acontecer? Muito simples, basta a mesma empresa ter uma matriz e uma filial com o mesmo nome em cidades diferentes.</p>
+
+<p>Desde o começo do projeto foi adotado a gem <a href="https://github.com/norman/friendly_id">friendly_id</a> que transforma as urls em uma forma mais amigável.</p>
+
+<p>Para resolver o problema de franquia de restaurantes em cidades diferentes com o mesmo slug a gem oferece essa solução:</p>
+
+<p><code>ruby
+friendly_id :nome_do_campo_restaurante, :use =&gt; :scoped, :scope =&gt; :nome_do_campo_cidade.
+validates_uniqueness_of :nome_do_campo_restaurante, :scope =&gt; :city
+</code></p>
+
+<p>Dessa forma é possível obter urls assim.</p>
+
+<p><code>
+clubedomenu.com.br/nome_da_cidade_1/nome_do_restaurante
+clubedomenu.com.br/nome_da_cidade_2/nome_do_restaurante
+</code></p>
+
+<p>Aqui está um teste que prova que é possível ter subdomínios iguais em cidades diferentes.</p>
+
+<p>```ruby
+describe "scoped city" do</p>
+
+<pre><code>let!(:restaurant_1) { FactoryGirl.create(:restaurant, name: "Pizzaria Boa", city: "Maringa", subdomain: "veneza") }
+let!(:restaurant_2) { FactoryGirl.create(:restaurant, name: "Pizzaria Boa", city: "Londrina", subdomain: "veneza") }
+it "should repeat slug scoped by city", :vcr do
+  restaurant_1.to_param.should eq("veneza")
+  restaurant_2.to_param.should eq("veneza")
+end
+</code></pre>
+
+<p>end
+```</p>
+
+<p>Twitter <a href="http://twitter.com/reginato">@reginato</a></p>
+]]></content>
+  </entry>
+  
+</feed>

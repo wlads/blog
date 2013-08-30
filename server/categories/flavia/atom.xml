@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: flavia | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/flavia/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Novos membros]]></title>
+    <link href="http://helabs.com.br/blog/2013/06/07/boas-vindas-aos-novos-integrantes/"/>
+    <updated>2013-06-07T18:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/06/07/boas-vindas-aos-novos-integrantes</id>
+    <content type="html"><![CDATA[<p>Nessa semana, a HE:labs recebeu dois novos integrantes no time! Flavia Fortes e Dirceu Pauka Jr nos ajudarão como developers!</p>
+
+<!--more-->
+
+
+<p><img src="/images/flavia.jpg" alt="image" /></p>
+
+<p>Flavia Fortes avassala em Ruby há um ano e estuda Análise de Sistemas no ISTRio. Já fez diversos cursos, como Desenvolvimento Web com PHP e MySQL. Já passou pela Accenture, MediaFactory e HJM Tecnologia até chegar aqui.</p>
+
+<p>Siga-a nas redes sociais:<a href="https://twitter.com/FlaFortes">Twitter</a>,  <a href="https://github.com/FlaviaFortes">Github</a>, <a href="https://www.facebook.com/fla.fortes">Facebook</a>.</p>
+
+<p><img src="/images/dirceu.jpg" alt="image" /></p>
+
+<p>Dirceu Pauka Jr estudou Ciência da Computação na Universidade Estadual de Londrina, mas largou o curso para fazer parte do time de uma empresa de publicidade on-line. Passou pelo Buscapé e pela Appies em São Paulo antes de se juntar ao time da HE:Labs em Londrina. É avassalante em Ruby, Python e JS; versionamento de código (Git); e plataformas de computação Amazon e Google AppEngine.</p>
+
+<p>Siga-o nas redes sociais: <a href="https://github.com/dirs">Github</a>, <a href="https://twitter.com/dirs">Twitter</a>, <a href="https://www.facebook.com/dirceu">Facebook</a>.</p>
+
+<p>Sejam muito bem vindos! É o time da HE crescendo! o/</p>
+]]></content>
+  </entry>
+  
+</feed>

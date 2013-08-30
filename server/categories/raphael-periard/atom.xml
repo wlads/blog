@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Raphael Periard | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/raphael-periard/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Menos é mais]]></title>
+    <link href="http://helabs.com.br/blog/2013/06/18/menos-e-mais/"/>
+    <updated>2013-06-18T11:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/06/18/menos-e-mais</id>
+    <content type="html"><![CDATA[<h3>Quanto menor o produto, melhor.</h3>
+
+<p>A ideia é empreender inovando da forma mais simples possível. Usando o mínimo de recursos e o máximo de velocidade para economizar dinheiro e diminuir riscos. Fazer uma empresa enxuta começando com um produto mínimo viável e através de um processo iterativo de aprendizagem e validação qualitativa junto ao cliente, buscar o ajuste do produto ao mercado. Para só então, crescer em escala e estrutura.</p>
+
+<!--more-->
+
+
+<h3>Quanto menos esconder, melhor.</h3>
+
+<p>Fale com o maior número de pessoas possível e nunca guarde uma ideia pra si. O brasileiro é muito restritivo em compartilhar ideias e isto é uma besteira. Cada vez que você compartilha algo, esta ideia é melhorada. Esse negócio de roubo de ideia é relativo. Se roubaram sua ideia a culpa foi sua de não ter sido competente suficiente de desenvolvê-la antes. Quem sempre vai ganhar o mercado é aquele que executar primeiro e melhor. Neste mundo, o ideal é pedir dicas, indicações, conversar e, obviamente, executar suas ideias.</p>
+
+<h3>Coisas do passado.</h3>
+
+<p>No passado, o crescimento no número de Startups ficava muito restrito devido, sobretudo, a dois fatores (além da taxa de insucesso): <strong>1</strong>. o alto custo de aquisição do primeiro cliente e o ainda maior custo resultante de ter chegado ao produto errado; <strong>2</strong>. ciclos de desenvolvimento de tecnologia muito longos.</p>
+
+<p>A abordagem “lean” reduz estas restrições e oferece uma metodologia científica a novos empreendimentos que pretendem lançar produtos que os clientes realmente desejam, muito mais rapidamente e a custo mais barato do que os métodos tradicionais.</p>
+
+<h3>Dê o primeiro passo.</h3>
+
+<p>Saia da ideia, execute-a e defina o melhor primeiro passo que você puder dar. Nós da HE:labs, já ajudamos mais de 50 Startups a começarem suas atividades e validarem suas ideias. Não só produzimos o MVP, como também, damos uma espécie de consultoria para quem quer começar seu négocio na WEB.</p>
+
+<p>Se ainda não conhece, acesse o site do <a href="http://startupdev.com.br/">Startup DEV</a> e conheça nosso serviço voltado para quem busca o sucesso.</p>
+]]></content>
+  </entry>
+  
+</feed>

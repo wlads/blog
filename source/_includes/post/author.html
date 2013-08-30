@@ -5,4 +5,7 @@
 {% else %}
   {% assign author = site.author %}
 {% endif %}
-{% if author %}<span class="byline author vcard">Postado por <span class="fn">{{ author }}</span></span>{% endif %}
+{% if author %}
+  <img src="http://mediacdn.disqus.com/1377820977/images/noavatar92.png" class="author-pic">
+  <div class="author-info">
+    <span class="posted-by">Postado por <span class="author-name">{{ author }}</span> <br /></span>{% endif %}

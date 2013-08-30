@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: login | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/login/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Passwordless Login]]></title>
+    <link href="http://helabs.com.br/blog/2013/04/11/passwordless-login/"/>
+    <updated>2013-04-11T11:15:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/04/11/passwordless-login</id>
+    <content type="html"><![CDATA[<p><img src="/images/posts/passwordless.png" alt="image" /></p>
+
+<p>Neste post, vou mostrar como fazer uma aplicação permitir que o usuário faça login sem precisar digitar/lembrar de sua senha. Não será nada complexo demais e nem uma solução perfeita. No final, postarei o link para uma aplicação exemplo que preparei exemplificando o método.</p>
+
+<h1>Por que fazer login sem senha?</h1>
+
+<p>Fazer login está se tornando uma tarefa complicada. Agora que temos muitos usuários acessando aplicações pelo smartphone, digitar a senha na telinha do telefone é complicado. Mesmo nas telas gigantes dos celulares da Samsung, é chato e ruim. Precisamos de uma maneira mais simples de fazê-lo.</p>
+
+<!-- more -->
+
+
+<p>Os usuários têm que lembrar seu username e senha para logarem. Mas muitas vezes não os lembram. E é aí que entra o “esqueci minha senha” e o usuário precisa abrir seu email e clicar no link para poder recuperar sua senha. Ou então para que a senha não seja esquecida eles usam: password, senha123 ou 123456.</p>
+
+<p>Uma solução proposta por Ben Brown neste <a href="http://notes.xoxco.com/post/27999787765/is-it-time-for-password-less-login">post</a> é gerar uma senha totalmente aleatória quando o usuário se cadastrar no site e enviar por email um link para fazer o login. A maioria dos sites permitem que o login seja mantido pra sempre, porém se o usuário precisar fazer o login novamente, a aplicação gera outra senha para o usuário e envia outro link para ele por email.</p>
+
+<h1>Como eu resolvi esse problema</h1>
+
+<p>Então vamos ao código:</p>
+
+<p>Primeiro, criei um model User com os campos <em>email</em> e <em>access_token</em>.</p>
+
+<p><code>ruby
+rails g model User email:string access_token:string
+</code></p>
+
+<p>Depois, criei um método <em>generate_access_token </em>que se encarrega de gerar uma nova senha para o usuário. E também o método <em>access_token_exists? </em>(token) para checar se, por acaso, a senha já existe para algum usuário.</p>
+
+<p>```ruby
+def self.access_token_exists?(token)
+  where(access_token: token).any?
+end</p>
+
+<p>private
+  def generate_access_token</p>
+
+<pre><code>loop do
+  token = SecureRandom.hex(30)
+  return self.access_token = token unless User.access_token_exists?(token)
+end
+</code></pre>
+
+<p>  end
+```</p>
+
+<p>E então implementei o método <em>generate_access_token_and_save </em>para gerar a senha para o usuário e salvá-la. Isso fecha por enquanto o model User. Voltaremos nele mais tarde.</p>
+
+<p><code>ruby
+def generate_access_token_and_save
+  generate_access_token and save
+end
+</code></p>
+
+<p>Agora vamos ao <em>UsersController </em>. Criei um controller simples com duas actions: New e Create.</p>
+
+<p>```ruby</p>
+
+<h1>encoding: UTF-8</h1>
+
+<p>class UsersController &lt; ApplicationController
+  def new</p>
+
+<pre><code>@user = User.new
+</code></pre>
+
+<p>  end</p>
+
+<p>  def create</p>
+
+<pre><code>@user = User.new(params[:user])
+if @user.generate_access_token_and_save
+  redirect_to new_user_path, notice: "Agora olha teu email lá! :)"
+else
+  render :new
+end
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>Em seguida, criei o SessionsController para lidar com o login. O controller vai encontrar o usuário que possua a access_token fornecida e colocar seu id em uma session.</p>
+
+<p>```ruby</p>
+
+<h1>encoding: UTF-8</h1>
+
+<p>class SessionsController &lt; ApplicationController
+  def create</p>
+
+<pre><code>user = User.find_by_access_token!(params[:token])
+session[:user_id] = user.id
+redirect_to(secret_page_path, notice: "Você está logado! :)")
+</code></pre>
+
+<p>  rescue ActiveRecord::RecordNotFound</p>
+
+<pre><code>redirect_to(root_url, notice: "Acesso inválido... recupere sua senha.")
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>Agora que já tenho o controller para lidar com o link de login, posso criar o Mailer para enviar o link para o email do usuário.</p>
+
+<p>```ruby</p>
+
+<h1>encoding: UTF-8</h1>
+
+<p>class Notification &lt; ActionMailer::Base
+  default from: "estagiario@passwordlessapp.com"
+  layout "mailer"</p>
+
+<p>  def auth_link(user)</p>
+
+<pre><code>@user = user
+
+mail to: @user.email, subject: "[Passwordless App] Aqui está seu link de acesso"
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>Coloquei, então, a chamada para o envio do email dentro do método <em>generate_access_token_and_save </em>no model User.</p>
+
+<p><code>ruby
+def generate_access_token_and_save
+  Notification.auth_link(self).deliver if generate_access_token and save
+end
+</code></p>
+
+<p>Usei o SecretPageController para ter uma action que requer autenticação.</p>
+
+<p>```ruby
+class SecretController &lt; ApplicationController
+  before_filter :authenticate!</p>
+
+<p>  def index
+  end
+end
+```</p>
+
+<p>Aqui estão os helpers de autenticação criados para o SecretPageController.</p>
+
+<p>```ruby</p>
+
+<h1>encoding: UTF-8</h1>
+
+<p>class ApplicationController &lt; ActionController::Base
+  protect_from_forgery
+  ensure_security_headers
+  helper_method :current_user, :user_signed_in?</p>
+
+<p>  private</p>
+
+<p>  def current_user</p>
+
+<pre><code>@current_user ||= User.find(session[:user_id]) if session[:user_id]
+rescue ActiveRecord::RecordNotFound
+  session.delete(:user_id)
+  nil
+</code></pre>
+
+<p>  end</p>
+
+<p>  def user_signed_in?</p>
+
+<pre><code>!current_user.nil?
+</code></pre>
+
+<p>  end</p>
+
+<p>  def authenticate!</p>
+
+<pre><code>user_signed_in? || redirect_to(root_url, notice: "Você precisa estar autenticado...")
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>E isso já faz o login sem senha funcionar. O usuário se cadastra, recebe um link por email, clica no link, se loga e é redirecionado para a action que requer autenticação.</p>
+
+<p>Eu fiz uma aplicação exemplo que pode ser acessada <a href="http://passwordless.herokuapp.com">clicando aqui</a> e o código também está no <a href="https://github.com/matheusbras/passwordless-app">GitHub</a> com todos os testes. Sintam-se à vontade para mandar pull requests, issues e perguntas.</p>
+
+<p>Obrigado pela sua atenção e abraços!</p>
+]]></content>
+  </entry>
+  
+</feed>

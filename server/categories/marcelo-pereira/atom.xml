@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: marcelo pereira | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/marcelo-pereira/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Retrospectiva - Café com DEV 19/04]]></title>
+    <link href="http://helabs.com.br/blog/2013/04/26/retrospectiva-5-cafe-com-dev/"/>
+    <updated>2013-04-26T12:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/04/26/retrospectiva-5-cafe-com-dev</id>
+    <content type="html"><![CDATA[<p>Mais uma vez aconteceu na sede da HE:labs da Cidade Maravilhosa, o nosso Café com DEV! O tema da vez foi Usabilidade e pensamento na era pós-pc. <a href="https://twitter.com/indistinguivel">Marcelo Pereira</a> comandou a palestra e nos mostrou as evoluções das máquinas. E claro, tudo regado a Heineken e Redbull!</p>
+
+<!-- more -->
+
+
+<p>Marcelo contou sobre os três momentos da computação; o que os erros, como o "erro azul" do Windows significa, onde nenhuma das três opções fornecidas te salvam de reiniciar o pc; como a programação era precária, etc.</p>
+
+<p>Ele nos mostrou também a interação com as máquinas digitais: computadores como o da Xerox, que começaram a ter o formato diferente de monitores. O surgimento de Steve Jobs e a Apple, dentre outros.</p>
+
+<p>E ainda, as novas mídias, smartphones, multitouchs, tablets, e seus crescentes suportes. E por último, levantou questões sobre as formas de interação de amanhã e "como podemos nos preparar para elas?" que foram discutidas entre a galera.</p>
+
+<p>Assista como foi a palestra <a href="https://www.eventials.com/pt-br/helabs/pensando-a-interface-na-era-pos-pc-2/">clicando aqui</a>!!</p>
+
+<p><em>"A maneira de prever o futuro é inventá-lo"</em> - <strong>Alan Kay</strong></p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Crawling | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/crawling/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Extraindo informações com Nokogiri]]></title>
+    <link href="http://helabs.com.br/blog/2013/05/15/extraindo-informacoes-com-nokogiri/"/>
+    <updated>2013-05-15T11:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/05/15/extraindo-informacoes-com-nokogiri</id>
+    <content type="html"><![CDATA[<p>Uma área de grande importância na computação é a extração de dados em sistemas web.
+Nesse post irei abordar o uso da <em>gem</em> <strong>Nokogiri</strong> para coletar essas informações, processo também conhecido por <em>Web Scraping</em>. Foi através desse trabalho que o Google iniciou seu império e ainda, muitos outros cases de sucesso utilizam esta técnica para oferecer serviços.</p>
+
+<!-- more -->
+
+
+<p><strong>Nokogiri</strong> é uma poderosa <em>gem</em> que realiza parsing de HTML e XML. Uma importante característica é a habilidade de utilizar seletores XPath e CSS3 para encontrar os nós da árvore DOM desejados. Isso faz com que o processo seja muito mais legível, fácil de acompanhar e de manter.</p>
+
+<p>Como dito anteriormente, pode-se percorrer sites de compras e nele, realizar comparação de preço, listar imóveis de imobiliárias, criar API com JSON ou XML otimizadas para o consumo, dentre outras inúmeras utilidades.</p>
+
+<h1>Seletores</h1>
+
+<p>Seletores são padrões que indicam uma parte do código HTML, como se fossem endereços. Para encontrar as informações, é preciso escolher os melhores seletores para determinado problema. Um bom seletor precisa ser específico o bastante para não selecionar informações erradas, mas não tão rígido a ponto de quebrar, caso a estrutura do site mude um pouco.</p>
+
+<p>O código abaixo será usado pra exemplificar os seletores:</p>
+
+<p>```html cinemas.html</p>
+
+<div class="theater">
+  <div class="desc">
+    <h2 class="name">Kinoplex Shopping Tijuca</h2>
+  </div>
+</div>
+
+
+<div class="theater">
+  <div class="desc">
+    <h2 class="name">Iguatemi</h2>
+  </div>
+</div>
+
+
+<p>```</p>
+
+<h3>XPath</h3>
+
+<p>O seletor XPath se baseia na árvore DOM para encontrar os nós. DOM é a estrutura que representa a organização dos elementos HTML e XML.
+O caminho do XPath é fácil de ser encontrado e substituído, mas você pode ter problemas caso o HTML não esteja correto.</p>
+
+<p>A seleção dos nomes dos cinemas acima é feita da seguinte forma:</p>
+
+<p>```ruby
+require 'open-uri'
+require 'nokogiri'</p>
+
+<p>doc = Nokogiri::HTML(File.open("cinemas.html"))
+doc.xpath('//div[@class="desc"]/h2[@class="name"]').each do |node|
+  puts node.text
+end
+```</p>
+
+<p>Este exemplo deve exibir "Kinoplex Shopping Tijuca" e "Iguatemi".</p>
+
+<p>Caso esteja utilizando o Google Chrome, o <a href="https://chrome.google.com/webstore/detail/xpath-helper/hgimnogjllphhhkhlmebbmlgjoejdpjl?utm_source=chrome-ntp-icon">XPath Helper</a> pode ser utilizado para auxiliar na procura e teste de XPath.
+Com o <a href="https://getfirebug.com">Firebug</a> é possível copiar tanto o XPath quanto o CSS.</p>
+
+<h3>CSS</h3>
+
+<p>O seletor CSS do <strong>Nokogiri</strong> é o mesmo utilizado no jQuery. São verificadas, principalmente, as classes, IDs e elementos do documento.</p>
+
+<p>O exemplo abaixo retorna a mesma informação do código que utiliza xpath.</p>
+
+<p>```ruby
+require 'open-uri'
+require 'nokogiri'</p>
+
+<p>doc = Nokogiri::HTML(File.open("cinemas.html"))
+doc.css('.desc > h2.name').each do |node|
+  puts node.text
+end
+```</p>
+
+<h1>Exemplo</h1>
+
+<p>Pra colocar em prática o que foi visto até aqui, fiz esse exemplo para listar os integrantes da HE:Labs e suas respectivas posições na empresa:</p>
+
+<p>```ruby
+require 'open-uri'
+require 'nokogiri'</p>
+
+<p>class Avassalador
+  def initialize(node)</p>
+
+<pre><code>@name = node.xpath("text()").text().strip
+@position = node.xpath("span/text()").text().strip
+</code></pre>
+
+<p>  end
+  def to_s</p>
+
+<pre><code>"#{@name} - #{@position}"
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>doc = Nokogiri::HTML(open("http://helabs.com.br/nossotime/"))
+doc.xpath('//*[@id="time"]/div/ul/li/p').each do |node|
+  puts Avassalador.new(node)
+end
+```</p>
+
+<p>Além dos elementos serem iteráveis, pode-se utilizar a API para navegar pelos nós da estrutura. Esta API pode ser utilizada para nós extraidos por XPath e CSS. Os métodos são:</p>
+
+<p><code>ruby
+node.parent           #=&gt; nó pai. (Sobe um nível na árvore)
+node.children         #=&gt; nós filhos. (Desce um nível na árvore)
+node.next_sibling     #=&gt; próximo irmão. (Seleciona o próximo elemento no mesmo nível)
+node.previous_sibling #=&gt; irmão anterior. (Volta um elemento no mesmo nível)
+</code></p>
+
+<h1>Legalidade</h1>
+
+<p>Não é permitido publicar conteúdo na íntegra sem permissão. Se houver permissão, a fonte deve ser citada. Em 2005, o Google News foi processado por publicar conteúdo da <a href="http://www.afp.com/">AFP</a> sem permissão. Para realizar análise de informações, a questão de direitos autorais pode ser parcialmente ignorada. Exemplo disso é o PageRank do Google que analisa o conteúdo das páginas, avalia sua relevância, mas não os reproduz.</p>
+
+<p>Deve-se, também, respeitar as instruções do robots.txt. Nele, o scraper não pode acessar nada dentro do caminho /tmp/. :
+<code>
+User-agent: *
+Disallow: /tmp/
+</code></p>
+
+<p>É possível definir regras para User-agents específicos como o bot do Google. Clique para <a href="http://www.robotstxt.org/robotstxt.html">informações complementares</a>.</p>
+
+<h1>Bônus</h1>
+
+<p>A <em>gem</em> <a href="https://github.com/lucasallan/google_movies">google_movies</a> é um exemplo de wrapper que retorna as informações sobre cinemas e filmes através do próprio Google Movies. Ela serve como uma referência bem completa e ao mesmo tempo simples de entender o processo.</p>
+]]></content>
+  </entry>
+  
+</feed>

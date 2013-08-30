@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: extreme programming | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/extreme-programming/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Lançamento do site DesenvolvimentoAgil.com.br]]></title>
+    <link href="http://helabs.com.br/blog/2013/01/21/lancamento-do-site-desenvolvimentoagil-com-br/"/>
+    <updated>2013-01-21T16:00:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2013/01/21/lancamento-do-site-desenvolvimentoagil-com-br</id>
+    <content type="html"><![CDATA[<p>Autor convidado: <em>Vinícius Teles</em></p>
+
+<p>Quando comecei a me envolver com Extreme Programming, há pouco mais de dez anos, havia um site no Brasil chamado Xispe no endereço http://www.xispe.com.br, que infelizmente já não existe mais. Tratava-se de um <a href="http://pt.wikipedia.org/wiki/Wiki">Wiki</a> criado por meu amigo <a href="https://github.com/klauswuestefeld">Klaus Wuestefeld</a>, que foi um dos primeiros brasileiros a trabalhar com <a href="http://desenvolvimentoagil.com.br/xp/">Extreme Programming</a>.</p>
+
+<!-- more -->
+
+
+<p>Embora eu consultasse inúmeros sites estrangeiros para aprender mais sobre <a href="http://desenvolvimentoagil.com.br/xp/">XP</a>, o site Xispe era sensacional porque inúmeros brasileiros colaboravam ativamente, escrevendo sobre as características do <a href="http://desenvolvimentoagil.com.br/xp/">XP</a> e como o estavam utilizando em seus projetos. Aprendi demais com esse site e ele certamente seria um sucesso até hoje se não tivesse saído do ar, por razões que desconheço.</p>
+
+<p>Depois de publicar o <a href="http://improveit.com.br/xp/livroxp">livro Extreme Programming</a>, em 2004, decidi escrever inúmeros <a href="http://improveit.com.br/xp">artigos para o site da Improve It</a> para que pessoas interessadas em aprender sobre <a href="http://desenvolvimentoagil.com.br/xp/">XP</a> e <a href="http://desenvolvimentoagil.com.br">Desenvolvimento Ágil</a> em geral pudessem encontrar na internet informação fácil de digerir e bem organizada, em português.</p>
+
+<p>Produzi muitos artigos e muita gente aprendeu alguma coisa com eles. Mas, me sentia mal porque não era algo colaborativo, como o Xispe. Talvez até fosse melhor estruturado e mais fácil de navegar pelas informações, mas o conteúdo não tinha a riqueza de contribuições que encontrávamos no Xispe.</p>
+
+<p>A situação ficou ainda pior há seis anos, quando decidi parar de fazer consultoria em <a href="http://desenvolvimentoagil.com.br">Desenvolvimento Ágil</a> e passei a me dedicar à criação de produtos. Daí por diante não escrevi mais nenhum artigo.</p>
+
+<p>Atualmente, quando as pessoas procuram sobre <a href="http://desenvolvimentoagil.com.br">Desenvolvimento Ágil</a>, <a href="http://desenvolvimentoagil.com.br/scrum/">Scrum</a> ou <a href="http://desenvolvimentoagil.com.br/xp/">Extreme Programming</a> no Google, os <a href="http://improveit.com.br/xp">artigos do site da Improve It</a> frequentemente aparecem entre os primeiros resultados. Mas, isso não é bom. Porque esses artigos não estão evoluindo e nenhum novo artigo está sendo produzido.</p>
+
+<p>Essa situação me entristece há tempos, mas finalmente está sendo corrigida. Conversei sobre isso com meu amigo <a href="http://rafael.adm.br/">Rafael Lima</a>, da <a href="http://helabs.com.br/">HE:labs</a> e concluímos que o ideal seria termos um site que pudesse preservar esses artigos, mas dar a outras pessoas a liberdade de editá-los, além de acrescentar outros novos.</p>
+
+<p>Como se trata de um conteúdo sobre desenvolvimento de software, provalmente escrito em grande parte por desenvolvedores de software, nada melhor que usar uma plataforma como o <a href="https://github.com/desenvolvimentoagilcombr/desenvolvimentoagilcombr.github.com">Github</a>, que facilita a colaboração em projetos de software livre.</p>
+
+<p>O <a href="http://rafael.adm.br/">Rafael</a>, o <a href="http://mergulhao.info/">Sylvestre</a> e todos da <a href="http://helabs.com.br/">HE:labs</a> compraram essa ideia. E foi assim que a galera estruturou o novo site <a href="http://desenvolvimentoagil.com.br">DesenvolvimentoÁgil.com.br</a>.</p>
+
+<p>Ele tem o seu pontapé inicial com o conteúdo que veio do site da Improve It, com os meus artigos. Mas, isso é só o começo. Daqui por diante, todo mundo pode colaborar para transformar esse site em um excelente repositório de informações sobre <a href="http://desenvolvimentoagil.com.br">Desenvolvimento Ágil</a>, em português e, de preferência, com muitos relatos de projetos.</p>
+
+<p>Para participar e contribuir, veja as instruções logo na primeira página do <a href="http://desenvolvimentoagil.com.br">DesenvolvimentoÁgil.com.br</a>. Logo iremos remover os artigos do site da Improve It e redirecionar todos os acessos automaticamente para as respectivas páginas no <a href="http://desenvolvimentoagil.com.br">DesenvolvimentoÁgil.com.br</a>.</p>
+
+<p>Muito obrigado à toda a equipe da <a href="http://helabs.com.br/">HE:labs</a> por abraçar essa ideia e se empenhar tanto para concretizá-la.</p>
+
+<p>E agora, tá esperando o quê? Vai lá e <a href="https://help.github.com/articles/using-pull-requests">envia o seu pull request</a>!</p>
+]]></content>
+  </entry>
+  
+</feed>

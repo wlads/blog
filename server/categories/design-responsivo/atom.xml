@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: design responsivo | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/design-responsivo/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Design Responsivo Parte II: Listagens e Galerias]]></title>
+    <link href="http://helabs.com.br/blog/2013/05/24/design-responsivo-parte-ii-listagens-e-galerias/"/>
+    <updated>2013-05-24T10:30:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/05/24/design-responsivo-parte-ii-listagens-e-galerias</id>
+    <content type="html"><![CDATA[<p>Na maioria dos contextos, uma parte considerável de uma interface Web é feita de listas. Pense num <em>e-commerce</em>, blog ou até mesmo numa <em>Job Board</em>. Seja lá o que for, as listas resolvem bem os nossos problemas e são parte fundamental do Web Design.</p>
+
+<!--more-->
+
+
+<p>Irei agora demonstrar um pouco como podemos "brincar" com listas usando <em>Media Queries (CSS3)</em>. No exemplo, criarei uma galeria de imagens simples que se comportará de acordo com a resolução de cada dispositivo, seja ele <em>Desktop</em> ou móvel, como <em>Tablets</em> e <em>Smartphones</em>.</p>
+
+<p>Vamos criar uma listagem com a foto de oito pessoas:</p>
+
+<p>```html</p>
+
+<ul class="team-list">
+    <li><img src="#" alt="Pessoa 01" /></li>
+    ...
+</ul>
+
+
+<p>```</p>
+
+<p>Então, no CSS eu preciso setar a quantidade de ítens que eu quero por linha. Como são oito ítens no total, utilizaremos quatro por linha:</p>
+
+<p>```css
+.team-list li {</p>
+
+<pre><code>width:23%;
+margin:1% 1% 0 1%;
+</code></pre>
+
+<p>}
+```</p>
+
+<p>100% / 4 = 25%; menos 2% das margens left e right e 23% de largura pra cada ítem da lista. E agora em cada ítem, seto para que a imagem de dentro tenha sempre 100% de largura:</p>
+
+<p>```css
+.team-list img {</p>
+
+<pre><code>width:100%;
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Agora, utilizarei um pouco as <em>Media Queries</em> para fazer a mágica acontecer:</p>
+
+<p>```css
+@media (max-width:481px) {</p>
+
+<pre><code>.team-list li {
+    width:48%;
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Quando a lista é acessada de um dispositivo com largura máxima de <strong>481px</strong>, será exibido apenas dois ítens por linha. Use essa lógica para otimizar ao máximo sua lista em cada tipo de resolução.</p>
+
+<p>Utilizando quase o mesmo código, essa galeria de imagens poderia facilmente transformar-se numa listagem responsiva de produtos para <em>e-commerce</em>. Um comparador de preços ou qualquer outro tipo de interface que liste algo horizontalmente também se encaixaria. Um conceito importante em <strong>Design Modular</strong> é <strong>Refatoração</strong>.</p>
+
+<p>Ao se trabalhar com listagens responsivas, é muito importante entender o velho e bom <strong>layout fluído</strong>. Dentro dos <em>breakpoints</em>, seus componentes (no caso a listagem) devem comportar-se de forma fluída e não engessada. Ou seja, não podemos apenas definir os <em>breakpoints</em> e esperar que as “coisas” fiquem certas dentro deles. Estas “coisas” precisam esticar, diminuir, aumentar, se comportar de acordo com cada contexto.</p>
+
+<p><strong>Conclusão:</strong> Juntando o poder das <em>Media Queries</em> e o domínio por completo dos conceitos básicos de <em>box-model</em>, você pode criar interfaces bastante trabalhadas e relativamente acessíveis com pouco esforço. Antes de sair enxendo seu design de "firúlas", concentre-se no básico que é criar uma estrutura modular e não fixa; algo que se expanda.</p>
+
+<p>Sua interface não deve ser feita apenas para atender a necessidade de hoje. Ela precisa ser projetada também para o futuro, fácil de ser continuada e integrada a novas features. Web Design é uma diciplina que trabalha com conteúdos e estratégias mutáveis, nada é definido, nada é para sempre. Faça sua interface responder a estas mudanças com facilidade, desenvolvendo-a de forma modular e flexível.</p>
+
+<p>Não pense no Web Design apenas como um layout “codado” em HTML/CSS. Pense num Design projetado para Web que tenha vida própria, como algo subjetivo e não apenas visual.</p>
+
+<h2>Outros posts da série</h2>
+
+<p><a href="http://helabs.com.br/blog/2013/02/27/design-responsivo-parte-i-arquivos-css-e-breakpoints">Design Responsivo Parte I: Arquivos CSS e Breakpoints</a></p>
+
+<h2>Links</h2>
+
+<ul>
+<li><a href="http://www.mikaelcarrara.com">Site Pessoal</a></li>
+<li><a href="br.linkedin.com/in/mikaelcarrara/">Linkedin</a></li>
+<li><a href="http://dribbble.com/mikaelcarrara">Portfólio no Dribbble</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Design Responsivo Parte I: Arquivos CSS e Breakpoints]]></title>
+    <link href="http://helabs.com.br/blog/2013/02/27/design-responsivo-parte-i-arquivos-css-e-breakpoints/"/>
+    <updated>2013-02-27T10:15:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/02/27/design-responsivo-parte-i-arquivos-css-e-breakpoints</id>
+    <content type="html"><![CDATA[<p>Irei a partir de hoje lançar uma série de posts com minhas considerações a respeito de design responsivo.</p>
+
+<p>Ao projetar uma interface Web responsiva (otimizada para <em>Tablets</em>, Celulares, TVs, Geladeiras e Carros), primeiramente defino os <em>breakpoints</em>, ou seja, defino os pontos de “quebra” do layout (resoluções de agentes de usuários) e através de <em>Media Queries (</em>CSS<em>3)</em> seto o comportamento desejado para cada uma das resoluções que gostaria de considerar no meu projeto.</p>
+
+<!-- more -->
+
+
+<p>Em “90%” dos casos, a solução a seguir atendeu muito bem minhas necessidades. Em primeiro lugar divido meus arquivos <em>CSS</em> da seguinte forma:</p>
+
+<p><strong>site-core.css</strong>
+Aqui eu coloco todo <em>CSS</em> genérico, estilos comuns em todas as versões da interface. este arquivo vai alimentar os outros dois abaixo;</p>
+
+<p><strong>site-web.css</strong>
+Responsável por estilos exclusivos para web;</p>
+
+<p><strong>site-mobile.css</strong>
+Finalmente um arquivo responsável por estilos específicos para dispositivos móveis.</p>
+
+<p>Separo uma versão só para Web por questões de compatibilidade com <em>Internet Explorer 8</em>. Sendo assim, no <strong>HEAD</strong> da aplicação eu seto através de um <a href="http://en.wikipedia.org/wiki/Conditional_comment">comentário condicional</a> para que o <em>IE8</em> leia apenas a versão Web:</p>
+
+<p>```html</p>
+
+<!--[if IE]>
+  <link type="text/css" rel="stylesheet" href="site-web.css" media="screen" />
+<![endif]-->
+
+
+<p>```</p>
+
+<p>Outros <em>browsers</em> com maior suporte a especificação das <em>CSS3</em> aplicam as <em>Media Queries</em> como explicado no início do post. Então juntando tudo ficaria assim:</p>
+
+<p><code>html
+&lt;link type="text/css" rel="stylesheet" href="site-core.css" /&gt;
+&lt;link type="text/css" rel="stylesheet" href="site-web.css" media="screen and (min-width:801px)" /&gt;
+&lt;link type="text/css" rel="stylesheet" href="site-mobile.css" media="handheld, screen and (max-width:801px)" /&gt;
+</code></p>
+
+<p>Então, explicando melhor: Estou dizendo que o <em>CSS</em> para Web só deve ser exibido quando a largura <strong>mínima</strong> do navegador for no mínimo <strong>801px</strong> e a versão mobile apenas em resoluções com largura <strong>máxima</strong> de <strong>801px</strong>. O arquivo <strong>site-core.css</strong> como já explicado, alimenta os outros dois com estilos genéricos.</p>
+
+<p>A seguir, configure sua <em>viewport</em> da forma como preferir (entrarei em mais detalhes num próximo post):</p>
+
+<p><code>html
+&lt;meta name="viewport" content="width=device-width, user-scalable=no" /&gt;
+</code></p>
+
+<p>Agora vamos definir os breakpoints para todas as versões mobile. Apenas para frisar: O arquivo <em>CSS</em> mobile engloba tanto <em>Tablets</em> quando Celulares e <em>Smartphones</em>. Deixei apenas a versão Web num arquivo separado para poder usá-la também como uma “versão IE8” sem necessariamente criar uma versão de <em>CSS</em> com Hacks só para ele. Não tive trabalho a mais com o <em>IE8</em>.</p>
+
+<p>Voltando...</p>
+
+<p>Todo estilo que coloco dentro do arquivo <em>CSS</em> <strong>site-mobile.css</strong> mas “fora” de Media Queries é destinado a agentes de usuários com largura <strong>máxima</strong> de <strong>801px</strong> como já explicado. Na verdade então, podemos já ir definindo os estilos pra <em>Tablets</em> diretamente no arquivo.</p>
+
+<p><code>css
+.holder {
+  width:700px;
+}
+</code></p>
+
+<p>Então finalmente os estilos para agentes de usuários com largura <strong>máxima</strong> de <strong>686px</strong>. Nos meus testes funcionou muito bem tanto em <em>Smartphones</em> modernos como <em>Galaxy Nexus</em> e <em>iPhone 5</em> que possuem resoluções bem grandes no modo <em>landscape</em> como também no <em>iPhone 4</em> e <em>HTC Nexus One</em> que já são mais antigos.</p>
+
+<p>```css
+@media (max-width:686px) {</p>
+
+<p>  .holder {</p>
+
+<pre><code>width:86%;
+padding:0 7% 0 7%;
+</code></pre>
+
+<p>  }</p>
+
+<p>}
+```</p>
+
+<p>Esses valores são os que usei em algumas situações mas você é livre para explorar melhor as <em>Media Queries</em>, garanto que vai muito além de larguras definidas com unidades de medidas absolutas como estou fazendo nos exemplos. Experimente <strong>criar grids</strong> responsivas usando unidades de medidas relativas como <strong>%</strong> e <strong>EM</strong>.</p>
+
+<p>Voltando pras <em>Medias Queries</em>...</p>
+
+<p>Daí por diante é só ir diminuindo a resolução conformo você vai dando mais suporte a vários dispositivos:</p>
+
+<p>```css
+@media (max-width:381px) {</p>
+
+<p>  background-image:none;</p>
+
+<p>  .holder {</p>
+
+<pre><code>width:94%;
+padding:0 3% 0 3%;
+</code></pre>
+
+<p>  }</p>
+
+<p>}
+```</p>
+
+<p>Na maioria das vezes, conforme a resolução do dispositivo diminui, a capacidade de processamento também, então começam a aparecer estilos que otimizam o desempenho em dispositivos mais modestos.</p>
+
+<p>Mudando um pouco de assunto mas dentro de um mesmo contexto, acho que quando você está aprendendo <em>CSS</em> básico ainda, mais importante do que o conceito de <strong>“Design Responsivo”</strong> em si é o conceito de “<a href="http://www.w3.org/TR/CSS2/box.html">Box-Model</a>”. Procure entender melhor como se comporta a renderização em cada browser.</p>
+
+<p>Se você não domina completamente todos os elementos da sua interface no navegador Web, será um pouco mais difícil “aprender design responsivo”. Talvez você até o faça, mas seu trabalho não terá a qualidade esperada no final.</p>
+
+<p><strong>Conclusão:</strong> Você precisa pensar para que cada dispositivo tenha a melhor experiência possível dentro de suas limitações. Através das <em>Media Queries</em> podemos definir estilos específicos para cada contexto e assim otimizar a experiência do usuário em diferentes situações.</p>
+
+<h2>Outros posts da série</h2>
+
+<p><a href="http://helabs.com.br/blog/2013/05/24/design-responsivo-parte-ii-listagens-e-galerias/">Design Responsivo Parte II: Listagens e Galerias</a></p>
+
+<h2>Links</h2>
+
+<ul>
+<li><a href="http://www.mikaelcarrara.com">Site Pessoal</a></li>
+<li><a href="br.linkedin.com/in/mikaelcarrara/">Linkedin</a></li>
+<li><a href="http://dribbble.com/mikaelcarrara">Portfólio no Dribbble</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

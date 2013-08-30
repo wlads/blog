@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: desenvolvimento agil | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/desenvolvimento-agil/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Refatoração Parte I - O que é?!]]></title>
+    <link href="http://helabs.com.br/blog/2013/06/17/refatoracao-parte-i-o-que-e/"/>
+    <updated>2013-06-17T09:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/06/17/refatoracao-parte-i-o-que-e</id>
+    <content type="html"><![CDATA[<p>Vejo várias pessoas falando sobre refatoração, mas este assunto é mais complexo do que os desenvolvedores imaginam. Para se ter a real profundidade do assunto é necessária uma leitura minuciosa do <a href="http://www.amazon.com/Refactoring-Ruby-Edition-Jay-Fields/dp/0321603508">livro Refactoring</a> de Jay Fields, Shane Harvie, Martin Fowler e Kent Beck.</p>
+
+<p>Uma das grandes verdades da refatoração é que um código limpo é mais fácil de receber mudanças do que um complexo.</p>
+
+<!--more-->
+
+
+<p><a href="http://en.wikipedia.org/wiki/Kent_Beck">Kent Beck</a> e <a href="http://en.wikipedia.org/wiki/Ward_Cunningham">Ward Cunningham</a> trabalhavam com Smalltalk desde os anos 80. O ambiente cultural deste desenvolvimento favorecia o ciclo de compilar-linkar-executar rapidamente. Estes caras ajudaram a difundir esta prática  muito comum no ambiente Smalltalk. Hoje, temos ferramentas de ótima qualidade em todas as linguagens de desenvolvimentos atuais.</p>
+
+<blockquote><p>Refatorar é alterar a estrutura do código sem alterar o seu comportamento.</p></blockquote>
+
+<p>Conforme a metáfora de Kent Beck, chamada de dois chapéus (The Two Hats), durante o desenvolvimento deve-se dividir o tempo em duas tarefas distintas: adicionar novas funcionalidades e refatorar. Enquanto estiver adicionando uma nova funcionalidade, não deve-se alterar outro código existente, apenas adicione novos testes e funcionalidades. Quando você refatora, não adicione novas funcionalidades, apenas reestruture seu código. Esta troca de chapéus deve ser feita frequentemente.</p>
+
+<p>Dentro da prática de desenvolvimento orientado a testes temos o uso contínuo de refatoração, pois os testes ajudam o desenvolvedor a ter um feedback rápido sobre suas mudanças e ter a certeza de que nada quebrou no comportamento pensado.</p>
+
+<h2>Por que refatorar?</h2>
+
+<h3>Porque melhora o design do código no projeto.</h3>
+
+<p>Conforme um projeto vai crescendo, o design do código acaba caindo na qualidade. Isto gera um débito de código no sistema, onde este crescerá e ficará mais difícil para adicionar funcionalidades e evoluir.</p>
+
+<h3>Porque torna seu software fácil de entender.</h3>
+
+<p>O código de um sistema deve dizer exatamente o que ele faz. Aplicar pequenas refatorações ajudam a entender o que seu software faz e a deixar o código mais limpo. Todo desenvolvedor deve se preocupar em escrever o melhor código possível, não apenas para os outros integrantes do time, mas para si próprio, pois reentenderá o código quando for preciso fazer alguma modificação.</p>
+
+<h3>Porque ajuda a encontrar bugs.</h3>
+
+<p>Quando você altera a estrutura de um código, você garante e revisa certos comportamentos que deseja. Neste momento, pode-se identificar alguma situação que não foi prevista por você ou pelos integrantes do time.</p>
+
+<h3>Porque ajuda você a programar mais rápido</h3>
+
+<p>Um bom design de código ajuda na evolução do sistema, pois tudo torna-se mais simples de entender. Pode parecer “perda de tempo” efetuar esta melhoria constante de código, mas na prática, um código organizado irá facilitar muito sua vida de programador.</p>
+
+<p>...</p>
+
+<p>Eu gosto muito da frase de Kent Beck, onde diz: “Eu não sou um grande programador; Sou apenas um bom programador com excelentes hábitos”. Acredito que bons programadores necessitem cultivar estes hábitos. E a refatoração merece um espaço considerável no nosso dia a dia de desenvolvedores de software.</p>
+
+<p>No próximo artigo vou falar sobre os "mal cheiros" de códigos.</p>
+
+<p>Siga-me no Twitter: <a href="http://twitter.com/eduardofiorezi">@eduardofiorezi</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Estimar é colocar o peso ideal de trabalho em cada iteração]]></title>
+    <link href="http://helabs.com.br/blog/2013/04/11/estimar-e-colocar-o-peso-ideal-de-trabalho-em-cada-iteracao/"/>
+    <updated>2013-04-11T11:00:00-03:00</updated>
+    <id>http://helabs.com.br/blog/2013/04/11/estimar-e-colocar-o-peso-ideal-de-trabalho-em-cada-iteracao</id>
+    <content type="html"><![CDATA[<p><img src="/images/posts/2013-04-12-estimar-e-colocar-o-peso-ideal-de-trabalho-em-cada-sprint.jpg" alt="http://www.flickr.com/photos/mermadon_1967/3682014732/sizes/l/in/photostream/" /></p>
+
+<p>Imagine a seguinte situação: você pretende escalar uma montanha, bem difícil e perigosa, e deve levar apenas uma mochila. Neste caso, você levaria uma mochila pesada ou uma leve?</p>
+
+<!-- more -->
+
+
+<p>Agora imagine que essa montanha difícil é um produto de software que você quer criar e empreender. Sabemos o quanto é dificil criar um sistema e fazê-lo virar um sucesso. Quantas pessoas no mundo conseguem alcançar o objetivo de escalar uma grande montanha ou criar um reconhecido software?</p>
+
+<p>Quero que você pense agora sobre o tamanho desta mochila. Acredito que o caminhar para a criação de um software exija pequenos passos e quanto menos peso seu time carregar, mais tranquilo e garantido será atingido o objetivo final. E quanto mais coisas desnecessárias você decidir levar na mochila, maior será sua chance de desistir no caminho.</p>
+
+<p>Os times da HE:labs trabalham com iterações de 1 semana em todos projetos longos. Este é o período mínimo de tempo para que seja possível organizar a reunião com o cliente e permitir que o time estime as tarefas necessárias.</p>
+
+<p>A cada iteração(1 semana), decidimos com o cliente o que cabe na mochila. Tudo é muito bem conversado, explicado e debatido. Nosso time dá a idéia exata das vantagens e desvantagens de algumas decisões sobre o sistema. Cabe ao cliente escolher o que vai na mochila.</p>
+
+<p>Uma semana de iteração permite que o cliente analise cada passo durante essa caminhada rumo ao topo da montanha. Ou seja, a cada semana ele sabe se o progresso feito foi valioso e importante para seu sistema. A cada parada, estamos lá para encher novamente a mochila e prosseguir.</p>
+
+<p>A reunião de planejamento na iteração é extremamente importante. É neste momento que o time sabe como está indo o projeto e ter a chance de mudar o rumo para melhorar o ambiente da equipe e a comunicação com o cliente. A sintonia e confiança entre time e cliente é muito importante. Aquele, deve ficar sempre atento aos fatores comportamentais da reunião.</p>
+
+<p>Para complementar o assunto, não deixe de ler o artigo <a href="http://akitaonrails.com/2013/04/05/traducao-estimativa-o-melhor-que-podemos-fazer">Estimativa - O Melhor que Podemos Fazer(tradução do Fábio Akita)</a>.</p>
+
+<p>No seu dia a dia de trabalho, seu time consegue dividir o trabalho em um tempo curto de desenvolvimento e analisar se o andamento foi bom ou ruim?</p>
+
+<p><a href="http://www.flickr.com/photos/mermadon_1967/3682014732/sizes/l/in/photostream/">Crédito da imagem mermadon 1967</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Aprendizados com o Startup DEV]]></title>
+    <link href="http://helabs.com.br/blog/2013/01/25/aprendizados-com-startup-dev/"/>
+    <updated>2013-01-25T10:00:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2013/01/25/aprendizados-com-startup-dev</id>
+    <content type="html"><![CDATA[<p>O <a href="http://startupdev.com.br">Startup DEV</a> é um modelo de desenvolvimento bastante fora do padrão do mercado. Afinal, são dois dias e no final sai um produto funcional. Esses dois dias proporcionam experiências e aprendizados importantes. Vou listar alguns pontos neste post.</p>
+
+<!-- more -->
+
+
+<h3><em>Desenhar é muito importante!</em></h3>
+
+<p>Após conversamos com o cliente e captar a ideia do projeto, partimos para fazer os desenhos na folha de papel. Desenhamos todas as telas e os fluxos do sistema da forma que imaginamos que ele deva ser. Disposição dos elementos, textos, mensagens. Isso ajuda em dois pontos: procurar soluções simples e transmitir a ideia para os outros membros da equipe e para o cliente.</p>
+
+<p>O Startup DEV é um processo de desenvolvimento ágil. É bem curto, mas é! Dois dias é o período de uma mini-iteração que no final consegue entregar um produto funcional. Miramos a <a href="http://desenvolvimentoagil.com.br/xp/valores/simplicidade">simplicidade</a> nas soluções do problema não só porque é um dos valores do <a href="http://desenvolvimentoagil.com.br/xp">XP</a>, por exemplo, mas também porque não seria viável, nem inteligente, desenvolver algo complexo em tão pouco tempo.</p>
+
+<h3><em>Redução</em></h3>
+
+<p><a href="http://helabs.com.br/blog/2013/01/23/todo-sisteminha-comeca-pequenininho/">Todo sistema começa pequeno</a>. Normalmente o cliente chega com uma ideia gigante pra um sistema, que possívelmente demoraria 1 ano pra ficar pronta. Temos que reduzir isso para conseguirmos desenvolver algo em dois dias.</p>
+
+<p>Como fazemos? Ao conversar com o cliente sobre a ideia dele, nós detectamos o core do produto e assim fazemos a priorização junto com o cliente sobre o que é mais importante para o sistema.</p>
+
+<p>É o primeiro passo para o projeto. E para muitos projetos, o melhor primeiro passo pode ser o Startup DEV, pois em dois dias entrega uma pequena parte funcional do sistema onde, se for o caso, é possível validar a ideia no mercado. Muitos clientes são frustrados por prazos extensos e imprecisos.</p>
+
+<p><a href="http://sucessoemsoftware.com.br/">Uma dica para sucesso em software.</a></p>
+
+<h3><em>Rails Template e Heroku &lt;3</em></h3>
+
+<p>Aqui na HE:labs utilizamos o Heroku como Cloud SaaS para praticamente todos os nossos projetos. Perder pouco tempo no setup dos projetos ajuda bastante. Não precisamos ficar configurando praticamente nada. E com a ajuda do nosso <a href="https://github.com/Helabs/rails-template">rails-template</a>, que adiciona mais algumas configurações e gems default dos nossos projetos, conseguimos em menos de 30 minutos colocar a aplicação online.</p>
+
+<p>O Rodrigo Pinto tem uma talk bacana sobre Platform as a Service que você pode ver <a href="https://speakerdeck.com/rodrigoospinto/paas-plataform-as-a-service">aqui</a></p>
+
+<h3><em>Código testado e reusável</em></h3>
+
+<p>Nós nunca escrevemos códigos sem testes. Nunca! Nossos clientes sempre perguntam: "Mas e se der algum problema, algum bug depois que vocês finalizarem?". 100% de cobertura de testes ajudam a eliminar essa preocupação. Nunca fazemos deploys com a cobertura menor que 100%.</p>
+
+<p>Isso também auxilia em outro ponto. Normalmente, acabamos usando alguns snippets de código de outro projeto, como: autenticação, integrações com APIs. Pelo fato do código estar coberto por testes, nós conseguimos extrair essas pequenas partes e reusá-las e outros projetos, ou até mesmo fazer <a href="http://helabs.com.br/opensource/">gems</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Todo sisteminha começa pequenininho]]></title>
+    <link href="http://helabs.com.br/blog/2013/01/23/todo-sisteminha-comeca-pequenininho/"/>
+    <updated>2013-01-23T16:30:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2013/01/23/todo-sisteminha-comeca-pequenininho</id>
+    <content type="html"><![CDATA[<p>Recentemente em uma conversa informal, uma possível cliente gostaria de saber quanto tempo nossa equipe precisava para desenvolver um "sisteminha", com algumas features que ela já havia pesquisado em sistemas similares ao dela.</p>
+
+<p>Com uma folha A4 em mãos, ela nos mostrou todas funcionalidades descritas em uma lista:</p>
+
+<ul>
+<li>Página de álbum de fotos</li>
+<li>Página de vídeos</li>
+<li>Login com Facebook</li>
+<li>etc...</li>
+</ul>
+
+
+<!-- more -->
+
+
+<p>Ela me explicou todas funcionalidades e disse que aquela proposta foi orçada por 2 empresas, uma prometeu o sistema em 3 meses e a outra empresa disse que desenvolveria em 12 meses.</p>
+
+<p>Quem trabalha com desenvolvimento de software, sabe que este tipo de situação é normal, porque cada equipe, cada empresa entende e vende o desenvolvimento de software da sua maneira. Provavelmente essa empresa que estipulou 12 meses deixou uma pequena “folga” para não errar.</p>
+
+<p>A partir disso, tentei mudar a conversa para que ela pudesse entender como funciona o <a href="http://desenvolvimentoagil.com.br/">desenvolvimento ágil</a> e como os projetos são desenvolvidos na HE:labs.</p>
+
+<p>O primeiro passo é faze-la entender que o desenvolvimento de qualquer sistema é complexo e começa com pequenos <a href="http://desenvolvimentoagil.com.br/xp/principios/passos_bebe/">passos de bebê</a>. O Facebook não começou grande como é hoje, começou com 1 desenvolvedor e muita persistência de algumas poucas pessoas que acreditavam na idéia.</p>
+
+<p>Dei um outro pequeno exemplo, explicando que a "página de álbuns" que ela gostaria de ter, poderia demorar 2 semanas ou 6 meses para fazer, tudo vai depender da complexidade deste álbum. O Instagram é um aplicativo com mais de 2 anos e que só trabalha com fotos.</p>
+
+<p>Explicando esses pontos, conseguimos fazê-la pensar que <a href="http://desenvolvimentoagil.com.br/xp/praticas/ciclo_semanal">ciclos semanais</a> de desenvolvimento poderia ser interessante para o projeto, pois nesse caso é possível evoluir o sistema com um <a href="http://desenvolvimentoagil.com.br/xp/valores/feedback">feedback</a> semanal e a cada início de semana  decidir os próximos passos conforme a avaliação do negócio ou idéia dos usuários.</p>
+
+<p>Na maioria dos casos, os clientes não sabem que é muito mais interessante desenvolver o software com releases curtos de entrega, então a reação é sempre de surpresa quando se depara com este tipo de conversa, a maioria das pessoas nunca pensou em desenvolver sistemas desta maneira.</p>
+
+<p>O que seria mais interessante para esse cliente? Esperar 12 meses para ver o resultado de uma idéia ou a cada semana ver uma pequena parte do sistema sendo desenlvolvido, participando das decisões da equipe e podendo corrigir o curso do sistema caso alguma funcionalidade não seja tão interessante?</p>
+
+<p>Twitter <a href="http://twitter.com/eduardofiorezi">@eduardofiorezi</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Lançamento do site DesenvolvimentoAgil.com.br]]></title>
+    <link href="http://helabs.com.br/blog/2013/01/21/lancamento-do-site-desenvolvimentoagil-com-br/"/>
+    <updated>2013-01-21T16:00:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2013/01/21/lancamento-do-site-desenvolvimentoagil-com-br</id>
+    <content type="html"><![CDATA[<p>Autor convidado: <em>Vinícius Teles</em></p>
+
+<p>Quando comecei a me envolver com Extreme Programming, há pouco mais de dez anos, havia um site no Brasil chamado Xispe no endereço http://www.xispe.com.br, que infelizmente já não existe mais. Tratava-se de um <a href="http://pt.wikipedia.org/wiki/Wiki">Wiki</a> criado por meu amigo <a href="https://github.com/klauswuestefeld">Klaus Wuestefeld</a>, que foi um dos primeiros brasileiros a trabalhar com <a href="http://desenvolvimentoagil.com.br/xp/">Extreme Programming</a>.</p>
+
+<!-- more -->
+
+
+<p>Embora eu consultasse inúmeros sites estrangeiros para aprender mais sobre <a href="http://desenvolvimentoagil.com.br/xp/">XP</a>, o site Xispe era sensacional porque inúmeros brasileiros colaboravam ativamente, escrevendo sobre as características do <a href="http://desenvolvimentoagil.com.br/xp/">XP</a> e como o estavam utilizando em seus projetos. Aprendi demais com esse site e ele certamente seria um sucesso até hoje se não tivesse saído do ar, por razões que desconheço.</p>
+
+<p>Depois de publicar o <a href="http://improveit.com.br/xp/livroxp">livro Extreme Programming</a>, em 2004, decidi escrever inúmeros <a href="http://improveit.com.br/xp">artigos para o site da Improve It</a> para que pessoas interessadas em aprender sobre <a href="http://desenvolvimentoagil.com.br/xp/">XP</a> e <a href="http://desenvolvimentoagil.com.br">Desenvolvimento Ágil</a> em geral pudessem encontrar na internet informação fácil de digerir e bem organizada, em português.</p>
+
+<p>Produzi muitos artigos e muita gente aprendeu alguma coisa com eles. Mas, me sentia mal porque não era algo colaborativo, como o Xispe. Talvez até fosse melhor estruturado e mais fácil de navegar pelas informações, mas o conteúdo não tinha a riqueza de contribuições que encontrávamos no Xispe.</p>
+
+<p>A situação ficou ainda pior há seis anos, quando decidi parar de fazer consultoria em <a href="http://desenvolvimentoagil.com.br">Desenvolvimento Ágil</a> e passei a me dedicar à criação de produtos. Daí por diante não escrevi mais nenhum artigo.</p>
+
+<p>Atualmente, quando as pessoas procuram sobre <a href="http://desenvolvimentoagil.com.br">Desenvolvimento Ágil</a>, <a href="http://desenvolvimentoagil.com.br/scrum/">Scrum</a> ou <a href="http://desenvolvimentoagil.com.br/xp/">Extreme Programming</a> no Google, os <a href="http://improveit.com.br/xp">artigos do site da Improve It</a> frequentemente aparecem entre os primeiros resultados. Mas, isso não é bom. Porque esses artigos não estão evoluindo e nenhum novo artigo está sendo produzido.</p>
+
+<p>Essa situação me entristece há tempos, mas finalmente está sendo corrigida. Conversei sobre isso com meu amigo <a href="http://rafael.adm.br/">Rafael Lima</a>, da <a href="http://helabs.com.br/">HE:labs</a> e concluímos que o ideal seria termos um site que pudesse preservar esses artigos, mas dar a outras pessoas a liberdade de editá-los, além de acrescentar outros novos.</p>
+
+<p>Como se trata de um conteúdo sobre desenvolvimento de software, provalmente escrito em grande parte por desenvolvedores de software, nada melhor que usar uma plataforma como o <a href="https://github.com/desenvolvimentoagilcombr/desenvolvimentoagilcombr.github.com">Github</a>, que facilita a colaboração em projetos de software livre.</p>
+
+<p>O <a href="http://rafael.adm.br/">Rafael</a>, o <a href="http://mergulhao.info/">Sylvestre</a> e todos da <a href="http://helabs.com.br/">HE:labs</a> compraram essa ideia. E foi assim que a galera estruturou o novo site <a href="http://desenvolvimentoagil.com.br">DesenvolvimentoÁgil.com.br</a>.</p>
+
+<p>Ele tem o seu pontapé inicial com o conteúdo que veio do site da Improve It, com os meus artigos. Mas, isso é só o começo. Daqui por diante, todo mundo pode colaborar para transformar esse site em um excelente repositório de informações sobre <a href="http://desenvolvimentoagil.com.br">Desenvolvimento Ágil</a>, em português e, de preferência, com muitos relatos de projetos.</p>
+
+<p>Para participar e contribuir, veja as instruções logo na primeira página do <a href="http://desenvolvimentoagil.com.br">DesenvolvimentoÁgil.com.br</a>. Logo iremos remover os artigos do site da Improve It e redirecionar todos os acessos automaticamente para as respectivas páginas no <a href="http://desenvolvimentoagil.com.br">DesenvolvimentoÁgil.com.br</a>.</p>
+
+<p>Muito obrigado à toda a equipe da <a href="http://helabs.com.br/">HE:labs</a> por abraçar essa ideia e se empenhar tanto para concretizá-la.</p>
+
+<p>E agora, tá esperando o quê? Vai lá e <a href="https://help.github.com/articles/using-pull-requests">envia o seu pull request</a>!</p>
+]]></content>
+  </entry>
+  
+</feed>

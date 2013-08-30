@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: performance | Blog da HE:labs]]></title>
+  <link href="http://helabs.com.br/blog/categories/performance/atom.xml" rel="self"/>
+  <link href="http://helabs.com.br/blog/"/>
+  <updated>2013-08-30T10:44:41-03:00</updated>
+  <id>http://helabs.com.br/blog/</id>
+  <author>
+    <name><![CDATA[Time HE:labs]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Melhorando a performance do web site com gzip]]></title>
+    <link href="http://helabs.com.br/blog/2013/02/01/melhorando-a-performance-do-web-site-com-gzip/"/>
+    <updated>2013-02-01T12:30:00-02:00</updated>
+    <id>http://helabs.com.br/blog/2013/02/01/melhorando-a-performance-do-web-site-com-gzip</id>
+    <content type="html"><![CDATA[<p>O tempo inteiro chovem dicas de performance pela internet. É bem difícil filtrar tudo que aparece e saber o que realmente importa, o que realmente dá resultado, e mais ainda, o que é fácil de se fazer. Não adianta uma solução mirabolante, em que para ganhar 1 milisegundo tenhamos que envolver toda a equipe de um projeto e consumir um sprint inteiro.</p>
+
+<!-- more -->
+
+
+<p>Assistindo uma palestra do <a href="https://twitter.com/chriscoyier">Chris Coyier</a>, fiquei impressionado em como ele organizou as dicas. Achei genial a forma como ele resumiu como uma dica de performance deve ser. E a dica de hoje segue esses pontos:</p>
+
+<ul>
+<li>Eleve a performance de bom à excelente.</li>
+<li><strong>Uma</strong> única pessoa pode resolver.</li>
+<li>Não necessite de processos complexos.</li>
+<li>Não precise de manutenção constante.</li>
+</ul>
+
+
+<p>O objetivo desse post, é explicar como usar o gzip para que os arquivos do seu website sejam comprimidos e fornecidos ao browser quando receber uma requisição. Uma dica simples, mas de altíssimo impacto. <em>Comprimir</em> os arquivos reduz o tempo de transferência de arquivos em <strong>70%</strong> em media.</p>
+
+<p>O primeiro passo para ativar a compressão de HTTP é conferir se o seu projeto já está comprimido. Você pode testar a sua url nesse site:
+<strong><a href="http://gzipwtf.com/">http://gzipwtf.com/</a></strong></p>
+
+<p>Se já tiver comprimido seu trabalho já está feito. Se foi alguem da sua equipe, descubra e dê os parabéns, se não foi, a compressão pode ter sido feita pelo serviço de hospedagem que você está usando, por exemplo. Sei que o <a href="http://heroku.com">Heroku</a>, o serviço que usamos para hospedar os 40+ projetos internos e de clientes aqui na <a href="http://helabs.com.br">HE:labs</a> já faz isso automáticamente, por exemplo.</p>
+
+<p>Se você constatou que no seu projeto os arquivos não estão comprimidos, a única coisa que precisa fazer é colar esse código no <code>.htaccess</code> se você usar o Apache.</p>
+
+<p>```</p>
+
+<h1>----------------------------------------------------------------------</h1>
+
+<h1>Gzip compression</h1>
+
+<h1>----------------------------------------------------------------------</h1>
+
+<p><IfModule mod_deflate.c></p>
+
+<p>  # Force deflate for mangled headers developer.yahoo.com/blogs/ydn/posts/2010/12/pushing-beyond-gzipping/
+  <IfModule mod_setenvif.c></p>
+
+<pre><code>&lt;IfModule mod_headers.c&gt;
+  SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
+  RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
+&lt;/IfModule&gt;
+</code></pre>
+
+<p>  </IfModule></p>
+
+<p>  # Compress all output labeled with one of the following MIME-types
+  # (for Apache versions below 2.3.7, you don't need to enable <code>mod_filter</code>
+  # and can remove the <code>&lt;IfModule mod_filter.c&gt;</code> and <code>&lt;/IfModule&gt;</code> lines as
+  # <code>AddOutputFilterByType</code> is still in the core directives)
+  <IfModule mod_filter.c></p>
+
+<pre><code>AddOutputFilterByType DEFLATE application/atom+xml \
+                              application/javascript \
+                              application/json \
+                              application/rss+xml \
+                              application/vnd.ms-fontobject \
+                              application/x-font-ttf \
+                              application/xhtml+xml \
+                              application/xml \
+                              font/opentype \
+                              image/svg+xml \
+                              image/x-icon \
+                              text/css \
+                              text/html \
+                              text/plain \
+                              text/x-component \
+                              text/xml
+</code></pre>
+
+<p>  </IfModule></p>
+
+<p></IfModule>
+```</p>
+
+<p>Simples assim!</p>
+
+<p>Com esse código, a compressão já está habilitada e os arquivos do seu site estarão carregando ridiculamente mais <strong>rápido</strong>.</p>
+
+<p>Esse conteúdo foi retirado do <code>.htaccess</code> do HTML5 Boilerplate, que além de ser um excelente boilerplate para iniciar o seu projeto, é um repositório enorme de excelentes dicas e boas práticas.</p>
+
+<p>Espero que essa dica seja útil para você! Em breve postarei outras dicas simples e efetivas.</p>
+
+<p>Aquele abraço,
+Pedro Marins</p>
+]]></content>
+  </entry>
+  
+</feed>
