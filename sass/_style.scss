@@ -25,7 +25,7 @@ p {
 h2 {
     font-family: lato,sans-serif;
     font-size: 1.6em;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
 }
 /* HEADER */
 #top {
@@ -246,13 +246,36 @@ h2 {
 
 .cover-mailing-page { 
     background: image-url('mailing-cover-bg.jpg');
-    background-position: center bottom;
     border-radius: 5px 5px 5px 5px;
     float: left;
     margin-bottom: 2em;
     margin-top: 20px;
     padding: 2em;
     width: 93%;
+    a {
+    float: left;
+    margin-right: 1em;
+    margin-top: 0.5em;
+    }
+    input[type="email"] {
+        border: 1px solid #EBEBEB;
+        border-radius: 5px 5px 5px 5px;
+        padding: 1em;
+        vertical-align: middle;
+        width: 70%;
+    }
+    
+    input[type="submit"] {
+        background: none repeat scroll 0 0 #B80606;
+        border: medium none;
+        border-radius: 5px 5px 5px 5px;
+        color: #FFFFFF;
+        font-size: 10px;
+        padding: 1em;
+        text-transform: uppercase;
+        width: 10%;
+    }
+
 }
 /* FOOTER */
 
