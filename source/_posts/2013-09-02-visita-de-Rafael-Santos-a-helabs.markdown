@@ -24,7 +24,7 @@ A empresa é sensacional: pessoal gente boníssima, sempre sorrindo e brincando,
 
 O projeto em si foi uma grata surpresa: eu tinha na cabeça que desenvolver um sistema em dois dias geraria um alto nível de stress, e pensei que teria que me encher de guaraná e energético para aguentar dois dias sem dormir. Nada disso! Os dois dias foram imensamente produtivos e nada estressantes, graças à metodologia toda do Startup DEV, que é um verdadeiro master class em gerenciamento de projetos: simplicidade, eficiência e produtividade, sem perder o bom humor! E sem perder o sono também! =)
 
-Pontos sensacionais do Startup DEV:
+Pontos sensacionais do [Startup DEV](http://startupdev.com.br/):
 
 - Percebi o quanto são importantes as reuniões com os clientes. O sistema de pontos é um método simples e efetivo de fazer o cliente priorizar o que é realmente importante no desenvolvimento, separando a funcionalidade essencial do que não é tão importante assim.
 
@@ -41,4 +41,6 @@ Fiquei muito feliz em ter participado! Foram 3 dias ótimos que passaram voando!
 Beijos e abraços a todos! =)"
 
 
-Obrigada pelas palavras, Rafael! Sua presença foi muito proveitosa para nós também! Até a próxima!
+Obrigada pelas palavras, Rafael! Sua presença foi muito proveitosa para nós também! Até a próxima!  
+
+Quer fazer uma visita também? Entre em [contato conosco](http://helabs.com.br/#fale-conosco)!
