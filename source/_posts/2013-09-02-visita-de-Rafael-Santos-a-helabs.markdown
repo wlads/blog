@@ -16,19 +16,17 @@ Em junho, Rafael Santos, mais conhecido como Rafael Chefe, passou uns dias na HE
 
 <!--more--> 
 
-"Fala pessoal! =)
+"Olá pessoal!
 
-Já estou são e salvo em casa, e a volta ocorreu sem nenhum percalço. =)
+Meu nome é Rafael, sou um web developer de Curitiba, e tive o prazer de passar 3 dias na HE:labs na Cidade Maravilhosa acompanhando um Startup DEV. Devo dizer que já estou morrendo de saudades! =)
 
-Foi uma semana sensacional! Kudos pra Liliane que me deu toda a atenção do mundo, me colocou num lugar super bacana e me atendeu muito bem em tudo! =)
+A empresa é sensacional: pessoal gente boníssima, sempre sorrindo e brincando, super atenciosos e receptivos. Grande parte da rapaziada usava bermudas, ao que eu prontamente aderi do segundo dia em diante. =) O escritório é todo decorado com coisas que nós nerds adoramos: filmes, games, quadrinhos, all the good stuff. 15 minutos depois de chegar e eu já me sentia em casa. O que eu mais achei sensacional, além da máquina de pinball, foram uma gravatas penduradas na parede sob uma placa dizendo "for emergency use only". Awesome! =) E kudos para a Liliane, que me deu toda a atenção do mundo, me colocou num apê super bacana e me atendeu muito bem em tudo. Valeu Lilica! =)
 
-Me faltam palavras pra descrever o quanto eu fiquei feliz de trabalhar em um lugar com um pessoal tão gente boa e tranquilo, usando bermuda, tendo uma máquina de pinball à disposição e gravatas penduradas na parede sob uma placa dizendo "for emergency use only". =)
+O projeto em si foi uma grata surpresa: eu tinha na cabeça que desenvolver um sistema em dois dias geraria um alto nível de stress, e pensei que teria que me encher de guaraná e energético para aguentar dois dias sem dormir. Nada disso! Os dois dias foram imensamente produtivos e nada estressantes, graças à metodologia toda do Startup DEV, que é um verdadeiro master class em gerenciamento de projetos: simplicidade, eficiência e produtividade, sem perder o bom humor! E sem perder o sono também! =)
 
-Observando o trabalho da rapaziada pude aprender bastante sobre Rails também, fiz muitas anotações, e tenho bastante material para estudar daqui pra frente. =)
+Pontos sensacionais do Startup DEV:
 
-Sobre o Startup DEV em si:
-
-- Percebi o quanto são importantes as reuniões com os clientes. Eu gostaria de conversar mais com vocês sobre como o Startup DEV é vendido, pelo seguinte: clientes têm a tendência de querer colocar zilhões de funcionalidades no sistema deles, e também de dizer que "tudo é importante". Embora não tenha sido o caso do projeto que eu acompanhei, tenho certeza de que isso acontece com frequência, e gostaria de saber em mais detalhes como vocês lidam com isso, nas conversas iniciais. O sistema de pontos é um método simples e efetivo de fazer o cliente priorizar o que é realmente importante no desenvolvimento, mas eu gostaria de saber mais sobre como é a abordagem inicial.
+- Percebi o quanto são importantes as reuniões com os clientes. O sistema de pontos é um método simples e efetivo de fazer o cliente priorizar o que é realmente importante no desenvolvimento, separando a funcionalidade essencial do que não é tão importante assim.
 
 - Gostei muito da simplicidade e objetividade do processo todo: telas desenhadas no papel ao invés de toneladas de documentação de especificação ou prototipação complexa e demorada de fazer, e contato direto entre o cliente e o time de desenvolvimento, sem intermediários.
 
@@ -36,13 +34,11 @@ Sobre o Startup DEV em si:
 
 No geral, achei o processo todo muito bacana, pela simplicidade, originalidade e eficiência. Percebi bem o resultado quando as duas clientes cobriram o time de elogios depois da entrega, e quiseram ter mais informações sobre como continuar com a HE:labs. =)
 
-Acho que por hora é isso! Fico no aguardo de vocês para conversarmos melhor!
+Observando o trabalho da moçada pude também aprender bastante sobre Ruby On Rails, fiz muitas anotações, e tenho bastante material para estudar daqui pra frente. =)
 
-Obrigado novamente pela oportunidade! =)
+Fiquei muito feliz em ter participado! Foram 3 dias ótimos que passaram voando! Obrigado à HE:labs pela oportunidade, pelos Red Bulls, pelo pinball e por tudo que eu vivenciei e aprendi! Espero vê-los muito em breve! =)
 
+Beijos e abraços a todos! =)"
 
-Abração!
-
-Rafael"
 
 Obrigada pelas palavras, Rafael! Sua presença foi muito proveitosa para nós também! Até a próxima!
