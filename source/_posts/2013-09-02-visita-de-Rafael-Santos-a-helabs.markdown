@@ -14,6 +14,8 @@ categories:
 
 Em junho, Rafael Santos, mais conhecido como Rafael Chefe, passou uns dias na HE:labs do Rio de Janeiro para observar o nosso trabalho. Confiram o registro deixado por ele após a sua estadia conosco:
 
+<!--more--> 
+
 "Fala pessoal! =)
 
 Já estou são e salvo em casa, e a volta ocorreu sem nenhum percalço. =)
