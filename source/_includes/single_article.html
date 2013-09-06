@@ -1,0 +1,19 @@
+<article id="single-article">
+  <header>
+    {% include post/author.html %}
+
+    {% unless page.meta == false %}
+      {% include post/date.html %}{{ time }}
+    {% endunless %}
+
+    {% if index %}
+      <h2 class="post-title"><a href="{{ root_url }}{{ post.url }}">{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a></h2>
+    {% else %}
+      <h1 class="post-title">{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %}</h1>
+    {% endif %}
+  </header>
+
+  <div class="grid">
+    <div class="text">{{ content }}</div>
+  </div>
+</article>
