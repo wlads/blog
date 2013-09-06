@@ -55,9 +55,7 @@ $.fn.parallax = function(xpos, speedFactor, outerHeight) {
 
 
 $(document).on('ready', function() {
-	// adicionando efeito de parallax na imagem do topo dos posts
 	$('#posts').prepend('<div class="posts-bg"><div class="img-01"></div><div class="img-02"></div></div>');
-	$('.img-01').parallax('50%', '0.2');
 
 	// Colorindo os posts (cinza/branco)
 	$('#posts .wrap article:nth-child(2n+1)').css('background', '#fff');
