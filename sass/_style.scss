@@ -88,7 +88,7 @@ h2 {
 
         .post-title {
             font-size: 30px;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             font-weight: bold;
             color: #b72124;
         }
@@ -130,9 +130,8 @@ h2 {
     &.streaming img,
     &.streaming h3 { display: none; }
 
-    &.single p {
-        font-size: 14px;
-        line-height: 22px;
+    &.single .posts-bg {
+        height: 200px;
     }
 
     #pagination {
@@ -165,6 +164,133 @@ h2 {
             top: 0;
         }
     }
+}
+
+#single-article {
+    header {
+        width: 880px;
+        background: #FFF;
+        padding: 40px 40px 25px;
+        -webkit-box-shadow: 0px 3px 2px rgba(50, 50, 50, 0.25);
+        -moz-box-shadow: 0px 3px 2px rgba(50,50,50,0.25);
+        box-shadow: 0px 3px 2px rgba(50, 50, 50, 0.25);
+        margin: 0 auto 20px auto;
+
+        .author-info {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        time {
+            display: inline-block;
+            width: auto;
+            border: 0;
+            padding-top: 0;
+        }
+
+        .post-title {
+            font-size: 40px;
+        }
+    }
+
+    article {
+        p {
+            font-size: 18px;
+            line-height: 25px;
+        }
+    }
+}
+
+.cover-mailing-page{
+  background: image-url("mailing-cover-bg.jpg") repeat-x left top;
+}
+
+#cover {
+  width: 960px;
+  margin: 0 auto 20px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.mailing-form {
+  background-image: image-url("mailing-mauro.png");
+  background-position: 40px 40px;
+  background-repeat: no-repeat;
+  padding-left: 270px;
+  padding-top: 100px;
+  height: 175px;
+}
+
+.mailing-form h2 {
+  color: #B80606;
+  font-weight: bold;
+  margin-top: -40px;
+  text-transform: none;
+  width: 100%;
+  line-height: 30px;
+  margin-bottom: 15px;
+  font-size: 40px;
+}
+
+.cover-mailing-page input[type="text"],
+.cover-mailing-page input[type="email"] {
+    background: none repeat scroll 0 0 white;
+    border: 1px solid #C7C7C7;
+    border-radius: 6px 6px 6px 6px;
+    float: left;
+    font-size: 14px;
+    margin: 0;
+    padding: 0.7em;
+    width: 50%;
+}
+
+.mailing-form p{
+  margin-top:15px;
+}
+
+.mailing-form p a{
+  font-size:11px;
+  color:#666;
+}
+
+.cover-mailing-page input[type="submit"] {
+    background-color: #B80606;
+    border: 0 none;
+    border-radius: 6px;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 700;
+    margin: 0 0 0 5px;
+    padding: 0 8px;
+    height: 38px;
+    line-height: normal;
+    float: left;
+    display: block;
+    text-transform: uppercase;
+}
+
+.cover-mailing-page div.containner input[type="submit"]:hover{
+  opacity:0.9;
+}
+
+
+.form-foot {
+  color: #000;
+}
+
+.wufoo .info h2 {
+  font-size: 20px;
+  color: #000 !important;
+  margin: 0 0 20px;
+}
+
+.wufoo li label.desc {
+  color: #000 !important;
+}
+
+#disqus_thread {
+    width: 880px;
+    margin: 0 auto 40px;
 }
 
 .text {
@@ -208,7 +334,7 @@ h2 {
 }
 
 .meta{
-  float:left;
+  overflow: hidden;
   margin-top:2em;
   width:100%;
   box-sizing: border-box;
@@ -248,40 +374,6 @@ h2 {
 }
 
 
-
-.cover-mailing-page {
-    background: image-url('mailing-cover-bg.jpg');
-    border-radius: 5px 5px 5px 5px;
-    float: left;
-    margin-bottom: 2em;
-    margin-top: 20px;
-    padding: 2em;
-    width: 93%;
-    a {
-    float: left;
-    margin-right: 1em;
-    margin-top: 0.5em;
-    }
-    input[type="email"] {
-        border: 1px solid #EBEBEB;
-        border-radius: 5px 5px 5px 5px;
-        padding: 1em;
-        vertical-align: middle;
-        width: 70%;
-    }
-
-    input[type="submit"] {
-        background: none repeat scroll 0 0 #B80606;
-        border: medium none;
-        border-radius: 5px 5px 5px 5px;
-        color: #FFFFFF;
-        font-size: 10px;
-        padding: 1em;
-        text-transform: uppercase;
-        width: 10%;
-    }
-
-}
 /* FOOTER */
 
 #social-footer{
