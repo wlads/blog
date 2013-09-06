@@ -1,5 +1,8 @@
 <article>
   <div class="grid">
+    <header>
+      {% include post/author.html %}
+    </header>
 
     {% if index %}
       <h2 class="post-title"><a href="{{ root_url }}{{ post.url }}">{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a></h2>
@@ -20,4 +23,4 @@
       {% include post/date.html %}{{ time }}
     {% endunless %}
   </div>
-</article>  
+</article>
