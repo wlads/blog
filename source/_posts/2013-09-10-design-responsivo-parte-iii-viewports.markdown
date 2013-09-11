@@ -22,11 +22,11 @@ Quando não configuramos a *viewport* o que acontece? A interface simplesmente a
 
 Mas é um pouco estranho quando você entra em um site pelo smartphone e todos seus elementos e componentes estão miniaturizados (*zoomed-out*), exatamente uma versão pequena do site. Mesmo podendo dar zoom, é mais interessante para o usuário ter uma experiência otimizada para o dispositivo que ele esta usando.
 
-Mesmo que já tenhamos desenvolvido nossa interface otimizada para mobile através das *Media Queries* (leia as partes I e II também da série Design Responsivo) os browsers ainda vão renderizar a interface no modo nativo e ocupar toda a resolução possível do dispositivo e é assim que deve ser, pois sem a otimização para design responsivo, o browser entende que você quer poder ver toda a interface e não apenas um pedaço dela e a exibe como no *desktop* mesmo.
+Mesmo que já tenhamos desenvolvido nossa interface otimizada para mobile através das *Media Queries* (leia as partes <a href="http://helabs.com.br/blog/2013/02/27/design-responsivo-parte-i-arquivos-css-e-breakpoints/">I</a> e <a href="http://helabs.com.br/blog/2013/05/24/design-responsivo-parte-ii-listagens-e-galerias/">II</a> também da série Design Responsivo) os browsers ainda vão renderizar a interface no modo nativo e ocupar toda a resolução possível do dispositivo e é assim que deve ser, pois sem a otimização para design responsivo, o browser entende que você quer poder ver toda a interface e não apenas um pedaço dela e a exibe como no *desktop* mesmo.
 
 Usando a meta tag *viewport*, os browsers vão interpretar que a interface não é para *desktop*, então vão customizar a resolução nativa do dispositivo. No caso do iPhone 5, **1136px**. Em outras palavras, se a "versão mobile" (**480px** de largura no *landscape*) da interface for renderizada no iPhone 5, a *viewport* vai personalizar a vizualização para que os **480px** de largura ocupem todos os **980px** de resolução.
 
-No <head> do seu documento HTML declare a metatag *viewport*:
+No **head** do seu documento HTML declare a metatag *viewport*:
 
 ```html
 <meta name="viewport" content="">
@@ -34,7 +34,7 @@ No <head> do seu documento HTML declare a metatag *viewport*:
 
 Dentro do atributo content você pode setar alguns valores: **width**, **height**, **initial-scale**, **maximum-scale**  e **user-scalable**.
 
-Antes era comum configurarmos apenas a largura de **480px** ou **320px** na *viewport* pois não tínhamos muitas variações de larguras e resoluções mobile que considerávamoS. Se você quisesse uma interface mobile de **320px** bastava setar:
+Antes era comum configurarmos apenas a largura de **480px** ou **320px** na *viewport* pois não tínhamos muitas variações de larguras e resoluções mobile que considerávamos. Se você quisesse uma interface mobile de **320px** bastava setar:
 
 ```html
 <meta name="viewport" content="width=320">
