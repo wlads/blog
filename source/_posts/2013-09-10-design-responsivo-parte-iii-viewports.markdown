@@ -15,7 +15,7 @@ categories:
   
 ---
 
-Em computação gráfica, a *viewport* nada mais é do que uma região de visualização retangular dentro do contexto do design responsivo. E ainda, é o nome dado para a região disponível onde a interface web será renderizada.
+Em computação gráfica, a viewport nada mais é do que uma região de visualização retangular. Dentro do contexto do design responsivo é o nome dado para a região disponível onde a interface web será renderizada.
 
 <!-- more -->
 
