@@ -23,26 +23,6 @@
     padding: 60px 40px 25px;
   }
 
-  .post-header {
-    .author-info {
-      margin-bottom: 10px;
-      font-size: 11px;
-    }
-
-    .author-name {
-      font-weight: bold;
-    }
-
-    .post-title a {
-      font-size: 30px;
-      margin-bottom: 10px;
-      display: block;
-      font-weight: bold;
-      color: #B72124;
-      text-decoration: none;
-    }
-  }
-
   .post-excerpt {
     font-size: 18px;
     line-height: 28px;
@@ -53,5 +33,25 @@
     font-size: 13px;
     color: #777;
     margin-top: 20px;
+  }
+}
+
+.post-header {
+  .author-info {
+    margin-bottom: 10px;
+    font-size: 11px;
+  }
+
+  .author-name {
+    font-weight: bold;
+  }
+
+  .post-title {
+    font-size: 30px;
+    margin-bottom: 10px;
+    display: block;
+    font-weight: bold;
+    color: #B72124;
+    text-decoration: none;
   }
 }
