@@ -1,0 +1,60 @@
+---
+layout: default
+title: HE:Labs Blog
+---
+
+<div id="static-background">
+  <div id="static-image"></div>
+</div>
+
+<!-- #posts -->
+<section id="posts-list">
+
+    {% for post in paginator.posts %}
+
+      <article class="post">
+        <div class="container">
+          <header class="post-header">
+            {% if post.author %}
+              {% assign author = post.author %}
+            {% elsif page.author %}
+              {% assign author = page.author %}
+            {% else %}
+              {% assign author = site.author %}
+            {% endif %}
+            {% if author %}
+              <div class="author-info">
+                Postado por <span class="author-name">{{ author }}</span>
+              </div>
+            {% endif %}
+
+
+            <h2 class="post-title">
+              <a href="{{ root_url }}{{ post.url }}" title="{{post.title}}">
+                {% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}
+              </a>
+            </h2>
+          </header>
+
+          <div class="post-excerpt">{{ post.excerpt }}</div>
+
+          <div class='post-date'>{{ post.date | date: "%d/%m/%Y" }}</div>
+        </div>
+      </article>
+
+    {% endfor %}
+
+    <div id="pagination">
+      <div class="container">
+        {% if paginator.next_page %}
+          <a class="prev-page" href="{{paginator.next_page}}" title="Página Anterior">&larr; Mais Antigo</a>
+        {% endif %}
+        <a href="archives" title="Histórico do Blog">Histórico do Blog</a>
+        {% if paginator.previous_page %}
+        <a class="next-page" href="{{paginator.previous_page}}" title="Próxima página">Mais Novo &rarr;</a>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</section>
