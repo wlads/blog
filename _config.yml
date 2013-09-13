@@ -5,12 +5,12 @@ pygments: true
 permalink: /blog/:year/:month/:day/:title/
 markdown: rdiscount
 paginate: 9
-pagination_dir: /blog  # Directory base for pagination URLs eg. /blog/page/2/
 paginate_path: "/blog/page/:num"
 disqus_short_name: helabsblog
 disqus_show_comment_count: true
 google_analytics_tracking_id: UA-34924553-1
 facebook_like: true
+excerpt_separator: <!--more-->
 exclude:
   - unicorn.rb
   - README.md
