@@ -70,7 +70,7 @@ body {
 }
 
 /* line 1, ../sass/core/_main.scss */
-.container, .full-post-header {
+.container, .full-post-header, #page-header {
   width: 960px;
   margin: 0 auto;
   position: relative;
@@ -118,24 +118,24 @@ a:hover {
   margin-top: 20px;
 }
 /* line 19, ../sass/modules/_footer.scss */
-#footer .container, #footer .full-post-header {
+#footer .container, #footer .full-post-header, #footer #page-header {
   overflow: hidden;
 }
 /* line 22, ../sass/modules/_footer.scss */
-#footer .container h3, #footer .full-post-header h3 {
+#footer .container h3, #footer .full-post-header h3, #footer #page-header h3 {
   color: #FFF;
   font-weight: 300;
   margin-bottom: 0.5em;
   text-shadow: 1px 1px 2px #000;
 }
 /* line 29, ../sass/modules/_footer.scss */
-#footer .container li, #footer .full-post-header li {
+#footer .container li, #footer .full-post-header li, #footer #page-header li {
   list-style: url("/images/arrow.jpg") disc inside;
   line-height: 2.1;
   font-size: 0.8em;
 }
 /* line 35, ../sass/modules/_footer.scss */
-#footer .container a, #footer .full-post-header a {
+#footer .container a, #footer .full-post-header a, #footer #page-header a {
   color: #fff;
 }
 
@@ -244,7 +244,7 @@ a:hover {
   background: none !important;
 }
 /* line 13, ../sass/modules/_post.scss */
-.post:first-child .container, .post:first-child .full-post-header {
+.post:first-child .container, .post:first-child .full-post-header, .post:first-child #page-header {
   padding: 40px 25px 25px;
   background: #fff;
   -webkit-box-shadow: 0px 3px 2px rgba(50, 50, 50, 0.25);
@@ -252,7 +252,7 @@ a:hover {
   box-shadow: 0px 3px 2px rgba(50, 50, 50, 0.25);
 }
 /* line 22, ../sass/modules/_post.scss */
-.post .container, .post .full-post-header {
+.post .container, .post .full-post-header, .post #page-header {
   padding: 60px 40px 25px;
 }
 /* line 26, ../sass/modules/_post.scss */
@@ -269,16 +269,16 @@ a:hover {
 }
 
 /* line 40, ../sass/modules/_post.scss */
-.post-header .author-info, .full-post-header .author-info {
+.post-header .author-info, .full-post-header .author-info, #page-header .author-info {
   margin-bottom: 10px;
   font-size: 11px;
 }
 /* line 45, ../sass/modules/_post.scss */
-.post-header .author-name, .full-post-header .author-name {
+.post-header .author-name, .full-post-header .author-name, #page-header .author-name {
   font-weight: bold;
 }
 /* line 49, ../sass/modules/_post.scss */
-.post-header .post-title, .full-post-header .post-title {
+.post-header .post-title, .full-post-header .post-title, #page-header .post-title {
   font-size: 30px;
   margin-bottom: 10px;
   display: block;
@@ -313,11 +313,12 @@ a:hover {
 
 /* line 1, ../sass/modules/_full_post.scss */
 .full-post-header {
+  border-top: 4px solid #B72124;
   padding: 40px 25px 25px;
   background: #fff;
   z-index: 30;
 }
-/* line 8, ../sass/modules/_full_post.scss */
+/* line 9, ../sass/modules/_full_post.scss */
 .full-post-header .post-title {
   font-size: 40px;
   margin-bottom: 10px;
@@ -326,7 +327,7 @@ a:hover {
   color: #B72124;
   text-decoration: none;
 }
-/* line 17, ../sass/modules/_full_post.scss */
+/* line 18, ../sass/modules/_full_post.scss */
 .full-post-header .post-date {
   position: absolute;
   top: 20px;
@@ -335,33 +336,33 @@ a:hover {
   color: #777;
 }
 
-/* line 26, ../sass/modules/_full_post.scss */
+/* line 27, ../sass/modules/_full_post.scss */
 #post-text {
   margin-bottom: 60px;
   border-bottom: 1px #f6f6f6 solid;
 }
 
-/* line 31, ../sass/modules/_full_post.scss */
+/* line 32, ../sass/modules/_full_post.scss */
 #post-content {
   background: #f6f6f6;
 }
-/* line 34, ../sass/modules/_full_post.scss */
-#post-content .container, #post-content .full-post-header {
+/* line 35, ../sass/modules/_full_post.scss */
+#post-content .container, #post-content .full-post-header, #post-content #page-header {
   background: #fff;
   padding: 40px 40px 25px;
   font-size: 18px;
 }
-/* line 40, ../sass/modules/_full_post.scss */
+/* line 41, ../sass/modules/_full_post.scss */
 #post-content p {
   color: #373737;
   line-height: 22px;
   margin-bottom: 20px;
 }
-/* line 46, ../sass/modules/_full_post.scss */
+/* line 47, ../sass/modules/_full_post.scss */
 #post-content li {
   margin-bottom: 8px;
 }
-/* line 50, ../sass/modules/_full_post.scss */
+/* line 51, ../sass/modules/_full_post.scss */
 #post-content p img {
   max-width: 60%;
   margin: 0 auto;
@@ -371,14 +372,14 @@ a:hover {
   padding: 20px;
   border: 1px #CCC solid;
 }
-/* line 60, ../sass/modules/_full_post.scss */
+/* line 61, ../sass/modules/_full_post.scss */
 #post-content h3 {
   font-size: 23px;
   font-weight: bold;
   color: #444;
   margin-bottom: 15px;
 }
-/* line 67, ../sass/modules/_full_post.scss */
+/* line 68, ../sass/modules/_full_post.scss */
 #post-content h2 {
   font-size: 28px;
   font-weight: bold;
@@ -910,4 +911,56 @@ figure.code .highlight {
   font-size: 13px;
   text-shadow: #cbcccc 0 1px 0;
   padding-left: 3em;
+}
+
+/* line 1, ../sass/modules/_archive_list.scss */
+#page-header {
+  border-top: 4px solid #B72124;
+  padding: 40px 25px 25px;
+  background: #fff;
+  z-index: 30;
+}
+/* line 9, ../sass/modules/_archive_list.scss */
+#page-header .page-title {
+  font-size: 40px;
+  margin-bottom: 10px;
+  display: block;
+  font-weight: bold;
+  color: #B72124;
+  text-decoration: none;
+}
+
+/* line 19, ../sass/modules/_archive_list.scss */
+#archive-list {
+  padding: 30px 0;
+  background: #f6f6f6;
+}
+
+/* line 24, ../sass/modules/_archive_list.scss */
+.archive-post {
+  background: #fff;
+  padding: 10px 0;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+/* line 30, ../sass/modules/_archive_list.scss */
+.archive-post .post-date {
+  float: left;
+  font-size: 15px;
+  color: #777;
+  margin-left: 10px;
+}
+/* line 37, ../sass/modules/_archive_list.scss */
+.archive-post .post-title {
+  float: left;
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+/* line 44, ../sass/modules/_archive_list.scss */
+.archive-post .author-info {
+  float: right;
+  font-size: 13px;
+  color: #555;
+  margin-right: 10px;
 }

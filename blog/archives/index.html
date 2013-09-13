@@ -1,0 +1,29 @@
+---
+layout: archive
+title: HE:Labs Blog
+---
+
+{% for post in site.posts %}
+  <article class="archive-post">
+    <div class="container">
+      <div class='post-date'>{{ post.date | date: "%d/%m/%Y" }}</div>
+      <h2 class="post-title">
+        <a href="{{ root_url }}{{ post.url }}" title="{{post.title}}">
+          {% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}
+        </a>
+      </h2>
+      {% if post.author %}
+        {% assign author = post.author %}
+      {% elsif page.author %}
+        {% assign author = page.author %}
+      {% else %}
+        {% assign author = site.author %}
+      {% endif %}
+      {% if author %}
+        <div class="author-info">
+          por <span class="author-name">{{ author }}</span>
+        </div>
+      {% endif %}
+    </div>
+  </article>
+{% endfor %}
