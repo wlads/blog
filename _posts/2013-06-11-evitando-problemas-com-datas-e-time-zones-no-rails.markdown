@@ -12,7 +12,7 @@ categories:
 
 ---
 Volta e meia passo por alguns **problemas com time zones no Rails**. Hoje, demonstrarei algumas dicas para evitá-los:
-<!-- more -->
+<!--more-->
 
 A primeira coisa a ser feita para evitar problemas é **setar a time zone do projeto** no `config/application.rb` para Brasília (se o site for basileiro): `config.time_zone = 'Brasilia'` e não para "UTC -3" ou algo do gênero; de forma a evitar problemas com horário de verão também.
 

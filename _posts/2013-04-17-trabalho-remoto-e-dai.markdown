@@ -17,10 +17,10 @@ Faço parte de alguns seletos grupos de pessoas: o primeiro desses grupos é o d
 
 Desde o início dos meus trabalhos de desenvolvimento de softwares e web, eu já trabalhava remotamente, mas nunca _fulltime_, era sempre meu trabalho secundário. E a HE:labs me deu a oportunidade de exercer minhas atividades, remotamente, em tempo integral.
 
-<!-- more -->
+<!--more-->
 Mas qual é a diferença? É bom? É mais fácil?
- 
-Tirando a conclusão óbvia de que trabalho remoto significa remoto, existem algumas diferenças, mas também, muitas semelhanças. É um tipo de trabalho como qualquer outro, porém, com desafios e valores diferentes. 
+
+Tirando a conclusão óbvia de que trabalho remoto significa remoto, existem algumas diferenças, mas também, muitas semelhanças. É um tipo de trabalho como qualquer outro, porém, com desafios e valores diferentes.
 
 No trabalho remoto, o empregador e seus colegas de trabalho precisam ter total confiança em você. E, como isto é uma situação atípica, o profissional remoto precisa fazer valer essa confiança depositada. Para quem gosta desse desafio, só tem a ganhar. E para a empresa que aposta, também.
 
@@ -34,11 +34,11 @@ O trabalhador remoto precisa ter umas características básicas. Não apenas par
 #Auto gestão
 Eu sou responsável por me manter focado e trabalhar nas minhas tarefas da melhor forma possível e trazer o melhor resultado que eu puder. Não há um gerente ou alguém verificando se estou mesmo trabalhando ou se estou sentado no sofá assistindo _Sessão da Tarde_ e isso leva a uma das diferenças básicas que eu sinto como desenvolvedor remoto:
 
-Enquanto um profissional normal tem seu valor baseado, principalmente, no tempo que fica na empresa (das 8:00 às 17:00, por exemplo), em remoto, minha produção é o que se destaca e é o principal valor. Nessa forma de trabalho não dá para ficar olhando para o relógio e esperar dar 18:00 e simplesmente parar de fazer suas obrigações. 
+Enquanto um profissional normal tem seu valor baseado, principalmente, no tempo que fica na empresa (das 8:00 às 17:00, por exemplo), em remoto, minha produção é o que se destaca e é o principal valor. Nessa forma de trabalho não dá para ficar olhando para o relógio e esperar dar 18:00 e simplesmente parar de fazer suas obrigações.
 
 Não existe tempo fixo, mas sim, uma cobrança própria por produtividade. Mas não é por pressão, é por gostar do que faço e, principalmente, gostar de onde faço.
 
-Trabalho em maior parte, diretamente de casa. Tenho todo o meio-ambiente familiar com suas rotinas, barulhos e distrações. Tenho uma filha de 2 anos que parece que aprendeu que quando o relógio passa das 19 horas, ela tem que me tirar da frente do notebook. 
+Trabalho em maior parte, diretamente de casa. Tenho todo o meio-ambiente familiar com suas rotinas, barulhos e distrações. Tenho uma filha de 2 anos que parece que aprendeu que quando o relógio passa das 19 horas, ela tem que me tirar da frente do notebook.
 
 Isso nos leva para a próxima característica:
 
@@ -47,7 +47,7 @@ Não me entendam mal, uma das pessoas menos disciplinadas e mais desorganizadas 
 
 E o porquê disso é o que nos leva ao terceiro ponto:
 
-#Auto motivação 
+#Auto motivação
 Esta era uma das características mais difíceis para eu conseguir ter.
 Veja bem, gosto de programar. Sempre falei para as pessoas que me perguntam que programar é como se fosse um mago, que com palavras mágicas faz coisas incríveis acontecerem.... ou gifs piscarem na tela, dependendo do designer.
 Mas de um modo geral, a única motivação que eu tinha era a de ganhar mais. E é lógico que esta não é uma motivação que faz bem. Em geral, isso nos faz trabalhar mais, ficarmos mais cansados e extressados e produzir menos.... [às vezes, bem menos.](http://www.ted.com/talks/dan_pink_on_motivation.html)
@@ -64,5 +64,5 @@ Acredito que trabalho remoto não seja para todos. Existem pessoas que são muit
 
 
 
-  
+
 

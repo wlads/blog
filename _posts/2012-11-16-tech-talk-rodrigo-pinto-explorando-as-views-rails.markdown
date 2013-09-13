@@ -12,7 +12,7 @@ categories:
 ---
 
 Hoje recomeçamos as Tech Talks internas aqui na HE:Labs! Depois de algum tempo sem acontercer, as Tech Talks voltaram com tudo, com o [Rodrigo Pinto][3] avassalando explorando as views do Rails. E para animar a galera a Tech Talk foi regada a pizza e refrigerante.
-<!-- more -->
+<!--more-->
 
 Ele começou falando sobre o MVC do Rails e a forma como as responsabilidades acabam ficando mal definidas e se confundem ao longo do projeto, por má interpretação dos desenvolvedores. O que gera views super populadas com regras de negócio e de exibição e formatação das informações, quando não deveriam, e tambem falou sobre a forma procedural dos helpers de resolver esses problemas.
 
@@ -22,7 +22,7 @@ A interação com a galera foi sensacional e as dúvidas não paravam de pipocar
 
 As Tech Talks vão acontecer a cada 15 dias. O próximo é o Beni falando sobre UX.
 
-Os slides da apresentação do Rodrigo estão no link: 
+Os slides da apresentação do Rodrigo estão no link:
 [https://speakerdeck.com/rodrigoospinto/explorando-as-views-rails][4]
 
 [1]: http://martinfowler.com/eaaDev/SeparatedPresentation.html

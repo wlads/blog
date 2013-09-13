@@ -4,7 +4,7 @@ layout: post
 title: "HE:labs in Rails Girls RJ"
 date: 2013-01-18 12:20
 comments: true
-categories: 
+categories:
   - railsgirls
   - ramon page
   - rodrigo pinto
@@ -13,7 +13,7 @@ categories:
 ![image](/images/posts/rails-gils-logo.png)
 
 Autor convidado: _Organização Rails Girls RJ_
-<!-- more -->
+<!--more-->
 
 Desde que resolvemos realizar o Rails Girls aqui no Rio, a HE:labs se prontificou não somente
 com o apoio financeiro, que facilitou bastante, mas com qualquer tipo necessidade que

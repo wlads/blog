@@ -20,7 +20,7 @@ Aplicações web estão muito populares e se tornando preferência pelas vantage
 * O cliente não precisa se preocupar com a infraestrutura;
 * Geralmente, só precisa de um navegador e conexão com internet.
 
-<!-- more -->
+<!--more-->
 
 Com tanta popularidade, esse tipo de sistema recebe diversas sugestões de boas práticas. E o [12 factor][12factor] é um destes guide lines. Este guia é independente de linguagem de programação e foi criado por Adam Wiggins, Co-fundador do [heroku][], um dos mais conhecidos PaaS (Platform as a Service).
 

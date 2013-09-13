@@ -13,7 +13,7 @@ categories:
 Esse post não será útil para 99% dos desenvolvedores mas tenho certeza de que será um salvador de vidas pro 1% que está passando pelo mesmo perrengue que passei.
 
 Deixe-me adivinhar: você está usando MongoDB com [Mongoid][1] ou [MongoMapper][2]? Tem uma collection razoavelmente grande, com 100-150k de documentos? A memória do seu servidor vai nas nuvens quando faz um loop ou roda uma migration nessa collection? Ou o [Heroku][3] começa a baleiar porque a memoria do dyno já passou dos 512 megas faz tempo?!
-<!-- more -->
+<!--more-->
 
 Você já leu várias perguntas e respostas no [StackOverflow][4], procurou na documentação do MongoDB e do seu ODM preferido e também não encontrou a resposta?
 

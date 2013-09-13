@@ -19,7 +19,7 @@ O _token_ é necessário para fazer qualquer transação com a API do **crocodoc
 token: A7s7BwvDKOp@nqtYmQfPyLNx
 {% endhighlight %}
 
-<!-- more -->
+<!--more-->
 
 
 Dashboard:

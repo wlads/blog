@@ -5,17 +5,17 @@ layout: post
 title: "A cópia é o melhor elogio"
 date: 2013-05-22 11:00
 comments: true
-categories: 
+categories:
   - startupdev
   - plagio
-  
+
 ---
 
 ![image](/images/posts/2013-05-21/macaco-imitacao.jpg)
 
 Por volta do final de maio de 2011, exatamente 2 anos atrás, eu estava em casa pensando sobre o que iria fazer da minha vida. Eu havia saído da empresa onde trabalhei anteriormente e estava livre pra fazer o que quisesse do meu tempo. Eu tinha uma grana para me manter vivo e isso me proporcionou uma certa tranquilidade para fazer experiências e pensar com calma em meus próximos passos, mas também, precisava ganhar dinheiro logo. Eu mesmo me colocava num senso de urgência, porque é assim que funciono. Era o início do [Startup DEV](http://startupdev.com.br).
 
-<!-- more -->
+<!--more-->
 
 A opção mais sensata pra mim seria vender serviço de desenvolvimento de software sob demanda, pois era o que sabia fazer e que me daria dinheiro de imediato. Naquele momento, já tinha tomado uma decisão fundamental na minha vida:
 

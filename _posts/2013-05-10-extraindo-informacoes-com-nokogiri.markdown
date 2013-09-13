@@ -17,7 +17,7 @@ categories:
 Uma área de grande importância na computação é a extração de dados em sistemas web.
 Nesse post irei abordar o uso da _gem_ **Nokogiri** para coletar essas informações, processo também conhecido por _Web Scraping_. Foi através desse trabalho que o Google iniciou seu império e ainda, muitos outros cases de sucesso utilizam esta técnica para oferecer serviços.
 
-<!-- more -->
+<!--more-->
 
 **Nokogiri** é uma poderosa _gem_ que realiza parsing de HTML e XML. Uma importante característica é a habilidade de utilizar seletores XPath e CSS3 para encontrar os nós da árvore DOM desejados. Isso faz com que o processo seja muito mais legível, fácil de acompanhar e de manter.
 

@@ -16,7 +16,7 @@ categories:
 ---
 
 Dezembro está sendo um mês movimentado para a turma da [HE:Labs][he]. O mês começou com a ida ao [RUPY][rupy], evento focado em linguagems dinâmicas como Ruby, Python e JavaScript, que aconteceu em São José dos Campos e reuniu desenvolvedores de todo o Brasil.
-<!-- more -->
+<!--more-->
 A [RUPY][rupy] aconteceu nos dias 08 e 09 de Dezembro. [Eu(Rodrigo Pinto)][rp] e o [Sylvestre Mergulhão][sm], fomos reprensentar a empresa e falar sobre [PaaS - Plataform as a Service][paas]; Especificamente sobre o Heroku, dando uma visão de prós e contras baseado na experiência de já termos deployado mais de 35 apps no [StartupDEV][sdev] e mais de 50 apps durante o último 1 ano e meio de [HE:labs][he] utilizando o Heroku. No fim do primeiro dia rolou a HE:labs Party um happy hour dentro do evento regado a petiscos, refrigerantes e cervejas patrocinado por nós. \o/
 
 O evento contou com excelentes apresentações, entre elas, palestras como _"Usando o vagrant como ambiente de desenvolvimento Ruby"_ do [Nando Vieira][fn], _"Google App Engine, Python e Startups"_ com o [Renzo Nuccitelli][rn], e keynotes muito interessantes como _"De Smalltalk a Clojure"_ com [Ronaldo Ferraz][rf] e o [Fabio Akita][akt] fechando o evento falando sobre _"O que há de novo no Rails 4"_.

@@ -15,7 +15,7 @@ partes do produto sejam lançados e já tragam algum retorno enquanto
 o desenvolvimento continua. Pesquisas sugerem que 80% dos produtos
 desenvolvidos com metodologias ágeis chegaram antes ao mercado.
 
-<!-- more -->
+<!--more-->
 
 #2. Qualidade
 Um princípio fundamental do desenvolvimento ágil é que o teste está integrado

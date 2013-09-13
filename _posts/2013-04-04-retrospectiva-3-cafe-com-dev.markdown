@@ -13,7 +13,7 @@ categories:
 
 No dia 15, ocorreu o nosso terceiro Café com DEV. Júnior Carvalho, desenvolvedor de software e palestrante do dia, falou sobre notas fiscais eletrônicas(NF-e), DANFE e ICMS.
 
-<!-- more -->
+<!--more-->
 
 Durante o evento, Júnior  mostrou o efeito das notas fiscais eletrônicas e as obrigações do contribuinte brasileiro junto ao fisco. Também, citou que não há um sistema único específico, mas sim vários como a SINTEGRA ( Sistema integrado de informações sobre operações interestaduais com mercadorias e serviços. www.sintegra.gov.br), Sped Contábil (escrituração digital), Sped Fiscal (Escriturações de documentos fiscais e apuração de impostos) e o Sped de contribuições (escrituração da contribuição para o PIS e COFINS).
 

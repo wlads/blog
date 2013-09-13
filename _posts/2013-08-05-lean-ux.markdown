@@ -18,7 +18,7 @@ Hoje em dia com ciclos de desenvolvimento cada vez mais curtos, novos softwares 
 
 Dentro dessa nova perspectiva, vem surgindo os conceitos de Lean UX, onde através da combinação de metodologias e práticas do Len Startup e Design Thinking, os processos de projetos do design de experiencia tradicional são aplicados aos ciclos de desenvilvimento agil.
 
-<!-- more -->
+<!--more-->
 
 
 Ao invés de metodos em cascata, aonde o processo de design é fragmentado em várias etapas que atuam quase de forma independende cada uma, o processo é aplicado dentro da realidade de ciclos menores de trabalho, mais iterativos, e com feedbacks constantes entre todos os membros da equipe e também os usuários do produto.

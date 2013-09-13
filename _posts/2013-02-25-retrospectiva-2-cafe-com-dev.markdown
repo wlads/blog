@@ -14,7 +14,7 @@ categories:
 ---
 
 Na última sexta-feira, dia 22 de fevereiro, aconteceu a segunda edição do Café com DEV. O evento reuniu interessados em debater o tema "design, usabilidade e acabamento de software".
-<!-- more -->
+<!--more-->
 
 ![image](/images/posts/2-cafe-com-dev.jpg)
 

@@ -4,7 +4,7 @@ layout: post
 title: "Retrospectiva - 1° Café com DEV"
 date: 2013-02-05 09:30
 comments: true
-categories: 
+categories:
   - pedro marins
   - cafe com dev
   - produtividade
@@ -13,7 +13,7 @@ categories:
 ---
 
 Aconteceu na sexta-feira dia 01/02 o primeiro Café com DEV da HE:labs! O objetivo do encontro é reunir interessados e debater sobre um tema específico. Nesta primeira edição o tema do encontro foi produtividade e os aplicativos que nos ajudam a aumentá-la. Batemos um papo sobre o que usamos e como usamos essas ferramentas para aumentar nossa produtividade.
-<!-- more -->
+<!--more-->
 
 ![image](/images/posts/cafe-com-dev-1.jpg)
 

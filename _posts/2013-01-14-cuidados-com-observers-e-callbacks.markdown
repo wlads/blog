@@ -13,7 +13,7 @@ categories:
 ---
 
 Já foi divulgado que na versão __4 do Rails__ removerão o __Observer__ e ele deverá ser utilizado como uma gem. Analizei em alguns projetos a utilização dessa classe e as vezes encontro situações onde acredito que ela pode estar prejudicando mais do que colaborando com o projeto.
-<!-- more -->
+<!--more-->
 
 A grosso modo a utilização de Observer nada mais é do que uma extração de código dos callbacks. Ou seja, é necessário também muito cuidado ao ser utilizado para não exagerar na lógica que é colocada nela, já que isso pode gerar comportamentos não desejados da classe, além de aumentar a complexidade nos testes onde a gente acaba tendo que mockar/implementar funcionalidades extras do que realmente está querendo ser testado.
 

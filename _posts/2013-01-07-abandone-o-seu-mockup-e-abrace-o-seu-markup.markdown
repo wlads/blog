@@ -4,7 +4,7 @@ layout: post
 title: "Abandone o seu mockup e abrace o seu markup"
 date: 2013-01-07 17:43
 comments: true
-categories: 
+categories:
   - aluizio azevedo
   - design
   - frontend
@@ -14,7 +14,7 @@ categories:
 Uma das decisões que tomei há alguns meses atrás foi deixar um pouco de lado o Photoshop, e começar a aprimorar as minhas habilidades no design de interfaces usando HTML, CSS e JS.
 
 Isto tem me ajudado muito, conforme vou melhorando minhas skills de desenvolvimento front-end, mais coisas eu consigo criar diretamente no browser, sem me preocupar com a criação de layouts em softwares de edição de imagens, aumentando assim a minha produtividade.
-<!-- more -->
+<!--more-->
 
 Com o HTML5 e CSS3 isso tem se tornado cada vez mais relevante para a evolução dos meus projetos, me fazendo quebrar paradigmas no meu processo de trabalho, melhorando a qualidade final das interfaces projetadas e a experiência de uso dos produtos.
 

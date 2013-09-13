@@ -13,7 +13,7 @@ categories:
 
 
 Desde o [15 minutes blog](http://www.youtube.com/watch?v=Gzj723LkRJY) o rails tem evoluido bastante e novos conceitos foram introduzidos com o passar do tempo, um mantra que foi introduzido na comunidade foi o "Skinny Controller, Fat Model" que pode gerar uma confusão aos desenvolvedores novatos e alguns mais experientes também.
-<!-- more -->
+<!--more-->
 
 ### Fat model não necessariamente herda de ActiveRecord::Base
 

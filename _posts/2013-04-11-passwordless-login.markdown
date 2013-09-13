@@ -21,7 +21,7 @@ Neste post, vou mostrar como fazer uma aplicação permitir que o usuário faça
 
 Fazer login está se tornando uma tarefa complicada. Agora que temos muitos usuários acessando aplicações pelo smartphone, digitar a senha na telinha do telefone é complicado. Mesmo nas telas gigantes dos celulares da Samsung, é chato e ruim. Precisamos de uma maneira mais simples de fazê-lo.
 
-<!-- more -->
+<!--more-->
 
 Os usuários têm que lembrar seu username e senha para logarem. Mas muitas vezes não os lembram. E é aí que entra o “esqueci minha senha” e o usuário precisa abrir seu email e clicar no link para poder recuperar sua senha. Ou então para que a senha não seja esquecida eles usam: password, senha123 ou 123456.
 

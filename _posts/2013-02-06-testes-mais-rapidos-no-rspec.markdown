@@ -13,7 +13,7 @@ categories:
 ---
 
 Conforme um projeto vai crescendo, a quantidade de casos de teste aumenta e a tendência é que a suíte completa comece a demorar mais para rodar, principalmente se você está fazendo testes de aceitação. Isso pode virar um problema muito grave em projetos legados, mas existem soluções rápidas (a.k.a marretas) que resolvem esse problema. Vou mostrar neste post como fiz para **reduzir em mais de 70% o tempo de execução da suíte de testes** de um projeto.
-<!-- more -->
+<!--more-->
 
 Se você está começando um projeto novo, eu sugiro seguir as [recomendação do Nando Vieira](http://simplesideias.com.br/fazendo-os-seus-testes-executarem-mais-rapido), que incluem decisões de como escrever o código de forma limpa, e que não vão criar gargalos para os testes.
 

@@ -12,7 +12,7 @@ categories:
 ---
 
 Recentemente a [HE:labs][1] fechou parceria com a [CodeSchool][2] para trazer para o Brasil cursos online disponíveis na plataforma [CodeSchool][2] no formato  **presencial**. O primeiro workshop lançado é o [Rails for Zombies 2][rfz] e as inscrições já estão abertas.
-<!-- more -->
+<!--more-->
 
 Os cursos presenciais são formatados para que aluno possa tirar suas dúvidas diretamente com os instrutores, receber dicas e interagir com outras pessoas. De **bônus** iremos fazer uma pequena aplicação ao final do curso.
 

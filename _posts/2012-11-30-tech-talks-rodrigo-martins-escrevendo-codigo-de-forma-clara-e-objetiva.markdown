@@ -12,7 +12,7 @@ categories:
 ---
 
 Hoje rolou a segunda edição das Tech Talks da HE:labs! [Rodrigo Martins][2] avassalou comparando códigos bem escritos. Novamente a Tech Talk foi regada a pizza e refrigerante.
-<!-- more -->
+<!--more-->
 
 Ele começou contando um pouco de sua história e como se apaixonou pela filosofia do Ruby e sua foma simples de fazer código.
 

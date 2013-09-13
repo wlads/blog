@@ -20,7 +20,7 @@ A maioria das pessoas usam os mesmos dados de acesso (_access key_ e _secret acc
 
 Isso pode trazer alguns problemas para a aplicação...
 
-<!-- more -->
+<!--more-->
 Como:
 
 * Os dados de acesso ao bucket (e provavelmente à conta do AWS) estão presentes nos arquivos de configuração;

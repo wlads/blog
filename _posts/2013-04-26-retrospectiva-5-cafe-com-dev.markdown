@@ -12,11 +12,11 @@ categories:
 
 Mais uma vez aconteceu na sede da HE:labs da Cidade Maravilhosa, o nosso Café com DEV! O tema da vez foi Usabilidade e pensamento na era pós-pc. [Marcelo Pereira](https://twitter.com/indistinguivel) comandou a palestra e nos mostrou as evoluções das máquinas. E claro, tudo regado a Heineken e Redbull!
 
-<!-- more -->
+<!--more-->
 
 Marcelo contou sobre os três momentos da computação; o que os erros, como o "erro azul" do Windows significa, onde nenhuma das três opções fornecidas te salvam de reiniciar o pc; como a programação era precária, etc.
 
-Ele nos mostrou também a interação com as máquinas digitais: computadores como o da Xerox, que começaram a ter o formato diferente de monitores. O surgimento de Steve Jobs e a Apple, dentre outros. 
+Ele nos mostrou também a interação com as máquinas digitais: computadores como o da Xerox, que começaram a ter o formato diferente de monitores. O surgimento de Steve Jobs e a Apple, dentre outros.
 
 E ainda, as novas mídias, smartphones, multitouchs, tablets, e seus crescentes suportes. E por último, levantou questões sobre as formas de interação de amanhã e "como podemos nos preparar para elas?" que foram discutidas entre a galera.
 

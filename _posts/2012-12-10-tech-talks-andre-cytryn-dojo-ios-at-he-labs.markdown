@@ -15,7 +15,7 @@ categories:
 Mais uma sexta feira, mais um evento na HE:labs.
 
 Hoje foi dia de um Dojo em iOS comandado pelo [André Cytryn][2].
-<!-- more -->
+<!--more-->
 
 O problema que tinhamos que resolver era:
 

@@ -11,7 +11,7 @@ categories:
 
 O [Startup DEV](http://startupdev.com.br) é um modelo de desenvolvimento bastante fora do padrão do mercado. Afinal, são dois dias e no final sai um produto funcional. Esses dois dias proporcionam experiências e aprendizados importantes. Vou listar alguns pontos neste post.
 
-<!-- more -->
+<!--more-->
 
 ### *Desenhar é muito importante!*
 Após conversamos com o cliente e captar a ideia do projeto, partimos para fazer os desenhos na folha de papel. Desenhamos todas as telas e os fluxos do sistema da forma que imaginamos que ele deva ser. Disposição dos elementos, textos, mensagens. Isso ajuda em dois pontos: procurar soluções simples e transmitir a ideia para os outros membros da equipe e para o cliente.

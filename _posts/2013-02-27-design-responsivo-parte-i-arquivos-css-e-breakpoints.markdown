@@ -17,7 +17,7 @@ Irei a partir de hoje lançar uma série de posts com minhas considerações a r
 
 Ao projetar uma interface Web responsiva (otimizada para *Tablets*, Celulares, TVs, Geladeiras e Carros), primeiramente defino os *breakpoints*, ou seja, defino os pontos de “quebra” do layout (resoluções de agentes de usuários) e através de *Media Queries (*CSS*3)* seto o comportamento desejado para cada uma das resoluções que gostaria de considerar no meu projeto.
 
-<!-- more -->
+<!--more-->
 
 Em “90%” dos casos, a solução a seguir atendeu muito bem minhas necessidades. Em primeiro lugar divido meus arquivos *CSS* da seguinte forma:
 

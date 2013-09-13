@@ -10,7 +10,7 @@ categories:
   - front-end
   - ferramentas
   - processos
-  
+
 ---
 
 
@@ -18,7 +18,7 @@ Quando se projeta interfaces para aplicações web diariamente, uma das coisas m
 
 Nesse post, irei listar algumas ferramentas que eu uso no meu dia a dia. E que agilizam o design e desenvolvimento Front-end.
 
-<!-- more -->
+<!--more-->
 
 
 

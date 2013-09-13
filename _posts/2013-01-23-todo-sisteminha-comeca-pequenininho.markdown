@@ -18,7 +18,7 @@ Com uma folha A4 em mãos, ela nos mostrou todas funcionalidades descritas em um
 * Login com Facebook
 * etc...
 
-<!-- more -->
+<!--more-->
 
 Ela me explicou todas funcionalidades e disse que aquela proposta foi orçada por 2 empresas, uma prometeu o sistema em 3 meses e a outra empresa disse que desenvolveria em 12 meses.
 

@@ -16,7 +16,7 @@ categories:
 O conceito de "Decide as late as possible" faz parte de um dos princípios ["Lean"][1] e consiste em prorrogar decisões até o momento em que elas são realmente necessárias.
 
 __Mas quanto antes eu tomar minhas decisões melhor, não?__
-<!-- more -->
+<!--more-->
 
 Salvo algumas exceções durante minha carreira como desenvolvedor, eu responderia que não. Como já diria [Eric Ries][2]: "Startups are designed to confront situations of extreme uncertainty". Isso nos diz que uma startup está sujeita a mudanças a cada ciclo de aprendizado e tomar decisões precoces que engessam uma solução podem ser vitais para sua empresa. Ao invés disso, devemos criar soluções flexíveis para que possamos mudar posteriormente caso necessário. E acredite em mim, será necessário. Quanto mais você evitar uma decisão até o momento que ela for realmente necessária, mais informações você terá para poder embasar essa escolha.
 

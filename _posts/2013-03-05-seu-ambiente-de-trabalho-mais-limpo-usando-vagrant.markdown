@@ -15,7 +15,7 @@ categories:
 ---
 
 Cada projeto tem suas peculiaridades. Alguns precisam apenas de um [banco de dados][postgresql] para rodar e outros precisam de uma série de serviços adicionais como [redis][] ou [sphinx][]. Instalar todos esses serviços diretamente no sistema operacional é uma opção, mas com o tempo a [erosão][software_erosion] atua e por muitas vezes os serviços ou o próprio sistema começam a apresentar problemas.
-<!-- more -->
+<!--more-->
 
 ### Os serviços e o sistema sofrem erosão
 

@@ -20,7 +20,7 @@ Javascript é uma ótima linguagem. Ela passou a ser usada e respeitada cada vez
 
 Mas alguém teve uma ideia: E se colocarmos essa linguagem, que somente fica no Front-end, no sever-side? Surgiu o **Node.js**.
 
-<!-- more -->
+<!--more-->
 **Node.js** surgiu numa época chamada de revolução do Javascript. Ficou extremamente popular e agora o temos em todos os lugares.
 
 Mas o Javascript, apesar de tudo, não é uma linguagem divertida. E isso é quase um consenso.

@@ -4,18 +4,18 @@ layout: post
 title: "Estimar é colocar o peso ideal de trabalho em cada iteração"
 date: 2013-04-11 11:00
 comments: true
-categories: 
+categories:
   - desenvolvimento agil
   - eduardo fiorezi
   - estimativas
   - sprint
-  
+
 ---
 ![http://www.flickr.com/photos/mermadon_1967/3682014732/sizes/l/in/photostream/](/images/posts/2013-04-12-estimar-e-colocar-o-peso-ideal-de-trabalho-em-cada-sprint.jpg)
 
 Imagine a seguinte situação: você pretende escalar uma montanha, bem difícil e perigosa, e deve levar apenas uma mochila. Neste caso, você levaria uma mochila pesada ou uma leve?
 
-<!-- more -->
+<!--more-->
 
 Agora imagine que essa montanha difícil é um produto de software que você quer criar e empreender. Sabemos o quanto é dificil criar um sistema e fazê-lo virar um sucesso. Quantas pessoas no mundo conseguem alcançar o objetivo de escalar uma grande montanha ou criar um reconhecido software?
 
