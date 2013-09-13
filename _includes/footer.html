@@ -10,44 +10,17 @@
   </div>
 
   <div id="foooter-content" class="container">
-    <div class="column">
-      <h3>Últimos Posts</h3>
-      <ul>
-        <li><a href="#">Melhorando o Email Activity do SendGrid</a></li>
-        <li><a href="#">Um pouco sobre Lean UX</a></li>
-        <li><a href="#">Como colaborar com projetos open-source</a></li>
-        <li><a href="#">Retrospectiva Café com DEV HE:Rio 12/07 </a></li>
-      </ul>
-    </div>
-
-    <div class="column">
-      <h3>GitHub Repos</h3>
-      <ul>
-        <li><a href="#">startupdev.github.com <span>Startup DEV Website</span></a></li>
-        <li><a href="#">pah<span>Command line interface to generate rails apps used at HE:labs.</span> </a></li>
-        <li><a href="#">acts_as_hashed<span>acts_as_hashed makes it easier to create unique non-discoverable URIs and all other sorts of uuid you may need in your app.</span> </a></li>
-      </ul>
-    </div>
-
-    <div class="column">
-      <h3>Últimos Tweets</h3>
-      <ul>
-        <li><a href="#">Lorem ipsum dolor sit amet, consectetur</a> </li>
-        <li><a href="#">Lorem ipsum dolor sit amet, consectetur</a></li>
-        <li><a href="#">Lorem ipsum dolor sit amet, consectetur</a></li>
-        <li><a href="#">Lorem ipsum dolor sit amet, consectetur</a></li>
-      </ul>
-    </div>
-
     <div class="copyright">
       Copyright &copy; {{ site.time | date: "%Y" }} - {{ site.author }}
     </div>
   </div>
 </footer>
 
-<!-- {% include footer_scripts/disqus.html %}
+<!-- JS -->
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/main.js"></script>
+
+{% include footer_scripts/disqus.html %}
 {% include footer_scripts/facebook_like.html %}
 {% include footer_scripts/google_plus_one.html %}
 {% include footer_scripts/twitter_sharing.html %}
-{% include footer_scripts/others.html %}
- -->
