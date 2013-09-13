@@ -1,0 +1,23 @@
+#pagination {
+  padding: 20px 0;
+  text-align: center;
+
+  a {
+    color: #777;
+    font-size: 12px;
+  }
+
+  .prev-page, .next-page {
+    position: absolute;
+    top: 0;
+  }
+
+  .prev-page {
+    left: 0;
+  }
+
+  .next-page {
+    right: 0;
+  }
+
+}

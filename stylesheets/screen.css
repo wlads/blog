@@ -1,0 +1,291 @@
+/* line 17, ../../../.rvm/gems/ruby-2.0.0-p195@teamblog2013/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../.rvm/gems/ruby-2.0.0-p195@teamblog2013/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../.rvm/gems/ruby-2.0.0-p195@teamblog2013/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../.rvm/gems/ruby-2.0.0-p195@teamblog2013/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../.rvm/gems/ruby-2.0.0-p195@teamblog2013/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../.rvm/gems/ruby-2.0.0-p195@teamblog2013/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../.rvm/gems/ruby-2.0.0-p195@teamblog2013/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../.rvm/gems/ruby-2.0.0-p195@teamblog2013/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../.rvm/gems/ruby-2.0.0-p195@teamblog2013/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 1, ../sass/core/_main.scss */
+.container {
+  width: 960px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* line 7, ../sass/core/_main.scss */
+body {
+  font-family: lato,Helvetica, Arial,sans-serif;
+}
+
+/* line 11, ../sass/core/_main.scss */
+a {
+  color: #B72124;
+  text-decoration: none;
+}
+/* line 15, ../sass/core/_main.scss */
+a:hover {
+  text-decoration: underline;
+}
+
+/* line 1, ../sass/modules/_header.scss */
+#main-header {
+  background: #fff;
+  padding: 20px 0;
+  border-top: 4px solid #B72124;
+}
+
+/* line 1, ../sass/modules/_footer.scss */
+#footer {
+  clear: both;
+  background-color: #CA0003;
+  border-top: 1px solid #F8F8F8;
+  border-bottom: 4px solid #B72124;
+  text-align: center;
+  width: 100%;
+}
+/* line 9, ../sass/modules/_footer.scss */
+#footer .column {
+  color: #F98576;
+  font-weight: 100;
+  padding: 1em;
+  text-align: left;
+  width: 30%;
+  float: left;
+  margin-top: 20px;
+}
+/* line 19, ../sass/modules/_footer.scss */
+#footer .container {
+  overflow: hidden;
+}
+/* line 22, ../sass/modules/_footer.scss */
+#footer .container h3 {
+  color: #FFF;
+  font-weight: 300;
+  margin-bottom: 0.5em;
+  text-shadow: 1px 1px 2px #000;
+}
+/* line 29, ../sass/modules/_footer.scss */
+#footer .container li {
+  list-style: url("/images/arrow.jpg") disc inside;
+  line-height: 2.1;
+  font-size: 0.8em;
+}
+/* line 35, ../sass/modules/_footer.scss */
+#footer .container a {
+  color: #fff;
+}
+
+/* line 41, ../sass/modules/_footer.scss */
+#footer-social-links {
+  overflow: hidden;
+  width: 100%;
+  height: 70px;
+  background: url("/images/footer.jpg");
+  border-bottom: 1px solid #FFF;
+}
+/* line 48, ../sass/modules/_footer.scss */
+#footer-social-links a {
+  display: block;
+  float: left;
+  height: 40px;
+  margin-top: 12px;
+  overflow: hidden;
+  text-indent: 200px;
+  width: 50px;
+}
+/* line 58, ../sass/modules/_footer.scss */
+#footer-social-links .github {
+  background: url("/images/social_01.png") no-repeat center center;
+}
+/* line 62, ../sass/modules/_footer.scss */
+#footer-social-links .twitter {
+  background: url("/images/social_02.png") no-repeat center center;
+}
+/* line 66, ../sass/modules/_footer.scss */
+#footer-social-links .facebook {
+  background: url("/images/social_03.png") no-repeat center center;
+}
+/* line 70, ../sass/modules/_footer.scss */
+#footer-social-links .rss {
+  background: url("/images/social_04.png") no-repeat center center;
+}
+
+/* line 75, ../sass/modules/_footer.scss */
+.copyright {
+  clear: both;
+  text-align: center;
+  margin: 10px 0;
+  font-size: 11px;
+}
+
+/* line 1, ../sass/modules/_static_background.scss */
+#static-background {
+  overflow: hidden;
+  height: 330px;
+  width: 100%;
+  position: relative;
+}
+
+/* line 8, ../sass/modules/_static_background.scss */
+#static-image {
+  position: relative;
+  background: url("/images/test.jpg") 50% center no-repeat fixed;
+  background-size: cover;
+  z-index: 3;
+  height: 340px;
+  width: 100%;
+  margin-top: -5px;
+  transition: all 0.5s;
+}
+
+/* line 19, ../sass/modules/_static_background.scss */
+#static-image:after {
+  content: " ";
+  background: rgba(218, 43, 39, 0.3);
+  height: 340px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+}
+
+/* line 1, ../sass/modules/_post.scss */
+#posts-list {
+  background: #f6f6f6;
+}
+
+/* line 5, ../sass/modules/_post.scss */
+.post {
+  position: relative;
+}
+/* line 8, ../sass/modules/_post.scss */
+.post:first-child {
+  margin-top: -170px;
+  z-index: 10;
+  background: none !important;
+}
+/* line 13, ../sass/modules/_post.scss */
+.post:first-child .container {
+  padding: 40px 25px 25px;
+  background: #fff;
+  -webkit-box-shadow: 0px 3px 2px rgba(50, 50, 50, 0.25);
+  -moz-box-shadow: 0px 3px 2px rgba(50, 50, 50, 0.25);
+  box-shadow: 0px 3px 2px rgba(50, 50, 50, 0.25);
+}
+/* line 22, ../sass/modules/_post.scss */
+.post .container {
+  padding: 60px 40px 25px;
+}
+/* line 27, ../sass/modules/_post.scss */
+.post .post-header .author-info {
+  margin-bottom: 10px;
+  font-size: 11px;
+}
+/* line 32, ../sass/modules/_post.scss */
+.post .post-header .author-name {
+  font-weight: bold;
+}
+/* line 36, ../sass/modules/_post.scss */
+.post .post-header .post-title a {
+  font-size: 30px;
+  margin-bottom: 10px;
+  display: block;
+  font-weight: bold;
+  color: #B72124;
+  text-decoration: none;
+}
+/* line 46, ../sass/modules/_post.scss */
+.post .post-excerpt {
+  font-size: 18px;
+  line-height: 28px;
+}
+/* line 51, ../sass/modules/_post.scss */
+.post .post-date {
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+  margin-top: 20px;
+}
+
+/* line 1, ../sass/modules/_pagination.scss */
+#pagination {
+  padding: 20px 0;
+  text-align: center;
+}
+/* line 5, ../sass/modules/_pagination.scss */
+#pagination a {
+  color: #777;
+  font-size: 12px;
+}
+/* line 10, ../sass/modules/_pagination.scss */
+#pagination .prev-page, #pagination .next-page {
+  position: absolute;
+  top: 0;
+}
+/* line 15, ../sass/modules/_pagination.scss */
+#pagination .prev-page {
+  left: 0;
+}
+/* line 19, ../sass/modules/_pagination.scss */
+#pagination .next-page {
+  right: 0;
+}

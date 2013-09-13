@@ -1,0 +1,80 @@
+#footer {
+  clear: both;
+  background-color: #CA0003;
+  border-top: 1px solid #F8F8F8;
+  border-bottom: 4px solid #B72124;
+  text-align: center;
+  width: 100%;
+
+  .column {
+    color: #F98576;
+    font-weight: 100;
+    padding: 1em;
+    text-align: left;
+    width: 30%;
+    float: left;
+    margin-top: 20px;
+  }
+
+  .container {
+    overflow: hidden;
+
+    h3 {
+      color: #FFF;
+      font-weight: 300;
+      margin-bottom: 0.5em;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    li {
+      list-style: url('/images/arrow.jpg') disc inside;
+      line-height: 2.1;
+      font-size: 0.8em;
+    }
+
+    a {
+      color: #fff;
+    }
+  }
+}
+
+#footer-social-links {
+  overflow: hidden;
+  width: 100%;
+  height: 70px;
+  background: url('/images/footer.jpg');
+  border-bottom: 1px solid #FFF;
+
+  a {
+    display: block;
+    float: left;
+    height: 40px;
+    margin-top: 12px;
+    overflow: hidden;
+    text-indent: 200px;
+    width: 50px;
+  }
+
+  .github {
+    background: url('/images/social_01.png') no-repeat center center;
+  }
+
+  .twitter {
+    background: url('/images/social_02.png') no-repeat center center;
+  }
+
+  .facebook {
+    background: url('/images/social_03.png') no-repeat center center;
+  }
+
+  .rss {
+    background: url('/images/social_04.png') no-repeat center center;
+  }
+}
+
+.copyright {
+  clear: both;
+  text-align: center;
+  margin: 10px 0;
+  font-size: 11px;
+}
