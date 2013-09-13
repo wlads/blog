@@ -26,6 +26,13 @@
   .post-excerpt {
     font-size: 18px;
     line-height: 28px;
+
+    p img {
+      max-width: 30%;
+      margin: 0 auto 15px auto;
+      display: block;
+      height: auto;
+    }
   }
 
   .post-date {
