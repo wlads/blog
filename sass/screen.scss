@@ -1,6 +1,5 @@
 @import "compass/reset";
-
-// Core
+@import "bourbon/bourbon";
 @import "core/main";
 
 // Modules
@@ -9,3 +8,5 @@
 @import "modules/static_background";
 @import "modules/post";
 @import "modules/pagination";
+@import "modules/full_post";
+@import "modules/syntax";
