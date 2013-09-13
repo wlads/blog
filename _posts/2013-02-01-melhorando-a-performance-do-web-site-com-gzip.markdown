@@ -9,7 +9,7 @@ categories:
   - performance
   - http compression
   - gzip
-  
+
 ---
 
 O tempo inteiro chovem dicas de performance pela internet. É bem difícil filtrar tudo que aparece e saber o que realmente importa, o que realmente dá resultado, e mais ainda, o que é fácil de se fazer. Não adianta uma solução mirabolante, em que para ganhar 1 milisegundo tenhamos que envolver toda a equipe de um projeto e consumir um sprint inteiro.
@@ -24,14 +24,14 @@ Assistindo uma palestra do [Chris Coyier](https://twitter.com/chriscoyier), fiqu
 
 O objetivo desse post, é explicar como usar o gzip para que os arquivos do seu website sejam comprimidos e fornecidos ao browser quando receber uma requisição. Uma dica simples, mas de altíssimo impacto. _Comprimir_ os arquivos reduz o tempo de transferência de arquivos em **70%** em media.
 
-O primeiro passo para ativar a compressão de HTTP é conferir se o seu projeto já está comprimido. Você pode testar a sua url nesse site: 
+O primeiro passo para ativar a compressão de HTTP é conferir se o seu projeto já está comprimido. Você pode testar a sua url nesse site:
 __[http://gzipwtf.com/](http://gzipwtf.com/)__
 
 Se já tiver comprimido seu trabalho já está feito. Se foi alguem da sua equipe, descubra e dê os parabéns, se não foi, a compressão pode ter sido feita pelo serviço de hospedagem que você está usando, por exemplo. Sei que o [Heroku](http://heroku.com), o serviço que usamos para hospedar os 40+ projetos internos e de clientes aqui na [HE:labs](http://helabs.com.br) já faz isso automáticamente, por exemplo.
 
-Se você constatou que no seu projeto os arquivos não estão comprimidos, a única coisa que precisa fazer é colar esse código no ```.htaccess``` se você usar o Apache. 
+Se você constatou que no seu projeto os arquivos não estão comprimidos, a única coisa que precisa fazer é colar esse código no {% highlight ruby linenos %}.htaccess{% endhighlight %} se você usar o Apache.
 
-```
+{% highlight ruby linenos %}
 # ----------------------------------------------------------------------
 # Gzip compression
 # ----------------------------------------------------------------------
@@ -70,13 +70,13 @@ Se você constatou que no seu projeto os arquivos não estão comprimidos, a ún
   </IfModule>
 
 </IfModule>
-```
+{% endhighlight %}
 
 Simples assim!
 
 Com esse código, a compressão já está habilitada e os arquivos do seu site estarão carregando ridiculamente mais **rápido**.
 
-Esse conteúdo foi retirado do ```.htaccess``` do HTML5 Boilerplate, que além de ser um excelente boilerplate para iniciar o seu projeto, é um repositório enorme de excelentes dicas e boas práticas.
+Esse conteúdo foi retirado do {% highlight ruby linenos %}.htaccess{% endhighlight %} do HTML5 Boilerplate, que além de ser um excelente boilerplate para iniciar o seu projeto, é um repositório enorme de excelentes dicas e boas práticas.
 
 Espero que essa dica seja útil para você! Em breve postarei outras dicas simples e efetivas.
 

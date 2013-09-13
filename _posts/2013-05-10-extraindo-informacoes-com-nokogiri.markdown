@@ -30,7 +30,7 @@ Seletores são padrões que indicam uma parte do código HTML, como se fossem en
 O código abaixo será usado pra exemplificar os seletores:
 
 
-```html cinemas.html
+{% highlight html linenos %}
 <div class="theater">
   <div class="desc">
     <h2 class="name">Kinoplex Shopping Tijuca</h2>
@@ -41,7 +41,7 @@ O código abaixo será usado pra exemplificar os seletores:
     <h2 class="name">Iguatemi</h2>
   </div>
 </div>
-```
+{% endhighlight %}
 
 ### XPath
 O seletor XPath se baseia na árvore DOM para encontrar os nós. DOM é a estrutura que representa a organização dos elementos HTML e XML.
@@ -49,7 +49,7 @@ O caminho do XPath é fácil de ser encontrado e substituído, mas você pode te
 
 A seleção dos nomes dos cinemas acima é feita da seguinte forma:
 
-```ruby
+{% highlight ruby linenos %}
 require 'open-uri'
 require 'nokogiri'
 
@@ -57,7 +57,7 @@ doc = Nokogiri::HTML(File.open("cinemas.html"))
 doc.xpath('//div[@class="desc"]/h2[@class="name"]').each do |node|
   puts node.text
 end
-```
+{% endhighlight %}
 
 Este exemplo deve exibir "Kinoplex Shopping Tijuca" e "Iguatemi".
 
@@ -69,7 +69,7 @@ O seletor CSS do **Nokogiri** é o mesmo utilizado no jQuery. São verificadas, 
 
 O exemplo abaixo retorna a mesma informação do código que utiliza xpath.
 
-```ruby
+{% highlight ruby linenos %}
 require 'open-uri'
 require 'nokogiri'
 
@@ -77,14 +77,14 @@ doc = Nokogiri::HTML(File.open("cinemas.html"))
 doc.css('.desc > h2.name').each do |node|
   puts node.text
 end
-```
+{% endhighlight %}
 
 
 # Exemplo
 
 Pra colocar em prática o que foi visto até aqui, fiz esse exemplo para listar os integrantes da HE:Labs e suas respectivas posições na empresa:
 
-```ruby
+{% highlight ruby linenos %}
 require 'open-uri'
 require 'nokogiri'
 
@@ -102,25 +102,25 @@ doc = Nokogiri::HTML(open("http://helabs.com.br/nossotime/"))
 doc.xpath('//*[@id="time"]/div/ul/li/p').each do |node|
   puts Avassalador.new(node)
 end
-```
+{% endhighlight %}
 
 Além dos elementos serem iteráveis, pode-se utilizar a API para navegar pelos nós da estrutura. Esta API pode ser utilizada para nós extraidos por XPath e CSS. Os métodos são:
 
-```ruby
+{% highlight ruby linenos %}
 node.parent           #=> nó pai. (Sobe um nível na árvore)
 node.children         #=> nós filhos. (Desce um nível na árvore)
 node.next_sibling     #=> próximo irmão. (Seleciona o próximo elemento no mesmo nível)
 node.previous_sibling #=> irmão anterior. (Volta um elemento no mesmo nível)
-```
+{% endhighlight %}
 
 # Legalidade
 Não é permitido publicar conteúdo na íntegra sem permissão. Se houver permissão, a fonte deve ser citada. Em 2005, o Google News foi processado por publicar conteúdo da [AFP](http://www.afp.com/) sem permissão. Para realizar análise de informações, a questão de direitos autorais pode ser parcialmente ignorada. Exemplo disso é o PageRank do Google que analisa o conteúdo das páginas, avalia sua relevância, mas não os reproduz.
 
 Deve-se, também, respeitar as instruções do robots.txt. Nele, o scraper não pode acessar nada dentro do caminho /tmp/. :
-```
+{% highlight ruby linenos %}
 User-agent: *
 Disallow: /tmp/
-```
+{% endhighlight %}
 
 É possível definir regras para User-agents específicos como o bot do Google. Clique para [informações complementares](http://www.robotstxt.org/robotstxt.html).
 

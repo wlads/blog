@@ -25,13 +25,13 @@ Porém, quando fazemos um loop em uma collection gigantesca com o Identity Map h
 
 Então a solução pra esse problema é bem simples: você não precisa desabilitar o Identity Map globalmente na sua aplicação nem nada, basta desabilita-lo antes de fazer um grande loop na sua aplicação. No Mongoid ficaria assim:
 
-```ruby
+{% highlight ruby linenos %}
 	Mongoid.unit_of_work(disable: :all) do
 		Jogo.only(:jogos_relacionados, :nome, :genero, :plataforma).asc(:plataforma, :nome)	.each do |jogo|
     		jogo.popula_jogos_relacionados
 		end
 	end
-```
+{% endhighlight %}
 
 A primeira linha serve justamente para desabilitar o Identity Map em tudo que ocorrer dentro do bloco interno. Outra dica ao fazer loops em grandes coleções é puxar da collection apenas os campos que serão usados no loop, com o Mongoid isso é feito através do 'only' e do 'without'.
 

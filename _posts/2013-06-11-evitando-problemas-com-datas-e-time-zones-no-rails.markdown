@@ -9,7 +9,7 @@ categories:
   - time zone
   - data
   - hora
-  
+
 ---
 Volta e meia passo por alguns **problemas com time zones no Rails**. Hoje, demonstrarei algumas dicas para evitá-los:
 <!-- more -->
@@ -25,16 +25,16 @@ O problema é que o Rails tem métodos que retornam a data em UTC 0 e outros, de
 Porém, a **boa notícia** é que você pode seguir essa cheat sheet sempre que for trabalhar com time zones para não ter problemas e rapidamente irá decorar quais métodos devem ou não ser usados.
 
 ## Não use
-```ruby
+{% highlight ruby linenos %}
   Time.now # => Retorna o horário do sistema e ignora a time zone do projeto.
   Time.parse("2012-03-02 16:05:37") # => Irá assumir que a string recebida tá na time zone do sistema.
   Time.strptime(time_string, '%Y-%m-%dT%H:%M:%S%z') # Mesmo problema do Time.parse.
   Date.today # Pode ser ontem ou amanhã de acordo com a time zona setada na máquina.
   Date.today.to_time # => # Também não segue a time zone do projeto.
-```
+{% endhighlight %}
 
 ## Use
-```ruby
+{% highlight ruby linenos %}
   2.hours.ago # => Fri, 02 Mar 2012 20:04:47 UTC -03:00
   1.day.from_now # => Fri, 03 Mar 2012 22:04:47 UTC -03:00
   Date.today.to_time_in_current_zone # => Fri, 02 Mar 2012 22:04:47 UTC -03:00
@@ -45,7 +45,7 @@ Porém, a **boa notícia** é que você pode seguir essa cheat sheet sempre que 
   Time.zone.today # Se você não pode usar Time ou DateTime.
   Time.zone.now.utc.iso8601 # Quando for trabalhar com APIs.
   Time.strptime(time_string, '%Y-%m-%dT%H:%M:%S%z').in_time_zone(Time.zone) # Se não pode usar Time.pars
-```
+{% endhighlight %}
 
 Outra dica que recomendo é sempre escrever testes com horários limites. Exemplo: se quero uma query com os itens da semana passada, crio documentos no banco com domingo 23:59 e segunda 00:01, justamente para ter certeza de que não teremos problemas com time zone em lugar algum.
 

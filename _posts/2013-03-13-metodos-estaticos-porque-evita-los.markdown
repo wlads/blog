@@ -13,7 +13,7 @@ Aparentemente existe na cultura de alguns desenvolvedores uma certa convenção 
 Diga-se que uma API está sendo feita, e é preciso retornar os usuários novos em um JSON bem específico às características da aplicação. Segue um exemplo, extraído de um projeto real:
 <!-- more -->
 
-```ruby
+{% highlight ruby linenos %}
 class User < ActiveRecord::Base
   # ...
   def self.last_users_since(time)
@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   end
   # ...
 end
-```
+{% endhighlight %}
 
 Da forma como se encontra, temos alguns problemas:
 
@@ -41,7 +41,7 @@ Só que software é uma coisa que muda constantemente, e o cliente resolveu alte
 
 Altera-se o método para a nova necessidade:
 
-```ruby
+{% highlight ruby linenos %}
 class User < ActiveRecord::Base
   # ...
   def self.sync_unsynchronized_users
@@ -55,9 +55,9 @@ class User < ActiveRecord::Base
   end
   # ...
 end
-```
+{% endhighlight %}
 
-Todos os problemas ainda existem e dificilmente serão resolvidos se mantermos o método estático. 
+Todos os problemas ainda existem e dificilmente serão resolvidos se mantermos o método estático.
 
 E o pior de tudo: Mesmo com a introdução acima, a implementação é um pouco confusa. Imagine daqui há 2 meses quando algum desenvolvedor (ou até mesmo o próprio que escreveu) tiver que pegar esse código pra entender. Ainda que seja perfeitamente possível que se compreenda como o mesmo funciona, um método estático não declara intenção, os testes normalmente não são tão claros quanto se gostaria, e introduzir qualquer nova funcionalidade traz uma certa insegurança.
 
@@ -71,7 +71,7 @@ Extrair um método complexo para uma classe é um dos refactors mais clássicos 
 
 O método acima extraído para uma classe ficaria assim:
 
-```ruby
+{% highlight ruby linenos %}
 class User < ActiveRecord::Base
   # ...
   def self.sync_unsynchronized_users
@@ -120,7 +120,7 @@ class UsersSyncer
       # método extraído de User
     end
 end
-```
+{% endhighlight %}
 
 Nota-se que o método estático ainda existe, mas somente como uma interface. Esse é um dos poucos casos em que se é aceitável a criação de métodos estáticos, já que é bem prático chamar `User.sync_unsynchronized_users`.
 

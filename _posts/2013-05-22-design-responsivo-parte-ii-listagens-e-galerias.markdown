@@ -10,7 +10,7 @@ categories:
   - design responsivo
   - mikael carrara
   - media queries
-  
+
 ---
 
 Na maioria dos contextos, uma parte considerável de uma interface Web é feita de listas. Pense num *e-commerce*, blog ou até mesmo numa *Job Board*. Seja lá o que for, as listas resolvem bem os nossos problemas e são parte fundamental do Web Design.
@@ -21,33 +21,33 @@ Irei agora demonstrar um pouco como podemos "brincar" com listas usando *Media Q
 
 Vamos criar uma listagem com a foto de oito pessoas:
 
-```html
+{% highlight html linenos %}
 <ul class="team-list">
     <li><img src="#" alt="Pessoa 01" /></li>
     ...
 </ul>
-```
+{% endhighlight %}
 
 Então, no CSS eu preciso setar a quantidade de ítens que eu quero por linha. Como são oito ítens no total, utilizaremos quatro por linha:
 
-```css
+{% highlight css linenos %}
 .team-list li {
     width:23%;
     margin:1% 1% 0 1%;
 }
-```
+{% endhighlight %}
 
 100% / 4 = 25%; menos 2% das margens left e right e 23% de largura pra cada ítem da lista. E agora em cada ítem, seto para que a imagem de dentro tenha sempre 100% de largura:
 
-```css
+{% highlight css linenos %}
 .team-list img {
     width:100%;
 }
-```
+{% endhighlight %}
 
 Agora, utilizarei um pouco as *Media Queries* para fazer a mágica acontecer:
 
-```css
+{% highlight css linenos %}
 @media (max-width:481px) {
 
 	.team-list li {
@@ -55,7 +55,7 @@ Agora, utilizarei um pouco as *Media Queries* para fazer a mágica acontecer:
 	}
 
 }
-```
+{% endhighlight %}
 
 Quando a lista é acessada de um dispositivo com largura máxima de **481px**, será exibido apenas dois ítens por linha. Use essa lógica para otimizar ao máximo sua lista em cada tipo de resolução.
 

@@ -11,7 +11,7 @@ categories:
   - Ruby
   - opal
   - opalrb
-  
+
 ---
 
 
@@ -34,8 +34,8 @@ Tudo mudou quando fiz um experimento simples e precisei de um parseador de ruby 
 Opal é um compilador de Ruby para Javascript. "Source-to-source" com uma performance igual ao js escrito nativamente. Segue um exemplo:
 
 
-```ruby
-module Fooable 
+{% highlight ruby linenos %}
+module Fooable
   def work?
     super
     puts "It works!"
@@ -45,7 +45,7 @@ end
 class BaseBar
   def work?
     puts "YEAH"
-  end  
+  end
 end
 
 class DoesIt < BaseBar
@@ -58,19 +58,19 @@ end
 does_it = DoesIt.new
 does_it.work?
 does_it.answer_me?
-```
+{% endhighlight %}
 
 Esse é um exemplo mostrando um pouco da capacidade do Opal em gerar código Javascript.
 Você pode testar esse código [bem aqui][code_example].
 
 É possivel chamar, facilmente, um código Javascript nativo e continuar programando como ruby:
 
-```ruby
+{% highlight ruby linenos %}
 class Light
 
   def self.init
     point_light = `new THREE.PointLight(0xF8D898);`
- 
+
     point_light.position.x = -1000
     point_light.position.y = 100
     point_light.position.z = 1000
@@ -80,12 +80,12 @@ class Light
   end
 
 end
-```
+{% endhighlight %}
 
 Além de me sentir totalmente confortável em escrever Javascript, me trouxe outra vantagem:
 Todo o código pode ser testado de uma maneira que estou acostumado a fazê-la:
 
-```ruby
+{% highlight ruby linenos %}
 describe Light do
 
   it 'should respond to init' do
@@ -108,7 +108,7 @@ describe Light do
   end
 
 end
-```
+{% endhighlight %}
 Caso tenha clicado no link para testar o código que informei acima, deve ter notado que o Javascript compilado é mostrado na janela da direita.
 Concordo que não é um Javascript bonito, mas é eficiente. E, atualmente, nunca vi um programador reclamar do codigo C que é gerado quando programa em Ruby. :).
 

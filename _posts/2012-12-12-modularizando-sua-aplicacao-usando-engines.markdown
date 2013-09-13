@@ -44,14 +44,14 @@ se encontra depois de um certo tempo.
 Essa é a parte mais fácil! Apesar de existir algumas formas diferentes
 de fazê-lo, eu prefiro criar sempre uma "full engine", usando o comando:
 
-```
+{% highlight ruby linenos %}
 rails plugin new nome_da_engine --full
-```
+{% endhighlight %}
 
 Isso permite a você criar uma classe disponível em todas
 as suas aplicações. Por exemplo:
 
-```ruby
+{% highlight ruby linenos %}
 #Na sua engine, em app/models/tweet_new_user.rb
 class TweetNewUser
   def initialize(user)
@@ -62,15 +62,15 @@ class TweetNewUser
    Twitter.update("Novo usuário criado! #{@user.username}")
   end
 end
-```
+{% endhighlight %}
 
-```ruby
+{% highlight ruby linenos %}
 #Na sua app, em app/model/user.rb
 after_create :tweet_about_me
 def tweet_about_me
   TweetNewUser.new(self).tweet!
 end
-```
+{% endhighlight %}
 
 It just works&trade;. Tudo que você criar dentro da Engine fica
 disponível na sua aplicação.

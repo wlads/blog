@@ -4,7 +4,7 @@ layout: post
 title: "Extraindo a responsabilidade de Fat Models com o uso de Decorators no Rails"
 date: 2013-01-28 10:30
 comments: true
-categories: 
+categories:
   - mauro george
   - decorator
   - model
@@ -21,7 +21,7 @@ Quando lemos o mantra pela primeira vez podemos ficar tentados a fazer algo que 
 
 Primeiro temos o código de enfileirar o envio de email no controller.
 
-```ruby
+{% highlight ruby linenos %}
 class PostsController < ApplicationController
 
   def create
@@ -35,21 +35,21 @@ class PostsController < ApplicationController
     end
   end
 end
-```
+{% endhighlight %}
 
 Refatorariamos para algo assim em nosso model Post.
 
-```ruby
+{% highlight ruby linenos %}
 class Post < ActiveRecord::Base
   after_save :notify_users
-  
+
   private
-    
+
     def notify_users
       NotifyMailer.delay.notify(self)
     end
 end
-```
+{% endhighlight %}
 
 Com certeza melhor que a solução anterior, mas agora o nosso model está sabendo demais. Além de fazer o seu papel em tratar as informações do banco de dados, agora também enfileira emails toda vez que é salvo. Ou seja, temos um problema de alto acoplamento, a operação de salvar sempre ativa o enfileiramento de envio de emails e com isso violamos o [SRP](http://en.wikipedia.org/wiki/Single_responsibility_principle).
 
@@ -63,24 +63,24 @@ Com certeza melhor que a solução anterior, mas agora o nosso model está saben
 
 Para deixar as coisas mais claras e com as responsabilidade melhores definidas podemos criar um [decorator](http://en.wikipedia.org/wiki/Decorator_pattern).
 
-```ruby
+{% highlight ruby linenos %}
 class PostNotifyUsers
-  
+
   def initialize(post)
     @post = post
   end
-  
+
   def save
     @post.save && notify_users
   end
-  
+
   private
-    
+
     def notify_users
       NotifyMailer.delay.notify(@post)
     end
 end
-```
+{% endhighlight %}
 
 No código acima criamos uma classe em Ruby pura, conhecida também como PORO (Plain Old Ruby Objects). E o papel desta classe é notificar os usuários de um post novo enfileirando o email. Com isso conseguimos:
 
@@ -90,7 +90,7 @@ No código acima criamos uma classe em Ruby pura, conhecida também como PORO (P
 
 Veja agora como ficaria o nosso controller usando o decorator que acabamos de criar:
 
-```ruby
+{% highlight ruby linenos %}
 class PostsController < ApplicationController
 
   def create
@@ -103,7 +103,7 @@ class PostsController < ApplicationController
     end
   end
 end
-```
+{% endhighlight %}
 
 Como pode ver ficou mais claro pois agora sei que nesta action eu salvo o post e notifico os usuários. Outra coisa legal é que o a nossa classe `PostNotifyUsers` [quacks](http://en.wikipedia.org/wiki/Duck_typing) como `User` sendo assim podemos continuar usando o `#save` só que agora do `PostNotifyUsers` em nosso controller.
 

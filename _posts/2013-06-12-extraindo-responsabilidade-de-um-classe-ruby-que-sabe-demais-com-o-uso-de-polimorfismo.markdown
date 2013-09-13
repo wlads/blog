@@ -10,16 +10,16 @@ categories:
   - decorator
   - model
   - rails
-  
+
 ---
 
 Já falei anteriormente um pouco sobre o uso do pattern decorator no rails [neste link](http://helabs.com.br/blog/2013/01/28/extraindo-a-responsabilidade-de-fat-models-com-o-uso-de-decorators/). Em algum momento a lógica pode ser tão complexa que quebraríamos os decorators em _decorators especializados_.
 
 <!--more-->
 
-Vamos a um exemplo: dado um `PostDecorator` com apenas um método público `show`, responsável por exibir um post, podemos reduzir a sua complexidade e manter a responsabilidade única de cada classe, baseando-se no tipo de status. Mas como? 
+Vamos a um exemplo: dado um `PostDecorator` com apenas um método público `show`, responsável por exibir um post, podemos reduzir a sua complexidade e manter a responsabilidade única de cada classe, baseando-se no tipo de status. Mas como?
 
-```ruby
+{% highlight ruby linenos %}
 class PostDecorator
 
   def initialize(post)
@@ -38,11 +38,11 @@ class PostDecorator
 
     attr_reader :post
 end
-```
+{% endhighlight %}
 
 O primeiro passo que poderíamos fazer seria extrair a lógica de cada um dos status para classes especializadas, delegando as responsabilidades. Exemplo:
 
-```ruby
+{% highlight ruby linenos %}
 class PostDecorator
 
   def initialize(post)
@@ -69,7 +69,7 @@ end
 class PostPublishedDecorator
 # ... lógica de published aqui
 end
-```
+{% endhighlight %}
 
 Agora ficou melhor, já que a responsabilidade foi dividida.
 
@@ -77,7 +77,7 @@ Um outro pequeno refactory que poderíamos fazer é melhorar essa verificação 
 
 E assim, encapsulamos a lógica de `#draft?` e `#published?`, pois se a complexidade aumentar, teremos que mudar N contextos que fazem a verificação de tal lógica. Como agora elas estão encapsuladas, caso a lógica mude, teremos que alterar apenas no model.
 
-```ruby
+{% highlight ruby linenos %}
 class PostDecorator
 
   def initialize(post)
@@ -96,7 +96,7 @@ class PostDecorator
 
     attr_reader :post
 end
-```
+{% endhighlight %}
 
 Para evitarmos criar todos estes métodos na mão, podemos utilizar a _gem_ [Jacaranda](https://github.com/maurogeorge/jacaranda) que foi a minha primeira gem ;)
 
@@ -106,7 +106,7 @@ Mas ainda não é o melhor que podemos fazer para este caso. Vamos agora ao uso 
 
 Podemos usar _polimorfismo_ para, dependendo do status do post, instanciar e utilizar o decorator correto.
 
-```ruby
+{% highlight ruby linenos %}
 class PostDecorator
 
   def initialize(post)
@@ -125,14 +125,14 @@ class PostDecorator
       "Post#{post.status.capitalize}Decorator".constantize
     end
 end
-```
+{% endhighlight %}
 
 Como pode-se notar, criamos o método `post_decorator` que retorna a classe correta. Em seguida, instanciamos ela e chamamos o método `show` na classe específica.
 Caso não seja de seu conhecimento, utilizamos o [`constantize`](http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html#method-i-constantize) do ActiveSupport que nos retorna uma constante de mesmo nome baseado na string recebida.
 
 Agora vamos aos testes do nosso `PostDecorator`:
 
-```ruby
+{% highlight ruby linenos %}
 describe PostDecorator do
 
   let(:post_decorator) do
@@ -170,7 +170,7 @@ describe PostDecorator do
     end
   end
 end
-```
+{% endhighlight %}
 
 Como visualiza-se acima, nossos testes ficaram bem simples. Testamos apenas se a delegação foi feita corretamente, pois a implementação seria testada unitariamente em cada uma das classes especializadas (`PostDraftDecorator` e `PostPublishedDecorator`).
 

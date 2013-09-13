@@ -5,11 +5,11 @@ layout: post
 title: "Melhorando o Email Activity do SendGrid"
 date: 2013-08-08 10:00
 comments: true
-categories: 
+categories:
   - SendGrid
   - Métricas
   - yogodoshi
-  
+
 ---
 
 Depois de anos utilizando o [SendGrid](http://sendgrid.com/) para envio de emails transacionais em diversos projetos, surgiu a necessidade de **descobrir se emails de um mailer específico haviam sido enviados** recentemente ou não. E aí, #comofas?
@@ -48,7 +48,7 @@ Para implementar é bem fácil, [neste post do Henrik Nyh](http://thepugautomati
 
 Uma coisa que o Henrik não mostrou foi falar sobre como testar isso. Eu testei de uma forma bem simples. Para cada método de envio do mailer, utilizei o rspec:
 
-```ruby
+{% highlight ruby linenos %}
 it "should contain some categories on its header" do
   mailer.header['X-SMTPAPI'].to_s.should include("FacebookMailer")
   mailer.header['X-SMTPAPI'].to_s.should include("FacebookMailer#session_expired")
@@ -58,7 +58,7 @@ it "should contain unique arguments on its header" do
   mailer.header['X-SMTPAPI'].to_s.should include("user_id")
   mailer.header['X-SMTPAPI'].to_s.should include("1234")
 end
-```
+{% endhighlight %}
 
 ###Um cuidado
 

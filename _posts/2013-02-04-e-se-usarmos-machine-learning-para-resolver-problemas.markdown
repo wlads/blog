@@ -66,43 +66,43 @@ Um dos ramos do Machine Learning é a classificação. Acredito que é a parte m
 
 Existem, atualmente, diversos algoritmos que conseguem cobrir virtualmente qualquer situação. Para esse exemplo usarei o [ID3](http://en.wikipedia.org/wiki/ID3_algorithm) e como o Ruby ainda não tem uma grande variedade de bibliotecas de Machine Learning, usarei a que acredito ser a mais famosa: [AI4r](http://ai4r.org/).
 
-```
+{% highlight ruby linenos %}
 gem install ai4r
-```
+{% endhighlight %}
 
 O próximo passo seria obter o dataset. Fiz um collect da tabela com os campos necessários para nossa pesquisa (no nosso caso, apenas prefix e rate). O Ai4r leva em conta todos os valores que adicionamos no array, sendo que o último elemento da array seria o valor que estamos buscando.
 Caso você esteja lendo esse blog do futuro, provavelmente já estará usando o rails 4 ou superior, onde o active record pode fazer o pluck com múltiplos valores. E eu os invejo.
 
-```ruby
+{% highlight ruby linenos %}
 def dataset
    data = NumberPattern.collect{|d| [d.prefix, d.rate]}
    label = ['prefix', 'rate']
    Ai4r::Data::DataSet.new(data_items: data, data_labels: label)
 end
-```
+{% endhighlight %}
 
 Agora com nosso dataset preparado, basta adicionar água, digo, a biblioteca de classificação ID3. É um algoritmo nem tão complicado mas que foge ao escopo desse texto.
 
-```
+{% highlight ruby linenos %}
 @a = Ai4r::Classifiers::ID3.new.build dataset
-```
+{% endhighlight %}
 
 Agora começa a magica. O classificador lê o dataset que adicionamos e cria uma árvore de decisão. No nosso caso seria uma árvore de decisão simples visto que, para deixar o exemplo simples, temos apenas uma variante que é o prefixo. Caso recebêssemos os valores do prefixo separadamente, a árvore seria bem mais complexa. Você pode visualizar essa árvore ao perguntar pelas regras
 
-```
+{% highlight ruby linenos %}
 @a.get_rules
-```
+{% endhighlight %}
 
 Com a árvore de decisão criada, ficou simples obter o rate para nosso prefixo.
-```
+{% highlight ruby linenos %}
 prefix = ‘55118’
 eval @a.get_rules
 #‘0.025’
-```
+{% endhighlight %}
 Mas agora você diz: Peraê, você está dizendo que se apenas alimentar a variável prefixo com o número completo ele traz o resultado correto?
 Ok, eu admito. Não é tão mágico assim. Para meu exemplo ficar completo, somente o que foi feito não resolveria, ja que, como eu disse, o valor que obteríamos seria uma string com o número inteiro. Caso eu coloque o valor inteiro da string na variável prefix não encontraria nenhum resultado pois o ID3 não faz predições. Faz apenas classificações.
 
-```
+{% highlight ruby linenos %}
 @prefix = number
 …
 
@@ -117,7 +117,7 @@ Ok, eu admito. Não é tão mágico assim. Para meu exemplo ficar completo, some
       raise ‘Sem rate para esse número’
     end
   end
-```
+{% endhighlight %}
 
 Ok. Ta certo. Você pode dizer que nesse exemplo eu usei o mesmo princípio de eliminar os números que não se encaixavam com nosso dataset, como o usado no Exterminador do Futuro 1, mas se a Skynet usou no T-800, quem sou eu para dizer algo contra?
 

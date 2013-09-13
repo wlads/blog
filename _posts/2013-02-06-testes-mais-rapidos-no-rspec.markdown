@@ -4,7 +4,7 @@ layout: post
 title: "Testes (bem) mais rápidos no RSpec"
 date: 2013-02-06 15:45
 comments: true
-categories: 
+categories:
   - rails
   - rspec
   - tests
@@ -20,12 +20,12 @@ Se você está começando um projeto novo, eu sugiro seguir as [recomendação d
 No meu caso o buraco era mais embaixo e eu precisava de algo antes de sair refatorando tudo. Eu estava trabalhando num projeto Rails que possui um pouco menos de 8.000 linhas de código e um pouco mais de 30.000 linhas de teste, um Code to Test Ratio de 1:3.9 e mais de 5.000 testes.
 Tanto o código quanto os testes precisavam de melhorias e a suíte estava demorando cerca de **13 minutos para rodar**. Tempo que qualquer um sabe que é ridiculamente alto e inviável para se trabalhar.
 
-```
+{% highlight ruby linenos %}
 rake
 
 Finished in 13 minutes 27.67 seconds
 5162 examples, 0 failures, 16 pending
-```
+{% endhighlight %}
 
 Eu precisava refatorar os testes, mas também o código e isso exigia um tempo de trabalho considerável.
 Eu praticamente tinha um problema de "referência circular", ou [efeito Tostines](http://www.youtube.com/watch?v=tJ-BKu-WUEk). Eu precisava refatorar para ter os testes mais rápidos, mas também precisava dos testes mais rápidos para poder trabalhar e conseguir refatorar.
@@ -45,32 +45,32 @@ O problema é que o database cleaner torna a suíte muito lenta, por que a todo 
 
 Removi o database cleaner e voltei a configuração `use_transactional_fixtures` pra `true`
 
-```ruby
+{% highlight ruby linenos %}
 # spec/spec_helper.rb
 RSpec.configure do |config|
   [...]
 
   config.use_transactional_fixtures = true
 end
-```
+{% endhighlight %}
 
 Adicionei o código abaixo:
 
-```ruby
+{% highlight ruby linenos %}
 # spec/support/shared_connection.rb
 class ActiveRecord::Base
   mattr_accessor :shared_connection
   @@shared_connection = nil
- 
+
   def self.connection
     @@shared_connection || retrieve_connection
   end
 end
- 
+
 # Forces all threads to share the same connection. This works on
 # Capybara because it starts the web server in a thread.
 ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
-```
+{% endhighlight %}
 
 Esse código faz com que o ActiveRecord compartilhe a mesma conexão com o banco de dados em todas as threads. Na prática os testes do Capybara acabam rodando dentro de uma transação, então qualquer modificação no banco de dados não é comitada e é descartada a cada teste.
 
@@ -79,17 +79,17 @@ Esse código faz com que o ActiveRecord compartilhe a mesma conexão com o banco
 
 Por default o Rails grava log de tudo que acontece no environment `test`. Isso faz com que o acesso à disco seja muito alto, o que torna a execução dos testes mais lenta. Aumentando o nível do log você reduz o IO durante os testes. Para isso, adicionei o código abaixo:
 
-```ruby
+{% highlight ruby linenos %}
 # spec/support/suppress_log.rb
 
 Rails.logger.level = 4 unless ENV['WITH_LOG']
-```
+{% endhighlight %}
 
 Se você quiser que o log seja gravado, basta setar a variável de ambiente `WITH_LOG` para true.
 
-```bash
+{% highlight bash linenos %}
 $ WITH_LOG=true rake
-```
+{% endhighlight %}
 
 ### Dica 3: Deferred Garbage Collection
 
@@ -97,7 +97,7 @@ Quando os testes rodam, muitas variáveis são criadas na memória, o que consom
 
 Misturando [isso](http://37signals.com/svn/posts/2742-the-road-to-faster-tests) com [isso](https://makandracards.com/makandra/950-speed-up-rspec-by-deferring-garbage-collection) eu escrevi e adicionei o código abaixo:
 
-```ruby
+{% highlight ruby linenos %}
 # spec/support/deferred_garbage_collection.rb
 
 class DeferredGarbageCollection
@@ -130,17 +130,17 @@ RSpec.configure do |config|
     DeferredGarbageCollection.reconsider
   end
 end
-```
+{% endhighlight %}
 
 ### Resultado: Ganho de 45% de tempo
 
 Com as implementações acima já consegui ganhar 6 minutos!
 
-```
+{% highlight bash linenos %}
 rake
 Finished in 7 minutes 27.48 seconds
 5161 examples, 0 failures, 16 pending
-```
+{% endhighlight %}
 
 (sim, eu removi um teste nesse meio tempo)
 
@@ -150,19 +150,19 @@ Um outro artifício que, não faz com que os testes rodem mais rápidos efetivam
 
 Para instalar a gem, basta colocar a linha abaixo no Gemfile:
 
-```ruby
+{% highlight ruby linenos %}
 # add to Gemfile
 gem "parallel_tests", :group => :development
-```
+{% endhighlight %}
 
 Eu deixei o parallel tests como opção default do rake, incluindo a seguinte rake task:
 
-```ruby
+{% highlight ruby linenos %}
 # lib/tasks/default.rake
 
 task(:default).clear
 task :default  => "parallel:spec"
-```
+{% endhighlight %}
 
 BTW eu fiz um [commit no guard-rspec](https://github.com/rafaelp/guard-rspec/commit/7bfdd649e85d3700716be2fd43277c10aa6cb8df) para ele suportar o parallel tests.
 
@@ -170,7 +170,7 @@ Rodando os testes em paralelo, você aproveita o máximo que da CPU, mas também
 
 ### Resultado: Testes rodando em menos de 5 minutos
 
-```
+{% highlight bash linenos %}
 rake
 
 Results:
@@ -180,7 +180,7 @@ Results:
 1138 examples, 0 failures, 1 pending
 
 Took 272.119908 seconds
-```
+{% endhighlight %}
 
 Os testes rodando em paralelo demoraram 4 minutos e 53 segundos e isso é um ganho incrível comparado com os 13 minutos iniciais. Críticos de plantão, eu sei que 4 minutos e pouco ainda é bastante e que dá pra melhorar ;-)
 
@@ -192,24 +192,24 @@ Para usar é muito fácil.
 
 Se você estiver no Mac OS, instale o automake:
 
-```bash
-brew install automake 
-```
+{% highlight bash linenos %}
+brew install automake
+{% endhighlight %}
 
 Agora rode o comando abaixo:
 
-```bash
+{% highlight bash linenos %}
 rvm reinstall 1.9.3 --patch railsexpress
-```
+{% endhighlight %}
 (substitua 1.9.3 pela versão do ruby que você está usando)
 
 Depois defina duas variáveis de ambiente:
 
-```bash
+{% highlight bash linenos %}
 # add to .bash_profile
 export RUBY_GC_MALLOC_LIMIT=60000000
 export RUBY_FREE_MIN=200000
-```
+{% endhighlight %}
 
 Pronto!
 
@@ -225,14 +225,14 @@ Se quiser ler mais sobre isso:
 
 Quando eu instalei esse patch do Rails, eu já tinha 203 testes a mais escritos no projeto e a suíte estava demorando 322.394261 segundos rodando em parelelo. Ou seja, mais tempo do que o benchmark anteior. Após aplicar o patch esse tempo diminuiu para 245.99421 segundos, menos tempo que o benchmark anterior!
 
-```
+{% highlight bash linenos %}
 rake
 
 5366 examples, 0 failures, 9 pendings
 Took 245.99421 seconds
-```
+{% endhighlight %}
 
-Com esses resultados, posso afirmar que o ganho de tempo total para o meu projeto foi superior a 70%. 
+Com esses resultados, posso afirmar que o ganho de tempo total para o meu projeto foi superior a 70%.
 Nada mal, sair de 13 minutos para 4 minutos, não acha!?
 
 ### Bônus: Guard + Zeus
@@ -247,20 +247,20 @@ As tags do RSpec permitem que você defina uma ou mais tags em um teste e passe 
 
 Instalando o zeus:
 
-```
+{% highlight ruby linenos %}
 gem install zeus
-```
+{% endhighlight %}
 
 Instalando o guard-spec:
 
-```ruby
+{% highlight ruby linenos %}
 # add to Gemfile
 gem "guard-rspec", :group => :development
-```
+{% endhighlight %}
 
 Meu Guadfile, arquivo de configuração do guard para o projeto:
 
-```ruby
+{% highlight ruby linenos %}
 # Guadfile
 
 notification :growl
@@ -284,17 +284,17 @@ guard 'rspec', :cli => "--tag focus --color --fail-fast", :all_after_pass => fal
   # Capybara
   watch(%r{^spec/acceptance/(.+)\.rb$})
 end
-```
+{% endhighlight %}
 
 Agora basta abrir duas janelas do terminal e deixar uma rodando o zeus e outra o guard:
 
-```bash
+{% highlight bash linenos %}
 $ zeus start
-```
+{% endhighlight %}
 
-```bash
+{% highlight bash linenos %}
 $ guard start
-```
+{% endhighlight %}
 
 No meu ciclo de TDD, eu deixo o guard testando automaticamente os arquivos que ele detecta que foram modificados. Em algums momentos eu quero validar apenas um teste, e é muito chato ter que esperar todos os testes do arquivo que estou trabalhando, todas as vezes que eu o salvo.
 
@@ -306,7 +306,7 @@ Quando estou escrevendo um teste novo em um arquivo com muitos testes ou quando 
 
 Para colocar a tag, basta passar um hash `{focus: true}` como segundo parâmetro do `describe`, do `context` ou do `it`. Veja um exemplo de como colocar essa tag:
 
-```ruby
+{% highlight ruby linenos %}
 describe "welcome" do
   let(:account) { Account.make }
   let(:mailer) { AccountMailer.welcome(account) }
@@ -326,7 +326,7 @@ describe "welcome" do
     it { mailer.content_type.should == "text/html; charset=UTF-8" }
   end
 end
-```
+{% endhighlight %}
 
 ### Conclusão
 

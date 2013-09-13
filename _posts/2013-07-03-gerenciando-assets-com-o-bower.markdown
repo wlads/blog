@@ -8,7 +8,7 @@ categories:
   - Thiago Belem
   - Bower
   - Node.js
-  
+
 ---
 
 ![Bower](http://bower.io/img/bower-logo.png "Bower")
@@ -25,22 +25,22 @@ Antes de tudo, você vai precisar do [Node.js](http://nodejs.org/) e do [NPM](ht
 
 Agora é só usar o NPM para instalar o Bower globalmente no seu sistema:
 
-```bash
+{% highlight bash linenos %}
 npm install -g bower
-```
+{% endhighlight %}
 
 ### Instalando pacotes com o Bower
 
 Agora você pode instalar pacotes de três formas diferentes:
 
-```bash
+{% highlight bash linenos %}
 # Instala os pacotes definidos no bower.json do seu projeto
 bower install
 # Instala um pacote específico
 bower install <package>
 # Instala uma versão (git tag) de um pacote
 bower install <package>#<version>
-```
+{% endhighlight %}
 
 Onde `<package>` pode ser um dos seguintes itens:
 
@@ -56,7 +56,7 @@ Todos os pacotes serão instalados numa pasta `bower_components` dentro do seu p
 
 O conteúdo do arquivo do seu bower.json descreve o seu projeto e suas dependências num projeto onde usamos o **jQuery** e o **Angular.js**. Ele seria mais ou menos assim:
 
-```json
+{% highlight json linenos %}
 {
   "name": "meu-projeto",
   "version": "0.0.0",
@@ -65,17 +65,17 @@ O conteúdo do arquivo do seu bower.json descreve o seu projeto e suas dependên
     "angular": "1.0.7"
   }
 }
-```
+{% endhighlight %}
 
 Após rodar o comando de instalação:
 
-```bash
+{% highlight bash linenos %}
 bower install
-```
+{% endhighlight %}
 
 Veríamos o seguinte output:
 
-```bash
+{% highlight bash linenos %}
 bower cloning git://github.com/angular/bower-angular.git
 bower cached git://github.com/angular/bower-angular.git
 bower fetching angular
@@ -88,16 +88,16 @@ bower checking out jquery#2.0.2
 bower copying /Users/digdin/.bower/cache/jquery/29cb4373d29144ca260ac7c3997f4381
 bower installing angular#1.0.7
 bower installing jquery#2.0.2
-```
+{% endhighlight %}
 
 E com isso acabamos de instalar o Angular.js (1.0.7) e o jQuery (2.0.2) no nosso projeto!
 
 Se amanhã sair outra versão do jQuery, podemos atualizá-lo com:
 
 
-```bash
+{% highlight bash linenos %}
 bower update
-```
+{% endhighlight %}
 
 E o jQuery será atualizado, mas o Angular permancerá na versão 1.0.7, pois foi assim que definimos no nosso `bower.json`.
 
@@ -107,10 +107,10 @@ Claro que esse passo é opcional se você estiver incluindo assets de outra form
 
 Para incluir os arquivos de um projeto, não existe magia negra, é só usar o caminho completo:
 
-```html
+{% highlight css linenos %}
 <script src="/bower_components/jquery/jquery.min.js"></script>
 <script src="/bower_components/angular/angular.min.js"></script>
-```
+{% endhighlight %}
 
 ### Conclusão
 

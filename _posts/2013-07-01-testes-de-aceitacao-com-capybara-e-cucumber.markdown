@@ -5,13 +5,13 @@ title: "Testes de aceitação com capybara e cucumber"
 date: 2013-07-03 12:00
 author: Rodrigo Reginato
 comments: true
-categories: 
+categories:
   - rodrigo reginato
   - cucumber
   - capybara
   - testes de aceitação
   - cucumber-rails
-  
+
 ---
 
 A ideia desse post é mostrar um pouco como funciona o **capybara** com o **cucumber**.
@@ -26,35 +26,35 @@ Vou criar um projeto com apenas um formulário para usar de exemplo para os test
 
 Primeira etapa é adicionar a _gem_ **cucumber** em seu gemfile. Adicione também a _gem_ **database_cleaner**. Ela não é obrigatória, mas altamente recomendável. E por último, o **'bundle install'**.
 
-```ruby
+{% highlight ruby linenos %}
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
 end
-```
+{% endhighlight %}
 
 Após a instalação das gems, rode o comando para gerar os aquivos de configuração do cucumber.
 
-```bash
+{% highlight bash linenos %}
 $ rails generate cucumber:install
-```
+{% endhighlight %}
 
 Agora execute o comando:
 
-```bash
+{% highlight bash linenos %}
 $ rake cucumber
-```
+{% endhighlight %}
 Você deve obter o resultado a seguir:
 
-```bash
+{% highlight bash linenos %}
 0 scenarios
 0 steps
 0m0.000s
-```
+{% endhighlight %}
 
 Crie um arquivo “/features/valida_form.feature” onde será escrito os **Cenários**. Descreva a ação de como o sistema deve se comportar.
 
-```cucumber
+{% highlight cucumber linenos %}
 # encoding: utf-8
 # language: pt
 Funcionalidade: Preencher o formulário
@@ -64,35 +64,35 @@ Funcionalidade: Preencher o formulário
     Quando eu preencher todos os campos
     E clicar em "Salvar"
     Então deve ver receber a mensagem "Usuarios cadastrado com sucesso"
-```
+{% endhighlight %}
 
 Após salvar este arquivo, execute novamente o comando:
 
-```bash
+{% highlight bash linenos %}
 $ rake cucumber
-```
+{% endhighlight %}
 
 O resultado obtido será:
 
-```bash
+{% highlight bash linenos %}
 1 scenario (1 undefined)
 4 steps (4 undefined)
 0m0.812s
-```
+{% endhighlight %}
 
 Próximo passo para agilizar o processo será a criação de um **scaffold** de Usuário e validar a presença de todos os campos.
 
-```bash
+{% highlight bash linenos %}
 $ rails g scaffold usuario nome:string endereco:string telefone:string estado:string tipo:string
 $ rake db:migrate
-```
+{% endhighlight %}
 
 Vários **Cenários** podem ser criados. Um exemplo é não preencher todos os campos do formulário para um novo usuário e clicar em salvar. E sim, criar um passo onde deve-se garantir que não foi redirecionado para o “show” do usuário, mantendo-o na mesma página “new”.
 O **capybara** vai nos ajudar a preencher os fields do formulário.
 
 Agora crie um arquivo “/features/step_definitions/valida_form_steps.rb” com o conteúdo abaixo:
 
-```cucumber
+{% highlight cucumber linenos %}
 # encoding: utf-8
 Dado /^que eu estou na página do formulario$/ do
   visit new_usuario_path
@@ -114,35 +114,35 @@ end
 Então /^deve ver receber a mensagem "(.*?)"$/ do |mensagem|
   page.has_content?(mensagem)
 end
-```
+{% endhighlight %}
 
 Após adicionar este código rode novamente o comando:
 
-```bash
+{% highlight bash linenos %}
 $ rake cucumber
-```
+{% endhighlight %}
 
 O resultado obtido será:
 
-```bash
+{% highlight bash linenos %}
 1 scenario (1 passed)
 4 steps (4 passed)
 0m0.425s
-```
+{% endhighlight %}
 
 ##Dicas
 
 Para facilitar a nossa vida, existem algumas funções que são fundamentais, como:
 
-```ruby
+{% highlight ruby linenos %}
 save_and_open_page
-```
+{% endhighlight %}
 
 Para utilizarmos este recurso, é necessário instalar a _gem_:
 
-```ruby
+{% highlight ruby linenos %}
 gem 'launchy'
-```
+{% endhighlight %}
 
 Um browser é aberto no momento que este comando é adicionado entre os steps, facilitando para encontrar possíveis erros.
 
@@ -150,16 +150,16 @@ No caso da página ter algum javascript ou se quiser ver todo o processo passo a
 
 Existem outras opções como o [capybara-webkit](https://github.com/thoughtbot/capybara-webkit), mas apresentou um erro na hora do bundle. Já o [selenium-webdriver](https://github.com/vertis/selenium-webdriver), funcionou perfeitamente.
 
-```ruby
+{% highlight ruby linenos %}
 gem 'selenium-webdriver'
-```
+{% endhighlight %}
 
 Adicione @javascript na primeira linha antes do **Cenário** iniciar.
 
-```cucumber
+{% highlight cucumber linenos %}
 @javascript
 Cenário: Deve preencher todos os campos do formulário e salvar com sucesso
-```
+{% endhighlight %}
 
 Um browser será aberto logo no início do processo  e todos os passos que descrevi acima ficarão visíveis como se um usuário estivesse preenchendo os campos.
 

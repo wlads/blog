@@ -33,13 +33,13 @@ Então vamos ao código:
 
 Primeiro, criei um model User com os campos _email_ e _access_token_.
 
-```ruby
+{% highlight ruby linenos %}
 rails g model User email:string access_token:string
-```
+{% endhighlight %}
 
 Depois, criei um método _generate_access_token _que se encarrega de gerar uma nova senha para o usuário. E também o método _access_token_exists? _(token) para checar se, por acaso, a senha já existe para algum usuário.
 
-```ruby
+{% highlight ruby linenos %}
 def self.access_token_exists?(token)
   where(access_token: token).any?
 end
@@ -51,19 +51,19 @@ private
       return self.access_token = token unless User.access_token_exists?(token)
     end
   end
-```
+{% endhighlight %}
 
 E então implementei o método _generate_access_token_and_save _para gerar a senha para o usuário e salvá-la. Isso fecha por enquanto o model User. Voltaremos nele mais tarde.
 
-```ruby
+{% highlight ruby linenos %}
 def generate_access_token_and_save
   generate_access_token and save
 end
-```
+{% endhighlight %}
 
 Agora vamos ao _UsersController _. Criei um controller simples com duas actions: New e Create.
 
-```ruby
+{% highlight ruby linenos %}
 # encoding: UTF-8
 class UsersController < ApplicationController
   def new
@@ -79,11 +79,11 @@ class UsersController < ApplicationController
     end
   end
 end
-```
+{% endhighlight %}
 
 Em seguida, criei o SessionsController para lidar com o login. O controller vai encontrar o usuário que possua a access_token fornecida e colocar seu id em uma session.
 
-```ruby
+{% highlight ruby linenos %}
 # encoding: UTF-8
 class SessionsController < ApplicationController
   def create
@@ -94,11 +94,11 @@ class SessionsController < ApplicationController
     redirect_to(root_url, notice: "Acesso inválido... recupere sua senha.")
   end
 end
-```
+{% endhighlight %}
 
 Agora que já tenho o controller para lidar com o link de login, posso criar o Mailer para enviar o link para o email do usuário.
 
-```ruby
+{% highlight ruby linenos %}
 # encoding: UTF-8
 class Notification < ActionMailer::Base
   default from: "estagiario@passwordlessapp.com"
@@ -110,30 +110,30 @@ class Notification < ActionMailer::Base
     mail to: @user.email, subject: "[Passwordless App] Aqui está seu link de acesso"
   end
 end
-```
+{% endhighlight %}
 
 Coloquei, então, a chamada para o envio do email dentro do método _generate_access_token_and_save _no model User.
 
-```ruby
+{% highlight ruby linenos %}
 def generate_access_token_and_save
   Notification.auth_link(self).deliver if generate_access_token and save
 end
-```
+{% endhighlight %}
 
 Usei o SecretPageController para ter uma action que requer autenticação.
 
-```ruby
+{% highlight ruby linenos %}
 class SecretController < ApplicationController
   before_filter :authenticate!
 
   def index
   end
 end
-```
+{% endhighlight %}
 
 Aqui estão os helpers de autenticação criados para o SecretPageController.
 
-```ruby
+{% highlight ruby linenos %}
 # encoding: UTF-8
 class ApplicationController < ActionController::Base
   protect_from_forgery
@@ -157,7 +157,7 @@ class ApplicationController < ActionController::Base
     user_signed_in? || redirect_to(root_url, notice: "Você precisa estar autenticado...")
   end
 end
-```
+{% endhighlight %}
 
 E isso já faz o login sem senha funcionar. O usuário se cadastra, recebe um link por email, clica no link, se loga e é redirecionado para a action que requer autenticação.
 

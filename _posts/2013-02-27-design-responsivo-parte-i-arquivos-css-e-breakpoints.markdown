@@ -32,27 +32,27 @@ Finalmente um arquivo responsável por estilos específicos para dispositivos m�
 
 Separo uma versão só para Web por questões de compatibilidade com *Internet Explorer 8*. Sendo assim, no **HEAD** da aplicação eu seto através de um [comentário condicional](http://en.wikipedia.org/wiki/Conditional_comment) para que o *IE8* leia apenas a versão Web:
 
-```html
+{% highlight html linenos %}
 <!--[if IE]>
   <link type="text/css" rel="stylesheet" href="site-web.css" media="screen" />
 <![endif]-->
-```
+{% endhighlight %}
 
 Outros *browsers* com maior suporte a especificação das *CSS3* aplicam as *Media Queries* como explicado no início do post. Então juntando tudo ficaria assim:
 
-```html
+{% highlight html linenos %}
 <link type="text/css" rel="stylesheet" href="site-core.css" />
 <link type="text/css" rel="stylesheet" href="site-web.css" media="screen and (min-width:801px)" />
 <link type="text/css" rel="stylesheet" href="site-mobile.css" media="handheld, screen and (max-width:801px)" />
-```
+{% endhighlight %}
 
 Então, explicando melhor: Estou dizendo que o *CSS* para Web só deve ser exibido quando a largura **mínima** do navegador for no mínimo **801px** e a versão mobile apenas em resoluções com largura **máxima** de **801px**. O arquivo **site-core.css** como já explicado, alimenta os outros dois com estilos genéricos.
 
 A seguir, configure sua *viewport* da forma como preferir (entrarei em mais detalhes num próximo post):
 
-```html
+{% highlight html linenos %}
 <meta name="viewport" content="width=device-width, user-scalable=no" />
-```
+{% endhighlight %}
 
 Agora vamos definir os breakpoints para todas as versões mobile. Apenas para frisar: O arquivo *CSS* mobile engloba tanto *Tablets* quando Celulares e *Smartphones*. Deixei apenas a versão Web num arquivo separado para poder usá-la também como uma “versão IE8” sem necessariamente criar uma versão de *CSS* com Hacks só para ele. Não tive trabalho a mais com o *IE8*.
 
@@ -60,15 +60,15 @@ Voltando...
 
 Todo estilo que coloco dentro do arquivo *CSS* **site-mobile.css** mas “fora” de Media Queries é destinado a agentes de usuários com largura **máxima** de **801px** como já explicado. Na verdade então, podemos já ir definindo os estilos pra *Tablets* diretamente no arquivo.
 
-```css
+{% highlight css linenos %}
 .holder {
   width:700px;
 }
-```
+{% endhighlight %}
 
 Então finalmente os estilos para agentes de usuários com largura **máxima** de **686px**. Nos meus testes funcionou muito bem tanto em *Smartphones* modernos como *Galaxy Nexus* e *iPhone 5* que possuem resoluções bem grandes no modo *landscape* como também no *iPhone 4* e *HTC Nexus One* que já são mais antigos.
 
-```css
+{% highlight css linenos %}
 @media (max-width:686px) {
 
   .holder {
@@ -77,7 +77,7 @@ Então finalmente os estilos para agentes de usuários com largura **máxima** d
   }
 
 }
-```
+{% endhighlight %}
 
 Esses valores são os que usei em algumas situações mas você é livre para explorar melhor as *Media Queries*, garanto que vai muito além de larguras definidas com unidades de medidas absolutas como estou fazendo nos exemplos. Experimente **criar grids** responsivas usando unidades de medidas relativas como **%** e **EM**.
 
@@ -85,7 +85,7 @@ Voltando pras *Medias Queries*...
 
 Daí por diante é só ir diminuindo a resolução conformo você vai dando mais suporte a vários dispositivos:
 
-```css
+{% highlight css linenos %}
 @media (max-width:381px) {
 
   background-image:none;
@@ -96,7 +96,7 @@ Daí por diante é só ir diminuindo a resolução conformo você vai dando mais
   }
 
 }
-```
+{% endhighlight %}
 
 Na maioria das vezes, conforme a resolução do dispositivo diminui, a capacidade de processamento também, então começam a aparecer estilos que otimizam o desempenho em dispositivos mais modestos.
 

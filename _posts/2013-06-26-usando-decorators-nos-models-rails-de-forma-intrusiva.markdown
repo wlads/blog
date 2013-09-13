@@ -11,7 +11,7 @@ categories:
   - rails
   - patterns
   - active decorator
-  
+
 ---
 
 Muito já se falou sobre decorators nos últimos tempos, até mesmo por [aqui][dec]. Melhorar a legibilidade e remover lógica das views de uma aplicação é um assunto que [me interessa][tech] já faz algum tempo. Nesse post falarei sobre a alternativa que, no meu ponto de vista, preencheu a lacuna do problema decorators de views no rails .
@@ -20,13 +20,13 @@ Muito já se falou sobre decorators nos últimos tempos, até mesmo por [aqui][d
 
 Há diversas formas de implementar um decorator e já existem inúmeras gems que auxiliam neste trabalho, como o [simple_presenter][sp] e o [draper][draper]. O que me incomodava em todas as diversas soluções existentes, é  o desenvolvedor ter que passar o objeto ou a coleção de objetos para a classe do decorator para que fosse _decorado_. Pensando no caso de uma action, ela teria de ser alterada, como pode ser visto no exemplo a seguir:
 
-```ruby
+{% highlight ruby linenos %}
 # any controller...
 def index
   @users = UserPresenter.map(User.all) # simple presenter
   @articles = ArticleDecorator.decorate_collection(Article.all) # draper
 end
-```
+{% endhighlight %}
 
 Esse tipo de solução sempre me incomodou, e eu mantive minha busca por alguma que funcionasse de forma intrusiva, sem que fosse preciso modificar a chamada na action. E esta solução existe, chama-se [active_decorator][ad].
 
@@ -34,19 +34,19 @@ O active_decorator _injeta_ automaticamente o decorator em um model, ou em uma c
 
 Vamos ver o exemplo anterior usando o active decorator.
 
-```ruby
+{% highlight ruby linenos %}
 # any controller...
 def index
   @users = User.all
   @articles = Article.all
 end
-```
+{% endhighlight %}
 
 Existindo um `UserDecorator` e um `ArticleDecorator`, os objetos das coleções serão automaticamente _decorados_ quando forem ser usados nas views.
 
 Veja um exemplo mais completo:
 
-```ruby
+{% highlight ruby linenos %}
 # any controller...
 def index
   @user = current_user
@@ -74,9 +74,9 @@ module ArticleDecorator
   end
 end
 
-```
+{% endhighlight %}
 
-```erb
+{% highlight erb linenos %}
 # app/views/articles/index.erb
 
 Olá <%= @user.full_name %>
@@ -90,7 +90,7 @@ Olá <%= @user.full_name %>
 <% end %>
 </ul>
 
-```
+{% endhighlight %}
 
 O active decorator é totalmente "plugável" a uma aplicação existente o que reduz bastante o esforço de implementação de decorators, facilitando a implementação gradual.
 

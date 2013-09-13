@@ -57,7 +57,7 @@ Marque um usuário. Para isso, vá em **Permissions** > **Attach User Policy** >
 
 Dê um nome pra regra e use o seguinte template:
 
-```json
+{% highlight json linenos %}
 {
   "Statement": [
     {
@@ -72,7 +72,7 @@ Dê um nome pra regra e use o seguinte template:
     }
   ]
 }
-```
+{% endhighlight %}
 
 Substitua **NOME_DO_BUCKET** pelo nome do bucket criado anteriormente e crie essa regra para o bucket de cada usuário.
 

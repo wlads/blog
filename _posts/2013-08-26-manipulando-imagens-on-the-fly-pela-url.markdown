@@ -9,7 +9,7 @@ categories:
   - Matheus Bras
   - Dragonfly
   - Upload de imagens
-  
+
 ---
 
 Digamos que você possui uma API e precisa que algumas imagens sejam cropadas, ou redimencionadas, de vários tamanhos *on-the-fly* pela URL. Por exemplo: **/image/1/w/300/h/400** Retornaria uma imagem que você já salvou redimencionada para 300x400. É possível fazer mais do que redimencionar a imagem, mas vamos nos focar somente nisso por enquanto.
@@ -22,54 +22,54 @@ Para essa funcionalidade, usaremos a gem [Dragonfly][1] para lidar com o upload 
 
 **Adicione estas gems no seu Gemfile:**
 
-```ruby
+{% highlight ruby linenos %}
   gem 'rack-cache', :require => 'rack/cache'
   gem 'dragonfly', '~>0.9.15'
-```
+{% endhighlight %}
 
 Você vai precisar do *rack-cache* para manter um cache da imagem gerada pela nossa url. Isso vai melhorar a performance da sua app.
 
 **Agora crie um initializer (dragonfly.rb):**
 
-```ruby
+{% highlight ruby linenos %}
   require 'dragonfly'
   app = Dragonfly[:images]
   app.configure_with(:imagemagick)
   app.configure_with(:rails)
-```
+{% endhighlight %}
 
 Digamos que exista um model *Photo* e vamos salvar nossas imagens no campo para *image*.
 
-```ruby
+{% highlight ruby linenos %}
   add_column :photos, :image_uid,  :string
-```
+{% endhighlight %}
 
 No nosso model definimos:
 
-```ruby
+{% highlight ruby linenos %}
 class Photo < ActiveRecord::Base
     image_accessor :image
     #…
 end
-```
+{% endhighlight %}
 
 No nossa view o formulário ficará desta forma:
 
-```erb
+{% highlight erb linenos %}
 <% form_for @photo, :html => {:multipart => true} do |f| %>
     ...
     <%= f.file_field :image %>
     ...
 <% end %>
-```
+{% endhighlight %}
 
 Então nos finalmentes, definimos no nosso *routes.rb*:
 
-```ruby
+{% highlight ruby linenos %}
 match '/images/:uid/w/:width/h/:height' => Dragonfly[:images].endpoint { |params, app|
     app.fetch(params[:uid]).process(:thumb, "#{params[:width}x#{params[:height}")
 }
-```
+{% endhighlight %}
 
 E agora, quando acessarmos */images/12345/w/400/h/400*, geraremos uma versão 400x400 da imagem que nós salvamos anteriormente. Você pode facilmente adicionar mais parâmetros e manipular a imagem como precisar (adicionar marcas d'água, cropar e qualquer outro processamento possível através do [imagemagick][3]).
 

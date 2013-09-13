@@ -23,18 +23,18 @@ Vamos a um exemplo: Temos uma classe Game responsável pelas informações de um
 
 Vamos a classe Game:
 
-```ruby
+{% highlight ruby linenos %}
 require 'ostruct'
 
 class Game < OpenStruct
 end
-```
+{% endhighlight %}
 
 Uma simples classe que herda de OpenStruct.
 
 Agora vamos a nossa classe Report:
 
-```ruby
+{% highlight ruby linenos %}
 class Report
 
   def initialize(game)
@@ -61,19 +61,19 @@ class Report
       @game.description
     end
 end
-```
+{% endhighlight %}
 
 Como podem ver, a nossa classe funciona muito bem para o Game. No entanto, se em algum momento recebermos uma referência nula (por exemplo de um find do ActiveRecord),  receberemos a seguinte exception:
 
-```ruby
+{% highlight ruby linenos %}
 game = nil
 report = Report.new(game)
 puts report.show # undefined method `name' for nil:NilClass (NoMethodError) ...
-```
+{% endhighlight %}
 
 Vamos resolvê-la utilizando os mais comuns: `if` e `else`.
 
-```ruby
+{% highlight ruby linenos %}
 class Report
 
   def initialize(game)
@@ -112,12 +112,12 @@ class Report
       end
     end
 end
-```
+{% endhighlight %}
 
 Como podem ver, alteramos os métodos da classe `Report`, responsável por criar os campos de `Game` na exibição do relatório, para tratar quando recebemos um valor nil.
 Até funciona, mas como notamos, estamos adicionando mais complexidade a simples métodos que apenas delegam o valor, além de, claramente, estarmos repetindo código. E é neste ponto que o Null Object Pattern vem para nos ajudar. Vamos aos refactories.
 
-```ruby
+{% highlight ruby linenos %}
 class NullGame
 
   def name
@@ -159,18 +159,18 @@ class Report
       @game.description
     end
 end
-```
+{% endhighlight %}
 
 Primeiro criamos uma classe `NullGame` responsável por definir os valores quando um `Game` for nulo. Em Seguida, alteramos a classe `Report` para instanciar um `NullGame` (caso o game seja nulo) e assim, podemos alterar nossos métodos que funcionam como delegators para continuarem fazendo apenas isto.
 Veja como seria o comportamento de `Report` ao receber um `nil`:
 
-```ruby
+{% highlight ruby linenos %}
 game = nil
 report = Report.new(game)
 puts report.show # Game: no name
                  # Platform: no platform
                  # Description: no description
-```
+{% endhighlight %}
 
 Como podem ver, ao utilizarmos o Null Object Pattern, conseguimos manter o nosso código muito mais Ruby Way utilizando classes coesas, com responsabilidades bem definidas e one line methods.
 

@@ -10,7 +10,7 @@ categories:
   - Deploy
   - Boas praticas
   - SaaS
-  
+
 ---
 
 Aplicações web estão muito populares e se tornando preferência pelas vantagens que os SaaS (Software as a Service) oferecem.
@@ -41,13 +41,13 @@ A maioria das linguagens possui sistemas de pacotes para distribuição de bibli
 
 Um exemplo de Gemfile pode ser visto a seguir:
 
-```ruby
+{% highlight ruby linenos %}
 gem 'rake', '~> 0.9'
 gem 'jekyll', '~> 0.12'
 gem 'rdiscount', '~> 2.0.7'
 gem 'pygments.rb', '~> 0.3.4'
 gem 'RedCloth', '~> 4.2.9'
-```
+{% endhighlight %}
 
 É de extrema importância que as versões estejam declaradas neste manifesto. Isto reforça que os diferentes ambientes estejam em funcionamento com as mesmas bibliotecas. No [post][post-bower] do meu xará, Thiago Belem, ele apresentou o Bower, que é um gerenciador de bibliotecas web.
 
