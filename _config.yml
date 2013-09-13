@@ -1,5 +1,10 @@
-name: Your New Jekyll Site
+title: Blog
+author: Time HE:labs
 pygments: true
+permalink: /blog/:year/:month/:day/:title/
+markdown: rdiscount
+paginate: 9
+paginate_path: "/blog/page:num"
 exclude:
  - unicorn.rb
  - README.md
@@ -8,3 +13,5 @@ exclude:
  - Gemfile.lock
  - config.ru
  - vendor
+ - sass
+ - config.rb
