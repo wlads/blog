@@ -45,17 +45,21 @@ header.default h1 a span {
   float: right;
   padding-top: 48px;
   width: 286px;
+
+  ul li{
+    display: inline;
+    margin-left: 10px;
+  }
+
+  li a{
+    padding-bottom: 18px;
+    padding-right: 3px;
+
+    &:hover{
+      color: #b80606;
+      text-decoration: underline;
+      opacity: 0.7;
+    }
+  }
 }
-#follow ul li {
-  display: inline;
-  margin-left: 10px
-}
-#follow ul li a {
-  padding-bottom: 18px;
-  padding-right: 3px;
-}
-#follow ul li a:hover {
-  color: #b80606;
-  text-decoration: underline;
-  opacity: 0.7;
-}
+
