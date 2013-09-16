@@ -1,13 +1,13 @@
-{% if site.facebook_like %}
 <div id="fb-root"></div>
 <script>
   (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {return;}
+    if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#appId=294124694041877&xfbml=1";
+    js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=294124694041877";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
+
   window.fbAsyncInit = function(){
     FB.Event.subscribe('edge.create', function(targetUrl) {
       _gaq.push(['_trackSocial', 'facebook', 'like', targetUrl]);
@@ -19,5 +19,6 @@
       _gaq.push(['_trackSocial', 'facebook', 'send', targetUrl]);
     });
   }
+
+
 </script>
-{% endif %}
