@@ -28,7 +28,6 @@ title: HE:Labs Blog
               </div>
             {% endif %}
 
-
             <h2 class="post-title">
               <a href="{{ root_url }}{{ post.url }}" title="{{post.title}}">
                 {% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}
@@ -38,7 +37,12 @@ title: HE:Labs Blog
 
           <div class="post-excerpt">{{ post.excerpt }}</div>
 
-          <div class='post-date'>{{ post.date | date: "%d/%m/%Y" }}</div>
+          <div class='post-date'>
+            {{ post.date | date: "%d/%m/%Y" }}
+            {% if post.comments != false %}
+                <a href="{{ root_url }}{{ post.url }}#disqus_thread" class="post-comments-count" title="Comentários">Comentários</a>
+            {% endif %}
+          </div>
         </div>
       </article>
 
