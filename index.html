@@ -40,7 +40,7 @@ title: HE:Labs Blog
           <div class='post-date'>
             {{ post.date | date: "%d/%m/%Y" }}
             {% if post.comments != false %}
-                <a href="{{ post.url }}#disqus_thread" class="post-comments-count" title="Comentários">Comentários</a>
+                <a href="/blog/{{ post.url }}#disqus_thread" class="post-comments-count" title="Comentários">Comentários</a>
             {% endif %}
           </div>
         </div>
