@@ -71,9 +71,18 @@
 }
 
 .copyright {
+  width: 200px;
   float: right;
   text-align: center;
   margin: 32px 0 0;
   font-size: 11px;
   color: #FFF;
+
+  a {
+    float: left;
+    text-indent: 0;
+    display: block;
+    width: 90px;
+    margin-top: -10px;
+  }
 }
