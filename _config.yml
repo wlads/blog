@@ -2,10 +2,10 @@ title: Blog
 author: Time HE:labs
 url: http://helabs.com.br
 pygments: true
-permalink: /blog/:year/:month/:day/:title/
+permalink: /:year/:month/:day/:title/
 markdown: rdiscount
 paginate: 9
-paginate_path: "/blog/page/:num"
+paginate_path: "/page/:num"
 disqus_short_name: helabsblog
 disqus_show_comment_count: true
 google_analytics_tracking_id: UA-34924553-1
