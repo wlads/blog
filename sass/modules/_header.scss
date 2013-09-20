@@ -1,6 +1,25 @@
 #main-header {
   background: #fff;
-  padding: 5px 0;
-  text-align: center;
+  padding: 10px 0;
   border-top: 4px solid #B72124;
+  overflow: hidden;
+}
+
+.header-title {
+  float: left;
+
+  a {
+    display: block;
+    width: 180px;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+#google-search {
+  width: 320px;
+  float: right;
+  margin-top: 10px;
 }
