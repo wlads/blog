@@ -19,8 +19,11 @@
 
 #static-image {
   position: relative;
-  background-size: cover !important;
-  background: url('../images/header-default-bg.jpg') no-repeat fixed;
+  background: url('../images/header-default-bg.jpg') center center no-repeat fixed;
+  background-size: cover;
+  webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   z-index: 3;
   height: 340px;
   width: 100%;
