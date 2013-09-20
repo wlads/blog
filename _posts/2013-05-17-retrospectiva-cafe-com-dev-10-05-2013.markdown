@@ -9,7 +9,7 @@ categories:
   - crystal
   - mauro george
 
-  
+
 ---
 
 
@@ -17,13 +17,13 @@ Na sexta-feira, dia 10/05, [Mauro George](https://twitter.com/maurogeorge) apres
 
 <!--more-->
 
-![image](/images/mario.jpg)
+![image](/blog/images/mario.jpg)
 
 Durante a apresentação, Mauro contou sobre migração de outras linguagens para Rails, as suas confusões para com os novatos e **AR** que quebra **SRP**. Além de mostrar alguns anti-patterns e soluções para eles.
 
-E ainda, falou sobre `ActiveSupport::Concerns` e como devemos evitá-lo e preferir uma abordagem utilizando <abbr title="Plain Old Ruby Objects">POROs</abbr>. 
+E ainda, falou sobre `ActiveSupport::Concerns` e como devemos evitá-lo e preferir uma abordagem utilizando <abbr title="Plain Old Ruby Objects">POROs</abbr>.
 
-Por último, apresentou alguns **Bad Smells** que podem nos alertar sobre o nosso Model estar virando um grande "Colosso". 
+Por último, apresentou alguns **Bad Smells** que podem nos alertar sobre o nosso Model estar virando um grande "Colosso".
 
 Slides da apresentação abaixo:
 
@@ -31,5 +31,5 @@ Slides da apresentação abaixo:
 
 Se interessou? Perdeu a palestra? Então [clique aqui](https://www.eventials.com/pt-br/helabs/model-of-the-colossus/) e confira como foi!
 
-![image](/images/galeramauro.jpg)
+![image](/blog/images/galeramauro.jpg)
 

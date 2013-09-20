@@ -29,11 +29,11 @@ Todo mundo que você conhece tem uma conta no Facebook, certo? Até minha mãe f
 
 Acesse [http://developers.facebook.com/apps](http://developers.facebook.com/apps) e clique em "**Criar Novo Aplicativo**". Digite o nome do seu App e um namespace.
 
-![image](/images/posts/facebook-login/img0.png)
+![image](/blog/images/posts/facebook-login/img0.png)
 
 Próximo passo é pegar o _APP ID_ e o _APP Secret_ e configurá-los como variáveis de ambiente da sua aplicação Rails. Normalmente, colocamos as variáveis no _.rvmrc_ do projeto, mas nada impede que você crie um arquivo _.yml_ e salve estas informações.
 
-![image](/images/posts/facebook-login/img1.png)
+![image](/blog/images/posts/facebook-login/img1.png)
 
 {% highlight ruby linenos %}
   export FACEBOOK_APP_KEY= #{APP ID}
@@ -42,13 +42,13 @@ Próximo passo é pegar o _APP ID_ e o _APP Secret_ e configurá-los como variá
 
 Existe a opção de deixar o aplicativo no Facebook em modo 'Sandbox'. Caso esteja ativado, somente você e/ou outras pessoas que estiverem cadastradas como desenvolvedores ou testers poderão usar sua aplicação para fazer o login. Caso você prefira que qualquer pessoa possa se logar sem precisar dar permissão, desative o modo Sandbox. Para ver as configurações de permissões, clique em "**Privilégios de desenvolvedores**" na sidebar.
 
-![image](/images/posts/facebook-login/img2.png)
+![image](/blog/images/posts/facebook-login/img2.png)
 
 Depois, na seção "**Selecione o modo como seu aplicativo se integra com Facebook**" clique em "**Site com o Login do Facebook**". Em _Site URL_, coloque a url onde o Facebook vai enviar as informações da autenticação. Normalmente o path _"/auth/facebook/callback"_ é usado com a gem _"omniauth"_. Vou explicar isto melhor depois.
 
 Se você estiver configurando a App para desenvolvimento local, o host será "**http://localhost:3000**" ou qualquer que seja seu host local.
 
-![image](/images/posts/facebook-login/img4.png)
+![image](/blog/images/posts/facebook-login/img4.png)
 
 E é isto para o aplicativo do Facebook. Agora, vamos para o Rails:
 

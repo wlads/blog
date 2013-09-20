@@ -24,7 +24,7 @@ token: A7s7BwvDKOp@nqtYmQfPyLNx
 
 Dashboard:
 
-![image](/images/posts/2013-05-02/crocodoc_dashboard.jpg)
+![image](/blog/images/posts/2013-05-02/crocodoc_dashboard.jpg)
 
 Será usado o [crocodoc-ruby](https://github.com/crocodoc/crocodoc-ruby), a gem oficial indicada no site do **crocodoc**.
 

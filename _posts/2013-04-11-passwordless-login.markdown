@@ -13,7 +13,7 @@ categories:
 
 ---
 
-![image](/images/posts/passwordless.png)
+![image](/blog/images/posts/passwordless.png)
 
 Neste post, vou mostrar como fazer uma aplicação permitir que o usuário faça login sem precisar digitar/lembrar de sua senha. Não será nada complexo demais e nem uma solução perfeita. No final, postarei o link para uma aplicação exemplo que preparei exemplificando o método.
 

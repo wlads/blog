@@ -9,16 +9,16 @@ categories:
   - integrante
   - novatos
   - francisco martins
- 
 
-  
+
+
 ---
 
 Nesta segunda, 24/06, iniciamos a semana com mais um integrante no time! Francisco Martins é de Tocantins e estará trabalhando diretamente de lá!
 
 <!--more-->
 
-![image](/images/francisco.jpg)
+![image](/blog/images/francisco.jpg)
 
 Francisco avassala em ruby, objective-c (iOS) e Android. Cursou Sistemas de Informação e já trabalhou com site responsivo em rails e com app móvel.
 

@@ -17,9 +17,9 @@ Na sexta-feira, dia 28/06, a HE:Rio organizou mais um Café com DEV no espaço C
 
 <!--more-->
 
-![image](/images/presentes.JPG)
+![image](/blog/images/presentes.JPG)
 
-O pessoal presente e os que acompanharam online pelo eventials interagiram durante toda a apresentação. Ao final, rolou um papo descontraído entre todos. 
+O pessoal presente e os que acompanharam online pelo eventials interagiram durante toda a apresentação. Ao final, rolou um papo descontraído entre todos.
 
 Confira a transmissão pelo Eventials [aqui](https://t.co/nWp9JS9zxP)!!!
 

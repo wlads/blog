@@ -33,7 +33,7 @@ Uma das ferramentas que nos auxilía tanto na comunicação com o cliente quanto
 
 Tanto o cliente quanto o time passam para o papel o entendimento da funcionalidade, para ser discutida, lapidada e chegar a uma solução final e que **fique entendida por todos**. Normalmente temos mais uma de solução para o problema. No início do projeto nem sempre é assim, o cliente normalmente leva algum tempo até começar a tomar as melhores decisões, mas depois de algumas iterações o cliente passa a optar pela mais simples, pois isso significa para ele menos esforço para o mesmo resultado. Além dessas vantagens, o desenho faz com que o cliente saiba exatamente o que vai receber e evita problemas como o famoso desenho a seguir.
 
-![image](/images/posts/2013-02-25/software-understanding.jpg)
+![image](/blog/images/posts/2013-02-25/software-understanding.jpg)
 
 # Redução de ruído
 

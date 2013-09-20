@@ -12,7 +12,7 @@ categories:
 
 ---
 
-![image](/images/posts/2013-05-08/bucket.jpg)
+![image](/blog/images/posts/2013-05-08/bucket.jpg)
 
 Você usa **buckets** do S3 para armazenar os uploads e assets da sua aplicação?
 
@@ -41,13 +41,13 @@ Não há nada de misterioso ou novo aqui, apenas crie dois buckets:
 Agora você precisa criar dois usuários (pra facilitar, com o mesmo nome dos buckets):
 
 
-![image](/images/posts/2013-05-08/iam-new-user.png)
+![image](/blog/images/posts/2013-05-08/iam-new-user.png)
 
-![image](/images/posts/2013-05-08/iam-new-users.png)
+![image](/blog/images/posts/2013-05-08/iam-new-users.png)
 
 Não se esqueça de anotar as chaves de acesso de cada usuário:
 
-![image](/images/posts/2013-05-08/iam-credentials.png)
+![image](/blog/images/posts/2013-05-08/iam-credentials.png)
 
 # Defina as regras de acesso
 

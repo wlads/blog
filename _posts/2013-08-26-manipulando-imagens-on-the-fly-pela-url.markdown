@@ -66,12 +66,12 @@ No nossa view o formulário ficará desta forma:
 Então nos finalmentes, definimos no nosso *routes.rb*:
 
 {% highlight ruby linenos %}
-match '/images/:uid/w/:width/h/:height' => Dragonfly[:images].endpoint { |params, app|
+match '/blog/images/:uid/w/:width/h/:height' => Dragonfly[:images].endpoint { |params, app|
     app.fetch(params[:uid]).process(:thumb, "#{params[:width}x#{params[:height}")
 }
 {% endhighlight %}
 
-E agora, quando acessarmos */images/12345/w/400/h/400*, geraremos uma versão 400x400 da imagem que nós salvamos anteriormente. Você pode facilmente adicionar mais parâmetros e manipular a imagem como precisar (adicionar marcas d'água, cropar e qualquer outro processamento possível através do [imagemagick][3]).
+E agora, quando acessarmos */blog/images/12345/w/400/h/400*, geraremos uma versão 400x400 da imagem que nós salvamos anteriormente. Você pode facilmente adicionar mais parâmetros e manipular a imagem como precisar (adicionar marcas d'água, cropar e qualquer outro processamento possível através do [imagemagick][3]).
 
 [1]: https://github.com/markevans/dragonfly
 [2]: https://github.com/markevans/dragonfly#for-the-lazy-rails-user

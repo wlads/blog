@@ -5,12 +5,12 @@ title: "Codeclimate"
 date: 2013-09-05 16:00
 author: Rodrigo Reginato
 comments: true
-categories: 
+categories:
  - rodrigo reginato
  - codeclimate
  - refactoring
  - refatorar
-  
+
 ---
 
 Todos os dias, nós, desenvolvedores, usamos diversas ferramentas para facilitar nosso trabalho.
@@ -18,7 +18,7 @@ Uma delas que conheci recentemente trabalhando na He:labs foi a [codeclimate](ht
 
 <!--more-->
 
-A [codeclimate](https://codeclimate.com) é uma ferramenta que analisa e ajuda a melhorar a qualidade do código. Identificando métodos e classes complexas, métodos longos, duplicidades, vulnerabilidades e muitas outras coisas. 
+A [codeclimate](https://codeclimate.com) é uma ferramenta que analisa e ajuda a melhorar a qualidade do código. Identificando métodos e classes complexas, métodos longos, duplicidades, vulnerabilidades e muitas outras coisas.
 
 Mais de 900 empresas de renome estão usando esta ferramenta no momento.
 
@@ -26,21 +26,21 @@ Mais de 900 empresas de renome estão usando esta ferramenta no momento.
 
 Escolhi um projeto bem antigo para esse teste porque sei que o **codeclimate** vai achar muitos problemas para mostrar o resultado da análise inicial.
 
-![image](/images/posts/2013-09-02/codeclimate_1.png)
+![image](/blog/images/posts/2013-09-02/codeclimate_1.png)
 
 Cada projeto adicionado recebe uma pontuação (de 0 a 4) e cada classe recebe uma nota (de A a F). Esse projeto recebeu uma nota 1.07, isso quer dizer que está muito ruim e muita coisa deve ser revisada.
 
-![image](/images/posts/2013-09-02/codeclimate_2.png)
+![image](/blog/images/posts/2013-09-02/codeclimate_2.png)
 
 A cada push no repositório, o **codeclimate** faz uma validação no código. Qualquer problema que ele encontre, qualquer "mau cheiro" de código "smell", ele vai identificar.
 
 Se uma nota de uma classe que estava A cair, imediatamente um email é disparado avisando que algo deu errado.
 
-![image](/images/posts/2013-09-02/codeclimate_3.png)
+![image](/blog/images/posts/2013-09-02/codeclimate_3.png)
 
 Então, o desenvolvedor entra em ação para melhorar essa nota. Nossa meta é manter todas as classes com as melhores notas possíveis.
 
-![image](/images/posts/2013-09-02/codeclimate_4.png)
+![image](/blog/images/posts/2013-09-02/codeclimate_4.png)
 
 Uma opção que utilizamos quando uma nota de uma classe cai ou melhora, é receber um aviso no [Hipchat](https://www.hipchat.com), que é disparado junto com o envio do email.
 

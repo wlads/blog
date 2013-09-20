@@ -5,13 +5,13 @@ layout: post
 title: "Começando uma Startup com um MVP Concierge"
 date: 2013-07-18 13:34
 comments: true
-categories: 
+categories:
   - startup
   - howto
   - business
   - lean startup
   - agile
-  
+
 ---
 
 Eu estou montando um novo negócio digital e vou explicar nesse post quais foram os meus primeiros passos e resultados. Eu vejo um problema muito grande recorrente. Pessoas que começam já querendo desenvolver um sistema completo sem antes validar se o negócio tem demanda e vale a pena ser investido.
@@ -96,7 +96,7 @@ Pensando nisso defini que seria a premissa de que um brasileiro compraria Bitcoi
 
 Como eu queria me forçar a rodar o processo, eu montei um [Validation Board do BitBoleto](https://docs.google.com/drawings/d/1ZxuFecBZgKOXP0RWq7HhCGyE51AzWu6hPAA0rl6vkWU/edit).
 
-![image](/images/posts/2013-07-16/bitboleto-validation-board.png)
+![image](/blog/images/posts/2013-07-16/bitboleto-validation-board.png)
 [https://docs.google.com/drawings/d/1ZxuFecBZgKOXP0RWq7HhCGyE51AzWu6hPAA0rl6vkWU/edit](https://docs.google.com/drawings/d/1ZxuFecBZgKOXP0RWq7HhCGyE51AzWu6hPAA0rl6vkWU/edit)
 
 Agora eu precisava validar essa hipótese. Dentro da metodologia do Validation Board, após escolher a premissa a ser validada, você deve escolher a maneira pela qual deseja realizar a validação. As opções são: Exploração, Pitch e Concierge. No meu caso, implementei de uma forma que fiz a exploração, o pitch e o concierge ao mesmo tempo.
@@ -155,7 +155,7 @@ No nosso caso, o *algo* é características ou features, como chamamos. Onde se 
 
 Veja uma captura de tela de como ficou o MVP do Bitboleto.
 
-![image](/images/posts/2013-07-16/bitboleto-screenshot-visible.png)
+![image](/blog/images/posts/2013-07-16/bitboleto-screenshot-visible.png)
 
 Perceba que a página é extremamente simples e não possui nada além da comunicação do que se trata o site. Vou listar aqui algumas características dessa landing page:
 
@@ -252,13 +252,13 @@ Se você não tem ideia sobre o que esses números representam, posso dizer que 
 
 Algumas palavras-chaves conseguiram uma conversão superior a 17%, veja no gráfico abaixo!
 
-![image](/images/posts/2013-07-16/bitboleto-adwords.png)
+![image](/blog/images/posts/2013-07-16/bitboleto-adwords.png)
 
 Enfim, com esses números eu considerei que existem pessoas o suficiente buscando comprar Bitcoins no Brasil, de forma que justifique o prosseguimento para as próximas validações. Segunda hipótese validada!
 
 Durante esse tempo também medi o nível de interação dos usuários no site, os números absolutos já mudaram, mas os percentuais não mudaram muito. Vejam algumas estatísticas atualizadas:
 
-![image](/images/posts/2013-07-16/bitboleto-planilha-conversoes.png)
+![image](/blog/images/posts/2013-07-16/bitboleto-planilha-conversoes.png)
 
 Esses números mostram que o maior gargalo está nos boletos que são gerados, porém, não são pagos. Isso pode estar acontecendo por basicamente dois motivos:
 
@@ -290,12 +290,12 @@ O próximo passo era levantar se a operação é lucrativa e se vale a pena esca
 
 Até agora, a landing page está basicamente como foi para o ar pela primeira vez. Já implementei a validação no formulário, por que entendi que valia a pena, principalmente para a apuração das medições de conversão. Inclui uma seção de perguntas frequentes. Adicionei um chat online. Mas até agora os boletos são enviados de forma manual e os Bitcoins transferidos de forma manual também.
 
-A última parte da planilha tem a informação mais relevante para a hipótese que estou validando no momento: 
+A última parte da planilha tem a informação mais relevante para a hipótese que estou validando no momento:
 **É possível comprar bitcoins mais barato, vender mais caro e lucrar com a operação?**
 
 Quero deixar meu agradecimento ao [Rafael Dahis](http://rafaeldahis.com/) por ter me ajudado a montar essa parte da planilha. Veja as informações que tenho no momento:
 
-![image](/images/posts/2013-07-16/bitboleto-planilha-financeira.png)
+![image](/blog/images/posts/2013-07-16/bitboleto-planilha-financeira.png)
 
 A conclusão que podemos tirar desses números é que a operação não está sendo lucrativa!
 

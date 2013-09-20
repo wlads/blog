@@ -11,7 +11,7 @@ categories:
 
 ---
 
-![image](/images/posts/2013-04-17/RemoteWorking.jpg)
+![image](/blog/images/posts/2013-04-17/RemoteWorking.jpg)
 
 Faço parte de alguns seletos grupos de pessoas: o primeiro desses grupos é o de desenvolvedores da HE:labs. O segundo, totalmente relacionado ao primeiro, de desenvolvedor remoto.
 
@@ -25,7 +25,7 @@ Tirando a conclusão óbvia de que trabalho remoto significa remoto, existem alg
 No trabalho remoto, o empregador e seus colegas de trabalho precisam ter total confiança em você. E, como isto é uma situação atípica, o profissional remoto precisa fazer valer essa confiança depositada. Para quem gosta desse desafio, só tem a ganhar. E para a empresa que aposta, também.
 
 
-![image](/images/posts/2013-04-17/Polar_bear_Arctic_ice.jpg)
+![image](/blog/images/posts/2013-04-17/Polar_bear_Arctic_ice.jpg)
 
 Um dos maiores desafios desse tipo de trabalho é a aparente solidão. Apesar de existirem diversas maneiras de comunicação e de contato constante, é real a sensação de muitas vezes estar trabalhando sozinho.
 

@@ -11,7 +11,7 @@ categories:
 
 ---
 
-![image](/images/posts/2013-05-21/macaco-imitacao.jpg)
+![image](/blog/images/posts/2013-05-21/macaco-imitacao.jpg)
 
 Por volta do final de maio de 2011, exatamente 2 anos atrás, eu estava em casa pensando sobre o que iria fazer da minha vida. Eu havia saído da empresa onde trabalhei anteriormente e estava livre pra fazer o que quisesse do meu tempo. Eu tinha uma grana para me manter vivo e isso me proporcionou uma certa tranquilidade para fazer experiências e pensar com calma em meus próximos passos, mas também, precisava ganhar dinheiro logo. Eu mesmo me colocava num senso de urgência, porque é assim que funciono. Era o início do [Startup DEV](http://startupdev.com.br).
 
@@ -61,14 +61,14 @@ Nossa conversa foi longa e o formato começou a ser detalhado e aprimorado com a
 
 E funcionou! Hoje, o [Startup DEV](http://startupdev.com.br) já é amplamente conhecido e considerado como uma **excelente opção para quem deseja iniciar um projeto de sistema na web**. O mais legal é que a ideia de apresentar o serviço como uma fórmula foi tão forte, que recebemos diversos elogios!
 
-![image](/images/posts/2013-05-21/copias/1.png)
-![image](/images/posts/2013-05-21/copias/2.png)
-![image](/images/posts/2013-05-21/copias/3.png)
-![image](/images/posts/2013-05-21/copias/4.png)
-![image](/images/posts/2013-05-21/copias/5.png)
-![image](/images/posts/2013-05-21/copias/6.png)
-![image](/images/posts/2013-05-21/copias/7.png)
-![image](/images/posts/2013-05-21/copias/8.png)
+![image](/blog/images/posts/2013-05-21/copias/1.png)
+![image](/blog/images/posts/2013-05-21/copias/2.png)
+![image](/blog/images/posts/2013-05-21/copias/3.png)
+![image](/blog/images/posts/2013-05-21/copias/4.png)
+![image](/blog/images/posts/2013-05-21/copias/5.png)
+![image](/blog/images/posts/2013-05-21/copias/6.png)
+![image](/blog/images/posts/2013-05-21/copias/7.png)
+![image](/blog/images/posts/2013-05-21/copias/8.png)
 
 Como algumas pessoas dizem, "a cópia é a forma mais sincera de elogio" e foi prazeroso ver sites com a nossa fórmula e alguns times copiando nosso modelo de negócio completo. No fundo, ficamos felizes com tudo isso, porque encaramos essas cópias como elogios que recebemos por termos criado algo de valor.
 

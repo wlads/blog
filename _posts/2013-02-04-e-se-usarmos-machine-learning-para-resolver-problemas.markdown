@@ -17,7 +17,7 @@ Para mim, uma das coisas mais interessantes no meio de desenvolvimento de softwa
 Geralmente, quando posso, escolho a forma mais divertida.
 <!--more-->
 
-![image](/images/posts/2013-02-04/dr-evil.jpg)
+![image](/blog/images/posts/2013-02-04/dr-evil.jpg)
 
 > **Number Two:** *Why not use your knowledge of the future to play the stock markets? We could make trillions.*
 
@@ -53,7 +53,7 @@ E como qualquer outro problema, existem diversas maneiras de se resolver.
 
 Sempre fui fascinado por [Machine Learning](http://en.wikipedia.org/wiki/Machine_learning). Na realidade, desde a época que eu não sabia direito o que significava mas já sabia que ele foi muito mal implementado no Exterminador do Futuro 1[¹](#1). Vi aí uma oportunidade de me divertir, mesmo que a solução não viesse a ser usada.
 
-![image](/images/posts/2013-02-04/sarahconnor.png)
+![image](/blog/images/posts/2013-02-04/sarahconnor.png)
 
 Caso não saiba o que é Machine Learning e para que serve, vamos para o Wikipédia:
 

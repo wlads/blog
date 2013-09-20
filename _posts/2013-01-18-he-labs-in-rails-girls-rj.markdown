@@ -10,7 +10,7 @@ categories:
   - rodrigo pinto
   - eventos
 ---
-![image](/images/posts/rails-gils-logo.png)
+![image](/blog/images/posts/rails-gils-logo.png)
 
 Autor convidado: _Organização Rails Girls RJ_
 <!--more-->
@@ -33,7 +33,7 @@ Até a próxima edição!
 
 __Fotos do evento__
 
-![image](/images/posts/rails-gils-rodrigo-pinto.jpg)
-![image](/images/posts/rails-gils-rodrigo-pinto-2.jpg)
-![image](/images/posts/rails-gils-ramon-page.jpg)
-![image](/images/posts/rails-gils-ramon-page-2.jpg)
+![image](/blog/images/posts/rails-gils-rodrigo-pinto.jpg)
+![image](/blog/images/posts/rails-gils-rodrigo-pinto-2.jpg)
+![image](/blog/images/posts/rails-gils-ramon-page.jpg)
+![image](/blog/images/posts/rails-gils-ramon-page-2.jpg)
