@@ -1,8 +1,6 @@
 #footer {
   clear: both;
-  background-color: #CA0003;
   border-top: 1px solid #F8F8F8;
-  border-bottom: 4px solid #B72124;
   text-align: center;
   width: 100%;
 
@@ -73,8 +71,9 @@
 }
 
 .copyright {
-  clear: both;
+  float: right;
   text-align: center;
-  margin: 10px 0;
+  margin: 32px 0 0;
   font-size: 11px;
+  color: #FFF;
 }
