@@ -51,11 +51,11 @@ title: HE:Labs Blog
     <div id="pagination">
       <div class="container">
         {% if paginator.next_page %}
-          <a class="prev-page" href="{{paginator.next_page_path}}" title="Página Anterior">&larr; Mais Antigo</a>
+          <a class="prev-page" href="/blog{{paginator.next_page_path}}" title="Página Anterior">&larr; Mais Antigo</a>
         {% endif %}
         <a href="archives" title="Histórico do Blog">Histórico do Blog</a>
         {% if paginator.previous_page %}
-        <a class="next-page" href="{{paginator.previous_page_path}}" title="Próxima página">Mais Novo &rarr;</a>
+        <a class="next-page" href="/blog{{paginator.previous_page_path}}" title="Próxima página">Mais Novo &rarr;</a>
         {% endif %}
       </div>
     </div>
