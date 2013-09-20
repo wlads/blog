@@ -7,7 +7,7 @@ git@github.com:Helabs/blog.git
 git checkout -b post/titulo-do-seu-post
 
 3) Crie o seu post:
-rake new_post["Titulo do seu post"]
+rake new_post["Titulo do seu post"] ou se você estiver usando zsh rake "new_post[Titulo do seu post]"
 
 4) Edite o seu post em _posts/ com o formato abaixo
 
