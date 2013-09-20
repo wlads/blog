@@ -38,9 +38,9 @@ Uma startup é, na maior parte das vezes, uma empresa ou organização em fase e
 
 O MVP ou Minimum Viable Product é o conjunto mínimo de funcionalidades necessárias para que se possa lançar um produto e validar uma ideia. Sua grande importância jaz sobre a real utilização que os usuários terão e o feedback proveniente de suas experiências.
 
-É uma abordagem <a href="http://http://toc.oreilly.com/2008/06/release-early-release-often-ag.html">Release Early, Release Often</a> proveniente de práticas ágeis. Permite que as próximas decisões a serem tomadas sejam feitas com muito mais segurança e baseadas no que, de fato, o mercado precisa ou espera. Também facilita os casos de insucesso, uma vez que possibilita verificar que a sua solução não atendeu ao problema muito antes de um amplo investimento.
+É uma abordagem <a href="http://toc.oreilly.com/2008/06/release-early-release-often-ag.html">Release Early, Release Often</a> proveniente de práticas ágeis. Permite que as próximas decisões a serem tomadas sejam feitas com muito mais segurança e baseadas no que, de fato, o mercado precisa ou espera. Também facilita os casos de insucesso, uma vez que possibilita verificar que a sua solução não atendeu ao problema muito antes de um amplo investimento.
 
-Um ótimo exemplo de como isso funciona na prática está no <a href="http://http://helabs.com.br/blog/2013/07/18/comecando-com-um-mvp-concierge/">artigo</a> escrito pelo <a href="http://https://twitter.com/rafaelp">Rafael Lima</a>, no qual ele descreve como o MVP o ajudou a validar um negócio digital.
+Um ótimo exemplo de como isso funciona na prática está no <a href="http://helabs.com.br/blog/2013/07/18/comecando-com-um-mvp-concierge/">artigo</a> escrito pelo <a href="https://twitter.com/rafaelp">Rafael Lima</a>, no qual ele descreve como o MVP o ajudou a validar um negócio digital.
 
 
 O tema ainda gera muitas dúvidas e abre caminhos para diversas outras perguntas, como por exemplo, o que é Lean Startup? Como saber a hora certa de investir em uma ideia e como montar um modelo de negócios? Todas elas pretendo responder nos meus próximos posts. Até breve, pessoal!
