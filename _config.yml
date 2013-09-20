@@ -5,7 +5,7 @@ pygments: true
 permalink: /:year/:month/:day/:title/
 markdown: rdiscount
 paginate: 9
-paginate_path: "/page/:num"
+paginate_path: "/blog/page/:num"
 disqus_short_name: helabsblog
 disqus_show_comment_count: true
 google_analytics_tracking_id: UA-34924553-1
