@@ -68,15 +68,14 @@
   .rss {
     background: url('../images/social_04.png') no-repeat center center;
   }
-}
 
-.copyright {
-  width: 200px;
-  float: right;
-  text-align: center;
-  margin: 32px 0 0;
-  font-size: 11px;
-  color: #FFF;
+  .copyright {
+    width: 200px;
+    float: right;
+    text-align: center;
+    margin: 32px 0 0;
+    font-size: 11px;
+    color: #FFF;
 
   a {
     float: left;
@@ -85,4 +84,6 @@
     width: 90px;
     margin-top: -10px;
   }
+}
+
 }
