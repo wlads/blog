@@ -20,8 +20,8 @@
 
 #static-image {
   position: relative;
-  background: url('../images/header-default-bg.jpg') 50% center no-repeat fixed;
   background-size: cover;
+  background: url('../images/header-default-bg.jpg') no-repeat fixed;
   z-index: 3;
   height: 340px;
   width: 100%;
