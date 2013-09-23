@@ -1,20 +1,78 @@
-$HEred: #B72124;
+@charset "utf-8";
+
+/* Variables */
+
+$HEred: #b80606;
+
+
+/* Reset */
+
+body, h1, h2, h3, h4,
+form, fieldset, input, label, p,
+em, strong, a, img, ul, li {
+	vertical-align: baseline;
+	font-style: normal;
+  list-style-type: none;
+	padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+header, footer, aside,
+nav, article, section { display:block; }
+
+html { font-size: 62.5%; }
+
+
+/* Generic */
+
+body {
+  font-family: inherit;
+  vertical-align: baseline;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: rgb(71, 60, 60);
+}
+
+p { margin:0 0 20px 0; }
+label { cursor:pointer; }
+img { border:none; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lato', sans-serif;
+}
+
+a { color: $HEred; }
+
+a:hover, a:hover img {
+  opacity: .8;
+}
+
+
+/* Viewport */
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+@viewport {
+  zoom: 1.0;
+  width: extend-to-zoom;
+}
+
+@-ms-viewport {
+  width: extend-to-zoom;
+  zoom: 1.0;
+}
+
+
+/* ====================
+Patterns
+==================== */
 
 .container {
   width: 960px;
-  margin: 0 auto;
   position: relative;
-}
-
-body {
-  font-family: lato,Helvetica, Arial,sans-serif;
-}
-
-a {
-  color: $HEred;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
+  margin: auto;
 }
