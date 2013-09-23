@@ -1,4 +1,4 @@
-title: Blog
+title: Blog do Time
 author: Time HE:labs
 pygments: true
 permalink: /:year/:month/:day/:title/
@@ -14,6 +14,8 @@ github_user: Helabs
 github_repo_count: 4
 github_show_profile_link: true
 github_skip_forks: true
+
+baseurl:     /blog
 
 # Twitter
 twitter_user: helabs
