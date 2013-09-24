@@ -5,6 +5,7 @@ title: "Porque um desenvolvedor front-end é importante na equipe?"
 date_pt_BR: 2013-09-24
 categories:
   - front-end
+  - thiago gonzalez
 comments: true
 ---
 
