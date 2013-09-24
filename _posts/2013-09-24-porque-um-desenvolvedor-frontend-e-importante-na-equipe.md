@@ -21,6 +21,6 @@ Além deste perfil muito buscado pelas empresas, existe também o outro lado do 
 
 Com a divisão de tarefas entre o designer e o front-end, o designer pode utilizar melhor o seu tempo para trabalhar com processos e interações mais inovadoras, e paralelamente, o front-end pode aplicá-las. Quando o mesmo profissional realiza as duas etapas, estas inovações são praticamente impossíveis.
 
-Nada contra desenvolvedores back-end e designers aprendendo front-end, é sempre muito bom saber como funcionam os diversos processos de desenvolvimento de um projeto, mas eu acredito que o perfil ideal para uma equipe de qualidade é dividir estas 3 funções.
+Nada contra desenvolvedores back-end e designers aprendendo front-end, é sempre muito bom saber como funcionam os diversos processos de desenvolvimento de um projeto, mas acredito que o perfil ideal para uma equipe de qualidade é dividir estas 3 funções.
 
 O trabalho é muito mais satisfatório quando fazemos o que realmente sabemos e gostamos. Isso garante mais qualidade na entrega e uma equipe mais organizada.
