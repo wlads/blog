@@ -7,7 +7,7 @@
   z-index: 30;
 
   .post-title {
-    font-size: 40px;
+    font-size: em(40);
     margin-bottom: 10px;
     display: block;
     font-weight: bold;
@@ -19,7 +19,7 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    font-size: 13px;
+    font-size: em(13);
     color: #777;
   }
 }
@@ -39,7 +39,7 @@
   .container {
     background: #fff;
     padding: 40px 40px 25px 40px;
-    font-size: 17px;
+    font-size: em(17);
     line-height: 30px !important;
   }
 

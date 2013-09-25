@@ -1,0 +1,51 @@
+@media (max-width: 960px) {
+  #main-header {
+    padding: 10px 20px;
+  }
+}
+
+@media only screen and (max-width: 686px) {
+  #main-header {
+    border-bottom: 1px #ccc solid;
+
+    #google-search {
+      display: none;
+    }
+
+    .header-title {
+      a {
+        width: 130px;
+      }
+    }
+  }
+
+  #static-background, #static-background.static-background-small {
+    padding: 0;
+    height: auto;
+
+    #static-image {
+      display: none;
+    }
+  }
+
+  .full-post-header {
+    border: 0;
+    padding: 40px 25px 0 25px;
+
+    .post-title {
+      margin-bottom: 0;
+    }
+  }
+
+  .post:first-child {
+    margin-top: 0;
+    z-index: 10;
+    background: none;
+  }
+
+  #post-content, .post {
+    .container {
+      padding: 30px 25px;
+    }
+  }
+}
