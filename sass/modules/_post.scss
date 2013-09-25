@@ -64,6 +64,9 @@
     display: block;
     font-weight: bold;
     color: #B72124;
-    text-decoration: none;
+
+    a {
+      text-decoration: none;
+    }
   }
 }
