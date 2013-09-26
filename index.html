@@ -7,58 +7,56 @@ title: HE:labs
   <div id="static-image"></div>
 </div>
 
-<!-- #posts -->
 <section id="posts-list">
 
-    {% for post in paginator.posts %}
+  {% for post in paginator.posts %}
 
-      <article class="post">
-        <div class="container">
-          <header class="post-header">
-            {% if post.author %}
-              {% assign author = post.author %}
-            {% elsif page.author %}
-              {% assign author = page.author %}
-            {% else %}
-              {% assign author = site.author %}
-            {% endif %}
-            {% if author %}
-              <div class="author-info">
-                Postado por <span class="author-name">{{ author }}</span>
-              </div>
-            {% endif %}
-
-            <h2 class="post-title">
-              <a href="/blog{{ post.url }}" title="{{post.title}}">
-                {% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}
-              </a>
-            </h2>
-          </header>
-
-          <div class="post-excerpt">{{ post.excerpt }}</div>
-
-          <div class='post-date'>
-            {{ post.date | date: "%d/%m/%Y" }}
-            {% if post.comments != false %}
-                <a href="/blog{{ post.url }}#disqus_thread" class="post-comments-count" title="Comentários">Comentários</a>
-            {% endif %}
-          </div>
-        </div>
-      </article>
-
-    {% endfor %}
-
-    <div id="pagination">
-      <div class="container">
-        {% if paginator.next_page %}
-          <a class="prev-page" href="/blog{{paginator.next_page_path}}" title="Página Anterior">&larr; Mais Antigo</a>
+  <article class="post">
+    <div class="container">
+      <header class="post-header">
+        {% if post.author %}
+          {% assign author = post.author %}
+        {% elsif page.author %}
+          {% assign author = page.author %}
+        {% else %}
+          {% assign author = site.author %}
         {% endif %}
-        <a href="archives" title="Histórico do Blog">Histórico do Blog</a>
-        {% if paginator.previous_page %}
-        <a class="next-page" href="/blog{{paginator.previous_page_path}}" title="Próxima página">Mais Novo &rarr;</a>
+        {% if author %}
+          <div class="author-info">
+            Postado por <span class="author-name">{{ author }}</span>
+          </div>
+        {% endif %}
+
+        <h2 class="post-title">
+          <a href="/blog{{ post.url }}" title="{{post.title}}">
+            {% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}
+          </a>
+        </h2>
+      </header>
+
+      <div class="post-excerpt">{{ post.excerpt }}</div>
+
+      <div class='post-date'>
+        {{ post.date | date: "%d/%m/%Y" }}
+        {% if post.comments != false %}
+            <a href="/blog{{ post.url }}#disqus_thread" class="post-comments-count" title="Comentários">Comentários</a>
         {% endif %}
       </div>
     </div>
+  </article>
 
+{% endfor %}
+
+<div id="pagination">
+  <div class="container">
+    {% if paginator.next_page %}
+      <a class="prev-page" href="/blog{{paginator.next_page_path}}" title="Página Anterior">&larr; Mais Antigo</a>
+    {% endif %}
+    <a href="archives" title="Histórico do Blog">Histórico do Blog</a>
+    {% if paginator.previous_page %}
+    <a class="next-page" href="/blog{{paginator.previous_page_path}}" title="Próxima página">Mais Novo &rarr;</a>
+    {% endif %}
   </div>
-</section>
+</div>
+
+</section> <!-- /posts-list -->
