@@ -7,11 +7,11 @@
   z-index: 30;
 
   .post-title {
-    font-size: em(40);
+    font-size: 44px !important;
     margin-bottom: 10px;
     display: block;
     font-weight: bold;
-    color: #B72124;
+    color: #000;
     text-decoration: none;
   }
 
@@ -22,12 +22,11 @@
   border-bottom: 1px solid #f6f6f6;
 }
 
-#post-sharing {
-  margin-bottom: 40px;
-}
-
 #post-content {
+  margin-top: -29px;
   background: #f6f6f6;
+  z-index:999;
+  position:relative;
 
   .container {
     width: 900px;
@@ -58,12 +57,4 @@
     margin-bottom: 15px;
   }
 
-  h2 {
-    font-size: 28px;
-    font-weight: bold;
-    color: #444;
-    margin-bottom: 15px;
-    padding-top: 0.8em;
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAABCAYAAACsXeyTAAAACXBIW…sTAAALEwEAmpwYAAAAFUlEQVQIHWNIS0sr/v//PwMMDzY+ADqMahlW4J91AAAAAElFTkSuQmCC) 0% 0% repeat-x;
-  }
 }

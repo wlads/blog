@@ -1,6 +1,5 @@
 #static-background {
   overflow: hidden;
-  height: 330px;
   width: 100%;
   position: relative;
 }
@@ -32,7 +31,6 @@
 #static-image:after {
   content: " ";
   background: rgba(138, 100, 100, 0.3);
-  height: 340px;
   width: 100%;
   position: absolute;
   top: 0;
