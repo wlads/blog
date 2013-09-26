@@ -1,7 +1,8 @@
 .full-post-header {
   @extend .container;
   @extend .post-header;
-  padding: 40px 25px 25px;
+  width: 910px !important;
+  padding: 40px 25px 25px 25px !important;
   background: #fff;
   z-index: 30;
 
@@ -36,8 +37,9 @@
   background: #f6f6f6;
 
   .container {
+    width: 900px !important;
     background: #fff;
-    padding: 40px 40px 25px 40px;
+    padding: 40px 30px 25px 30px;
     font-size: 16px;
     line-height: 30px !important;
   }

@@ -7,19 +7,13 @@
 
 .header-title {
   float: left;
-
-  a {
-    display: block;
+  a img {
     width: 180px;
-  }
-
-  img {
-    width: 100%;
   }
 }
 
 #google-search {
-  width: 320px;
+  width: 300px;
   float: right;
   margin-top: 10px;
 }

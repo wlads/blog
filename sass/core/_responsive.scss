@@ -1,4 +1,27 @@
+/*
+Max Width, 960px
+Media Queries for Tablets
+*/
+
+@media (max-width:960px) {
+  .container {
+    width: 700px;
+    padding:0;
+  }
+}
+
+
+/*
+Max Width, 686px
+Media Queries for Smartphones
+*/
+
 @media only screen and (max-width: 686px) {
+  
+  .container {
+    width: 90%;
+    padding:0 5% 0 5%;
+  }
 
   #main-header {
     border-bottom: 1px #ccc solid;
@@ -8,8 +31,9 @@
     }
 
     .header-title {
-      a {
+      a img {
         width: 130px;
+        margin-left:0 !important;
       }
     }
   }
@@ -37,9 +61,4 @@
     background: none;
   }
 
-  #post-content, .post {
-    .container {
-      padding: 30px 25px;
-    }
-  }
 }
