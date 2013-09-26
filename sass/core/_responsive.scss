@@ -5,8 +5,7 @@ Media Queries for Tablets
 
 @media (max-width:960px) {
   .container {
-    width: 700px;
-    padding:0;
+    width: 700px !important;
   }
 }
 
@@ -19,12 +18,13 @@ Media Queries for Smartphones
 @media only screen and (max-width: 686px) {
   
   .container {
-    width: 90%;
-    padding:0 5% 0 5%;
+    width: 90% !important;
+    padding-right: 5% !important;
+    padding-left: 5% !important;
   }
 
   #main-header {
-    border-bottom: 1px #ccc solid;
+    border-bottom: 1px solid #ccc;
 
     #google-search {
       display: none;
@@ -33,7 +33,7 @@ Media Queries for Smartphones
     .header-title {
       a img {
         width: 130px;
-        margin-left:0 !important;
+        margin-left: 0 !important;
       }
     }
   }
