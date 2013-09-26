@@ -1,5 +1,4 @@
 .full-post-header {
-  border-top: 4px solid #B72124;
   @extend .container;
   @extend .post-header;
   padding: 40px 25px 25px;
@@ -39,7 +38,7 @@
   .container {
     background: #fff;
     padding: 40px 40px 25px 40px;
-    font-size: em(17);
+    font-size: 16px;
     line-height: 30px !important;
   }
 
