@@ -15,11 +15,9 @@ layout: default
 
     {% if author %}
       <div class="author-info">
-        Postado por <span class="author-name">{{ author }}</span>
+        Postado por <span>{{ author }}</span> em <span>{{ page.date | date: "%d/%m/%Y" }}</span>
       </div>
     {% endif %}
-
-    <div class='post-date'>{{ page.date | date: "%d/%m/%Y" }}</div>
 
     <h2 class="post-title">
       {{ page.title | titlecase }}

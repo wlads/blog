@@ -51,24 +51,22 @@
 }
 
 .post-header {
-  .author-info {
-    margin-bottom: 10px;
-    font-size: 11px;
-  }
-
-  .author-name {
-    font-weight: bold;
-  }
-
   .post-title {
     font-size: 30px;
     margin-bottom: 10px;
     display: block;
     font-weight: bold;
     color: #B72124;
-
     a {
       text-decoration: none;
     }
+  }
+}
+
+.author-info {
+  margin-bottom: 10px;
+  font-size: 12px;
+  span {
+    font-weight: bold;
   }
 }
