@@ -13,6 +13,7 @@ title: HE:labs
 
   <article class="post">
     <div class="container">
+
       <header class="post-header">
         {% if post.author %}
           {% assign author = post.author %}
@@ -23,10 +24,9 @@ title: HE:labs
         {% endif %}
         {% if author %}
           <div class="author-info">
-            Postado por <span class="author-name">{{ author }}</span>
+            Postado por <span>{{ author }}</span> em <span>{{ post.date | date: "%d/%m/%Y" }}</span>
           </div>
         {% endif %}
-
         <h2 class="post-title">
           <a href="/blog{{ post.url }}" title="{{post.title}}">
             {% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}
@@ -34,14 +34,16 @@ title: HE:labs
         </h2>
       </header>
 
-      <div class="post-excerpt">{{ post.excerpt }}</div>
-
-      <div class='post-date'>
-        {{ post.date | date: "%d/%m/%Y" }}
-        {% if post.comments != false %}
-            <a href="/blog{{ post.url }}#disqus_thread" class="post-comments-count" title="Comentários">Comentários</a>
-        {% endif %}
+      <div class="post-excerpt">
+        {{ post.excerpt }}
       </div>
+      
+      <p>
+        {% if post.comments != false %}
+          <a href="/blog{{ post.url }}#disqus_thread" title="Comentários">Comentários</a>
+        {% endif %}
+      </p>
+
     </div>
   </article>
 
