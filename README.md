@@ -28,11 +28,13 @@ Conteúdo do post
 
 5) Veja se ficou bom executando: foreman start
 
-6) Commit as mudanças: git commit -am 'post: Titulo do seu post'
+6) Acesse no browser: http://localhost:4000/blog/
 
-7) Push na branch: git push origin post/titulo-do-seu-post
+7) Commit as mudanças: git commit -am 'post: Titulo do seu post'
 
-8) Mande um pull request
+8) Push na branch: git push origin post/titulo-do-seu-post
+
+9) Mande um pull request
 
 ## Observações da nova versão
 
