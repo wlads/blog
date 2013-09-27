@@ -37,12 +37,17 @@ title: HE:labs
       <div class="post-excerpt">
         {{ post.excerpt }}
       </div>
-      
-      <p>
-        {% if post.comments != false %}
-          <a href="/blog{{ post.url }}#disqus_thread" title="Comentários">Comentários</a>
-        {% endif %}
-      </p>
+
+      <ul>
+        <li class="view-more">
+          <a href="/blog{{ post.url }}" title="Ler post inteiro">Ler mais</a>
+        </li>
+        <li>
+          {% if post.comments != false %}
+            <a href="/blog{{ post.url }}#disqus_thread" title="Comentários">Comentários</a>
+          {% endif %}
+        </li>
+      </ul>
 
     </div>
   </article>
