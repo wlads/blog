@@ -3,31 +3,32 @@ layout: default
 ---
 
 <div id="static-background" class="static-background-small">
-  <div id="static-image">
-  </div>
+  
+  <div id="static-image"></div>
 
-  <header class="full-post-header">
-    {% if page.author %}
-      {% assign author = page.author %}
-    {% else %}
-      {% assign author = site.author %}
-    {% endif %}
-
-    {% if author %}
-      <div class="author-info">
-        Postado por <span>{{ author }}</span> em <span>{{ page.date | date: "%d/%m/%Y" }}</span>
-      </div>
-    {% endif %}
-
-    <h2 class="post-title">
-      {{ page.title | titlecase }}
-    </h2>
-  </header>
 </div>
 
 <!-- #posts -->
 <section id="post-content">
   <div class="container">
+    
+    <header class="full-post-header">
+      {% if page.author %}
+        {% assign author = page.author %}
+      {% else %}
+        {% assign author = site.author %}
+      {% endif %}
+
+      {% if author %}
+        <div class="author-info">
+          Postado por <span>{{ author }}</span> em <span>{{ page.date | date: "%d/%m/%Y" }}</span>
+        </div>
+      {% endif %}
+
+      <h2 class="post-title">
+        {{ page.title | titlecase }}
+      </h2>
+    </header>
 
     <div id="post-text">
       {{ content }}
