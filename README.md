@@ -26,7 +26,7 @@ categories:
 Conteúdo do post
 ```
 
-5) Veja se ficou bom executando: jekyll serve --watch
+5) Veja se ficou bom executando: foreman start
 
 6) Commit as mudanças: git commit -am 'post: Titulo do seu post'
 
