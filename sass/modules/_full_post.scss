@@ -22,13 +22,13 @@
 
 #post-content {
   background: #f6f6f6;
-  z-index: 999;
-  position: relative;
 
   .container {
     width: 900px;
     background: #fff;
     padding: 40px 30px 25px 30px;
+    margin-top: -110px;
+    z-index: 10;
   }
 
   li {
