@@ -23,6 +23,9 @@
 
     .post-title {
       font-size: 44px;
+      @media only screen and (max-width: 686px) {
+        font-size: 36px;
+      }
       a {
         text-decoration: none;
       }
