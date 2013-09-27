@@ -1,17 +1,17 @@
 #footer {
-  clear: both;
   border-top: 1px solid #F8F8F8;
+  clear: both;
   text-align: center;
   width: 100%;
 
   .column {
     color: #F98576;
+    float: left;
     font-weight: 100;
+    margin-top: 20px;
     padding: 1em;
     text-align: left;
     width: 30%;
-    float: left;
-    margin-top: 20px;
   }
 
   .container {
@@ -25,9 +25,9 @@
     }
 
     li {
-      list-style: url('../images/arrow.jpg') disc inside;
-      line-height: 2.1;
       font-size: 0.8em;
+      line-height: 2.1;
+      list-style: url('../images/arrow.jpg') disc inside;
     }
 
     a {
@@ -37,53 +37,34 @@
 }
 
 #footer-social-links {
-  overflow: hidden;
-  width: 100%;
-  height: 70px;
   background: url('../images/footer.jpg');
   border-bottom: 1px solid #FFF;
+  height: 70px;
+  overflow: hidden;
+  width: 100%;
 
-  a {
-    display: block;
+  a{
     float: left;
-    height: 40px;
+    font-size: 25px;
+    font-weight: normal;
+    margin-left: 10px;
     margin-top: 12px;
-    overflow: hidden;
-    text-indent: 200px;
-    width: 50px;
-  }
-
-  .github {
-    background: url('../images/social_01.png') no-repeat center center;
-  }
-
-  .twitter {
-    background: url('../images/social_02.png') no-repeat center center;
-  }
-
-  .facebook {
-    background: url('../images/social_03.png') no-repeat center center;
-  }
-
-  .rss {
-    background: url('../images/social_04.png') no-repeat center center;
   }
 
   .copyright {
-    width: 200px;
-    float: right;
-    text-align: center;
-    margin: 32px 0 0;
-    font-size: 11px;
     color: #FFF;
+    float: right;
+    font-size: 11px;
+    margin: 32px 0 0;
+    text-align: center;
+    width: 200px;
 
-  a {
-    float: left;
-    text-indent: 0;
-    display: block;
-    width: 90px;
-    margin-top: -10px;
+    a {
+      display: block;
+      float: left;
+      margin-top: -10px;
+      text-indent: 0;
+      width: 90px;
+    }
   }
-}
-
 }
