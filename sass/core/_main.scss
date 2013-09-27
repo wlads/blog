@@ -108,6 +108,10 @@ Font Icon
   line-height: 1em;
   margin-left: .2em;
 
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+
+
 }
 .icon_rss:before { content: '\e803'; }
 .icon_twitter:before { content: '\e802'; }
