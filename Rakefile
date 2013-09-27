@@ -27,19 +27,3 @@ task :new_post, :title do |t, args|
     post.puts "---"
   end
 end
-
-# Task Borrowed from Octopress
-# usage rake preview
-desc "preview the site in a web browser"
-task :preview do
-  puts "Starting to watch source with Jekyll and Compass."
-  jekyllPid = Process.spawn("jekyll serve watch")
-  compassPid = Process.spawn("compass watch")
-
-  trap("INT") {
-    [jekyllPid, compassPid].each { |pid| Process.kill(9, pid) rescue Errno::ESRCH }
-    exit 0
-  }
-
-  [jekyllPid, compassPid].each { |pid| Process.wait(pid) }
-end
