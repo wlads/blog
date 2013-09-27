@@ -22,7 +22,7 @@ layout: nil
     <updated>{{ post.date | date_to_xmlschema }}</updated>
     <author>
       <name>{{ post.author }}</name>
-      <uri>"http://helabs.com.br/blog{{ post.url }}</uri>
+      <uri>http://helabs.com.br/nosso-time/</uri>
     </author>
     <content type="html">{{ post.content | xml_escape }}</content>
   </entry>
