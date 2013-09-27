@@ -1,21 +1,19 @@
 <footer id="footer">
-
-
-  <div id="footer-social-links">
-    <div class="container">
-
+  <div class="container">
+    <div id="footer-social-links">
       <a href="http://github.com/Helabs" class="icon_github" title="github" target="_blank"></a>
       <a href="http://twitter.com/helabs" class="icon_twitter" title="twitter" target="_blank"></a>
       <a href="http://facebook.com/helabs" class="icon_facebook" title="facebook" target="_blank"></a>
       <!-- <a href="#" class="icon_rss" title="rss" target="_blank"></a> -->
-
-      <div class="copyright">
-        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">
-          <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" />
-        </a>
-        {{ site.time | date: "%Y" }} - {{ site.author }}
-      </div>
     </div>
+
+    <div class="copyright">
+       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">
+        <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" />
+      </a>
+      <p>{{ site.time | date: "%Y" }} - {{ site.author }}</p>
+    </div>
+
   </div>
 </footer>
 
@@ -28,4 +26,3 @@
 {% include footer_scripts/google_plus_one.html %}
 {% include footer_scripts/twitter_sharing.html %}
 {% include footer_scripts/google_search.html %}
-  
